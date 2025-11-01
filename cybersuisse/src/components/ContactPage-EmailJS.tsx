@@ -171,7 +171,6 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
       <SEOContent 
         page="contact"
-        title="Contact - CyberSuisse | Consultation en Cybersécurité"
         description="Contactez CyberSuisse pour vos besoins en cybersécurité. Pentesting, audit CRA, surveillance, développement sécurisé et DFIR. Réponse rapide garantie."
         keywords={["contact cybersécurité", "consultation pentest", "audit CRA contact", "surveillance cyber", "DFIR Suisse"]}
       />
