@@ -1,0 +1,23 @@
+Contact: mailto:security@cybersuisse.com
+Contact: https://cybersuisse.com/security
+Expires: 2026-12-31T23:59:59.000Z
+Encryption: https://keybase.io/cybersuisse/pgp_keys.asc
+Preferred-Languages: fr, en, de
+Canonical: https://cybersuisse.com/.well-known/security.txt
+Policy: https://cybersuisse.com/security
+Acknowledgments: https://cybersuisse.com/security
+
+# CyberSuisse - Divulgation Responsable de Vulnérabilités
+#
+# Si vous découvrez une vulnérabilité de sécurité dans nos systèmes,
+# veuillez nous en informer de manière responsable en utilisant
+# les informations de contact ci-dessus.
+#
+# Nous nous engageons à:
+# - Répondre dans les 24-48 heures
+# - Investiguer et corriger les vulnérabilités confirmées
+# - Reconnaître publiquement les découvertes légitimes
+# - Ne pas poursuivre en justice les chercheurs en sécurité
+#   qui suivent notre politique de divulgation responsable
+#
+# Merci de contribuer à la sécurité de notre infrastructure.

@@ -1,0 +1,41 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://cybersuisse.ch/sitemap.xml
+
+# Security
+# RFC 9116 - A File Format to Aid in Security Vulnerability Disclosure
+# https://cybersuisse.com/.well-known/security.txt
+
+# Politique de divulgation responsable
+# Pour signaler des vulnérabilités de sécurité:
+# Email: security@cybersuisse.com
+# Page: https://cybersuisse.com/security
+
+# Conformité CRA (Cyber Resilience Act)
+# Ce site respecte les exigences du règlement européen
+# sur la cyber-résilience pour les produits numériques
+
+# Disallow admin pages if any exist
+# Disallow: /admin/
+
+# Allow search engines to index all content
+# Crawl-delay: 1
+
+# Special instructions for specific bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Block bad bots
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /

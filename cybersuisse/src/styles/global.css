@@ -1,0 +1,152 @@
+/* CYBERSUISSE - CORREÇÕES DE CORES PARA PRODUÇÃO */
+/* ================================================ */
+
+/* Garantir visibilidade de todas as cores */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix para badge "bientôt" na navegação */
+nav span.absolute,
+.badge-bientot {
+  background: linear-gradient(135deg, #2563eb, #8b5cf6) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Fix para texto "cybermenaces" e outros textos claros */
+.text-gray-400 {
+  color: #6b7280 !important; /* Cinza mais escuro */
+}
+
+.text-gray-500 {
+  color: #4b5563 !important; /* Ainda mais escuro */
+}
+
+.text-gray-600 {
+  color: #374151 !important;
+}
+
+.text-gray-700 {
+  color: #1f2937 !important; /* Bem escuro */
+}
+
+/* Garantir contraste em fundos claros */
+.bg-white .text-gray-400,
+.bg-gray-50 .text-gray-400,
+.bg-blue-50 .text-gray-400,
+.bg-slate-50 .text-gray-400 {
+  color: #4b5563 !important;
+}
+
+/* Fix específico para palavras como "cybermenaces" */
+.text-muted,
+.text-light,
+span[class*="text-gray-"] {
+  color: #374151 !important;
+  font-weight: 500 !important;
+}
+
+/* Headers e títulos sempre visíveis */
+h1, h2, h3, h4, h5, h6 {
+  color: #1f2937 !important;
+}
+
+/* Links sempre visíveis */
+a {
+  color: #2563eb !important;
+}
+
+a:hover {
+  color: #1d4ed8 !important;
+}
+
+/* Botões secundários */
+.btn-secondary-3d {
+  color: #1e40af !important;
+  border-color: #3b82f6 !important;
+  background-color: #ffffff !important;
+}
+
+.btn-secondary-3d:hover {
+  color: #ffffff !important;
+  background-color: #3b82f6 !important;
+}
+
+/* Garantir que spans e small tags sejam visíveis */
+span, small {
+  color: inherit;
+}
+
+span.text-gray-400,
+span.text-gray-500,
+small.text-gray-400,
+small.text-gray-500 {
+  color: #4b5563 !important;
+}
+
+/* Placeholders visíveis */
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280 !important;
+  opacity: 1 !important;
+}
+
+/* Select options visíveis */
+select option {
+  color: #1f2937 !important;
+  background-color: #ffffff !important;
+}
+
+/* Alertas com melhor contraste */
+.alert-success-enhanced {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%) !important;
+  border-color: #10b981 !important;
+  color: #064e3b !important;
+}
+
+.alert-error-enhanced {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%) !important;
+  border-color: #ef4444 !important;
+  color: #7f1d1d !important;
+}
+
+/* Forçar renderização correta de cores */
+@media screen {
+  body {
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* Fix para gradientes que podem ficar claros */
+.bg-gradient-to-br {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #dbeafe 75%, #e0e7ff 100%) !important;
+}
+
+/* Garantir que textos em cards sejam visíveis */
+.card-enhanced .text-gray-600 {
+  color: #374151 !important;
+}
+
+.card-enhanced .text-gray-500 {
+  color: #4b5563 !important;
+}
+
+/* Fix para descrições de serviços */
+.service-description,
+p.text-gray-600,
+p.text-gray-500 {
+  color: #374151 !important;
+  line-height: 1.6;
+}
+
+/* Badges em geral */
+.badge,
+span.bg-gradient-to-r {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
