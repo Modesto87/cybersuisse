@@ -7,7 +7,7 @@ import HomePage from './components/HomePage'
 import AboutPage from './components/AboutPage'
 import PentestPage from './components/PentestPage'
 import SurveillancePage from './components/SurveillancePage'
-import AuditCRAPage from './components/AuditCRAPage'
+import OSINTPage from './components/OSINTPage'
 import DeveloppementPage from './components/DeveloppementPage'
 import DFIRPage from './components/DFIRPage'
 import DataRecoveryPage from './components/DataRecoveryPage'
@@ -18,7 +18,7 @@ import MentionsLegalesPage from './components/MentionsLegalesPage'
 import SecurityPage from './components/SecurityPage'
 import CookieManagerPage from './components/CookieManagerPage'
 
-type PageType = 'home' | 'about' | 'pentest' | 'surveillance' | 'audit-cra' | 'developpement' | 'dfir' | 'data-recovery' | 'contact' | 'cgv' | 'politique-confidentialite' | 'mentions-legales' | 'security' | 'cookies'
+type PageType = 'home' | 'about' | 'pentest' | 'surveillance' | 'osint' | 'developpement' | 'dfir' | 'data-recovery' | 'contact' | 'cgv' | 'politique-confidentialite' | 'mentions-legales' | 'security' | 'cookies'
 
 export type NavigationFunction = (page: PageType) => void;
 
@@ -41,7 +41,7 @@ function AppContent() {
       'about': '/about',
       'pentest': '/pentest',
       'surveillance': '/surveillance',
-      'audit-cra': '/audit-cra',
+      'osint': '/osint',
       'developpement': '/developpement',
       'dfir': '/dfir',
       'data-recovery': '/data-recovery',
@@ -63,7 +63,7 @@ function AppContent() {
       '/about': 'about',
       '/pentest': 'pentest',
       '/surveillance': 'surveillance',
-      '/audit-cra': 'audit-cra',
+      '/osint': 'osint',
       '/developpement': 'developpement',
       '/dfir': 'dfir',
       '/data-recovery': 'data-recovery',
@@ -98,7 +98,7 @@ function AppContent() {
             <Route path="/about" element={<AboutPage onNavigate={handleNavigate} />} />
             <Route path="/pentest" element={<PentestPage onNavigate={handleNavigate} />} />
             <Route path="/surveillance" element={<SurveillancePage onNavigate={handleNavigate} />} />
-            <Route path="/audit-cra" element={<AuditCRAPage onNavigate={handleNavigate} />} />
+            <Route path="/osint" element={<OSINTPage onNavigate={handleNavigate} />} />
             <Route path="/developpement" element={<DeveloppementPage onNavigate={handleNavigate} />} />
             <Route path="/dfir" element={<DFIRPage onNavigate={handleNavigate} />} />
             <Route path="/data-recovery" element={<DataRecoveryPage onNavigate={handleNavigate} />} />

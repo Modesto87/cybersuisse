@@ -5,7 +5,6 @@ import { Badge } from '@/components/ui/badge'
 import {
   Shield,
   Eye,
-  FileText,
   Code,
   MagnifyingGlass,
   ArrowRight,
@@ -20,19 +19,17 @@ import {
   TrendUp,
   WaveTriangle,
   Lightning,
-  Target,
   Medal
 } from '@phosphor-icons/react'
-import Logo from './Logo'
 import SEOContent from './SEOContent'
-import CRACompliancePopup from './CRACompliancePopup'
 import cyberSecurityImage1 from '@/assets/images/pexels-cottonbro-5474285.jpg'
 import cyberSecurityImage2 from '@/assets/images/pexels-cottonbro-5483064.jpg'
 import cyberSecurityImage3 from '@/assets/images/pexels-pixabay-60504.jpg'
 import cyberSecurityImage4 from '@/assets/images/pexels-tima-miroshnichenko-5380664.jpg'
+import bbbImage from '@/assets/images/bbb.jpg'
 
 interface HomePageProps {
-  onNavigate: (page: 'about' | 'pentest' | 'surveillance' | 'audit-cra' | 'developpement' | 'dfir' | 'contact' | 'data-recovery') => void
+  onNavigate: (page: 'about' | 'pentest' | 'surveillance' | 'osint' | 'developpement' | 'dfir' | 'contact' | 'data-recovery') => void
 }
 
 const services = [
@@ -55,11 +52,11 @@ const services = [
     popular: false
   },
   {
-    id: 'audit-cra' as const,
-    icon: FileText,
-    title: 'Audit CRA (Bientôt)',
-    description: 'Service en développement - Conformité avec la nouvelle réglementation européenne Cyber Resilience Act',
-    features: ['Audit de conformité (2025)', 'Documentation complète', 'Accompagnement certification'],
+    id: 'osint' as const,
+    icon: MagnifyingGlass,
+    title: 'Investigations OSINT',
+    description: 'Recherche et analyse d\'informations publiques pour investigations numériques professionnelles',
+    features: ['Recherche avancée', 'Analyse de données', 'Rapports détaillés'],
     image: cyberSecurityImage3,
     popular: false
   },
@@ -93,22 +90,20 @@ const services = [
 ]
 
 const stats = [
-  { number: "5+", label: "Années d'expérience", icon: Clock },
-  { number: "100+", label: "Entreprises sécurisées", icon: Users },
+  { number: "2+", label: "Années d'expérience", icon: Clock },
+  { number: "10+", label: "Entreprises sécurisées", icon: Users },
   { number: "99%", label: "Taux de succès", icon: TrendUp },
-  { number: "24/7", label: "Support disponible", icon: Shield }
+  { number: "50+", label: "Vulnérabilités identifiées", icon: Medal }
 ]
 
 const testimonials = [
   {
     name: "Marie Dubois",
-    company: "TechStart SA",
     text: "Service exceptionnel ! Notre système était vulnérable et maintenant nous dormons tranquilles.",
     rating: 5
   },
   {
     name: "Pierre Martin",
-    company: "Industrie Plus",
     text: "Expert compétent et à l'écoute. Recommande vivement pour les PME.",
     rating: 5
   }
@@ -132,31 +127,20 @@ const itemVariants = {
 export default function HomePage({ onNavigate }: HomePageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      {/* CRA Compliance Popup */}
-      <CRACompliancePopup onNavigateToContact={() => onNavigate('contact')} />
-
-      {/* SEO Content optimisé pour IA et buscas naturais */}
       <SEOContent
         page="home"
         title="Expert Cybersécurité Suisse | Protégez Votre Entreprise Contre les Cyberattaques | CyberSuisse"
-        description="🔒 Besoin d'un expert en cybersécurité fiable en Suisse ? Tests d'intrusion, surveillance menaces, audit CRA, développement sécurisé. Freelance certifié basé à Bienne. Devis gratuit sous 24h."
-        keywords={[
-          'expert cybersécurité suisse', 'consultant sécurité informatique suisse', 'pentest suisse',
-          'audit cybersécurité suisse', 'surveillance menaces entreprise', 'cyber resilience act suisse',
-          'développement sécurisé suisse', 'récupération données suisse', 'freelance cybersécurité bienne',
-          'protection cyber entreprise suisse', 'test intrusion suisse', 'certification cybersécurité suisse',
-          'sécurité informatique PME suisse', 'consultant cyber sécurité suisse', 'expert sécurité IT suisse'
-        ]}
+        description="🔒 Besoin d'un expert en cybersécurité fiable en Suisse ? Tests d'intrusion, surveillance menaces, investigations OSINT, développement sécurisé. Freelance certifié basé à Bienne. Devis gratuit sous 24h."
       />
-
       {/* Hero Section Ultra-Impactante */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 min-h-screen flex items-center">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
-        </div>
+      <section className="relative overflow-hidden min-h-screen flex items-center" style={{
+        backgroundImage: `url(${bbbImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}>
+        {/* Background Overlay para garantir legibilidade do texto */}
+        <div className="absolute inset-0 bg-black/60"></div>
 
         <div className="container mx-auto px-4 py-20 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -169,22 +153,22 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             >
               {/* Trust Badges */}
               <div className="flex flex-wrap gap-3 mb-6">
-                <Badge variant="secondary" className="bg-green-600/20 text-green-300 border-green-500/30">
+                <Badge variant="secondary" className="bg-white/20 text-white border-white/30 hero-badge">
                   <CheckCircle size={14} className="mr-1" />
                   Expert Certifié
                 </Badge>
-                <Badge variant="secondary" className="bg-blue-600/20 text-blue-300 border-blue-500/30">
+                <Badge variant="secondary" className="bg-white/20 text-white border-white/30 hero-badge">
                   <MapPin size={14} className="mr-1" />
                   Suisse
                 </Badge>
-                <Badge variant="secondary" className="bg-orange-600/20 text-orange-300 border-orange-500/30">
+                <Badge variant="secondary" className="bg-white/20 text-white border-white/30 hero-badge">
                   <Clock size={14} className="mr-1" />
                   Réponse 24h
                 </Badge>
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight hero-title hero-glow">
                 <span className="text-red-400">STOP</span>
                 <br />
                 <span className="text-orange-400">AUX CYBERATTAQUES</span>
@@ -195,20 +179,20 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               </h1>
 
               {/* Subheadline */}
-              <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed max-w-2xl">
-                🛡️ <strong>Vous cherchez un expert cybersécurité fiable en Suisse ?</strong>
+              <p className="text-xl md:text-2xl text-white mb-8 leading-relaxed max-w-2xl hero-subtitle">
+                🛡️ <strong className="text-white">Vous cherchez un expert cybersécurité fiable en Suisse ?</strong>
                 <br />
-                Tests d'intrusion, surveillance menaces, audit CRA, développement sécurisé.
-                <span className="text-yellow-400 font-semibold">Protection complète pour votre entreprise.</span>
+                <span className="text-white">Tests d'intrusion, surveillance menaces, investigations OSINT, développement sécurisé.</span><br />
+                <span className="text-white font-semibold">Protection complète pour votre entreprise.</span>
               </p>
 
               {/* Pain Points */}
               <div className="bg-red-600/20 border border-red-500/30 rounded-lg p-4 mb-8">
                 <div className="flex items-center mb-2">
-                  <WaveTriangle className="text-red-400 mr-2" size={20} />
-                  <span className="text-red-300 font-semibold">⚠️ Risques Réels</span>
+                  <WaveTriangle className="text-white mr-2" size={20} />
+                  <span className="text-white font-semibold">⚠️ Risques Réels</span>
                 </div>
-                <p className="text-gray-300 text-sm">
+                <p className="text-white text-sm">
                   Chaque jour, des entreprises suisses sont victimes de cyberattaques.
                   Ne soyez pas la prochaine victime !
                 </p>
@@ -223,7 +207,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                   <Button
                     size="lg"
                     onClick={() => onNavigate('contact')}
-                    className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white shadow-2xl hover:shadow-orange-500/25 transform transition-all duration-300 font-bold text-lg px-8 py-4"
+                                        className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white shadow-2xl hover:shadow-orange-500/25 transform transition-all duration-300 font-bold text-lg px-8 py-4"
                   >
                     <Lightning className="mr-2" size={20} />
                     PROTÉGEZ-MOI MAINTENANT
@@ -231,36 +215,23 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                   </Button>
                 </motion.div>
 
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    onClick={() => onNavigate('pentest')}
-                    className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 transition-all duration-300 font-semibold px-8 py-4"
-                  >
-                    <Target className="mr-2" size={20} />
-                    Découvrir les Services
-                  </Button>
-                </motion.div>
+                
               </div>
 
               {/* Social Proof */}
-              <div className="flex items-center gap-6 text-sm text-gray-400">
+              <div className="flex items-center gap-6 text-sm text-white">
                 <div className="flex items-center gap-1">
                   <Star className="text-yellow-400" size={16} />
                   <span className="font-semibold">4.9/5</span>
-                  <span>(+50 avis)</span>
+                  <span>(+10 avis)</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <Certificate className="text-blue-400" size={16} />
+                  <Certificate className="text-white" size={16} />
                   <span>Certifié EC-Council</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <Trophy className="text-orange-400" size={16} />
-                  <span>5+ ans expérience</span>
+                  <Trophy className="text-white" size={16} />
+                  <span>2+ ans expérience</span>
                 </div>
               </div>
             </motion.div>
@@ -285,10 +256,10 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                     </div>
                     <div>
                       <div className="text-white font-semibold">Système Protégé</div>
-                      <div className="text-gray-300 text-sm">Sécurité maximale</div>
+                      <div className="text-white text-sm">Sécurité maximale</div>
                     </div>
                   </div>
-                  <div className="text-green-400 text-sm font-medium">✓ 0 vulnérabilités détectées</div>
+                  <div className="text-white text-sm font-medium">✓ 0 vulnérabilités détectées</div>
                 </motion.div>
 
                 <motion.div
@@ -302,10 +273,10 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                     </div>
                     <div>
                       <div className="text-white font-semibold">Monitoring 24/7</div>
-                      <div className="text-gray-300 text-sm">Surveillance continue</div>
+                      <div className="text-white text-sm">Surveillance continue</div>
                     </div>
                   </div>
-                  <div className="text-blue-400 text-sm font-medium">✓ 15 menaces bloquées ce mois</div>
+                  <div className="text-white text-sm font-medium">✓ 15 menaces bloquées ce mois</div>
                 </motion.div>
               </div>
             </motion.div>
@@ -575,7 +546,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                     </blockquote>
                     <div>
                       <div className="font-semibold text-foreground">{testimonial.name}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.company}</div>
+                    <div className="text-sm text-muted-foreground"></div>
                     </div>
                   </CardContent>
                 </Card>
@@ -688,7 +659,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 <Clock className="text-red-400 mr-2" size={20} />
                 <span className="text-red-300 font-semibold">Offre Limitée</span>
               </div>
-              <p className="text-red-200 text-sm">
+              <p className="text-white text-sm">
                 📅 Réponse garantie sous 24h • 📞 Consultation gratuite
               </p>
             </div>
@@ -726,7 +697,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             </div>
 
             {/* Trust Signals */}
-            <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-blue-200">
+            <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-white">
               <div className="flex items-center gap-1">
                 <CheckCircle size={16} />
                 <span>Expert certifié</span>

@@ -8,9 +8,9 @@ import { useLocalStorage } from '@/hooks/useLocalStorage'
 // Extend Window interface for Google Analytics and Matomo
 declare global {
   interface Window {
-    _paq?: any[]
+    _paq?: unknown[]
   }
-  function gtag(...args: any[]): void
+  function gtag(...args: unknown[]): void
 }
 
 interface CookiePreferences {

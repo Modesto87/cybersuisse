@@ -18,11 +18,11 @@
     # Referrer Policy
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
     
-    # Permissions Policy
-    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), speaker=(), vibrate=(), fullscreen=(self)"
+    # Permissions Policy (only include supported directives to avoid browser warnings)
+    Header always set Permissions-Policy "accelerometer=(), autoplay=(), camera=(), display-capture=(), fullscreen=(self), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), screen-wake-lock=(), usb=(), xr-spatial-tracking=()"
     
     # Content Security Policy
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'"
     
     # Remove server signature
     Header always unset Server
@@ -34,11 +34,11 @@
     RewriteEngine On
     
     # Bloquer les tentatives d'injection SQL
-    RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
-    RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
-    RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
-    RewriteCond %{QUERY_STRING} (\;|\'|\"|%22).*(union|select|insert|drop|delete|update|create|alter) [NC,OR]
-    RewriteCond %{QUERY_STRING} (sp_executesql) [NC]
+    RewriteCond %{QUERY_STRING} "(<|%3C).*script.*(>|%3E)" [NC,OR]
+    RewriteCond %{QUERY_STRING} "GLOBALS(=|\[|%[0-9A-Z]{0,2})" [OR]
+    RewriteCond %{QUERY_STRING} "_REQUEST(=|\[|%[0-9A-Z]{0,2})" [OR]
+    RewriteCond %{QUERY_STRING} "(;|'|\"|%22).*(union|select|insert|drop|delete|update|create|alter)" [NC,OR]
+    RewriteCond %{QUERY_STRING} "sp_executesql" [NC]
     RewriteRule ^(.*)$ - [F,L]
     
     # Bloquer les User Agents suspects
@@ -68,14 +68,6 @@
     Order Allow,Deny
     Deny from all
 </FilesMatch>
-
-# Protection du répertoire API
-<Files "send-email.php">
-    <RequireAll>
-        Require method POST
-        Require expr %{CONTENT_TYPE} =~ m#application/json#
-    </RequireAll>
-</Files>
 
 # Compression Gzip pour performance
 <IfModule mod_deflate.c>

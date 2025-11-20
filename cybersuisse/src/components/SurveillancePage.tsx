@@ -2,9 +2,8 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Eye, Clock, Bell, Shield, Cpu, Envelope, ChartLine, CheckCircle, WindowsLogo, Cloud } from '@phosphor-icons/react'
+import { Eye, Shield, WindowsLogo, Envelope, CheckCircle, Cloud } from '@phosphor-icons/react'
 import surveillanceImage from '@/assets/images/pexels-pixabay-60504.jpg'
-import monitoringImage from '@/assets/images/pexels-tima-miroshnichenko-5380664.jpg'
 
 interface SurveillancePageProps {
   onNavigate: (page: 'contact') => void

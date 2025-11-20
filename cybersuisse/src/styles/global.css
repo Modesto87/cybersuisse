@@ -17,6 +17,105 @@ nav span.absolute,
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
+/* MELHORIAS DE CONTRASTE PARA LEGIBILIDADE */
+/* ======================================== */
+
+/* Hero Section - Texto em fundo escuro */
+.bg-gradient-to-br.from-slate-900 .text-gray-300,
+.bg-gradient-to-br.from-slate-900 .text-gray-400 {
+  color: #e2e8f0 !important; /* Branco acinzentado mais claro */
+}
+
+.bg-gradient-to-br.from-slate-900 .text-gray-400 {
+  color: #cbd5e1 !important; /* Ainda mais claro para melhor contraste */
+}
+
+/* Cards flutuantes no hero - fundo semi-transparente */
+.bg-white\/10 .text-white {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+.bg-white\/10 .text-gray-300 {
+  color: #f1f5f9 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Badges no hero section */
+.bg-green-600\/20 .text-green-300,
+.bg-blue-600\/20 .text-blue-300,
+.bg-orange-600\/20 .text-orange-300 {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Pain points box */
+.bg-red-600\/20 .text-red-300,
+.bg-red-600\/20 .text-gray-300 {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Social proof no hero */
+.text-gray-400 {
+  color: #cbd5e1 !important; /* Mais claro para fundo escuro */
+}
+
+/* Seções com fundo claro - text-muted-foreground */
+.bg-white .text-muted-foreground,
+.bg-slate-50 .text-muted-foreground,
+.bg-blue-50 .text-muted-foreground,
+.bg-gradient-to-br .text-muted-foreground {
+  color: #64748b !important; /* Slate-500 - mais escuro para melhor contraste */
+}
+
+/* Cards específicos */
+.card .text-muted-foreground,
+.card-content .text-muted-foreground {
+  color: #475569 !important; /* Slate-600 */
+}
+
+/* Descrições de serviço */
+.service-description,
+p.text-gray-600,
+p.text-gray-500 {
+  color: #475569 !important; /* Slate-600 */
+  line-height: 1.6;
+}
+
+/* Features em listas */
+ul li.text-muted-foreground,
+.text-sm.text-muted-foreground {
+  color: #475569 !important;
+}
+
+/* Testimonials */
+blockquote.text-muted-foreground {
+  color: #475569 !important;
+}
+
+/* FAQ content */
+.card-content p.text-muted-foreground {
+  color: #475569 !important;
+}
+
+/* Stats section */
+.text-muted-foreground {
+  color: #64748b !important; /* Slate-500 */
+}
+
+/* Problem/Solution section */
+.bg-red-100 .text-red-700,
+.bg-red-100 .text-red-800 {
+  color: #dc2626 !important; /* Red-600 para melhor contraste */
+}
+
+.bg-green-100 .text-green-700,
+.bg-green-100 .text-green-800 {
+  color: #16a34a !important; /* Green-600 para melhor contraste */
+}
+
 /* Fix para texto "cybermenaces" e outros textos claros */
 .text-gray-400 {
   color: #6b7280 !important; /* Cinza mais escuro */
@@ -135,11 +234,137 @@ select option {
   color: #4b5563 !important;
 }
 
-/* Fix para descrições de serviços */
+/* Badges em geral */
+.badge,
+span.bg-gradient-to-r {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Fix para texto "cybermenaces" e outros textos claros */
+.text-gray-400 {
+  color: #6b7280 !important; /* Cinza mais escuro */
+}
+
+.text-gray-500 {
+  color: #4b5563 !important; /* Ainda mais escuro */
+}
+
+.text-gray-600 {
+  color: #374151 !important;
+}
+
+.text-gray-700 {
+  color: #1f2937 !important; /* Bem escuro */
+}
+
+/* Garantir contraste em fundos claros */
+.bg-white .text-gray-400,
+.bg-gray-50 .text-gray-400,
+.bg-blue-50 .text-gray-400,
+.bg-slate-50 .text-gray-400 {
+  color: #4b5563 !important;
+}
+
+/* Fix específico para palavras como "cybermenaces" */
+.text-muted,
+.text-light,
+span[class*="text-gray-"] {
+  color: #374151 !important;
+  font-weight: 500 !important;
+}
+
+/* Headers e títulos sempre visíveis */
+h1, h2, h3, h4, h5, h6 {
+  color: #1f2937 !important;
+}
+
+/* Links sempre visíveis */
+a {
+  color: #2563eb !important;
+}
+
+a:hover {
+  color: #1d4ed8 !important;
+}
+
+/* Botões secundários */
+.btn-secondary-3d {
+  color: #1e40af !important;
+  border-color: #3b82f6 !important;
+  background-color: #ffffff !important;
+}
+
+.btn-secondary-3d:hover {
+  color: #ffffff !important;
+  background-color: #3b82f6 !important;
+}
+
+/* Garantir que spans e small tags sejam visíveis */
+span, small {
+  color: inherit;
+}
+
+span.text-gray-400,
+span.text-gray-500,
+small.text-gray-400,
+small.text-gray-500 {
+  color: #4b5563 !important;
+}
+
+/* Placeholders visíveis */
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280 !important;
+  opacity: 1 !important;
+}
+
+/* Select options visíveis */
+select option {
+  color: #1f2937 !important;
+  background-color: #ffffff !important;
+}
+
+/* Alertas com melhor contraste */
+.alert-success-enhanced {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%) !important;
+  border-color: #10b981 !important;
+  color: #064e3b !important;
+}
+
+.alert-error-enhanced {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%) !important;
+  border-color: #ef4444 !important;
+  color: #7f1d1d !important;
+}
+
+/* Forçar renderização correta de cores */
+@media screen {
+  body {
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* Fix para gradientes que podem ficar claros */
+.bg-gradient-to-br {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #dbeafe 75%, #e0e7ff 100%) !important;
+}
+
+/* Garantir que textos em cards sejam visíveis */
+.card-enhanced .text-gray-600 {
+  color: #374151 !important;
+}
+
+.card-enhanced .text-gray-500 {
+  color: #4b5563 !important;
+}
+
+/* Fix específico para descrições de serviços */
 .service-description,
 p.text-gray-600,
 p.text-gray-500 {
-  color: #374151 !important;
+  color: #475569 !important; /* Slate-600 */
   line-height: 1.6;
 }
 
@@ -149,4 +374,80 @@ span.bg-gradient-to-r {
   color: #ffffff !important;
   font-weight: 600 !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Navigation component - melhorar contraste */
+nav .text-foreground\/80 {
+  color: #1f2937 !important; /* Gray-800 para melhor contraste */
+}
+
+nav .text-muted-foreground {
+  color: #4b5563 !important; /* Slate-600 */
+}
+
+nav .hover\:text-foreground:hover {
+  color: #1f2937 !important;
+}
+
+/* Mobile menu */
+.sheet-content .text-muted-foreground {
+  color: #4b5563 !important;
+}
+
+/* Badges no navigation */
+nav .bg-accent\/20 .text-accent {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* EFEITOS ESPECIAIS PARA TEXTO DO HERO */
+/* ===================================== */
+
+/* Badges com efeito especial */
+.hero-badge {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.3) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Títulos principais com efeito dramático */
+.hero-title {
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(255, 255, 255, 0.4),
+    0 0 60px rgba(255, 255, 255, 0.2) !important;
+  font-weight: 900 !important;
+  letter-spacing: 1px !important;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Texto secundário com brilho sutil */
+.hero-subtitle {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 255, 255, 0.2) !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+}
+
+/* Efeito de brilho pulsante para elementos importantes */
+@keyframes hero-glow {
+  0%, 100% {
+    text-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.8),
+      0 0 20px rgba(255, 255, 255, 0.3),
+      0 0 40px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    text-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.8),
+      0 0 30px rgba(255, 255, 255, 0.5),
+      0 0 60px rgba(255, 255, 255, 0.2);
+  }
+}
+
+.hero-glow {
+  animation: hero-glow 3s ease-in-out infinite !important;
 }

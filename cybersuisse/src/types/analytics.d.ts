@@ -1,10 +1,10 @@
 // Global type declarations for analytics tools
 declare global {
   interface Window {
-    _paq?: any[]
+    _paq?: unknown[]
   }
   
-  function gtag(...args: any[]): void
+  function gtag(...args: unknown[]): void
 }
 
 export {}

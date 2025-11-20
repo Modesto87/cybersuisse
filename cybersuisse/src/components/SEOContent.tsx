@@ -4,10 +4,9 @@ interface SEOContentProps {
   page: string
   title?: string
   description?: string
-  keywords?: string[]
 }
 
-export default function SEOContent({ page, title, description, keywords }: SEOContentProps) {
+export default function SEOContent({ page, title, description }: SEOContentProps) {
   const getLocalContent = () => {
     switch (page) {
       case 'home':

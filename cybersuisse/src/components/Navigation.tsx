@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { List, X, Shield, Target, Eye, FileMagnifyingGlass, Code, Detective, HardDrive, Envelope, LockKey } from '@phosphor-icons/react'
+import { List, X, Shield, Target, Eye, MagnifyingGlass, Code, Detective, HardDrive, Envelope, LockKey } from '@phosphor-icons/react'
 import Logo from './Logo'
 
-type PageType = 'home' | 'about' | 'pentest' | 'surveillance' | 'audit-cra' | 'developpement' | 'dfir' | 'data-recovery' | 'security' | 'contact' | 'cgv' | 'politique-confidentialite' | 'mentions-legales' | 'cookies'
+type PageType = 'home' | 'about' | 'pentest' | 'surveillance' | 'osint' | 'developpement' | 'dfir' | 'data-recovery' | 'security' | 'contact' | 'cgv' | 'politique-confidentialite' | 'mentions-legales' | 'cookies'
 
 interface NavigationProps {
   currentPage: string
@@ -18,7 +17,7 @@ const navigationItems = [
   { id: 'about', label: 'À Propos', icon: Shield },
   { id: 'pentest', label: 'Pentest', icon: Target },
   { id: 'surveillance', label: 'Surveillance', icon: Eye },
-  { id: 'audit-cra', label: 'Audit CRA', icon: FileMagnifyingGlass, badge: 'Bientôt' },
+  { id: 'osint', label: 'OSINT', icon: MagnifyingGlass },
   { id: 'developpement', label: 'Développement', icon: Code },
   { id: 'dfir', label: 'DFIR', icon: Detective },
   { id: 'data-recovery', label: 'Récupération', icon: HardDrive },
@@ -100,14 +99,6 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                           <span className="font-medium text-sm">
                             {item.label}
                           </span>
-                          {'badge' in item && (
-                            <Badge 
-                              variant="outline" 
-                              className="text-xs bg-accent/20 text-accent border-accent/40 ml-1"
-                            >
-                              {item.badge}
-                            </Badge>
-                          )}
                         </div>
                         
                         {/* Hover effect */}
@@ -246,14 +237,6 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                                   <span className="font-medium text-base">
                                     {item.label}
                                   </span>
-                                  {'badge' in item && (
-                                    <Badge 
-                                      variant="outline" 
-                                      className="ml-2 text-xs bg-accent/20 text-accent border-accent/40"
-                                    >
-                                      {item.badge}
-                                    </Badge>
-                                  )}
                                 </div>
                               </div>
                               
