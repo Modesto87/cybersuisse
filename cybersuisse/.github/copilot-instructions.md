@@ -15,7 +15,7 @@ This is a professional cybersecurity consulting website for a Swiss freelancer, 
 
 ### Navigation System
 The app uses a centralized navigation pattern with:
-- `PageType` union type defining all valid routes (`home | about | pentest | surveillance | osint | developpement | dfir | data-recovery | contact | cgv | politique-confidentialite | mentions-legales | security | cookies`)
+- `PageType` union type defining all valid routes (`home | about | pentest | osint | developpement | data-recovery | contact | cgv | politique-confidentialite | mentions-legales | cookies`)
 - `handleNavigate` function in `App.tsx` that maps PageTypes to routes
 - All components receive `onNavigate: (page: PageType) => void` prop for navigation
 - Mobile navigation uses Radix Sheet component with animated hamburger menu
@@ -37,11 +37,15 @@ src/components/
 
 ## Design System
 
-### Color Palette
-- **Primary**: Blue marine (`--color-accent-9`) for trust/security
-- **Secondary**: Violet (`--color-accent-secondary-9`) for technology
-- **Accent**: Orange for CTAs (defined in custom CSS)
-- Uses Radix Colors with CSS custom properties for theming
+### Color Palette - RED TEAM THEME
+- **Primary**: Vermelho Vivo (`#E53935`) for aggressive Red Team identity
+- **Primary Dark**: `#B71C1C` for hover/active states
+- **Primary Light**: `#FF5252` for highlights
+- **Secondary**: Âmbar/Laranja (`#FF6F00`) for energy and CTAs
+- **Background**: Preto Profundo (`#0A0A0A`) for dark theme
+- **Surface**: Cinza Escuro (`#1A1A1A`, `#2D2D2D`) for cards/inputs
+- **Text**: Branco (`#FFFFFF`) primary, Cinza (`#A0A0A0`) secondary
+- Uses Radix Colors (red, orange scales) with CSS custom properties
 
 ### Typography
 - **Font**: Inter (loaded from Google Fonts)
@@ -63,7 +67,7 @@ Custom CSS in `styles/buttons.css` provides distinctive 3D button styles:
 
 ### Component Creation
 When creating new service pages:
-1. Follow the pattern in `PentestPage.tsx` or `SurveillancePage.tsx`
+1. Follow the pattern in `PentestPage.tsx` or `OSINTPage.tsx`
 2. Accept `onNavigate` prop for navigation
 3. Use `motion.div` with consistent `pageVariants` for transitions
 4. Include service-specific icons from `@phosphor-icons/react`
@@ -84,7 +88,7 @@ When creating new service pages:
 
 ### Services & Content
 - **Target market**: Swiss businesses needing cybersecurity compliance
-- **Key services**: Pentest, Surveillance, OSINT, DFIR, CRA Audit, Secure Development  
+- **Key services**: Pentest, OSINT, Développement sécurisé, Récupération de données
 - **Language**: All content in French
 - **Compliance focus**: New CRA (Cyber Resilience Act) regulations
 

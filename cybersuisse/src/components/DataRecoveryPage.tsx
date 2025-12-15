@@ -2,7 +2,8 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { HardDrive, Usb, Memory, MagnifyingGlass, Shield, Clock, CheckCircle, Database, Cpu, Eye, Envelope } from '@phosphor-icons/react'
+import SEOContent from '@/components/SEOContent'
+import { HardDrive, Usb, Memory, MagnifyingGlass, Shield, Clock, CheckCircle, Database, Cpu, Eye, Envelope, Lock } from '@phosphor-icons/react'
 import dataRecoveryImage from '@/assets/images/pexels-tima-miroshnichenko-5380664.jpg'
 
 interface DataRecoveryPageProps {
@@ -22,7 +23,7 @@ const recoveryServices = [
       'Formatage accidentel - Formatage rapide ou complet',
       'Secteurs défectueux - Bad sectors, zones défaillantes'
     ],
-    features: ['Analyse gratuite', 'Devis détaillé', 'Confidentialité garantie', 'Succès jusqu\'à 95%']
+    features: ['Analyse gratuite', 'Devis détaillé', 'Confidentialité stricte', 'Chances optimisées (selon cas)']
   },
   {
     title: 'Récupération Clés USB',
@@ -36,7 +37,7 @@ const recoveryServices = [
       'Formatage USB - Formatage involontaire',
       'Pannes électroniques - Circuiterie défaillante'
     ],
-    features: ['Diagnostic rapide', 'Récupération express', 'Support multi-formats', 'Garantie satisfaction']
+    features: ['Diagnostic rapide', 'Récupération prioritaire', 'Support multi-formats', 'Restitution sur support sain']
   },
   {
     title: 'Récupération Cartes SD/microSD',
@@ -50,7 +51,21 @@ const recoveryServices = [
       'Carte illisible - Erreurs de lecture physique',
       'Problèmes appareils photo - Corruption interne'
     ],
-    features: ['Spécialisation multimédia', 'Prévisualisation gratuite', 'Récupération sélective', 'Service 24/7']
+    features: ['Spécialisation multimédia', 'Prévisualisation (si possible)', 'Récupération sélective', 'Traitement urgent possible']
+  },
+  {
+    title: 'Accès & Mot de passe oublié',
+    subtitle: 'Windows / PC / Compte local',
+    icon: Lock,
+    description: "Quand l'accès au PC est bloqué (mot de passe oublié), l'objectif est de récupérer vos fichiers ou de rétablir un accès — uniquement sur un appareil qui vous appartient ou avec autorisation.",
+    services: [
+      'Mot de passe Windows oublié (cas légitimes / propriété)',
+      'Récupération de fichiers sans connexion (selon chiffrement)',
+      'Compte verrouillé / profil corrompu',
+      'Ordinateur qui ne démarre plus',
+      'Conseils pour éviter la perte définitive (BitLocker, clés, sauvegardes)'
+    ],
+    features: ['Cadre légal & autorisation', 'Respect de la vie privée', 'Diagnostic rapide', 'Pas de fausses promesses']
   }
 ]
 
@@ -87,9 +102,15 @@ const recoveryProcess = [
 
 export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen" style={{background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}}>
+      <SEOContent
+        page="data-recovery"
+        title="Récupération de données à Bienne/Biel (Suisse) | Disque, SSD, USB, carte SD | CyberSuisse"
+        description="Récupération de données à Bienne/Biel et en Suisse : fichiers supprimés, disque/SSD en panne, clé USB, carte SD (photos), PC qui ne démarre plus ou mot de passe Windows oublié. Service professionnel, respect de la vie privée, outils du marché."
+      />
+
       {/* SEO H1 invisible */}
-      <h1 className="sr-only">Récupération de Données | HDD SSD USB SD | CyberSuisse Bienne</h1>
+      <h1 className="sr-only">Récupération de données à Bienne/Biel (Suisse) | HDD, SSD, USB, carte SD | CyberSuisse</h1>
 
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20">
@@ -99,20 +120,22 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <Badge variant="secondary" className="mb-4">
-            Récupération de Données • Service d'Urgence 24/7
+          <Badge variant="secondary" className="mb-4 bg-red-950/60 text-red-400 border border-red-600/40">
+            Récupération de Données • Bienne/Biel & Suisse
           </Badge>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Récupération de <span className="text-primary">Données</span>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Récupération de <span className="text-red-500" style={{textShadow: '0 0 30px rgba(229,57,53,0.4)'}}>Données</span>
             <br />
             Professionnelle & Sécurisée
           </h1>
 
-          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            Experts certifiés en récupération de données sur disques durs, SSD, clés USB et cartes SD.
-            Taux de succès jusqu'à 95% avec confidentialité absolue et service d'urgence 24/7.
-            De la panne logique à la défaillance physique, nous récupérons vos données critiques.
+          <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Service professionnel de récupération de données à Bienne/Biel et dans toute la Suisse :
+            fichiers supprimés, disque dur/SSD en panne, clé USB illisible, carte SD avec photos perdues,
+            ordinateur qui ne démarre plus, ou même mot de passe Windows oublié.
+            Travail sérieux, respect de la vie privée et outils professionnels du marché.
+            Important : ce n'est pas toujours possible — mais si aucune donnée n'est récupérable (échec total), vous ne payez rien.
           </p>
 
           <motion.div
@@ -123,10 +146,11 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             <Button
               size="lg"
               onClick={() => onNavigate('contact')}
-              className="bg-red-600 hover:bg-red-700 text-white shadow-lg hover:shadow-xl"
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-lg hover:shadow-xl border border-red-500/50"
+              style={{boxShadow: '0 0 30px rgba(229,57,53,0.4)'}}
             >
               <Clock size={20} className="mr-2" />
-              Diagnostic Gratuit - Urgence 24/7
+              Diagnostic gratuit - Demander une analyse
             </Button>
           </motion.div>
         </motion.div>
@@ -147,10 +171,10 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             <div className="absolute inset-0 bg-gradient-to-r from-red-900/60 via-blue-900/30 to-purple-900/20" />
             <div className="absolute bottom-6 left-6 right-6">
               <h3 className="text-white text-2xl font-bold mb-2 drop-shadow-lg">
-                Expertise Technique & Confidentialité
+                Récupération technique & confidentialité
               </h3>
               <p className="text-white/90 text-lg drop-shadow-lg">
-                Récupération de données sensibles avec sécurité maximale
+                Pour particuliers, entreprises et besoins d'investigation
               </p>
             </div>
           </div>
@@ -165,11 +189,11 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Services de Récupération Spécialisés
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Couverture complète pour tous vos supports de stockage défaillants
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            Supports et scénarios couverts (avec un diagnostic honnête et une approche prudente)
           </p>
         </motion.div>
 
@@ -183,32 +207,32 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
               >
-                <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/20">
-                  <CardHeader className="bg-gradient-to-r from-slate-50 to-gray-50">
+                <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 bg-[#1A1A1A] border-[#333] hover:border-red-600/40">
+                  <CardHeader className="bg-gradient-to-r from-red-950/30 to-[#1A1A1A]">
                     <div className="flex items-center space-x-4 mb-4">
                       <motion.div
-                        className="p-4 bg-primary/10 rounded-xl"
+                        className="p-4 bg-red-950/50 rounded-xl"
                         whileHover={{ scale: 1.1, rotateY: 10 }}
                         style={{ transformStyle: "preserve-3d" }}
                       >
-                        <IconComponent size={32} className="text-primary" />
+                        <IconComponent size={32} className="text-red-500" />
                       </motion.div>
                       <div>
-                        <CardTitle className="text-2xl text-primary">{service.title}</CardTitle>
-                        <div className="text-sm font-medium text-accent mt-1">{service.subtitle}</div>
+                        <CardTitle className="text-2xl text-red-500">{service.title}</CardTitle>
+                        <div className="text-sm font-medium text-orange-400 mt-1">{service.subtitle}</div>
                       </div>
                     </div>
-                    <CardDescription className="text-base leading-relaxed">
+                    <CardDescription className="text-base leading-relaxed text-gray-400">
                       {service.description}
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div>
-                      <h4 className="font-semibold text-foreground mb-3">Problèmes Couvert :</h4>
+                      <h4 className="font-semibold text-white mb-3">Problèmes Couvert :</h4>
                       <ul className="space-y-2">
                         {service.services.map((item, idx) => (
-                          <li key={idx} className="flex items-start text-sm text-muted-foreground">
-                            <CheckCircle size={16} className="text-accent mr-3 mt-0.5 flex-shrink-0" />
+                          <li key={idx} className="flex items-start text-sm text-gray-300">
+                            <CheckCircle size={16} className="text-red-500 mr-3 mt-0.5 flex-shrink-0" />
                             {item}
                           </li>
                         ))}
@@ -216,10 +240,10 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-foreground mb-3">Avantages :</h4>
+                      <h4 className="font-semibold text-white mb-3">Avantages :</h4>
                       <div className="flex flex-wrap gap-2">
                         {service.features.map((feature, idx) => (
-                          <Badge key={idx} variant="secondary" className="text-xs">
+                          <Badge key={idx} variant="secondary" className="text-xs bg-red-950/50 text-red-400 border border-red-600/40">
                             {feature}
                           </Badge>
                         ))}
@@ -233,8 +257,127 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
         </div>
       </section>
 
+      {/* Common Examples */}
+      <section className="py-20" style={{background: 'linear-gradient(180deg, #0A0A0A 0%, #1A1A1A 100%)'}}>
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.55 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Exemples fréquents (cas réels)</h2>
+            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+              Quelques situations typiques que je traite à Bienne/Biel et en Suisse. Le bon réflexe : arrêter d'utiliser le support et demander un diagnostic.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.65 }}
+            >
+              <Card className="h-full bg-[#1A1A1A] border-[#333] hover:border-red-600/40 transition-all">
+                <CardHeader>
+                  <CardTitle className="text-xl text-white">📸 Carte SD : photos supprimées</CardTitle>
+                  <CardDescription className="text-gray-400">
+                    Carte SD/microSD formatée ou photos effacées par erreur (appareil photo, drone, téléphone).
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="text-gray-300 text-sm space-y-2">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle size={16} className="text-red-500 mt-0.5" />
+                    <span>Préservation + récupération sélective si possible</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle size={16} className="text-red-500 mt-0.5" />
+                    <span>Restitution sur un support sain</span>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.75 }}
+            >
+              <Card className="h-full bg-[#1A1A1A] border-[#333] hover:border-red-600/40 transition-all">
+                <CardHeader>
+                  <CardTitle className="text-xl text-white">🗑️ Dossier supprimé / corbeille vidée</CardTitle>
+                  <CardDescription className="text-gray-400">
+                    Fichiers effacés sur PC, disque externe ou NAS : l'action rapide augmente les chances.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="text-gray-300 text-sm space-y-2">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle size={16} className="text-red-500 mt-0.5" />
+                    <span>Analyse des traces restantes (selon usage du support)</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle size={16} className="text-red-500 mt-0.5" />
+                    <span>Conseils immédiats pour éviter d'écraser les données</span>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.85 }}
+            >
+              <Card className="h-full bg-[#1A1A1A] border-[#333] hover:border-red-600/40 transition-all">
+                <CardHeader>
+                  <CardTitle className="text-xl text-white">🔑 Mot de passe Windows oublié</CardTitle>
+                  <CardDescription className="text-gray-400">
+                    Accès bloqué : objectif = récupérer vos fichiers ou restaurer l'accès (uniquement si vous êtes propriétaire / autorisé).
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="text-gray-300 text-sm space-y-2">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle size={16} className="text-red-500 mt-0.5" />
+                    <span>Évaluation du chiffrement (ex: BitLocker) et faisabilité</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle size={16} className="text-red-500 mt-0.5" />
+                    <span>Solutions propres, sans promesses irréalistes</span>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.95 }}
+            >
+              <Card className="h-full bg-[#1A1A1A] border-[#333] hover:border-red-600/40 transition-all">
+                <CardHeader>
+                  <CardTitle className="text-xl text-white">💥 Disque qui ne démarre plus</CardTitle>
+                  <CardDescription className="text-gray-400">
+                    PC qui ne démarre plus, disque non reconnu, erreurs de lecture : priorité à la préservation.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="text-gray-300 text-sm space-y-2">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle size={16} className="text-red-500 mt-0.5" />
+                    <span>Imagerie et travail sur copie quand c'est possible</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle size={16} className="text-red-500 mt-0.5" />
+                    <span>Rapport clair : ce qui est récupérable / ce qui ne l'est pas</span>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Recovery Process */}
-      <section className="bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100 py-20">
+      <section className="py-20" style={{background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}}>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -242,10 +385,10 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             transition={{ duration: 0.6, delay: 0.7 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Processus de Récupération Professionnel
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
               Méthodologie éprouvée en 4 étapes pour maximiser les chances de récupération
             </p>
           </motion.div>
@@ -262,25 +405,25 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
                   className="text-center"
                 >
                   <div className="relative mb-6">
-                    <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                    <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-red-600 to-orange-600 flex items-center justify-center text-white font-bold text-xl shadow-lg" style={{boxShadow: '0 0 30px rgba(229,57,53,0.4)'}}>
                       {step.step}
                     </div>
                     {index < recoveryProcess.length - 1 && (
-                      <div className="hidden lg:block absolute top-10 -right-12 w-24 h-0.5 bg-gradient-to-r from-primary to-secondary"></div>
+                      <div className="hidden lg:block absolute top-10 -right-12 w-24 h-0.5 bg-gradient-to-r from-red-600 to-orange-600"></div>
                     )}
                   </div>
 
                   <div className="mb-4">
-                    <IconComponent size={32} className="text-primary mx-auto mb-2" />
+                    <IconComponent size={32} className="text-red-500 mx-auto mb-2" />
                   </div>
 
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{step.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{step.description}</p>
+                  <h3 className="text-lg font-semibold text-white mb-2">{step.title}</h3>
+                  <p className="text-sm text-gray-400 mb-4">{step.description}</p>
 
-                  <ul className="space-y-1 text-xs text-muted-foreground">
+                  <ul className="space-y-1 text-xs text-gray-500">
                     {step.details.map((detail, idx) => (
                       <li key={idx} className="flex items-center justify-center">
-                        <CheckCircle size={12} className="text-accent mr-2" />
+                        <CheckCircle size={12} className="text-red-500 mr-2" />
                         {detail}
                       </li>
                     ))}
@@ -300,11 +443,11 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
           transition={{ duration: 0.6, delay: 0.9 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Pourquoi Choisir Notre Service de Récupération ?
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Pourquoi passer par un professionnel ?
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Découvrez pourquoi des milliers de clients nous font confiance pour leurs données critiques
+          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+            Parce qu'une mauvaise manipulation peut dégrader un support et réduire les chances de récupération.
           </p>
         </motion.div>
 
@@ -314,28 +457,28 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.0 }}
-            className="bg-white rounded-xl p-6 shadow-lg border border-border/50"
+            className="bg-[#1A1A1A] rounded-xl p-6 shadow-lg border border-[#333] hover:border-red-600/40 transition-all"
           >
-            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-              <Shield size={24} className="text-primary" />
+            <div className="w-12 h-12 bg-red-950/50 rounded-lg flex items-center justify-center mb-4">
+              <Shield size={24} className="text-red-500" />
             </div>
-            <h3 className="text-xl font-bold text-foreground mb-3">Expertise Certifiée</h3>
-            <p className="text-muted-foreground mb-4">
-              Équipe d'experts certifiés avec plus de 15 ans d'expérience en récupération de données.
-              Formation continue sur les dernières technologies et techniques de récupération.
+            <h3 className="text-xl font-bold text-white mb-3">Expertise Certifiée</h3>
+            <p className="text-gray-400 mb-4">
+              Approche structurée inspirée des méthodes forensiques : diagnostic, préservation, extraction,
+              vérification et restitution. Chaque cas est traité avec prudence et transparence.
             </p>
             <ul className="space-y-2 text-sm">
-              <li className="flex items-center">
-                <CheckCircle size={14} className="text-accent mr-2" />
-                Certifications internationales
+              <li className="flex items-center text-gray-300">
+                <CheckCircle size={14} className="text-red-500 mr-2" />
+                Méthodologie rigoureuse
               </li>
-              <li className="flex items-center">
-                <CheckCircle size={14} className="text-accent mr-2" />
-                Technologies de pointe
+              <li className="flex items-center text-gray-300">
+                <CheckCircle size={14} className="text-red-500 mr-2" />
+                Outils professionnels du marché
               </li>
-              <li className="flex items-center">
-                <CheckCircle size={14} className="text-accent mr-2" />
-                Recherche & développement
+              <li className="flex items-center text-gray-300">
+                <CheckCircle size={14} className="text-red-500 mr-2" />
+                Diagnostic honnête
               </li>
             </ul>
           </motion.div>
@@ -352,21 +495,21 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             </div>
             <h3 className="text-xl font-bold text-foreground mb-3">Taux de Succès Exceptionnel</h3>
             <p className="text-muted-foreground mb-4">
-              Taux de récupération moyen de 95% grâce à notre approche méthodique et nos outils spécialisés.
-              Même dans les cas les plus complexes, nous maximisons vos chances de récupérer vos données.
+              La récupération dépend du support, de l'usage après la perte, et du niveau de dommages.
+              L'objectif est simple : maximiser vos chances, sans vendre du rêve.
             </p>
             <ul className="space-y-2 text-sm">
               <li className="flex items-center">
                 <CheckCircle size={14} className="text-accent mr-2" />
-                95% taux de succès moyen
+                Évaluation claire de la faisabilité
               </li>
               <li className="flex items-center">
                 <CheckCircle size={14} className="text-accent mr-2" />
-                Cas complexes acceptés
+                Priorisation possible (urgence)
               </li>
               <li className="flex items-center">
                 <CheckCircle size={14} className="text-accent mr-2" />
-                Pas de succès, pas de frais
+                Échec total = aucun frais de récupération
               </li>
             </ul>
           </motion.div>
@@ -383,21 +526,22 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             </div>
             <h3 className="text-xl font-bold text-foreground mb-3">Confidentialité & Sécurité</h3>
             <p className="text-muted-foreground mb-4">
-              Protection absolue de vos données sensibles. Environnements sécurisés, chiffrement,
-              et destruction sécurisée. Conformité RGPD et standards de sécurité bancaire.
+              Respect strict de la vie privée : vos données restent vos données. Manipulation prudente,
+              accès limité, et restitution sur support sain. Pour les demandes d'investigation, une traçabilité
+              peut être mise en place selon le contexte.
             </p>
             <ul className="space-y-2 text-sm">
               <li className="flex items-center">
                 <CheckCircle size={14} className="text-secondary mr-2" />
-                Chiffrement des données
+                Confidentialité stricte
               </li>
               <li className="flex items-center">
                 <CheckCircle size={14} className="text-secondary mr-2" />
-                Conformité RGPD
+                Approche conforme (RGPD / droit suisse)
               </li>
               <li className="flex items-center">
                 <CheckCircle size={14} className="text-secondary mr-2" />
-                Destruction sécurisée
+                Restitution contrôlée
               </li>
             </ul>
           </motion.div>
@@ -411,7 +555,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
           className="bg-white rounded-xl p-8 shadow-xl border border-border/50"
         >
           <h3 className="text-2xl font-bold text-center text-foreground mb-8">
-            Avantages Détaillés de Notre Service
+            Avantages Détaillés du Service
           </h3>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -426,11 +570,10 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               </div>
 
               <div className="border-l-4 border-accent pl-4">
-                <h4 className="font-bold text-foreground mb-2">⚡ Service d'Urgence 24/7</h4>
+                <h4 className="font-bold text-foreground mb-2">⚡ Traitement prioritaire (si urgence)</h4>
                 <p className="text-muted-foreground text-sm">
-                  Disponibilité 24h/24 et 7j/7 pour les cas d'urgence. Intervention prioritaire
-                  pour les entreprises, cabinets médicaux, et services essentiels. Réponse
-                  garantie sous 2 heures pour les cas critiques.
+                  Possibilité de prioriser un dossier selon votre urgence (professionnelle ou personnelle).
+                  Objectif : éviter l'aggravation et démarrer rapidement les étapes de préservation/diagnostic.
                 </p>
               </div>
 
@@ -439,7 +582,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
                 <p className="text-muted-foreground text-sm">
                   Diagnostic gratuit et devis détaillé sans engagement. Tarification basée
                   sur la complexité technique, pas sur la valeur des données. Pas de frais
-                  supplémentaires cachés, paiement uniquement en cas de succès.
+                  supplémentaires cachés. En cas d'échec total (aucune donnée récupérable), aucun frais de récupération.
                 </p>
               </div>
             </div>
@@ -457,9 +600,8 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               <div className="border-l-4 border-purple-500 pl-4">
                 <h4 className="font-bold text-foreground mb-2">📊 Reporting Complet</h4>
                 <p className="text-muted-foreground text-sm">
-                  Rapport détaillé de récupération avec inventaire complet des données récupérées,
-                  statistiques de succès, recommandations de prévention, et certificat d'intégrité
-                  des données. Documentation complète pour assurances et audits.
+                  Rapport clair : ce qui a été récupéré, ce qui est manquant, et les limites techniques observées.
+                  Recommandations de prévention (sauvegardes, chiffrement, bonnes pratiques) selon votre contexte.
                 </p>
               </div>
 
@@ -483,20 +625,20 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
           className="grid md:grid-cols-4 gap-6 mt-12"
         >
           <div className="text-center bg-white rounded-lg p-6 shadow-md">
-            <div className="text-3xl font-bold text-primary mb-2">95%</div>
-            <p className="text-sm text-muted-foreground">Taux de succès moyen</p>
+            <div className="text-3xl font-bold text-primary mb-2">Diagnostic</div>
+            <p className="text-sm text-muted-foreground">Analyse + faisabilité transparente</p>
           </div>
           <div className="text-center bg-white rounded-lg p-6 shadow-md">
-            <div className="text-3xl font-bold text-accent mb-2">24/7</div>
-            <p className="text-sm text-muted-foreground">Service d'urgence</p>
+            <div className="text-3xl font-bold text-accent mb-2">Urgence</div>
+            <p className="text-sm text-muted-foreground">Traitement prioritaire possible</p>
           </div>
           <div className="text-center bg-white rounded-lg p-6 shadow-md">
-            <div className="text-3xl font-bold text-secondary mb-2">15+</div>
-            <p className="text-sm text-muted-foreground">Années d'expérience</p>
+            <div className="text-3xl font-bold text-secondary mb-2">Outils pro</div>
+            <p className="text-sm text-muted-foreground">Imagerie, analyse, extraction</p>
           </div>
           <div className="text-center bg-white rounded-lg p-6 shadow-md">
-            <div className="text-3xl font-bold text-red-500 mb-2">100%</div>
-            <p className="text-sm text-muted-foreground">Confidentialité garantie</p>
+            <div className="text-3xl font-bold text-red-500 mb-2">0 CHF</div>
+            <p className="text-sm text-muted-foreground">Si échec total (0 donnée récupérable)</p>
           </div>
         </motion.div>
       </section>
@@ -530,7 +672,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
                 Le coût de récupération dépend de plusieurs facteurs : type de support, complexité du dommage,
                 volume de données, et urgence de l'intervention. Chaque cas est analysé individuellement
                 pour établir un devis précis et adapté. Diagnostic gratuit offert, paiement uniquement
-                en cas de succès pour garantir votre satisfaction.
+                en cas de données récupérables. En cas d'échec total (aucune donnée récupérable), aucun frais de récupération.
               </p>
             </motion.div>
 
@@ -542,10 +684,9 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             >
               <h3 className="text-lg font-bold text-foreground mb-3">⏱️ Combien de temps prend la récupération ?</h3>
               <p className="text-muted-foreground">
-                Pour les cas simples (suppression accidentelle), récupération possible en 24-48h.
-                Les cas complexes (dommages physiques) peuvent nécessiter 3-7 jours. Les urgences
-                bénéficient d'un traitement prioritaire avec réponse sous 2h. Vous êtes tenu informé
-                de l'avancement en temps réel.
+                Pour les cas simples (suppression accidentelle), une récupération peut parfois être rapide.
+                Les cas complexes (panne matérielle, mémoire dégradée, chiffrement) peuvent nécessiter plusieurs jours.
+                Les urgences peuvent être priorisées selon la charge et la faisabilité.
               </p>
             </motion.div>
 
@@ -572,10 +713,9 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             >
               <h3 className="text-lg font-bold text-foreground mb-3">🛡️ Mes données sont-elles en sécurité ?</h3>
               <p className="text-muted-foreground">
-                Sécurité maximale garantie : laboratoires sécurisés avec contrôle d'accès,
-                chiffrement des données en transit et au repos, destruction sécurisée des
-                originaux après récupération. Conformité RGPD et normes bancaires.
-                Accords de confidentialité signés systématiquement.
+                Vos données sont traitées avec confidentialité stricte : accès limité au strict nécessaire,
+                conservation minimale et restitution sur support sain. Un accord de confidentialité (NDA)
+                peut être fourni sur demande selon le contexte.
               </p>
             </motion.div>
 
@@ -587,10 +727,9 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             >
               <h3 className="text-lg font-bold text-foreground mb-3">📱 Puis-je récupérer des photos supprimées de ma carte SD ?</h3>
               <p className="text-muted-foreground">
-                Oui, spécialisation en récupération de fichiers multimédias. Photos, vidéos,
-                et fichiers supprimés peuvent généralement être récupérés même après formatage
-                accidentel. Prévisualisation gratuite offerte pour évaluer les chances de succès.
-                Taux de récupération excellent pour les cartes mémoire (jusqu'à 98%).
+                Souvent oui, selon l'usage du support après la suppression/formatage. Plus vous arrêtez
+                d'utiliser la carte rapidement, plus les chances augmentent. Une prévisualisation peut être
+                possible pour évaluer la faisabilité.
               </p>
             </motion.div>
 
@@ -603,9 +742,9 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               <h3 className="text-lg font-bold text-foreground mb-3">💻 Mon disque dur fait du bruit, est-il récupérable ?</h3>
               <p className="text-muted-foreground">
                 Les bruits inhabituels (cliquetis, grincements) indiquent souvent des dommages
-                mécaniques graves. Ces cas sont complexes mais récupérables dans 70-80% des cas
-                grâce à nos chambres propres et techniques spécialisées. Ne tentez pas de démonter
-                vous-même le disque, contactez-nous immédiatement.
+                mécaniques graves. Ces cas peuvent parfois être récupérables, mais chaque minute d'utilisation
+                peut aggraver la situation. Ne tentez pas de démonter vous-même le disque : arrêtez l'appareil
+                et demandez un diagnostic.
               </p>
             </motion.div>
           </div>
@@ -621,11 +760,11 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             transition={{ duration: 0.6, delay: 2.2 }}
           >
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Urgence Récupération de Données ?
+              Besoin de récupérer des données ?
             </h3>
             <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-              Ne risquez pas de perdre vos données définitivement. Notre équipe d'experts
-              est disponible 24/7 pour intervenir rapidement et maximiser vos chances de récupération.
+              Le bon réflexe : arrêter d'utiliser le support et demander une analyse.
+              Je vous donne un avis clair sur la faisabilité et les options.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -640,7 +779,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
                   className="bg-red-600 hover:bg-red-700 text-white shadow-lg hover:shadow-xl font-semibold"
                 >
                   <Clock size={20} className="mr-2" />
-                  Diagnostic Gratuit - Urgence 24/7
+                  Diagnostic gratuit - Demander une analyse
                 </Button>
               </motion.div>
 

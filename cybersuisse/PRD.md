@@ -1,6 +1,6 @@
 # PRD - Site Web Cybersécurité Freelance
 
-Site web professionnel pour un expert freelance en cybersécurité basé en Suisse, offrant des services de pentest, surveillance de menaces, audit CRA et développement sécurisé.
+Site web professionnel pour un expert freelance en cybersécurité basé en Suisse, offrant des services de pentest, audit CRA et développement sécurisé.
 
 **Experience Qualities**:
 1. **Professionnel** - Inspirer confiance et crédibilité dans le domaine de la cybersécurité
@@ -39,13 +39,6 @@ Site web professionnel pour un expert freelance en cybersécurité basé en Suis
 - Trigger: Clic sur "Pentest" dans le menu
 - Progression: Navigation → Présentation service → Méthodologie → Contact
 - Success criteria: Client comprend la valeur du service pentest
-
-**Page Surveillance de Menaces**
-- Functionality: Présentation du monitoring d'endpoints à distance
-- Purpose: Démontrer les capacités de surveillance proactive
-- Trigger: Clic sur "Surveillance" dans le menu
-- Progression: Navigation → Explication technique → Bénéfices → Devis
-- Success criteria: Client comprend l'importance de la surveillance continue
 
 **Page Audit CRA**
 - Functionality: Information sur la conformité à la nouvelle loi CRA

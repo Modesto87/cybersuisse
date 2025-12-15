@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { List, X, Shield, Target, Eye, MagnifyingGlass, Code, Detective, HardDrive, Envelope, LockKey } from '@phosphor-icons/react'
+import { List, X, Shield, Target, MagnifyingGlass, Code, HardDrive, Envelope } from '@phosphor-icons/react'
 import Logo from './Logo'
 
-type PageType = 'home' | 'about' | 'pentest' | 'surveillance' | 'osint' | 'developpement' | 'dfir' | 'data-recovery' | 'security' | 'contact' | 'cgv' | 'politique-confidentialite' | 'mentions-legales' | 'cookies'
+type PageType = 'home' | 'about' | 'pentest' | 'osint' | 'developpement' | 'data-recovery' | 'contact' | 'cgv' | 'politique-confidentialite' | 'mentions-legales' | 'cookies'
 
 interface NavigationProps {
   currentPage: string
@@ -16,12 +16,9 @@ const navigationItems = [
   { id: 'home', label: 'Accueil', icon: Shield },
   { id: 'about', label: 'À Propos', icon: Shield },
   { id: 'pentest', label: 'Pentest', icon: Target },
-  { id: 'surveillance', label: 'Surveillance', icon: Eye },
   { id: 'osint', label: 'OSINT', icon: MagnifyingGlass },
   { id: 'developpement', label: 'Développement', icon: Code },
-  { id: 'dfir', label: 'DFIR', icon: Detective },
   { id: 'data-recovery', label: 'Récupération', icon: HardDrive },
-  { id: 'security', label: 'Sécurité', icon: LockKey },
   { id: 'contact', label: 'Contact', icon: Envelope }
 ] as const
 
@@ -47,9 +44,10 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
       <motion.header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled 
-            ? 'bg-background/90 backdrop-blur-lg border-b border-border/50 shadow-lg' 
-            : 'bg-background/95 backdrop-blur-md border-b border-border/30'
+            ? 'bg-[#0A0A0A]/95 backdrop-blur-lg border-b border-red-900/30 shadow-lg' 
+            : 'bg-[#0A0A0A]/90 backdrop-blur-md border-b border-red-900/20'
         }`}
+        style={{boxShadow: scrolled ? '0 4px 30px rgba(229,57,53,0.1)' : 'none'}}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
@@ -66,9 +64,9 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
               <Logo size="md" showText={true} />
             </motion.div>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - RED TEAM */}
             <div className="hidden lg:flex items-center">
-              <div className="flex items-center bg-card/50 rounded-2xl p-2 backdrop-blur-sm border border-border/30 shadow-lg">
+              <div className="flex items-center bg-[#1A1A1A]/80 rounded-2xl p-2 backdrop-blur-sm border border-red-900/30 shadow-lg">
                 {navigationItems.map((item, index) => {
                   const Icon = item.icon
                   const isActive = currentPage === item.id
@@ -85,15 +83,16 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                         onClick={() => handleNavigation(item.id)}
                         className={`relative px-4 py-3 mx-1 rounded-xl transition-all duration-300 group ${
                           isActive 
-                            ? "bg-primary text-primary-foreground shadow-md hover:bg-primary/90" 
-                            : "hover:bg-muted/50 text-foreground/80 hover:text-foreground"
+                            ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md hover:from-red-500 hover:to-red-600" 
+                            : "hover:bg-red-950/50 text-gray-300 hover:text-white"
                         }`}
+                        style={isActive ? {boxShadow: '0 0 20px rgba(229,57,53,0.4)'} : {}}
                       >
                         <div className="flex items-center gap-2 relative z-10">
                           <Icon 
                             size={18} 
                             className={`transition-transform duration-300 ${
-                              isActive ? "scale-110" : "group-hover:scale-105"
+                              isActive ? "scale-110 text-white" : "group-hover:scale-105 text-red-400"
                             }`}
                           />
                           <span className="font-medium text-sm">
@@ -103,7 +102,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                         
                         {/* Hover effect */}
                         <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-xl opacity-0 group-hover:opacity-100"
+                          className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-orange-600/20 rounded-xl opacity-0 group-hover:opacity-100"
                           layoutId={isActive ? "activeTab" : undefined}
                           transition={{ duration: 0.3 }}
                         />
@@ -111,11 +110,11 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                         {/* Active indicator */}
                         {isActive && (
                           <motion.div
-                            className="absolute bottom-0 left-1/2 w-1 h-1 bg-accent rounded-full"
+                            className="absolute bottom-0 left-1/2 w-1 h-1 bg-orange-400 rounded-full"
                             layoutId="activeIndicator"
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
-                            style={{ x: "-50%" }}
+                            style={{ x: "-50%", boxShadow: '0 0 8px rgba(255,111,0,0.6)' }}
                           />
                         )}
                       </Button>
@@ -125,7 +124,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
               </div>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - RED TEAM */}
             <div className="lg:hidden">
               <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
                 <SheetTrigger asChild>
@@ -136,7 +135,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                     <Button 
                       variant="outline" 
                       size="icon" 
-                      className="relative bg-card/50 border-border/30 backdrop-blur-sm shadow-lg hover:bg-card/80 transition-all duration-300"
+                      className="relative bg-[#1A1A1A]/80 border-red-900/40 backdrop-blur-sm shadow-lg hover:bg-red-950/50 hover:border-red-600/50 transition-all duration-300"
                       aria-label="Ouvrir le menu de navigation"
                     >
                       <AnimatePresence mode="wait">
@@ -148,7 +147,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                             exit={{ rotate: 90, opacity: 0 }}
                             transition={{ duration: 0.2 }}
                           >
-                            <X size={20} />
+                            <X size={20} className="text-red-400" />
                           </motion.div>
                         ) : (
                           <motion.div
@@ -158,7 +157,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                             exit={{ rotate: -90, opacity: 0 }}
                             transition={{ duration: 0.2 }}
                           >
-                            <List size={20} />
+                            <List size={20} className="text-red-400" />
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -166,9 +165,10 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                   </motion.div>
                 </SheetTrigger>
                 
+                {/* Mobile Sheet - RED TEAM DARK */}
                 <SheetContent 
                   side="right" 
-                  className="w-80 p-0 bg-background/95 backdrop-blur-xl border-l border-border/30 shadow-2xl"
+                  className="w-80 p-0 bg-[#0A0A0A]/98 backdrop-blur-xl border-l border-red-900/30 shadow-2xl"
                 >
                   <motion.div 
                     className="flex flex-col h-full"
@@ -177,7 +177,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                     transition={{ duration: 0.3, ease: "easeOut" }}
                   >
                     {/* Header */}
-                    <div className="flex items-center justify-between p-6 border-b border-border/30 bg-gradient-to-r from-primary/5 to-accent/5">
+                    <div className="flex items-center justify-between p-6 border-b border-red-900/30 bg-gradient-to-r from-red-950/30 to-transparent">
                       <Logo size="sm" showText={true} />
                       <motion.div
                         whileHover={{ rotate: 90 }}
@@ -187,16 +187,16 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                           variant="ghost"
                           size="icon"
                           onClick={() => setMobileOpen(false)}
-                          className="h-8 w-8"
+                          className="h-8 w-8 text-red-400 hover:bg-red-950/50"
                         >
                           <X size={16} />
                         </Button>
                       </motion.div>
                     </div>
                     
-                    {/* Navigation Links */}
+                    {/* Navigation Links - RED TEAM */}
                     <div className="flex flex-col p-6 flex-1 space-y-2">
-                      <p className="text-sm font-semibold text-muted-foreground mb-6 uppercase tracking-wider">
+                      <p className="text-sm font-semibold text-gray-500 mb-6 uppercase tracking-wider">
                         Navigation
                       </p>
                       
@@ -216,20 +216,21 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                               onClick={() => handleNavigation(item.id)}
                               className={`w-full justify-start h-14 text-left rounded-xl transition-all duration-300 group relative overflow-hidden ${
                                 isActive 
-                                  ? "bg-gradient-to-r from-primary to-primary/80 text-primary-foreground shadow-lg" 
-                                  : "hover:bg-muted/50 hover:translate-x-2 text-foreground/80 hover:text-foreground"
+                                  ? "bg-gradient-to-r from-red-700 to-red-800 text-white shadow-lg" 
+                                  : "hover:bg-red-950/50 hover:translate-x-2 text-gray-300 hover:text-white"
                               }`}
+                              style={isActive ? {boxShadow: '0 0 20px rgba(229,57,53,0.3)'} : {}}
                             >
                               <div className="flex items-center gap-4 relative z-10">
                                 <div className={`p-2 rounded-lg transition-all duration-300 ${
                                   isActive 
-                                    ? "bg-primary-foreground/20" 
-                                    : "bg-muted/30 group-hover:bg-accent/20"
+                                    ? "bg-white/20" 
+                                    : "bg-red-950/50 group-hover:bg-red-900/50"
                                 }`}>
                                   <Icon 
                                     size={20} 
                                     className={`transition-all duration-300 ${
-                                      isActive ? "scale-110" : "group-hover:scale-105"
+                                      isActive ? "scale-110 text-white" : "group-hover:scale-105 text-red-400"
                                     }`}
                                   />
                                 </div>
@@ -243,16 +244,17 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                               {/* Active indicator */}
                               {isActive && (
                                 <motion.div
-                                  className="absolute left-0 top-0 bottom-0 w-1 bg-accent rounded-r-full"
+                                  className="absolute left-0 top-0 bottom-0 w-1 bg-orange-500 rounded-r-full"
                                   layoutId="mobileActiveIndicator"
                                   initial={{ scaleY: 0 }}
                                   animate={{ scaleY: 1 }}
+                                  style={{boxShadow: '0 0 10px rgba(255,111,0,0.5)'}}
                                 />
                               )}
                               
                               {/* Hover background */}
                               <motion.div
-                                className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 rounded-xl"
+                                className="absolute inset-0 bg-gradient-to-r from-red-600/10 to-orange-600/10 opacity-0 group-hover:opacity-100 rounded-xl"
                                 transition={{ duration: 0.3 }}
                               />
                             </Button>
@@ -261,21 +263,21 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                       })}
                     </div>
                     
-                    {/* Footer */}
+                    {/* Footer - RED TEAM */}
                     <motion.div 
-                      className="p-6 border-t border-border/30 bg-gradient-to-r from-card/50 to-muted/30"
+                      className="p-6 border-t border-red-900/30 bg-gradient-to-r from-red-950/30 to-transparent"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.5 }}
                     >
                       <div className="text-center space-y-2">
-                        <p className="text-sm font-medium text-foreground">
+                        <p className="text-sm font-medium text-white">
                           Modesto Cybersécurité
                         </p>
-                        <p className="text-xs text-muted-foreground">
-                          Expert en sécurité informatique
+                        <p className="text-xs text-gray-500">
+                          Expert en sécurité offensive
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-xs text-gray-600">
                           © 2024 - Tous droits réservés
                         </p>
                       </div>

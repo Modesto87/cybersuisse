@@ -203,54 +203,53 @@
     --color-neutral-a12: var(--slate-a12);
     --color-neutral-contrast: var(--slate-contrast);
 
-    /* Accent colors */
-    --color-accent-1: var(--blue-1);
-    --color-accent-2: var(--blue-2);
-    --color-accent-3: var(--blue-3);
-    --color-accent-4: var(--blue-4);
-    --color-accent-5: var(--blue-5);
-    --color-accent-6: var(--blue-6);
-    --color-accent-7: var(--blue-7);
-    --color-accent-8: var(--blue-8);
-    --color-accent-9: var(--blue-9);
-    --color-accent-10: var(--blue-10);
-    --color-accent-11: var(--blue-11);
-    --color-accent-12: var(--blue-12);
-    --color-accent-contrast: var(--blue-contrast);
+    /* Accent colors - RED for Red Team */
+    --color-accent-1: var(--red-1);
+    --color-accent-2: var(--red-2);
+    --color-accent-3: var(--red-3);
+    --color-accent-4: var(--red-4);
+    --color-accent-5: var(--red-5);
+    --color-accent-6: var(--red-6);
+    --color-accent-7: var(--red-7);
+    --color-accent-8: var(--red-8);
+    --color-accent-9: var(--red-9);
+    --color-accent-10: var(--red-10);
+    --color-accent-11: var(--red-11);
+    --color-accent-12: var(--red-12);
+    --color-accent-contrast: var(--red-contrast);
 
-    /* Secondary accent colors */
-    --color-accent-secondary-1: var(--violet-1);
-    --color-accent-secondary-2: var(--violet-2);
-    --color-accent-secondary-3: var(--violet-3);
-    --color-accent-secondary-4: var(--violet-4);
-    --color-accent-secondary-5: var(--violet-5);
-    --color-accent-secondary-6: var(--violet-6);
-    --color-accent-secondary-7: var(--violet-7);
-    --color-accent-secondary-8: var(--violet-8);
-    --color-accent-secondary-9: var(--violet-9);
-    --color-accent-secondary-10: var(--violet-10);
-    --color-accent-secondary-11: var(--violet-11);
-    --color-accent-secondary-12: var(--violet-12);
-    --color-accent-secondary-contrast: var(--violet-contrast);
+    /* Secondary accent colors - ORANGE for Red Team energy */
+    --color-accent-secondary-1: var(--orange-1);
+    --color-accent-secondary-2: var(--orange-2);
+    --color-accent-secondary-3: var(--orange-3);
+    --color-accent-secondary-4: var(--orange-4);
+    --color-accent-secondary-5: var(--orange-5);
+    --color-accent-secondary-6: var(--orange-6);
+    --color-accent-secondary-7: var(--orange-7);
+    --color-accent-secondary-8: var(--orange-8);
+    --color-accent-secondary-9: var(--orange-9);
+    --color-accent-secondary-10: var(--orange-10);
+    --color-accent-secondary-11: var(--orange-11);
+    --color-accent-secondary-12: var(--orange-12);
+    --color-accent-secondary-contrast: var(--orange-contrast);
 
-    /* Foreground colors */
-    --color-fg: var(--color-neutral-12);
-    --color-fg-secondary: var(--color-neutral-a11);
+    /* Foreground colors - Light for dark theme */
+    --color-fg: #FFFFFF;
+    --color-fg-secondary: #A0A0A0;
 
-    /* Background colors */
-    --color-bg: #ffffff;
-    --color-bg-inset: var(--color-neutral-2);
-    --color-bg-overlay: #ffffff;
+    /* Background colors - Dark for Red Team */
+    --color-bg: #0A0A0A;
+    --color-bg-inset: #1A1A1A;
+    --color-bg-overlay: #2D2D2D;
 
-    /* Focus ring */
+    /* Focus ring - Red */
     --color-focus-ring: var(--color-accent-9);
 
-    /* Fonts */
-    --font-sans-serif: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    /* Fonts - Modern & Readable */
+    --font-sans-serif: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-heading: "Montserrat", ui-sans-serif, system-ui, sans-serif;
     --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-    --font-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-      "Liberation Mono", "Courier New", monospace;
+    --font-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --font-family: var(--font-sans-serif);
   }
 

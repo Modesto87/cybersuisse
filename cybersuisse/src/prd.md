@@ -2,7 +2,7 @@
 
 ## Core Purpose & Success
 
-**Mission Statement**: Présenter l'expertise en cybersécurité de Modesto en tant que freelancer basé en Suisse, avec une gamme complète de services incluant pentest, surveillance, audit CRA, développement sécurisé et services DFIR.
+**Mission Statement**: Présenter l'expertise en cybersécurité de Modesto en tant que freelancer basé en Suisse, avec une gamme complète de services incluant pentest, audit CRA, développement sécurisé et OSINT.
 
 **Success Indicators**: 
 - Génération de leads qualifiés pour les services de cybersécurité
@@ -25,23 +25,12 @@
    - Applications web et mobiles
    - Rapports détaillés avec recommandations
 
-2. **Surveillance de Menaces à Distance**
-   - Monitoring 24/7 des endpoints
-   - Détection proactive des menaces
-   - Alertes automatisées
-
-3. **Audit CRA (Cyber Resilience Act)**
+2. **Audit CRA (Cyber Resilience Act)**
    - Conformité avec la nouvelle réglementation européenne
    - Audit de conformité complet
    - Accompagnement certification
 
-4. **Services DFIR (Digital Forensics & Incident Response)**
-   - Investigation numérique professionnelle
-   - Réponse rapide aux incidents de sécurité
-   - Expertise judiciaire et forensique
-   - Analyse de malware et reconstruction d'événements
-
-5. **Développement Sécurisé**
+3. **Développement Sécurisé**
    - Applications et sites web sécurisés
    - Secure by design
    - Code review sécurité
@@ -113,4 +102,4 @@
 
 ## Reflection
 
-Cette approche permet de présenter une expertise complète en cybersécurité avec une attention particulière au nouveau service DFIR, tout en maintenant une identité visuelle professionnelle et moderne qui inspire confiance aux clients potentiels en Suisse.
+Cette approche permet de présenter une expertise complète en cybersécurité, tout en maintenant une identité visuelle professionnelle et moderne qui inspire confiance aux clients potentiels en Suisse.

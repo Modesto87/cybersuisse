@@ -1,24 +1,31 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom'
+import { Suspense, lazy } from 'react'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import CookieConsent from './components/CookieConsent'
-import HomePage from './components/HomePage'
-import AboutPage from './components/AboutPage'
-import PentestPage from './components/PentestPage'
-import SurveillancePage from './components/SurveillancePage'
-import OSINTPage from './components/OSINTPage'
-import DeveloppementPage from './components/DeveloppementPage'
-import DFIRPage from './components/DFIRPage'
-import DataRecoveryPage from './components/DataRecoveryPage'
-import ContactPage from './components/ContactPage'
-import CGVPage from './components/CGVPage'
-import PolitiqueConfidentialitePage from './components/PolitiqueConfidentialitePage'
-import MentionsLegalesPage from './components/MentionsLegalesPage'
-import SecurityPage from './components/SecurityPage'
-import CookieManagerPage from './components/CookieManagerPage'
 
-type PageType = 'home' | 'about' | 'pentest' | 'surveillance' | 'osint' | 'developpement' | 'dfir' | 'data-recovery' | 'contact' | 'cgv' | 'politique-confidentialite' | 'mentions-legales' | 'security' | 'cookies'
+// Lazy loading components
+const HomePage = lazy(() => import('./components/HomePage'))
+const AboutPage = lazy(() => import('./components/AboutPage'))
+const PentestPage = lazy(() => import('./components/PentestPage'))
+const OSINTPage = lazy(() => import('./components/OSINTPage'))
+const DeveloppementPage = lazy(() => import('./components/DeveloppementPage'))
+const DataRecoveryPage = lazy(() => import('./components/DataRecoveryPage'))
+const ContactPage = lazy(() => import('./components/ContactPage'))
+const CGVPage = lazy(() => import('./components/CGVPage'))
+const PolitiqueConfidentialitePage = lazy(() => import('./components/PolitiqueConfidentialitePage'))
+const MentionsLegalesPage = lazy(() => import('./components/MentionsLegalesPage'))
+const CookieManagerPage = lazy(() => import('./components/CookieManagerPage'))
+
+// Loading component
+const PageLoader = () => (
+  <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-500"></div>
+  </div>
+)
+
+type PageType = 'home' | 'about' | 'pentest' | 'osint' | 'developpement' | 'data-recovery' | 'contact' | 'cgv' | 'politique-confidentialite' | 'mentions-legales' | 'cookies'
 
 export type NavigationFunction = (page: PageType) => void;
 
@@ -40,16 +47,13 @@ function AppContent() {
       'home': '/',
       'about': '/about',
       'pentest': '/pentest',
-      'surveillance': '/surveillance',
       'osint': '/osint',
       'developpement': '/developpement',
-      'dfir': '/dfir',
       'data-recovery': '/data-recovery',
       'contact': '/contact',
       'cgv': '/cgv',
       'politique-confidentialite': '/politique-confidentialite',
       'mentions-legales': '/mentions-legales',
-      'security': '/security',
       'cookies': '/cookies'
     }
     navigate(routeMap[pageType])
@@ -62,16 +66,13 @@ function AppContent() {
       '/': 'home',
       '/about': 'about',
       '/pentest': 'pentest',
-      '/surveillance': 'surveillance',
       '/osint': 'osint',
       '/developpement': 'developpement',
-      '/dfir': 'dfir',
       '/data-recovery': 'data-recovery',
       '/contact': 'contact',
       '/cgv': 'cgv',
       '/politique-confidentialite': 'politique-confidentialite',
       '/mentions-legales': 'mentions-legales',
-      '/security': 'security',
       '/cookies': 'cookies'
     }
     return routeMap[path] || 'home'
@@ -93,22 +94,21 @@ function AppContent() {
           transition={{ duration: 0.3, ease: "easeInOut" }}
           className="flex-1"
         >
-          <Routes>
-            <Route path="/" element={<HomePage onNavigate={handleNavigate} />} />
-            <Route path="/about" element={<AboutPage onNavigate={handleNavigate} />} />
-            <Route path="/pentest" element={<PentestPage onNavigate={handleNavigate} />} />
-            <Route path="/surveillance" element={<SurveillancePage onNavigate={handleNavigate} />} />
-            <Route path="/osint" element={<OSINTPage onNavigate={handleNavigate} />} />
-            <Route path="/developpement" element={<DeveloppementPage onNavigate={handleNavigate} />} />
-            <Route path="/dfir" element={<DFIRPage onNavigate={handleNavigate} />} />
-            <Route path="/data-recovery" element={<DataRecoveryPage onNavigate={handleNavigate} />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/cgv" element={<CGVPage onNavigate={handleNavigate} />} />
-            <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage onNavigate={handleNavigate} />} />
-            <Route path="/mentions-legales" element={<MentionsLegalesPage onNavigate={handleNavigate} />} />
-            <Route path="/security" element={<SecurityPage onNavigate={handleNavigate} />} />
-            <Route path="/cookies" element={<CookieManagerPage onNavigate={handleNavigate} />} />
-          </Routes>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<HomePage onNavigate={handleNavigate} />} />
+              <Route path="/about" element={<AboutPage onNavigate={handleNavigate} />} />
+              <Route path="/pentest" element={<PentestPage onNavigate={handleNavigate} />} />
+              <Route path="/osint" element={<OSINTPage onNavigate={handleNavigate} />} />
+              <Route path="/developpement" element={<DeveloppementPage onNavigate={handleNavigate} />} />
+              <Route path="/data-recovery" element={<DataRecoveryPage onNavigate={handleNavigate} />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/cgv" element={<CGVPage onNavigate={handleNavigate} />} />
+              <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage onNavigate={handleNavigate} />} />
+              <Route path="/mentions-legales" element={<MentionsLegalesPage onNavigate={handleNavigate} />} />
+              <Route path="/cookies" element={<CookieManagerPage onNavigate={handleNavigate} />} />
+            </Routes>
+          </Suspense>
         </motion.main>
       </AnimatePresence>
       

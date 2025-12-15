@@ -1,109 +1,28 @@
-# Configuration Apache pour CyberSuisse - Sécurité optimisée
-# Compatible avec HostGator hosting
+# Configuration Apache Simplifiée pour React SPA
+# Si vous avez une erreur 500, essayez de commenter les blocs <IfModule> un par un
 
-# Headers de sécurité
-<IfModule mod_headers.c>
-    # Protection contre XSS
-    Header always set X-XSS-Protection "1; mode=block"
-    
-    # Protection MIME sniffing
-    Header always set X-Content-Type-Options "nosniff"
-    
-    # Protection clickjacking
-    Header always set X-Frame-Options "DENY"
-    
-    # Strict Transport Security (HTTPS)
-    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-    
-    # Referrer Policy
-    Header always set Referrer-Policy "strict-origin-when-cross-origin"
-    
-    # Permissions Policy (only include supported directives to avoid browser warnings)
-    Header always set Permissions-Policy "accelerometer=(), autoplay=(), camera=(), display-capture=(), fullscreen=(self), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), screen-wake-lock=(), usb=(), xr-spatial-tracking=()"
-    
-    # Content Security Policy
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'"
-    
-    # Remove server signature
-    Header always unset Server
-    Header always unset X-Powered-By
-</IfModule>
-
-# Protection contre les injections
+# 1. Redirection SPA (Essentiel pour React)
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    RewriteBase /
     
-    # Bloquer les tentatives d'injection SQL
-    RewriteCond %{QUERY_STRING} "(<|%3C).*script.*(>|%3E)" [NC,OR]
-    RewriteCond %{QUERY_STRING} "GLOBALS(=|\[|%[0-9A-Z]{0,2})" [OR]
-    RewriteCond %{QUERY_STRING} "_REQUEST(=|\[|%[0-9A-Z]{0,2})" [OR]
-    RewriteCond %{QUERY_STRING} "(;|'|\"|%22).*(union|select|insert|drop|delete|update|create|alter)" [NC,OR]
-    RewriteCond %{QUERY_STRING} "sp_executesql" [NC]
-    RewriteRule ^(.*)$ - [F,L]
-    
-    # Bloquer les User Agents suspects
-    RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
-    RewriteCond %{HTTP_USER_AGENT} ^(-|curl|wget|libwww-perl|python|nikto|scan|java|winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner) [NC]
-    RewriteRule ^(.*)$ - [F,L]
-    
-    # Redirection HTTPS (si supporté par HostGator)
-    RewriteCond %{HTTPS} off
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-    
-    # Single Page Application - redirection vers index.html
-    # Não reescrever chamadas à API
-    RewriteRule ^api/ - [L]
-    
-    # Se arquivo ou diretório existe, serve-o
+    # Ne pas rediriger les fichiers existants
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
     
-    # Qualquer outra rota vai para index.html
+    # Rediriger tout le reste vers index.html
+    RewriteRule ^index\.html$ - [L]
     RewriteRule . /index.html [L]
 </IfModule>
 
-# Protection des fichiers sensibles
-<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak|config)$">
-    Order Allow,Deny
-    Deny from all
-</FilesMatch>
+# 2. Headers de sécurité de base (Optionnel - commenter si erreur)
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
 
-# Compression Gzip pour performance
+# 3. Compression (Optionnel)
 <IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/plain
-    AddOutputFilterByType DEFLATE text/html
-    AddOutputFilterByType DEFLATE text/xml
-    AddOutputFilterByType DEFLATE text/css
-    AddOutputFilterByType DEFLATE application/xml
-    AddOutputFilterByType DEFLATE application/xhtml+xml
-    AddOutputFilterByType DEFLATE application/rss+xml
-    AddOutputFilterByType DEFLATE application/javascript
-    AddOutputFilterByType DEFLATE application/x-javascript
-</IfModule>
-
-# Cache Control pour performance
-<IfModule mod_expires.c>
-    ExpiresActive On
-    ExpiresByType text/css "access plus 1 month"
-    ExpiresByType application/javascript "access plus 1 month"
-    ExpiresByType image/png "access plus 1 month"
-    ExpiresByType image/jpg "access plus 1 month"
-    ExpiresByType image/jpeg "access plus 1 month"
-    ExpiresByType image/gif "access plus 1 month"
-    ExpiresByType image/svg+xml "access plus 1 month"
-    ExpiresByType text/html "access plus 1 hour"
-</IfModule>
-
-# Limiter la taille des uploads
-LimitRequestBody 10485760
-
-# Protection contre les attaques de force brute
-<IfModule mod_evasive.c>
-    DOSHashTableSize    2048
-    DOSPageCount        10
-    DOSSiteCount        50
-    DOSPageInterval     1
-    DOSSiteInterval     1
-    DOSBlockingPeriod   600
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript
 </IfModule>

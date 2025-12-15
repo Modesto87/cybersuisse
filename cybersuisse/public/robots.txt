@@ -11,7 +11,7 @@ Sitemap: https://cybersuisse.ch/sitemap.xml
 # Politique de divulgation responsable
 # Pour signaler des vulnérabilités de sécurité:
 # Email: security@cybersuisse.com
-# Page: https://cybersuisse.com/security
+# Page: https://cybersuisse.com/contact
 
 # Conformité CRA (Cyber Resilience Act)
 # Ce site respecte les exigences du règlement européen

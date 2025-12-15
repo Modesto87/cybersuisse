@@ -194,15 +194,7 @@ export default function ContactPage() {
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-1 h-1 bg-orange-500 rounded-full"></div>
-                      <span>Surveillance & Monitoring</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-1 h-1 bg-orange-500 rounded-full"></div>
                       <span>Développement sécurisé</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-1 h-1 bg-orange-500 rounded-full"></div>
-                      <span>DFIR (Digital Forensics)</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-1 h-1 bg-orange-500 rounded-full"></div>

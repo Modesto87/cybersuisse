@@ -36,12 +36,18 @@ const Logo = ({ size = 'md', showText = true, className = '' }: LogoProps) => {
         >
           <defs>
             <linearGradient id="shield-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#00D9FF" />
-              <stop offset="25%" stopColor="#6366F1" />
-              <stop offset="50%" stopColor="#A855F7" />
-              <stop offset="75%" stopColor="#EC4899" />
-              <stop offset="100%" stopColor="#EF4444" />
+              <stop offset="0%" stopColor="#FF5252" />
+              <stop offset="30%" stopColor="#E53935" />
+              <stop offset="60%" stopColor="#B71C1C" />
+              <stop offset="100%" stopColor="#FF6F00" />
             </linearGradient>
+            <filter id="red-glow">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
           </defs>
           
           {/* Outer shield */}
@@ -109,11 +115,11 @@ const Logo = ({ size = 'md', showText = true, className = '' }: LogoProps) => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <span className={`font-bold text-primary ${textSizes[size]} tracking-wide`}>
+          <span className={`font-bold text-white ${textSizes[size]} tracking-wide`}>
             Modesto Cybersécurité
           </span>
-          <span className={`text-accent font-medium ${size === 'sm' ? 'text-xs' : size === 'md' ? 'text-xs' : 'text-sm'}`}>
-            Pentest & DFIR
+          <span className={`text-red-500 font-medium ${size === 'sm' ? 'text-xs' : size === 'md' ? 'text-xs' : 'text-sm'}`} style={{textShadow: '0 0 10px rgba(229,57,53,0.4)'}}>
+            Red Team • Offensive Security
           </span>
         </motion.div>
       )}

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import SEOContent from '@/components/SEOContent'
 import { Code, Shield, Lock, Globe, Database, Envelope, CheckCircle, Cpu, Eye } from '@phosphor-icons/react'
 import developmentImage from '@/assets/images/pexels-tima-miroshnichenko-5380664.jpg'
 
@@ -11,30 +12,36 @@ interface DeveloppementPageProps {
 
 const developmentServices = [
   {
-    title: 'Applications Web Sécurisées',
-    subtitle: 'Développement Full-Stack',
-    description: 'Sites web et applications web développés avec sécurité intégrée dès la conception',
-    features: ['Architecture sécurisée', 'Protection XSS/CSRF', 'Chiffrement des données', 'Tests de sécurité intégrés']
+    title: 'Site Vitrine Sécurisé',
+    subtitle: 'Présence en ligne professionnelle',
+    description: 'Création d\'un site web rapide, fiable et durci contre les attaques courantes (à la date de livraison).',
+    features: ['Sans WordPress (code sur mesure)', 'Formulaires protégés (anti-abus)', 'HTTPS/TLS + bonnes pratiques CSP', 'Revue & tests de sécurité avant livraison']
   },
   {
-    title: 'APIs Robustes',
-    subtitle: 'Backend Sécurisé',
-    description: 'APIs REST et GraphQL avec authentification forte et protection contre les attaques courantes',
-    features: ['Authentification JWT/OAuth', 'Rate limiting', 'Validation des entrées', 'Logs d\'audit complets']
+    title: 'Site E‑commerce Sécurisé',
+    subtitle: 'Vente en ligne & paiements',
+    description: 'Boutique en ligne avec parcours sécurisé, protection des comptes et réduction des risques de fraude.',
+    features: ['Protection OWASP Top 10 (XSS, injections, etc.)', 'Gestion sûre des sessions & comptes', 'Durcissement configuration & déploiement', 'Plan de remédiation si points à corriger']
   },
   {
-    title: 'Applications Mobiles',
-    subtitle: 'Sécurité Mobile',
-    description: 'Apps iOS/Android avec sécurité renforcée et protection contre le reverse engineering',
-    features: ['Chiffrement local', 'Certificate pinning', 'Détection de jailbreak/root', 'Mises à jour sécurisées']
+    title: 'Refonte & Sécurisation',
+    subtitle: 'Modernisation sans rupture',
+    description: 'Amélioration de la sécurité d\'un site existant : réduction de la surface d\'attaque et durcissement des points faibles.',
+    features: ['Audit technique + priorisation', 'Corrections ciblées + durcissement', 'Revue de code & configuration', 'Conseils d\'exploitation (sauvegardes, accès, mises à jour)']
   }
 ]
 
 export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen" style={{background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}}>
+      <SEOContent
+        page="developpement"
+        title="Création de site web sécurisé à Bienne/Biel (Suisse) | Sans WordPress | CyberSuisse"
+        description="Création de sites web sécurisés à Bienne/Biel et en Suisse : code sur mesure (sans WordPress), revue & tests de sécurité avant livraison, durcissement contre les menaces courantes à la date de livraison."
+      />
+
       {/* SEO H1 invisible */}
-      <h1 className="sr-only">Développement Sécurisé | Applications Web & Mobile | CyberSuisse Bienne</h1>
+      <h1 className="sr-only">Création de site web sécurisé à Bienne/Biel (Suisse) | Sans WordPress | CyberSuisse</h1>
 
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20">
@@ -44,20 +51,21 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <Badge variant="secondary" className="mb-4">
-            Développement Sécurisé • Security by Design
+          <Badge variant="secondary" className="mb-4 bg-red-950/60 text-red-400 border border-red-600/40">
+            Création de sites web sécurisés • Security by Design
           </Badge>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Développement <span className="text-primary">Sécurisé</span>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Création de <span className="text-red-500" style={{textShadow: '0 0 30px rgba(229,57,53,0.4)'}}>sites web</span>
             <br />
-            Applications & Sites Web
+            réellement sécurisés
           </h1>
 
-          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            Développement d'applications web et mobiles avec sécurité intégrée dès la conception.
-            Expertise unique combinant développement full-stack et cybersécurité pour des solutions
-            robustes et conformes aux standards internationaux.
+          <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Basé à Bienne/Biel, je conçois des sites web sur mesure (sans WordPress) avec une approche
+            cybersécurité intégrée : le code est écrit, revu et testé par moi avant livraison.
+            L'IA peut m'assister (accélération, idées, boilerplate), mais la validation reste humaine et responsable.
+            Objectif : livrer un site durci contre les menaces courantes connues à la date de livraison.
           </p>
 
           <motion.div
@@ -68,7 +76,8 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
             <Button
               size="lg"
               onClick={() => onNavigate('contact')}
-              className="bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-xl"
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-lg hover:shadow-xl border border-red-500/50"
+              style={{boxShadow: '0 0 30px rgba(229,57,53,0.4)'}}
             >
               <Envelope size={20} className="mr-2" />
               Démarrer votre projet sécurisé
@@ -86,16 +95,16 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
           <div className="relative w-full max-w-4xl h-80 rounded-xl overflow-hidden shadow-2xl">
             <img
               src={developmentImage}
-              alt="Développement sécurisé applications web"
+              alt="Création de site web sécurisé à Bienne/Biel"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-green-900/60 via-indigo-900/30 to-purple-900/20" />
             <div className="absolute bottom-6 left-6 right-6">
               <h3 className="text-white text-2xl font-bold mb-2 drop-shadow-lg">
-                Code Sécurisé & Performant
+                Site web sécurisé & maîtrisé
               </h3>
               <p className="text-white/90 text-lg drop-shadow-lg">
-                Développement avec expertise cybersécurité intégrée
+                Code sur mesure, revue et tests avant livraison
               </p>
             </div>
           </div>
@@ -110,11 +119,11 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Services de Développement Sécurisé
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Offres de création de site web sécurisé
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Solutions complètes pour vos besoins digitaux avec sécurité intégrée
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            Pour PME, indépendants et organisations en Suisse : un site clair, rapide, et surtout durci.
           </p>
         </motion.div>
 
@@ -126,17 +135,17 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
             >
-              <Card className="h-full hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/20">
+              <Card className="h-full hover:shadow-xl transition-all duration-300 bg-[#1A1A1A] border-[#333] hover:border-red-600/40">
                 <CardHeader>
-                  <CardTitle className="text-xl text-primary">{service.title}</CardTitle>
-                  <div className="text-sm font-medium text-accent mb-2">{service.subtitle}</div>
-                  <CardDescription className="text-base">{service.description}</CardDescription>
+                  <CardTitle className="text-xl text-red-500">{service.title}</CardTitle>
+                  <div className="text-sm font-medium text-orange-400 mb-2">{service.subtitle}</div>
+                  <CardDescription className="text-base text-gray-400">{service.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
                     {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-sm text-muted-foreground">
-                        <CheckCircle size={16} className="text-accent mr-3 flex-shrink-0" />
+                      <li key={idx} className="flex items-center text-sm text-gray-300">
+                        <CheckCircle size={16} className="text-red-500 mr-3 flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
@@ -154,116 +163,116 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
           transition={{ duration: 0.6, delay: 0.7 }}
           className="space-y-12"
         >
-          {/* Web Applications Section */}
-          <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-8 border border-green-200">
+          {/* Website Section */}
+          <div className="bg-gradient-to-r from-green-950/50 to-emerald-950/50 rounded-xl p-8 border border-green-800/40">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <h3 className="text-2xl font-bold text-green-900 mb-4">🌐 Applications Web Sécurisées</h3>
-                <p className="text-green-800 mb-6 leading-relaxed">
-                  Développement d'applications web modernes avec React, Vue.js ou Angular, intégrant
-                  les meilleures pratiques de sécurité : Content Security Policy, protection XSS,
-                  gestion sécurisée des sessions et chiffrement des données sensibles.
+                <h3 className="text-2xl font-bold text-green-400 mb-4">🌐 Site vitrine sécurisé (sur mesure)</h3>
+                <p className="text-gray-300 mb-6 leading-relaxed">
+                  Idéal pour présenter votre activité, inspirer confiance et convertir. Le site est construit
+                  avec une surface d'attaque minimale : formulaires protégés, configurations durcies et bonnes pratiques
+                  de sécurité appliquées dès l'architecture.
                 </p>
                 <div className="space-y-3">
-                  <div className="flex items-center text-sm">
-                    <CheckCircle size={16} className="text-green-600 mr-3" />
-                    <span>Frameworks modernes (React/Vue/Angular)</span>
+                  <div className="flex items-center text-sm text-gray-300">
+                    <CheckCircle size={16} className="text-green-400 mr-3" />
+                    <span>Sans WordPress (code sur mesure, maîtrisé)</span>
                   </div>
-                  <div className="flex items-center text-sm">
-                    <CheckCircle size={16} className="text-green-600 mr-3" />
-                    <span>Protection XSS et CSRF intégrée</span>
+                  <div className="flex items-center text-sm text-gray-300">
+                    <CheckCircle size={16} className="text-green-400 mr-3" />
+                    <span>Protection des formulaires & anti-abus</span>
                   </div>
-                  <div className="flex items-center text-sm">
-                    <CheckCircle size={16} className="text-green-600 mr-3" />
-                    <span>Authentification multi-facteurs</span>
+                  <div className="flex items-center text-sm text-gray-300">
+                    <CheckCircle size={16} className="text-green-400 mr-3" />
+                    <span>Durcissement (headers, CSP, configuration)</span>
                   </div>
-                  <div className="flex items-center text-sm">
-                    <CheckCircle size={16} className="text-green-600 mr-3" />
-                    <span>Tests de sécurité automatisés</span>
+                  <div className="flex items-center text-sm text-gray-300">
+                    <CheckCircle size={16} className="text-green-400 mr-3" />
+                    <span>Revue & tests de sécurité avant livraison</span>
                   </div>
                 </div>
               </div>
               <div className="text-center">
-                <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Globe size={32} className="text-green-600" />
+                <div className="w-24 h-24 bg-green-950/50 border border-green-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Globe size={32} className="text-green-400" />
                 </div>
-                <p className="text-sm text-green-700 font-medium">Full-Stack Sécurisé</p>
+                <p className="text-sm text-green-300 font-medium">Site clair, rapide, durci</p>
               </div>
             </div>
           </div>
 
-          {/* API Development Section */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-8 border border-blue-200">
+          {/* E-commerce Section */}
+          <div className="bg-gradient-to-r from-blue-950/50 to-indigo-950/50 rounded-xl p-8 border border-blue-800/40">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <h3 className="text-2xl font-bold text-blue-900 mb-4">🔌 APIs Sécurisées & Robustes</h3>
-                <p className="text-blue-800 mb-6 leading-relaxed">
-                  Développement d'APIs REST et GraphQL avec sécurité renforcée : authentification JWT,
-                  rate limiting, validation stricte des entrées, et protection contre les attaques
-                  courantes comme les injections SQL et les attaques par déni de service.
+                <h3 className="text-2xl font-bold text-blue-400 mb-4">🛒 Site e‑commerce sécurisé</h3>
+                <p className="text-gray-300 mb-6 leading-relaxed">
+                  Un e‑commerce est une cible : comptes clients, formulaires, paiements, paniers, promo-codes.
+                  L'approche security-by-design vise à réduire les risques de fraude, de prise de compte
+                  et de compromission, tout en gardant une expérience fluide.
                 </p>
                 <div className="space-y-3">
-                  <div className="flex items-center text-sm">
-                    <CheckCircle size={16} className="text-blue-600 mr-3" />
-                    <span>Authentification JWT/OAuth2</span>
+                  <div className="flex items-center text-sm text-gray-300">
+                    <CheckCircle size={16} className="text-blue-400 mr-3" />
+                    <span>Protection OWASP Top 10 (XSS, injections, etc.)</span>
                   </div>
-                  <div className="flex items-center text-sm">
-                    <CheckCircle size={16} className="text-blue-600 mr-3" />
-                    <span>Rate limiting et throttling</span>
+                  <div className="flex items-center text-sm text-gray-300">
+                    <CheckCircle size={16} className="text-blue-400 mr-3" />
+                    <span>Gestion sûre des sessions & des comptes</span>
                   </div>
-                  <div className="flex items-center text-sm">
-                    <CheckCircle size={16} className="text-blue-600 mr-3" />
-                    <span>Validation et sanitisation</span>
+                  <div className="flex items-center text-sm text-gray-300">
+                    <CheckCircle size={16} className="text-blue-400 mr-3" />
+                    <span>Durcissement déploiement & configuration</span>
                   </div>
-                  <div className="flex items-center text-sm">
-                    <CheckCircle size={16} className="text-blue-600 mr-3" />
-                    <span>Logs d'audit complets</span>
+                  <div className="flex items-center text-sm text-gray-300">
+                    <CheckCircle size={16} className="text-blue-400 mr-3" />
+                    <span>Revue & tests de sécurité avant livraison</span>
                   </div>
                 </div>
               </div>
               <div className="text-center">
-                <div className="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Database size={32} className="text-blue-600" />
+                <div className="w-24 h-24 bg-blue-950/50 border border-blue-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Lock size={32} className="text-blue-400" />
                 </div>
-                <p className="text-sm text-blue-700 font-medium">APIs Enterprise-Grade</p>
+                <p className="text-sm text-blue-300 font-medium">Comptes & parcours durcis</p>
               </div>
             </div>
           </div>
 
-          {/* Mobile Apps Section */}
-          <div className="bg-gradient-to-r from-purple-50 to-violet-50 rounded-xl p-8 border border-purple-200">
+          {/* Hardening Section */}
+          <div className="bg-gradient-to-r from-purple-950/50 to-violet-950/50 rounded-xl p-8 border border-purple-800/40">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <h3 className="text-2xl font-bold text-purple-900 mb-4">📱 Applications Mobiles Sécurisées</h3>
-                <p className="text-purple-800 mb-6 leading-relaxed">
-                  Développement d'applications mobiles natives avec sécurité renforcée : chiffrement
-                  des données locales, certificate pinning, détection de jailbreak/root, et protection
-                  contre le reverse engineering et les attaques man-in-the-middle.
+                <h3 className="text-2xl font-bold text-purple-400 mb-4">🛡️ Refonte & durcissement de site</h3>
+                <p className="text-gray-300 mb-6 leading-relaxed">
+                  Votre site existe déjà mais vous doutez de sa robustesse ? On identifie les points faibles
+                  (formulaires, accès admin, configuration, dépendances, exposition) puis on corrige et on durcit.
+                  Vous gagnez en confiance, en stabilité et en maîtrise.
                 </p>
                 <div className="space-y-3">
-                  <div className="flex items-center text-sm">
-                    <CheckCircle size={16} className="text-purple-600 mr-3" />
-                    <span>Chiffrement des données locales</span>
+                  <div className="flex items-center text-sm text-gray-300">
+                    <CheckCircle size={16} className="text-purple-400 mr-3" />
+                    <span>Audit technique + priorisation des risques</span>
                   </div>
-                  <div className="flex items-center text-sm">
-                    <CheckCircle size={16} className="text-purple-600 mr-3" />
-                    <span>Certificate pinning SSL</span>
+                  <div className="flex items-center text-sm text-gray-300">
+                    <CheckCircle size={16} className="text-purple-400 mr-3" />
+                    <span>Corrections ciblées + durcissement</span>
                   </div>
-                  <div className="flex items-center text-sm">
-                    <CheckCircle size={16} className="text-purple-600 mr-3" />
-                    <span>Détection jailbreak/root</span>
+                  <div className="flex items-center text-sm text-gray-300">
+                    <CheckCircle size={16} className="text-purple-400 mr-3" />
+                    <span>Revue de code & configuration</span>
                   </div>
-                  <div className="flex items-center text-sm">
-                    <CheckCircle size={16} className="text-purple-600 mr-3" />
-                    <span>Biométrie et 2FA</span>
+                  <div className="flex items-center text-sm text-gray-300">
+                    <CheckCircle size={16} className="text-purple-400 mr-3" />
+                    <span>Conseils d'exploitation & accès</span>
                   </div>
                 </div>
               </div>
               <div className="text-center">
-                <div className="w-24 h-24 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Eye size={32} className="text-purple-600" />
+                <div className="w-24 h-24 bg-purple-950/50 border border-purple-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Eye size={32} className="text-purple-400" />
                 </div>
-                <p className="text-sm text-purple-700 font-medium">Sécurité Mobile Avancée</p>
+                <p className="text-sm text-purple-300 font-medium">Réduction surface d'attaque</p>
               </div>
             </div>
           </div>
@@ -278,11 +287,11 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
           transition={{ duration: 0.6, delay: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Principes de Sécurité Intégrés
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Approche méthodique pour intégrer la sécurité à chaque étape du développement
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            Une méthode simple : construire un site web robuste, vérifier, puis livrer durci.
           </p>
         </motion.div>
 
@@ -292,21 +301,21 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.9 }}
           >
-            <Card className="h-full hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/20">
+            <Card className="h-full hover:shadow-xl transition-all duration-300 bg-[#1A1A1A] border-[#333] hover:border-red-600/40">
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-3">
                   <motion.div
-                    className="p-3 bg-primary/10 rounded-lg"
+                    className="p-3 bg-red-950/50 rounded-lg"
                     whileHover={{ scale: 1.1, rotateY: 10 }}
                     style={{ transformStyle: "preserve-3d" }}
                   >
-                    <Shield size={32} className="text-primary" />
+                    <Shield size={32} className="text-red-500" />
                   </motion.div>
-                  <CardTitle className="text-xl">Security by Design</CardTitle>
+                  <CardTitle className="text-xl text-white">Security by Design</CardTitle>
                 </div>
-                <CardDescription className="text-base leading-relaxed">
-                  Sécurité intégrée dès la conception, pas ajoutée après coup. Chaque composant est pensé
-                  pour être sécurisé par défaut, éliminant 90% des vulnérabilités courantes.
+                <CardDescription className="text-base leading-relaxed text-gray-400">
+                  Sécurité intégrée dès la conception, pas ajoutée après coup. Chaque choix (pages, formulaires,
+                  accès, hébergement) est évalué sous l'angle risque.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -317,21 +326,21 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.0 }}
           >
-            <Card className="h-full hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/20">
+            <Card className="h-full hover:shadow-xl transition-all duration-300 bg-[#1A1A1A] border-[#333] hover:border-blue-600/40">
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-3">
                   <motion.div
-                    className="p-3 bg-accent/10 rounded-lg"
+                    className="p-3 bg-blue-950/50 rounded-lg"
                     whileHover={{ scale: 1.1, rotateY: 10 }}
                     style={{ transformStyle: "preserve-3d" }}
                   >
-                    <Lock size={32} className="text-accent" />
+                    <Lock size={32} className="text-blue-400" />
                   </motion.div>
-                  <CardTitle className="text-xl">Chiffrement End-to-End</CardTitle>
+                  <CardTitle className="text-xl text-white">Chiffrement End-to-End</CardTitle>
                 </div>
-                <CardDescription className="text-base leading-relaxed">
-                  Protection des données en transit et au repos avec les algorithmes de chiffrement
-                  les plus robustes. Gestion sécurisée des clés et certificats.
+                <CardDescription className="text-base leading-relaxed text-gray-400">
+                  HTTPS/TLS, bonnes pratiques de configuration et protection des données sensibles.
+                  Objectif : éviter les fuites, les interceptions et les erreurs de configuration.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -342,21 +351,21 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.1 }}
           >
-            <Card className="h-full hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/20">
+            <Card className="h-full hover:shadow-xl transition-all duration-300 bg-[#1A1A1A] border-[#333] hover:border-green-600/40">
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-3">
                   <motion.div
-                    className="p-3 bg-secondary/10 rounded-lg"
+                    className="p-3 bg-green-950/50 rounded-lg"
                     whileHover={{ scale: 1.1, rotateY: 10 }}
                     style={{ transformStyle: "preserve-3d" }}
                   >
-                    <CheckCircle size={32} className="text-secondary" />
+                    <CheckCircle size={32} className="text-green-400" />
                   </motion.div>
-                  <CardTitle className="text-xl">Tests Automatisés</CardTitle>
+                  <CardTitle className="text-xl text-white">Tests Automatisés</CardTitle>
                 </div>
-                <CardDescription className="text-base leading-relaxed">
-                  Sécurité validée à chaque déploiement avec tests automatisés SAST, DAST et SCA.
-                  Intégration continue avec vérification de sécurité à chaque commit.
+                <CardDescription className="text-base leading-relaxed text-gray-400">
+                  Revue de code + tests de sécurité avant livraison (scan dépendances, contrôles de base, vérifications
+                  ciblées). L'important : trouver les failles avant vos visiteurs.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -367,21 +376,21 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
           >
-            <Card className="h-full hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/20">
+            <Card className="h-full hover:shadow-xl transition-all duration-300 bg-[#1A1A1A] border-[#333] hover:border-orange-600/40">
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-3">
                   <motion.div
-                    className="p-3 bg-destructive/10 rounded-lg"
+                    className="p-3 bg-orange-950/50 rounded-lg"
                     whileHover={{ scale: 1.1, rotateY: 10 }}
                     style={{ transformStyle: "preserve-3d" }}
                   >
-                    <Database size={32} className="text-destructive" />
+                    <Database size={32} className="text-orange-400" />
                   </motion.div>
-                  <CardTitle className="text-xl">Gestion des Secrets</CardTitle>
+                  <CardTitle className="text-xl text-white">Gestion des Secrets</CardTitle>
                 </div>
-                <CardDescription className="text-base leading-relaxed">
-                  Stockage et rotation sécurisés des clés API, mots de passe et certificats.
-                  Intégration avec vaults sécurisés et gestion automatique des secrets.
+                <CardDescription className="text-base leading-relaxed text-gray-400">
+                  Gestion propre des accès, secrets et paramètres (admin, emails, clés). Réduction des risques liés
+                  aux identifiants exposés et aux mauvaises configurations.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -390,7 +399,7 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
       </section>
 
       {/* SEO Rich Content Section */}
-      <section className="bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100 py-20">
+      <section className="py-20" style={{background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}}>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -398,11 +407,11 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
             transition={{ duration: 0.6, delay: 1.3 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Pourquoi Choisir le Développement Sécurisé ?
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Pourquoi un site web réellement sécurisé ?
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Découvrez pourquoi les entreprises choisissent le développement avec sécurité intégrée
+            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+              Parce qu'un site "vite fait" peut coûter très cher : données, réputation, clients et interruptions.
             </p>
           </motion.div>
 
@@ -412,27 +421,27 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.4 }}
-              className="bg-white rounded-xl p-6 shadow-lg border border-border/50"
+              className="bg-[#1A1A1A] rounded-xl p-6 shadow-lg border border-[#333] hover:border-red-600/40 transition-all"
             >
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <Code size={24} className="text-primary" />
+              <div className="w-12 h-12 bg-red-950/50 rounded-lg flex items-center justify-center mb-4">
+                <Code size={24} className="text-red-500" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Expertise Double Compétence</h3>
-              <p className="text-muted-foreground mb-4">
-                Rare combinaison d'expertise en développement full-stack et cybersécurité.
-                Chaque ligne de code est revue sous l'angle sécurité avant d'être déployée.
+              <h3 className="text-xl font-bold text-white mb-3">Expertise Double Compétence</h3>
+              <p className="text-gray-400 mb-4">
+                Création de site web + cybersécurité. Le code est écrit sur mesure (sans WordPress)
+                et revu sous l'angle sécurité avant mise en ligne.
               </p>
               <ul className="space-y-2 text-sm">
-                <li className="flex items-center">
-                  <CheckCircle size={14} className="text-accent mr-2" />
+                <li className="flex items-center text-gray-300">
+                  <CheckCircle size={14} className="text-red-500 mr-2" />
                   Développement + Cybersécurité
                 </li>
-                <li className="flex items-center">
-                  <CheckCircle size={14} className="text-accent mr-2" />
+                <li className="flex items-center text-gray-300">
+                  <CheckCircle size={14} className="text-red-500 mr-2" />
                   Code review sécurité intégré
                 </li>
-                <li className="flex items-center">
-                  <CheckCircle size={14} className="text-accent mr-2" />
+                <li className="flex items-center text-gray-300">
+                  <CheckCircle size={14} className="text-red-500 mr-2" />
                   Tests de sécurité automatisés
                 </li>
               </ul>
@@ -443,27 +452,27 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.5 }}
-              className="bg-white rounded-xl p-6 shadow-lg border border-border/50"
+              className="bg-[#1A1A1A] rounded-xl p-6 shadow-lg border border-[#333] hover:border-orange-600/40 transition-all"
             >
-              <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-                <Shield size={24} className="text-accent" />
+              <div className="w-12 h-12 bg-orange-950/50 rounded-lg flex items-center justify-center mb-4">
+                <Shield size={24} className="text-orange-500" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Prévention des Vulnérabilités</h3>
-              <p className="text-muted-foreground mb-4">
-                Éliminez 90% des vulnérabilités courantes grâce à l'approche Security by Design.
-                OWASP Top 10, injections SQL, XSS, CSRF - tout est prévenu dès la conception.
+              <h3 className="text-xl font-bold text-white mb-3">Prévention des Vulnérabilités</h3>
+              <p className="text-gray-400 mb-4">
+                Réduisez fortement les vulnérabilités courantes grâce à l'approche Security by Design.
+                OWASP Top 10, injections, XSS, CSRF : l'objectif est de fermer les portes les plus utilisées.
               </p>
               <ul className="space-y-2 text-sm">
-                <li className="flex items-center">
-                  <CheckCircle size={14} className="text-accent mr-2" />
+                <li className="flex items-center text-gray-300">
+                  <CheckCircle size={14} className="text-orange-500 mr-2" />
                   -90% de vulnérabilités évitées
                 </li>
-                <li className="flex items-center">
-                  <CheckCircle size={14} className="text-accent mr-2" />
+                <li className="flex items-center text-gray-300">
+                  <CheckCircle size={14} className="text-orange-500 mr-2" />
                   OWASP Top 10 couvert
                 </li>
-                <li className="flex items-center">
-                  <CheckCircle size={14} className="text-accent mr-2" />
+                <li className="flex items-center text-gray-300">
+                  <CheckCircle size={14} className="text-orange-500 mr-2" />
                   Conformité réglementaire
                 </li>
               </ul>
@@ -474,27 +483,27 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.6 }}
-              className="bg-white rounded-xl p-6 shadow-lg border border-border/50"
+              className="bg-[#1A1A1A] rounded-xl p-6 shadow-lg border border-[#333] hover:border-blue-600/40 transition-all"
             >
-              <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
-                <Cpu size={24} className="text-secondary" />
+              <div className="w-12 h-12 bg-blue-950/50 rounded-lg flex items-center justify-center mb-4">
+                <Cpu size={24} className="text-blue-500" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Performance & Sécurité</h3>
-              <p className="text-muted-foreground mb-4">
-                Sécurité sans compromis sur les performances. Optimisation du code et architecture
-                sécurisée pour des applications rapides et robustes. ROI démontré sur la durée.
+              <h3 className="text-xl font-bold text-white mb-3">Performance & Sécurité</h3>
+              <p className="text-gray-400 mb-4">
+                Sécurité sans sacrifier la performance. Un site rapide inspire confiance, convertit mieux
+                et réduit aussi certains vecteurs d'attaque (surface et complexité maîtrisées).
               </p>
               <ul className="space-y-2 text-sm">
-                <li className="flex items-center">
-                  <CheckCircle size={14} className="text-secondary mr-2" />
+                <li className="flex items-center text-gray-300">
+                  <CheckCircle size={14} className="text-blue-500 mr-2" />
                   Performance optimale
                 </li>
-                <li className="flex items-center">
-                  <CheckCircle size={14} className="text-secondary mr-2" />
+                <li className="flex items-center text-gray-300">
+                  <CheckCircle size={14} className="text-blue-500 mr-2" />
                   Architecture scalable
                 </li>
-                <li className="flex items-center">
-                  <CheckCircle size={14} className="text-secondary mr-2" />
+                <li className="flex items-center text-gray-300">
+                  <CheckCircle size={14} className="text-blue-500 mr-2" />
                   Maintenance facilitée
                 </li>
               </ul>
@@ -506,97 +515,96 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.7 }}
-            className="bg-white rounded-xl p-8 shadow-xl border border-border/50"
+            className="bg-[#1A1A1A] rounded-xl p-8 shadow-xl border border-[#333]"
           >
-            <h3 className="text-2xl font-bold text-center text-foreground mb-8">
-              Avantages Détaillés du Développement Sécurisé
+            <h3 className="text-2xl font-bold text-center text-white mb-8">
+                Ce que vous obtenez concrètement
             </h3>
 
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-6">
-                <div className="border-l-4 border-primary pl-4">
-                  <h4 className="font-bold text-foreground mb-2">🛡️ Prévention des Cyberattaques</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Évitez les coûteuses cyberattaques en intégrant la sécurité dès la conception.
-                    Le coût moyen d'une faille de sécurité découverte en production est 10x supérieur
-                    à celui d'une correction pendant le développement.
+                <div className="border-l-4 border-red-600 pl-4">
+                  <h4 className="font-bold text-white mb-2">🛡️ Prévention des Cyberattaques</h4>
+                  <p className="text-gray-400 text-sm">
+                    Réduction de l'exposition aux attaques les plus fréquentes (formulaires, injections, XSS,
+                    comptes). Objectif : éviter les mauvaises surprises après la mise en ligne.
                   </p>
                 </div>
 
-                <div className="border-l-4 border-accent pl-4">
-                  <h4 className="font-bold text-foreground mb-2">⚖️ Conformité Réglementaire</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Applications prêtes pour RGPD, PCI DSS, ISO 27001 et bientôt CRA.
-                    Documentation de sécurité complète et audits de conformité facilités.
+                <div className="border-l-4 border-orange-500 pl-4">
+                  <h4 className="font-bold text-white mb-2">⚖️ Conformité Réglementaire</h4>
+                  <p className="text-gray-400 text-sm">
+                    Bonnes pratiques orientées RGPD (minimisation, sécurité des données, accès),
+                    avec documentation utile et traçable.
                   </p>
                 </div>
 
-                <div className="border-l-4 border-secondary pl-4">
-                  <h4 className="font-bold text-foreground mb-2">💰 ROI Exceptionnel</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Réduction drastique des coûts de maintenance et correction post-déploiement.
-                    Applications plus stables, moins de downtime et meilleure satisfaction client.
+                <div className="border-l-4 border-green-500 pl-4">
+                  <h4 className="font-bold text-white mb-2">💰 ROI Exceptionnel</h4>
+                  <p className="text-gray-400 text-sm">
+                    Moins de correctifs en urgence et de temps perdu. Un site bien construit est plus stable,
+                    plus simple à faire évoluer et plus économique sur la durée.
                   </p>
                 </div>
               </div>
 
               <div className="space-y-6">
-                <div className="border-l-4 border-destructive pl-4">
-                  <h4 className="font-bold text-foreground mb-2">🔒 Sécurité Zero-Trust</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Architecture zero-trust intégrée : chaque requête est authentifiée et autorisée,
-                    même entre microservices internes. Protection contre les mouvements latéraux.
+                <div className="border-l-4 border-blue-500 pl-4">
+                  <h4 className="font-bold text-white mb-2">🔒 Accès & administration durcis</h4>
+                  <p className="text-gray-400 text-sm">
+                    Mesures concrètes : séparation des accès, durcissement des pages sensibles,
+                    contrôle des permissions et réduction de l'exposition de l'admin.
                   </p>
                 </div>
 
                 <div className="border-l-4 border-purple-500 pl-4">
-                  <h4 className="font-bold text-foreground mb-2">📊 Observabilité Complète</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Logging, monitoring et alerting intégrés pour détecter anomalies et incidents
-                    en temps réel. Tableau de bord de sécurité pour suivi continu.
+                  <h4 className="font-bold text-white mb-2">📊 Visibilité & journaux utiles</h4>
+                  <p className="text-gray-400 text-sm">
+                    Journaux utiles pour diagnostiquer et investiguer (sans exposer de données sensibles).
+                    En option : recommandations de monitoring et d'alerting.
                   </p>
                 </div>
 
-                <div className="border-l-4 border-green-500 pl-4">
-                  <h4 className="font-bold text-foreground mb-2">🚀 Déploiement Sécurisé</h4>
-                  <p className="text-muted-foreground text-sm">
-                    CI/CD pipelines avec tests de sécurité automatisés. Déploiement blue/green
-                    et rollback sécurisé en cas de problème détecté.
+                <div className="border-l-4 border-cyan-500 pl-4">
+                  <h4 className="font-bold text-white mb-2">🚀 Livraison durcie (menaces actuelles)</h4>
+                  <p className="text-gray-400 text-sm">
+                    Objectif : livrer un site protégé contre les menaces courantes connues à la date de livraison.
+                    Les nouvelles vulnérabilités futures nécessitent des mises à jour et une maintenance.
                   </p>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Statistics Section */}
+          {/* Value Props Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.8 }}
             className="grid md:grid-cols-4 gap-6 mt-12"
           >
-            <div className="text-center bg-white rounded-lg p-6 shadow-md">
-              <div className="text-3xl font-bold text-primary mb-2">90%</div>
-              <p className="text-sm text-muted-foreground">Vulnérabilités évitées</p>
+            <div className="text-center bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333]">
+              <div className="text-3xl font-bold text-red-500 mb-2">No WP</div>
+              <p className="text-sm text-gray-400">Sans WordPress</p>
             </div>
-            <div className="text-center bg-white rounded-lg p-6 shadow-md">
-              <div className="text-3xl font-bold text-accent mb-2">-70%</div>
-              <p className="text-sm text-muted-foreground">Coûts de maintenance</p>
+            <div className="text-center bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333]">
+              <div className="text-3xl font-bold text-orange-500 mb-2">Review</div>
+              <p className="text-sm text-gray-400">Code revu & testé</p>
             </div>
-            <div className="text-center bg-white rounded-lg p-6 shadow-md">
-              <div className="text-3xl font-bold text-secondary mb-2">24/7</div>
-              <p className="text-sm text-muted-foreground">Monitoring intégré</p>
+            <div className="text-center bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333]">
+              <div className="text-3xl font-bold text-blue-500 mb-2">CSP</div>
+              <p className="text-sm text-gray-400">Headers & durcissement</p>
             </div>
-            <div className="text-center bg-white rounded-lg p-6 shadow-md">
-              <div className="text-3xl font-bold text-destructive mb-2">100%</div>
-              <p className="text-sm text-muted-foreground">Conformité réglementaire</p>
+            <div className="text-center bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333]">
+              <div className="text-3xl font-bold text-green-500 mb-2">Livraison</div>
+              <p className="text-sm text-gray-400">Menaces courantes</p>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Technologies & Standards */}
-      <section className="bg-white py-20">
+      <section className="py-20" style={{background: 'linear-gradient(180deg, #0A0A0A 0%, #1A1A1A 100%)'}}>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -604,10 +612,10 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
             transition={{ duration: 0.6, delay: 1.9 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Technologies & Standards de Sécurité
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
               Stack technologique moderne avec sécurité intégrée et conformité aux standards internationaux
             </p>
           </motion.div>
@@ -617,52 +625,52 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 2.0 }}
-              className="text-center p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-xl border border-green-200"
+              className="text-center p-6 bg-gradient-to-br from-green-950/50 to-green-900/30 rounded-xl border border-green-800/40"
             >
-              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Code size={24} className="text-white" />
               </div>
-              <h3 className="font-bold text-green-900 mb-2">OWASP</h3>
-              <p className="text-sm text-green-700">Top 10 & Cheat Sheet</p>
+              <h3 className="font-bold text-green-400 mb-2">OWASP</h3>
+              <p className="text-sm text-green-300/80">Top 10 & Cheat Sheet</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 2.1 }}
-              className="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200"
+              className="text-center p-6 bg-gradient-to-br from-blue-950/50 to-blue-900/30 rounded-xl border border-blue-800/40"
             >
-              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield size={24} className="text-white" />
               </div>
-              <h3 className="font-bold text-blue-900 mb-2">ISO 27001</h3>
-              <p className="text-sm text-blue-700">Management de la sécurité</p>
+              <h3 className="font-bold text-blue-400 mb-2">ISO 27001</h3>
+              <p className="text-sm text-blue-300/80">Management de la sécurité</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 2.2 }}
-              className="text-center p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl border border-purple-200"
+              className="text-center p-6 bg-gradient-to-br from-purple-950/50 to-purple-900/30 rounded-xl border border-purple-800/40"
             >
-              <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Lock size={24} className="text-white" />
               </div>
-              <h3 className="font-bold text-purple-900 mb-2">RGPD Compliant</h3>
-              <p className="text-sm text-purple-700">Protection des données</p>
+              <h3 className="font-bold text-purple-400 mb-2">RGPD</h3>
+              <p className="text-sm text-purple-300/80">Bonnes pratiques données</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 2.3 }}
-              className="text-center p-6 bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl border border-orange-200"
+              className="text-center p-6 bg-gradient-to-br from-orange-950/50 to-orange-900/30 rounded-xl border border-orange-800/40"
             >
-              <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <CheckCircle size={24} className="text-white" />
               </div>
-              <h3 className="font-bold text-orange-900 mb-2">CRA Ready</h3>
-              <p className="text-sm text-orange-700">Cyber Resilience Act</p>
+              <h3 className="font-bold text-orange-400 mb-2">Préparation CRA</h3>
+              <p className="text-sm text-orange-300/80">Cyber Resilience Act</p>
             </motion.div>
           </div>
 
@@ -671,40 +679,40 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 2.4 }}
-            className="bg-gradient-to-r from-slate-50 to-gray-50 rounded-xl p-8 border border-border/50"
+            className="bg-[#1A1A1A] rounded-xl p-8 border border-[#333]"
           >
-            <h3 className="text-2xl font-bold text-center text-foreground mb-8">
+            <h3 className="text-2xl font-bold text-center text-white mb-8">
               Sécurité Intégrée par Technologie
             </h3>
 
             <div className="grid md:grid-cols-3 gap-6">
               <div>
-                <h4 className="font-bold text-foreground mb-3">🔐 Authentification & Autorisation</h4>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• OAuth 2.0 / OpenID Connect</li>
-                  <li>• JWT avec rotation automatique</li>
-                  <li>• Multi-Factor Authentication</li>
-                  <li>• Role-Based Access Control</li>
+                <h4 className="font-bold text-red-400 mb-3">🔐 Accès & administration</h4>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li>• Séparation des accès (admin / public)</li>
+                  <li>• Durcissement des pages sensibles</li>
+                  <li>• MFA si espace client / admin</li>
+                  <li>• Gestion des rôles si nécessaire</li>
                 </ul>
               </div>
 
               <div>
-                <h4 className="font-bold text-foreground mb-3">🛡️ Protection des Données</h4>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Chiffrement AES-256 au repos</li>
-                  <li>• TLS 1.3 en transit</li>
-                  <li>• Hashing sécurisé (bcrypt/Argon2)</li>
-                  <li>• Tokenization des données sensibles</li>
+                <h4 className="font-bold text-blue-400 mb-3">🛡️ Protection des Données</h4>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li>• HTTPS/TLS en transit</li>
+                  <li>• Stockage minimal des données</li>
+                  <li>• Hashing sécurisé des mots de passe si comptes</li>
+                  <li>• Protection des formulaires & uploads</li>
                 </ul>
               </div>
 
               <div>
-                <h4 className="font-bold text-foreground mb-3">🔍 Monitoring & Logging</h4>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Structured logging sécurisé</li>
-                  <li>• SIEM integration</li>
-                  <li>• Alerting temps réel</li>
-                  <li>• Audit trails complets</li>
+                <h4 className="font-bold text-green-400 mb-3">🔍 Monitoring & Logging</h4>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li>• Logs utiles et non sensibles</li>
+                  <li>• Aide à l'investigation en cas d'incident</li>
+                  <li>• Recommandations d'alerting</li>
+                  <li>• Traçabilité sur actions critiques</li>
                 </ul>
               </div>
             </div>
@@ -713,7 +721,7 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
       </section>
 
       {/* FAQ Section for SEO */}
-      <section className="bg-gradient-to-br from-gray-50 to-slate-100 py-20">
+      <section className="py-20" style={{background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}}>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -721,11 +729,11 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
             transition={{ duration: 0.6, delay: 2.5 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Questions Fréquentes - Développement Sécurisé
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Questions Fréquentes - Site web sécurisé
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Tout ce que vous devez savoir sur le développement d'applications sécurisées
+            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+              Réponses claires sur la création de site web sécurisé (Bienne/Biel et Suisse)
             </p>
           </motion.div>
 
@@ -734,15 +742,13 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 2.6 }}
-              className="bg-white rounded-lg p-6 shadow-md border border-border/50"
+              className="bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333] hover:border-red-600/40 transition-all"
             >
-              <h3 className="text-lg font-bold text-foreground mb-3">💰 Combien coûte le développement d'une application sécurisée ?</h3>
-              <p className="text-muted-foreground">
-                Le coût du développement sécurisé dépend de plusieurs facteurs : complexité fonctionnelle,
-                exigences de sécurité spécifiques, intégrations nécessaires, et contraintes réglementaires.
-                Chaque projet est analysé individuellement pour établir un devis précis et adapté à vos besoins.
-                L'approche sécurisée représente un investissement initial mais génère des économies significatives
-                sur les coûts de maintenance et réduit drastiquement les risques de cyberattaques coûteuses.
+              <h3 className="text-lg font-bold text-white mb-3">💰 Combien coûte un site web sécurisé ?</h3>
+              <p className="text-gray-400">
+                Le prix dépend du périmètre (vitrine, e‑commerce, espace client), du contenu, des intégrations
+                et des exigences de sécurité (comptes, paiement, données). Je propose un cadrage rapide pour
+                établir un devis clair et un plan de livraison.
               </p>
             </motion.div>
 
@@ -750,14 +756,13 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 2.7 }}
-              className="bg-white rounded-lg p-6 shadow-md border border-border/50"
+              className="bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333] hover:border-red-600/40 transition-all"
             >
-              <h3 className="text-lg font-bold text-foreground mb-3">⏱️ Combien de temps prend le développement ?</h3>
-              <p className="text-muted-foreground">
-                Un MVP sécurisé prend 4-8 semaines, une application complète 3-6 mois selon la complexité.
-                L'approche Security by Design ajoute du temps à la phase de conception mais accélère
-                le développement final et réduit drastiquement les retards dus aux corrections de sécurité.
-                Livraison avec tests de sécurité complets et documentation.
+              <h3 className="text-lg font-bold text-white mb-3">⏱️ Combien de temps prend le développement ?</h3>
+              <p className="text-gray-400">
+                Selon la complexité : un site vitrine peut être livré en quelques semaines, un e‑commerce
+                ou un site sur mesure prend davantage de temps. La sécurité est intégrée dès le départ
+                pour éviter les retours en arrière et livrer proprement (tests et revue avant mise en ligne).
               </p>
             </motion.div>
 
@@ -765,14 +770,13 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 2.8 }}
-              className="bg-white rounded-lg p-6 shadow-md border border-border/50"
+              className="bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333] hover:border-red-600/40 transition-all"
             >
-              <h3 className="text-lg font-bold text-foreground mb-3">🔒 Quelle différence avec un développement "normal" ?</h3>
-              <p className="text-muted-foreground">
-                Un développement "normal" ajoute la sécurité après coup, créant des failles et complexifiant
-                la maintenance. Security by Design intègre la sécurité dès l'architecture : chaque choix
-                technique considère les implications sécurité, éliminant 90% des vulnérabilités courantes
-                (OWASP Top 10) et facilitant la conformité réglementaire.
+              <h3 className="text-lg font-bold text-white mb-3">🔒 Quelle différence avec un développement "normal" ?</h3>
+              <p className="text-gray-400">
+                Beaucoup de sites sont livrés sans réflexion sécurité (formulaires, accès admin, configuration,
+                dépendances). Security by Design intègre la sécurité dès l'architecture : chaque choix
+                technique est évalué pour réduire les risques et éviter les failles les plus courantes.
               </p>
             </motion.div>
 
@@ -780,14 +784,14 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 2.9 }}
-              className="bg-white rounded-lg p-6 shadow-md border border-border/50"
+              className="bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333] hover:border-red-600/40 transition-all"
             >
-              <h3 className="text-lg font-bold text-foreground mb-3">📱 Développez-vous des applications mobiles ?</h3>
-              <p className="text-muted-foreground">
-                Oui, spécialisation en applications mobiles sécurisées natives (iOS/Android) et cross-platform
-                (React Native/Flutter). Sécurité renforcée : chiffrement local, certificate pinning,
-                détection jailbreak/root, biométrie avancée, et protection contre le reverse engineering.
-                Conformité App Store et Google Play Store.
+              <h3 className="text-lg font-bold text-white mb-3">🧱 Travaillez-vous avec WordPress ?</h3>
+              <p className="text-gray-400">
+                Non. Je ne propose pas de sites WordPress : je privilégie un code sur mesure, maîtrisé et
+                plus simple à durcir. Cela réduit la dépendance à des plugins et limite la surface d'attaque.
+                Si vous avez déjà un site WordPress, je peux vous orienter sur une stratégie de refonte ou
+                de sécurisation selon votre contexte.
               </p>
             </motion.div>
 
@@ -795,14 +799,13 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 3.0 }}
-              className="bg-white rounded-lg p-6 shadow-md border border-border/50"
+              className="bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333] hover:border-red-600/40 transition-all"
             >
-              <h3 className="text-lg font-bold text-foreground mb-3">🔄 Comment gérez-vous les mises à jour de sécurité ?</h3>
-              <p className="text-muted-foreground">
-                Mises à jour de sécurité incluses dans le service : monitoring continu des vulnérabilités,
-                patches de sécurité automatisés, et recommandations d'évolution. Architecture conçue
-                pour faciliter les mises à jour sans interruption de service. Support technique
-                pour migration et upgrade de sécurité.
+              <h3 className="text-lg font-bold text-white mb-3">🔄 Comment gérez-vous les mises à jour de sécurité ?</h3>
+              <p className="text-gray-400">
+                À la livraison : configuration durcie et dépendances à jour contre les menaces courantes connues.
+                Ensuite, comme tout logiciel, un site nécessite des mises à jour et un suivi. Je peux proposer
+                un accompagnement (maintenance / correctifs) ou vous fournir un plan d'exploitation.
               </p>
             </motion.div>
 
@@ -810,14 +813,12 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 3.1 }}
-              className="bg-white rounded-lg p-6 shadow-md border border-border/50"
+              className="bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333] hover:border-red-600/40 transition-all"
             >
-              <h3 className="text-lg font-bold text-foreground mb-3">📋 Fournissez-vous de la documentation de sécurité ?</h3>
-              <p className="text-muted-foreground">
-                Documentation complète incluse : architecture de sécurité, matrice des menaces,
-                guide de déploiement sécurisé, procédures d'incident response, et documentation
-                pour audits de conformité. Tout est préparé pour faciliter vos certifications
-                ISO 27001, RGPD, et futurs audits CRA.
+              <h3 className="text-lg font-bold text-white mb-3">📋 Fournissez-vous de la documentation de sécurité ?</h3>
+              <p className="text-gray-400">
+                Oui : guide de déploiement et d'exploitation (accès, sauvegardes, configuration),
+                points de sécurité appliqués, et recommandations. L'objectif est que vous gardiez la maîtrise.
               </p>
             </motion.div>
           </div>
@@ -825,19 +826,19 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
       </section>
 
       {/* CTA */}
-      <section className="bg-primary/5 py-20">
+      <section className="py-20" style={{background: 'linear-gradient(180deg, #1A1A1A 0%, #0A0A0A 100%)'}}>
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 3.2 }}
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Développons Votre Application Sécurisée
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              Créons votre site web sécurisé
             </h3>
-            <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-              De l'idée au déploiement sécurisé - expertise complète en développement et cybersécurité.
-              Applications robustes, conformes et prêtes pour l'avenir.
+            <p className="text-lg text-gray-400 mb-8 max-w-xl mx-auto">
+              De l'idée à la mise en ligne : un site sur mesure, sans WordPress, avec revue & tests de sécurité.
+              Basé à Bienne/Biel, prestations pour toute la Suisse.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -849,10 +850,11 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
                 <Button
                   size="lg"
                   onClick={() => onNavigate('contact')}
-                  className="bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-xl font-semibold"
+                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-lg hover:shadow-xl font-semibold"
+                  style={{boxShadow: '0 0 30px rgba(229,57,53,0.5)'}}
                 >
                   <Envelope size={20} className="mr-2" />
-                  Démarrer le projet sécurisé
+                  Demander un devis site sécurisé
                 </Button>
               </motion.div>
 

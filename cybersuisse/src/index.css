@@ -14,34 +14,49 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.2 0 0);
+  /* RED TEAM PALETTE - Dark Theme */
+  --background: #0A0A0A;
+  --foreground: #FFFFFF;
   
-  --card: oklch(0.98 0 0);
-  --card-foreground: oklch(0.2 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0 0);
+  --card: #1A1A1A;
+  --card-foreground: #FFFFFF;
+  --popover: #1A1A1A;
+  --popover-foreground: #FFFFFF;
   
-  --primary: oklch(0.65 0.15 35);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.75 0.08 35);
-  --secondary-foreground: oklch(0.1 0 0);
-  --accent: oklch(0.65 0.15 35);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(1 0 0);
+  /* Primary - Vermelho Vivo */
+  --primary: #E53935;
+  --primary-foreground: #FFFFFF;
+  --primary-dark: #B71C1C;
+  --primary-light: #FF5252;
   
-  --muted: oklch(0.95 0 0);
-  --muted-foreground: oklch(0.5 0 0);
-  --border: oklch(0.9 0 0);
-  --input: oklch(0.9 0 0);
-  --ring: oklch(0.65 0.15 50);
+  /* Secondary - Âmbar/Laranja */
+  --secondary: #FF6F00;
+  --secondary-foreground: #FFFFFF;
+  
+  /* Accent - Vermelho */
+  --accent: #E53935;
+  --accent-foreground: #FFFFFF;
+  
+  --destructive: #FF1744;
+  --destructive-foreground: #FFFFFF;
+  
+  --muted: #2D2D2D;
+  --muted-foreground: #A0A0A0;
+  --border: #333333;
+  --input: #2D2D2D;
+  --ring: #E53935;
   
   --radius: 0.75rem;
   
-  --font-sans: Roboto;
+  --font-sans: Inter;
   
   --font-serif: "IBM Plex Serif";
+  
+  /* Red Team specific colors */
+  --red-team-primary: #E53935;
+  --red-team-dark: #B71C1C;
+  --red-team-light: #FF5252;
+  --red-team-glow: rgba(229, 57, 53, 0.5);
 }
 
 @theme {

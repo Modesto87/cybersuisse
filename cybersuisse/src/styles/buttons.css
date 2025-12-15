@@ -1,13 +1,14 @@
 /* CYBERSUISSE - CUSTOM BUTTON STYLES */
 /* ================================== */
 
-/* Botão principal com efeito 3D */
+/* Botão principal com efeito 3D - RED TEAM */
 .btn-primary-3d {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e40af 100%);
+  background: linear-gradient(135deg, #FF5252 0%, #E53935 50%, #B71C1C 100%);
   border: none;
+  color: #FFFFFF;
   box-shadow: 
-    0 4px 12px rgba(59, 130, 246, 0.3),
-    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 4px 12px rgba(229, 57, 53, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   transform: translateY(0);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -27,11 +28,12 @@
 }
 
 .btn-primary-3d:hover {
-  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e3a8a 100%);
+  background: linear-gradient(135deg, #E53935 0%, #C62828 50%, #B71C1C 100%);
   box-shadow: 
-    0 6px 20px rgba(59, 130, 246, 0.4),
-    0 4px 8px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    0 6px 24px rgba(229, 57, 53, 0.5),
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 0 30px rgba(229, 57, 53, 0.3);
   transform: translateY(-2px);
 }
 
@@ -42,31 +44,32 @@
 .btn-primary-3d:active {
   transform: translateY(0);
   box-shadow: 
-    0 2px 8px rgba(59, 130, 246, 0.3),
-    0 1px 2px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(229, 57, 53, 0.4),
+    0 1px 2px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Botão secundário com efeito 3D */
+/* Botão secundário com efeito 3D - RED TEAM */
 .btn-secondary-3d {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
-  border: 2px solid #3b82f6;
-  color: #1e40af;
+  background: linear-gradient(135deg, #2D2D2D 0%, #1A1A1A 50%, #0A0A0A 100%);
+  border: 2px solid #E53935;
+  color: #FFFFFF;
   box-shadow: 
-    0 3px 8px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    0 3px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transform: translateY(0);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 600;
 }
 
 .btn-secondary-3d:hover {
-  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #bfdbfe 100%);
-  border-color: #2563eb;
-  color: #1e3a8a;
+  background: linear-gradient(135deg, #3D3D3D 0%, #2D2D2D 50%, #1A1A1A 100%);
+  border-color: #FF5252;
+  color: #FFFFFF;
   box-shadow: 
-    0 5px 12px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    0 5px 16px rgba(229, 57, 53, 0.3),
+    0 0 20px rgba(229, 57, 53, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
   transform: translateY(-1px);
 }
 
@@ -121,20 +124,21 @@
   transform: translateY(-2px);
 }
 
-/* Input com melhor contraste */
+/* Input com melhor contraste - RED TEAM */
 .input-enhanced {
-  border: 2px solid #e2e8f0;
-  background: #ffffff;
+  border: 2px solid #333333;
+  background: #1A1A1A;
+  color: #FFFFFF;
   transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .input-enhanced:focus {
-  border-color: #3b82f6;
+  border-color: #E53935;
   box-shadow: 
-    0 0 0 3px rgba(59, 130, 246, 0.1),
-    0 1px 3px rgba(0, 0, 0, 0.1);
-  background: #ffffff;
+    0 0 0 3px rgba(229, 57, 53, 0.2),
+    0 1px 3px rgba(0, 0, 0, 0.3);
+  background: #2D2D2D;
 }
 
 /* Select com melhor contraste */
@@ -152,20 +156,22 @@
     0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Cards com melhor contraste */
+/* Cards com melhor contraste - RED TEAM */
 .card-enhanced {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: #1A1A1A;
+  border: 1px solid #333333;
   box-shadow: 
-    0 4px 12px rgba(0, 0, 0, 0.05),
-    0 1px 3px rgba(0, 0, 0, 0.1);
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
 
 .card-enhanced:hover {
+  border-color: #E53935;
   box-shadow: 
-    0 8px 24px rgba(0, 0, 0, 0.1),
-    0 4px 8px rgba(0, 0, 0, 0.05);
+    0 8px 24px rgba(229, 57, 53, 0.2),
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(229, 57, 53, 0.1);
   transform: translateY(-2px);
 }
 

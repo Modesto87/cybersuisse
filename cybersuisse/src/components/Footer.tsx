@@ -8,7 +8,7 @@ interface FooterProps {
 
 export default function Footer({ onNavigate }: FooterProps) {
   return (
-    <footer className="bg-primary/5 border-t border-border/50 py-12">
+    <footer className="bg-[#0A0A0A] border-t border-red-900/30 py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo et description */}
@@ -20,9 +20,9 @@ export default function Footer({ onNavigate }: FooterProps) {
               viewport={{ once: true }}
             >
               <Logo size="md" showText={true} className="mb-4" />
-              <p className="text-muted-foreground text-sm leading-relaxed max-w-md">
+              <p className="text-gray-500 text-sm leading-relaxed max-w-md">
                 Expert freelance en cybersécurité basé en Suisse. Spécialisé dans les tests d'intrusion, 
-                la surveillance de menaces, l'audit CRA et le développement sécurisé.
+                les opérations Red Team et le développement sécurisé.
               </p>
             </motion.div>
           </div>
@@ -35,12 +35,11 @@ export default function Footer({ onNavigate }: FooterProps) {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <h4 className="font-semibold text-foreground mb-4">Services</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>Tests d'Intrusion</li>
-                <li>Surveillance de Menaces</li>
-                <li>Audit CRA</li>
-                <li>Développement Sécurisé</li>
+              <h4 className="font-semibold text-white mb-4">Services</h4>
+              <ul className="space-y-2 text-sm text-gray-500">
+                <li className="hover:text-red-400 transition-colors cursor-pointer">Tests d'Intrusion</li>
+                <li className="hover:text-red-400 transition-colors cursor-pointer">Red Team Operations</li>
+                <li className="hover:text-red-400 transition-colors cursor-pointer">Développement Sécurisé</li>
               </ul>
             </motion.div>
           </div>
@@ -53,18 +52,18 @@ export default function Footer({ onNavigate }: FooterProps) {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h4 className="font-semibold text-foreground mb-4">Contact</h4>
-              <div className="space-y-3 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <Envelope size={16} className="text-accent" />
+              <h4 className="font-semibold text-white mb-4">Contact</h4>
+              <div className="space-y-3 text-sm text-gray-500">
+                <div className="flex items-center gap-2 hover:text-red-400 transition-colors">
+                  <Envelope size={16} className="text-red-500" />
                   <span>modesto@cybersuisse.ch</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Phone size={16} className="text-accent" />
+                <div className="flex items-center gap-2 hover:text-red-400 transition-colors">
+                  <Phone size={16} className="text-red-500" />
                   <span>+41 78 208 95 45</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <MapPin size={16} className="text-accent" />
+                <div className="flex items-center gap-2 hover:text-red-400 transition-colors">
+                  <MapPin size={16} className="text-red-500" />
                   <span>Bienne/Biel, Canton de Berne, Suisse</span>
                 </div>
               </div>
@@ -78,7 +77,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           whileInView={{ opacity: 1, scaleX: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
-          className="border-t border-border/50 my-8"
+          className="border-t border-red-900/30 my-8"
         />
 
         {/* Copyright */}
@@ -87,7 +86,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground"
+          className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500"
         >
           <p>© 2024 Modesto Cybersécurité. Tous droits réservés.</p>
           <div className="flex items-center gap-4 mt-4 md:mt-0">
@@ -95,38 +94,32 @@ export default function Footer({ onNavigate }: FooterProps) {
               <>
                 <button
                   onClick={() => onNavigate('cgv')}
-                  className="hover:text-accent transition-colors duration-200 underline"
+                  className="hover:text-red-400 transition-colors duration-200 underline"
                 >
                   CGV
                 </button>
                 <button
                   onClick={() => onNavigate('politique-confidentialite')}
-                  className="hover:text-accent transition-colors duration-200 underline"
+                  className="hover:text-red-400 transition-colors duration-200 underline"
                 >
                   Politique de Confidentialité
                 </button>
                 <button
                   onClick={() => onNavigate('mentions-legales')}
-                  className="hover:text-accent transition-colors duration-200 underline"
+                  className="hover:text-red-400 transition-colors duration-200 underline"
                 >
                   Mentions Légales
                 </button>
                 <button
-                  onClick={() => onNavigate('security')}
-                  className="hover:text-accent transition-colors duration-200 underline"
-                >
-                  Sécurité & CRA
-                </button>
-                <button
                   onClick={() => onNavigate('cookies')}
-                  className="hover:text-accent transition-colors duration-200 underline"
+                  className="hover:text-red-400 transition-colors duration-200 underline"
                 >
                   Cookies
                 </button>
               </>
             )}
-            <span>Freelance certifié en Suisse</span>
-            <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+            <span className="text-gray-600">Freelance certifié en Suisse</span>
+            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" style={{boxShadow: '0 0 10px rgba(229,57,53,0.6)'}} />
           </div>
         </motion.div>
       </div>

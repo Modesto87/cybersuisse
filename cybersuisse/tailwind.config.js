@@ -114,6 +114,12 @@ const defaultTheme = {
       "accordion-down": "accordion-down 0.2s ease-out",
       "accordion-up": "accordion-up 0.2s ease-out",
     },
+    fontFamily: {
+      sans: ["var(--font-sans-serif)"],
+      heading: ["var(--font-heading)"],
+      serif: ["var(--font-serif)"],
+      mono: ["var(--font-monospace)"],
+    },
   },
   spacing: {
     px: "var(--size-px)",

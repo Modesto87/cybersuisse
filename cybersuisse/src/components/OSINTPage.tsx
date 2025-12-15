@@ -50,28 +50,31 @@ const itemVariants = {
   }
 }
 
+// Red Team dark background style
+const darkBgStyle = {background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}
+
 const osintServices = [
   {
     icon: User,
     title: 'Investigation de Personnes',
-    description: 'Recherche approfondie d\'informations sur individus, profils sociaux, historique numérique et activités en ligne.',
+    description: 'Investigation digitale discrète via sources ouvertes : cohérence de profil, réputation en ligne, signaux d\'alerte et éléments à clarifier.',
     features: [
-      'Analyse de profils sociaux (LinkedIn, Facebook, Twitter, Instagram)',
-      'Recherche d\'emails et numéros de téléphone',
-      'Historique professionnel et académique',
-      'Analyse de réputation en ligne'
+      'Vérification de cohérence (parcours, présence publique, alias)',
+      'Analyse de réputation et signaux faibles (sources publiques)',
+      'Contexte recrutement : éléments à valider avant embauche (cadre conforme)',
+      'Synthèse claire et actionnable (faits, sources, niveau de confiance)'
     ],
     popular: true
   },
   {
     icon: Buildings,
     title: 'Due Diligence Entreprise',
-    description: 'Évaluation complète de sociétés, dirigeants et partenaires commerciaux via sources ouvertes.',
+    description: 'Avant de signer, d\'ouvrir un accès ou d\'engager un budget : évaluez le risque réputationnel et opérationnel via sources ouvertes.',
     features: [
       'Analyse de structure corporate',
       'Vérification de dirigeants et actionnaires',
       'Évaluation des risques réputationnels',
-      'Analyse concurrentielle'
+      'Contexte partenaires/fournisseurs (risques & signaux d\'alerte)'
     ],
     popular: false
   },
@@ -92,7 +95,7 @@ const osintServices = [
     title: 'Analyse de Menaces',
     description: 'Identification et analyse de menaces potentielles via intelligence de sources ouvertes.',
     features: [
-      'Surveillance de menaces ciblées',
+      'Veille sur menaces ciblées',
       'Analyse de campagnes de désinformation',
       'Évaluation de risques géopolitiques',
       'Alertes personnalisées'
@@ -160,7 +163,7 @@ const benefits = [
   {
     icon: Clock,
     title: 'Temps Réel',
-    description: 'Surveillance continue des changements et évolutions en temps réel.'
+    description: 'Suivi continu des changements et évolutions en temps réel.'
   }
 ]
 
@@ -170,13 +173,14 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 py-12"
+      className="min-h-screen py-12"
+      style={{background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}}
     >
       {/* SEO Content optimisé pour IA et buscas OSINT */}
       <SEOContent
         page="osint"
-        title="Investigation OSINT Suisse | Open Source Intelligence | Recherche Cyber | Modesto"
-        description="🔍 Expert OSINT Suisse - Investigation open source intelligence, recherche cyber, due diligence entreprise. Analyse profils sociaux, fuites données, menaces. Bienne, Suisse."
+        title="OSINT & Investigation Digitale à Bienne/Biel (Suisse) | Due Diligence & Recherche Discrète"
+        description="🔍 OSINT à Bienne/Biel et environs : investigation digitale (sources ouvertes), due diligence, vérification de profils/candidats, réputation en ligne et investigations cyber (fuites, surface d'attaque). Discrétion et conformité (droit suisse/RGPD)."
       />
 
       <div className="container mx-auto px-4 max-w-7xl">
@@ -200,37 +204,41 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
 
           <motion.h1
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold text-foreground mb-4"
+            className="text-4xl md:text-5xl font-bold text-white mb-4"
           >
-            Investigation <span className="text-primary">OSINT</span>
+            Investigation <span className="text-red-500" style={{textShadow: '0 0 30px rgba(229,57,53,0.4)'}}>OSINT</span>
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
-            className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-6"
+            className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed mb-6"
           >
-            🔍 <strong>Open Source Intelligence</strong> - Maîtrisez l'art de l'investigation numérique.
-            Découvrez ce qui est visible de votre entreprise, vos partenaires ou concurrents via
-            sources ouvertes. De la recherche de personnes à l'analyse de menaces cyber.
+            🔍 <strong>Open Source Intelligence (OSINT)</strong> : une investigation digitale basée sur des sources publiques.
+            À Bienne/Biel (Seeland) et partout en Suisse, j’aide les entreprises et particuliers à prendre des décisions
+            éclairées : recrutement, partenaires, réputation, et risques cyber — avec méthode, professionnalisme et discrétion.
           </motion.p>
 
           <motion.div
             variants={itemVariants}
             className="flex flex-wrap justify-center gap-4 mb-8"
           >
-            <Badge variant="secondary" className="px-4 py-2 text-sm">
+            <Badge variant="secondary" className="px-4 py-2 text-sm bg-red-950/60 text-red-400 border border-red-600/40">
               <Binoculars size={16} className="mr-2" />
               Investigation Avancée
             </Badge>
-            <Badge variant="secondary" className="px-4 py-2 text-sm">
+            <Badge variant="secondary" className="px-4 py-2 text-sm bg-red-950/60 text-red-400 border border-red-600/40">
               <Database size={16} className="mr-2" />
               Sources Multiples
             </Badge>
-            <Badge variant="secondary" className="px-4 py-2 text-sm">
+            <Badge variant="secondary" className="px-4 py-2 text-sm bg-red-950/60 text-red-400 border border-red-600/40">
               <Shield size={16} className="mr-2" />
               RGPD Compliant
             </Badge>
-            <Badge variant="secondary" className="px-4 py-2 text-sm">
+            <Badge variant="secondary" className="px-4 py-2 text-sm bg-red-950/60 text-red-400 border border-red-600/40">
+              <Eye size={16} className="mr-2" />
+              Discrétion & Confidentialité
+            </Badge>
+            <Badge variant="secondary" className="px-4 py-2 text-sm bg-red-950/60 text-red-400 border border-red-600/40">
               <Clock size={16} className="mr-2" />
               Rapports 48h
             </Badge>
@@ -245,43 +253,85 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <h2 className="text-3xl font-bold text-foreground mb-6">
+              <h2 className="text-3xl font-bold text-white mb-6">
                 Qu'est-ce que l'OSINT ?
               </h2>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+              <p className="text-lg text-gray-400 mb-6 leading-relaxed">
                 L'<strong>Open Source Intelligence (OSINT)</strong> consiste à collecter,
                 analyser et interpréter des informations disponibles publiquement.
                 Contrairement aux méthodes traditionnelles d'investigation, l'OSINT
                 utilise uniquement des sources légales et accessibles à tous.
               </p>
 
+              <div className="bg-red-950/30 rounded-lg border border-red-800/40 p-5 mb-6">
+                <p className="text-gray-300 leading-relaxed">
+                  Concrètement : on vérifie ce qui est déjà visible (et parfois exploitable) — sans intrusion illégale.
+                  Cela peut concerner l’informatique (fuites de données, exposition d’infrastructure) ou des sujets plus humains
+                  (réputation, cohérence d’un profil, signaux faibles). L’objectif est simple : réduire le risque avant de faire confiance,
+                  d’embaucher ou de signer un contrat.
+                </p>
+              </div>
+
+              <h3 className="text-xl font-bold text-white mb-3">Investigation privée & due diligence (langage simple)</h3>
+              <p className="text-gray-400 mb-6 leading-relaxed">
+                Vous hésitez avant d’embaucher un candidat, d’accorder un accès à des systèmes sensibles, ou de nouer un partenariat ?
+                Une investigation OSINT permet de recouper des informations publiques pour détecter incohérences, risques réputationnels,
+                ou signaux d’alerte. Dans un cadre entreprise, l’analyse peut être faite de manière proportionnée et conforme
+                (droit suisse, RGPD), avec transparence/consentement lorsque requis.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div className="flex items-start gap-3 bg-[#1A1A1A] rounded-xl p-4 border border-[#333]">
+                  <CheckCircle size={18} className="text-red-500 flex-shrink-0 mt-0.5" weight="fill" />
+                  <p className="text-sm text-gray-300">Mieux connaître un candidat avant embauche (cohérence du parcours, présence publique, signaux à clarifier).</p>
+                </div>
+                <div className="flex items-start gap-3 bg-[#1A1A1A] rounded-xl p-4 border border-[#333]">
+                  <CheckCircle size={18} className="text-red-500 flex-shrink-0 mt-0.5" weight="fill" />
+                  <p className="text-sm text-gray-300">Évaluer un partenaire/fournisseur avant de lui faire confiance (réputation, historique public, structure).</p>
+                </div>
+                <div className="flex items-start gap-3 bg-[#1A1A1A] rounded-xl p-4 border border-[#333]">
+                  <CheckCircle size={18} className="text-red-500 flex-shrink-0 mt-0.5" weight="fill" />
+                  <p className="text-sm text-gray-300">Protéger votre marque : repérer usurpations, faux profils ou mentions problématiques.</p>
+                </div>
+                <div className="flex items-start gap-3 bg-[#1A1A1A] rounded-xl p-4 border border-[#333]">
+                  <CheckCircle size={18} className="text-red-500 flex-shrink-0 mt-0.5" weight="fill" />
+                  <p className="text-sm text-gray-300">Sécurité : détecter données exposées, erreurs de configuration, informations trop visibles.</p>
+                </div>
+              </div>
+
+              <p className="text-gray-400 leading-relaxed">
+                Je suis formé aux tactiques de surveillance et de contre-surveillance, ainsi qu’à l’investigation digitale.
+                Dans le cadre OSINT, l’approche reste <strong>légale</strong>, <strong>éthique</strong> et centrée sur des preuves issues de sources ouvertes,
+                avec une confidentialité stricte.
+              </p>
+
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <Globe className="text-primary mt-1 flex-shrink-0" size={20} />
+                  <Globe className="text-red-500 mt-1 flex-shrink-0" size={20} />
                   <div>
-                    <div className="font-semibold text-foreground">Sources Publiques</div>
-                    <div className="text-muted-foreground text-sm">Sites web, réseaux sociaux, bases de données publiques</div>
+                    <div className="font-semibold text-white">Sources Publiques</div>
+                    <div className="text-gray-400 text-sm">Sites web, réseaux sociaux, bases de données publiques</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Users className="text-primary mt-1 flex-shrink-0" size={20} />
+                  <Users className="text-red-500 mt-1 flex-shrink-0" size={20} />
                   <div>
-                    <div className="font-semibold text-foreground">Réseaux Sociaux</div>
-                    <div className="text-muted-foreground text-sm">LinkedIn, Twitter, Facebook, Instagram, TikTok</div>
+                    <div className="font-semibold text-white">Réseaux Sociaux</div>
+                    <div className="text-gray-400 text-sm">LinkedIn, Twitter, Facebook, Instagram, TikTok</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Database className="text-primary mt-1 flex-shrink-0" size={20} />
+                  <Database className="text-red-500 mt-1 flex-shrink-0" size={20} />
                   <div>
-                    <div className="font-semibold text-foreground">Bases de Données</div>
-                    <div className="text-muted-foreground text-sm">Registres commerciaux, WHOIS, brevets, publications</div>
+                    <div className="font-semibold text-white">Bases de Données</div>
+                    <div className="text-gray-400 text-sm">Registres commerciaux, WHOIS, brevets, publications</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Network className="text-primary mt-1 flex-shrink-0" size={20} />
+                  <Network className="text-red-500 mt-1 flex-shrink-0" size={20} />
                   <div>
-                    <div className="font-semibold text-foreground">Infrastructure</div>
-                    <div className="text-muted-foreground text-sm">Analyse de surface d'attaque, fuites de données</div>
+                    <div className="font-semibold text-white">Infrastructure</div>
+                    <div className="text-gray-400 text-sm">Analyse de surface d'attaque, fuites de données</div>
                   </div>
                 </div>
               </div>
@@ -317,7 +367,7 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
 
         {/* Services OSINT */}
         <motion.section variants={itemVariants} className="mb-16">
-          <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">
             Services d'Investigation OSINT
           </h2>
 
@@ -331,33 +381,33 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
                   whileHover={{ y: -8, scale: 1.03 }}
                   className="group"
                 >
-                  <Card className={`h-full transition-all duration-300 hover:shadow-2xl border-2 hover:border-accent/30 bg-gradient-to-br from-card to-card/50 overflow-hidden relative ${service.popular ? 'ring-2 ring-primary/50' : ''}`}>
+                  <Card className={`h-full transition-all duration-300 hover:shadow-2xl bg-[#1A1A1A] border-[#333] hover:border-red-600/40 overflow-hidden relative ${service.popular ? 'ring-2 ring-red-500/50' : ''}`}>
                     {service.popular && (
                       <div className="absolute top-4 right-4 z-10">
-                        <Badge className="bg-primary text-primary-foreground">Plus demandé</Badge>
+                        <Badge className="bg-red-600 text-white">Plus demandé</Badge>
                       </div>
                     )}
 
                     <CardHeader className="pb-4">
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                          <IconComponent size={32} className="text-primary group-hover:scale-110 transition-transform" />
+                        <div className="p-3 bg-red-950/50 rounded-lg group-hover:bg-red-950/70 transition-colors">
+                          <IconComponent size={32} className="text-red-500 group-hover:scale-110 transition-transform" />
                         </div>
-                        <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                        <CardTitle className="text-xl text-white group-hover:text-red-400 transition-colors">
                           {service.title}
                         </CardTitle>
                       </div>
                     </CardHeader>
 
                     <CardContent>
-                      <p className="text-muted-foreground mb-6 leading-relaxed">
+                      <p className="text-gray-400 mb-6 leading-relaxed">
                         {service.description}
                       </p>
 
                       <ul className="space-y-3 mb-6">
                         {service.features.map((feature, index) => (
-                          <li key={index} className="flex items-start text-sm text-muted-foreground">
-                            <CheckCircle size={16} className="text-accent mr-3 mt-0.5 flex-shrink-0" />
+                          <li key={index} className="flex items-start text-sm text-gray-300">
+                            <CheckCircle size={16} className="text-red-500 mr-3 mt-0.5 flex-shrink-0" />
                             {feature}
                           </li>
                         ))}
@@ -370,7 +420,7 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
                         <Button
                           variant="outline"
                           onClick={() => onNavigate('contact')}
-                          className="w-full justify-between group-hover:bg-primary/5 group-hover:text-primary group-hover:border-primary/50 transition-all duration-300"
+                          className="w-full justify-between border-[#444] text-gray-300 hover:bg-red-950/50 hover:text-red-400 hover:border-red-600/50 transition-all duration-300"
                         >
                           Demander un devis
                           <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -386,7 +436,7 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
 
         {/* Methodology Section */}
         <motion.section variants={itemVariants} className="mb-16">
-          <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">
             Méthodologie OSINT Professionnelle
           </h2>
 
@@ -400,26 +450,26 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
                   whileHover={{ y: -5 }}
                   className="group"
                 >
-                  <Card className="h-full text-center border-2 hover:border-primary/20 transition-all duration-300 hover:shadow-xl">
+                  <Card className="h-full text-center bg-[#1A1A1A] border-[#333] hover:border-red-600/40 transition-all duration-300 hover:shadow-xl">
                     <CardContent className="p-8">
                       <motion.div
                         whileHover={{ rotate: 5, scale: 1.1 }}
                         className="inline-block mb-4"
                       >
-                        <div className="p-4 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
-                          <IconComponent size={40} className="text-primary" />
+                        <div className="p-4 bg-red-950/50 rounded-full group-hover:bg-red-950/70 transition-colors">
+                          <IconComponent size={40} className="text-red-500" />
                         </div>
                       </motion.div>
-                      <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                      <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-red-400 transition-colors">
                         {phase.phase}
                       </h3>
-                      <p className="text-muted-foreground mb-4 text-sm">
+                      <p className="text-gray-400 mb-4 text-sm">
                         {phase.description}
                       </p>
-                      <ul className="text-xs text-muted-foreground space-y-1">
+                      <ul className="text-xs text-gray-500 space-y-1">
                         {phase.steps.map((step, stepIndex) => (
                           <li key={stepIndex} className="flex items-center justify-center">
-                            <span className="w-1 h-1 bg-accent rounded-full mr-2"></span>
+                            <span className="w-1 h-1 bg-red-500 rounded-full mr-2"></span>
                             {step}
                           </li>
                         ))}
@@ -434,11 +484,11 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
 
         {/* Tools & Technologies */}
         <motion.section variants={itemVariants} className="mb-16">
-          <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">
             Outils & Technologies OSINT
           </h2>
 
-          <Card className="border-2 border-primary/10 bg-gradient-to-br from-card to-muted/20">
+          <Card className="bg-[#1A1A1A] border-[#333]">
             <CardContent className="p-8">
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                 {osintTools.map((tool, index) => (
@@ -446,21 +496,21 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
                     key={index}
                     variants={itemVariants}
                     whileHover={{ scale: 1.05 }}
-                    className="text-center p-4 rounded-lg bg-background/50 border border-border hover:border-primary/30 transition-all duration-200 hover:shadow-md"
+                    className="text-center p-4 rounded-lg bg-[#0A0A0A] border border-[#444] hover:border-red-600/40 transition-all duration-200 hover:shadow-md"
                   >
-                    <div className="font-semibold text-foreground text-sm mb-1">
+                    <div className="font-semibold text-white text-sm mb-1">
                       {tool.name}
                     </div>
-                    <Badge variant="outline" className="text-xs">
+                    <Badge variant="outline" className="text-xs border-[#555] text-gray-400">
                       {tool.category}
                     </Badge>
                   </motion.div>
                 ))}
               </div>
 
-              <div className="mt-8 p-4 bg-primary/5 rounded-lg border border-primary/20">
-                <p className="text-center text-muted-foreground text-sm">
-                  🔧 <strong>Outils spécialisés :</strong> Utilisation d'outils professionnels et frameworks
+              <div className="mt-8 p-4 bg-red-950/30 rounded-lg border border-red-800/40">
+                <p className="text-center text-gray-300 text-sm">
+                  🔧 <strong className="text-red-400">Outils spécialisés :</strong> Utilisation d'outils professionnels et frameworks
                   open source pour maximiser l'efficacité des investigations tout en respectant
                   les contraintes légales et éthiques.
                 </p>
@@ -471,7 +521,7 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
 
         {/* Benefits Section */}
         <motion.section variants={itemVariants} className="mb-16">
-          <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">
             Avantages de l'Investigation OSINT
           </h2>
 
@@ -485,13 +535,13 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
                   whileHover={{ y: -5 }}
                   className="group"
                 >
-                  <Card className="h-full text-center border-2 hover:border-accent/20 transition-all duration-300 hover:shadow-xl">
+                  <Card className="h-full text-center bg-[#1A1A1A] border-[#333] hover:border-red-600/40 transition-all duration-300 hover:shadow-xl">
                     <CardContent className="p-8">
                       <motion.div
                         whileHover={{ rotate: 5, scale: 1.1 }}
                         className="inline-block mb-4"
                       >
-                        <IconComponent size={48} className="text-accent group-hover:text-primary transition-colors" />
+                        <IconComponent size={48} className="text-orange-500 group-hover:text-red-500 transition-colors" />
                       </motion.div>
                       <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
                         {benefit.title}
@@ -524,11 +574,11 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Due diligence avant acquisition</li>
-                    <li>• Analyse de concurrents</li>
-                    <li>• Vérification de partenaires</li>
-                    <li>• Évaluation des risques</li>
-                    <li>• Protection de la réputation</li>
+                    <li>• Pré‑recrutement : mieux connaître un candidat avant embauche (cadre conforme)</li>
+                    <li>• Vérification de partenaires/fournisseurs avant de faire confiance</li>
+                    <li>• Due diligence avant acquisition / collaboration</li>
+                    <li>• Protection de la réputation (usurpations, faux profils)</li>
+                    <li>• Réduction du risque (fraude, social engineering, exposition publique)</li>
                   </ul>
                 </CardContent>
               </Card>
@@ -544,11 +594,11 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Recherche de personnes</li>
-                    <li>• Vérification d'identité</li>
-                    <li>• Analyse de réputation</li>
-                    <li>• Investigations personnelles</li>
-                    <li>• Protection vie privée</li>
+                    <li>• Vérifier l\'historique public avant de faire confiance (contexte privé/professionnel)</li>
+                    <li>• Recherche de traces et cohérence d\'identité (sources ouvertes)</li>
+                    <li>• Analyse de réputation et exposition en ligne</li>
+                    <li>• Aide à la protection de la vie privée (ce qui est visible, comment réduire l\'exposition)</li>
+                    <li>• Rapports clairs, discrets et orientés faits</li>
                   </ul>
                 </CardContent>
               </Card>
