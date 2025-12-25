@@ -10,7 +10,7 @@ interface MentionsLegalesPageProps {
 
 export default function MentionsLegalesPage({ onNavigate }: MentionsLegalesPageProps) {
   return (
-    <div className="min-h-screen" style={{background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}}>
+    <div className="min-h-screen cs-bg-redteam-diagonal">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#0A0A0A] to-red-950/30 text-white py-20">
         <div className="max-w-6xl mx-auto px-6">
@@ -274,8 +274,7 @@ export default function MentionsLegalesPage({ onNavigate }: MentionsLegalesPageP
           >
             <Button 
               onClick={() => onNavigate('contact')}
-              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-              style={{boxShadow: '0 0 20px rgba(229,57,53,0.4)'}}
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 cs-shadow-glow-red-20"
             >
               <Envelope className="mr-2" />
               Nous Contacter

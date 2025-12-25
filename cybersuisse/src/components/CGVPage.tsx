@@ -9,7 +9,7 @@ interface CGVPageProps {
 
 export default function CGVPage({ onNavigate }: CGVPageProps) {
   return (
-    <div className="min-h-screen" style={{background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}}>
+    <div className="min-h-screen cs-bg-redteam-diagonal">
       <div className="container mx-auto px-4 py-12">
         {/* Bouton retour */}
         <motion.div
@@ -319,8 +319,7 @@ export default function CGVPage({ onNavigate }: CGVPageProps) {
                 </p>
                 <Button
                   onClick={() => onNavigate('contact')}
-                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-lg hover:shadow-xl transition-all duration-300"
-                  style={{boxShadow: '0 0 20px rgba(229,57,53,0.4)'}}
+                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-lg hover:shadow-xl transition-all duration-300 cs-shadow-glow-red-20"
                 >
                   Nous contacter
                 </Button>

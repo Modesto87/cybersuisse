@@ -1,6 +1,146 @@
 /* CYBERSUISSE - CORREÇÕES DE CORES PARA PRODUÇÃO */
 /* ================================================ */
 
+/*
+  Utilitários para evitar inline styles.
+  Alguns hostings aplicam CSP (style-src sem 'unsafe-inline'),
+  o que faz com que style="..." seja ignorado e as cores/sombras mudem.
+  Estas classes replicam os mesmos valores já usados no JSX.
+*/
+
+.cs-bg-redteam-diagonal {
+  background: linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%);
+}
+
+.cs-bg-redteam-diagonal-rededge {
+  background: linear-gradient(135deg, #1A0505 0%, #0A0A0A 50%, #1A0505 100%);
+}
+
+.cs-bg-redteam-diagonal-to-black {
+  background: linear-gradient(135deg, #1A0505 0%, #0A0A0A 100%);
+}
+
+.cs-bg-pentest-blue-diagonal {
+  background: linear-gradient(135deg, #0A0A0A 0%, #0A0A1A 50%, #0A0A0A 100%);
+}
+
+.cs-bg-redteam-home {
+  background: linear-gradient(135deg, #0A0A0A 0%, #1A0000 25%, #2D0A0A 50%, #1A0000 75%, #0A0A0A 100%);
+}
+
+.cs-bg-redteam-cta {
+  background: linear-gradient(135deg, #1A0000 0%, #2D0A0A 25%, #B71C1C 50%, #2D0A0A 75%, #1A0000 100%);
+}
+
+.cs-bg-redteam-vertical-dark {
+  background: linear-gradient(180deg, #0A0A0A 0%, #1A1A1A 100%);
+}
+
+.cs-bg-redteam-vertical-dark-reverse {
+  background: linear-gradient(180deg, #1A1A1A 0%, #0A0A0A 100%);
+}
+
+.cs-text-glow-red-20 {
+  text-shadow: 0 0 20px rgba(229, 57, 53, 0.3);
+}
+
+.cs-text-glow-red-10 {
+  text-shadow: 0 0 10px rgba(229, 57, 53, 0.4);
+}
+
+.cs-text-glow-red-20-strong {
+  text-shadow: 0 0 20px rgba(229, 57, 53, 0.5);
+}
+
+.cs-text-glow-red-30 {
+  text-shadow: 0 0 30px rgba(229, 57, 53, 0.4);
+}
+
+.cs-text-glow-red-40 {
+  text-shadow: 0 0 40px rgba(229, 57, 53, 0.5);
+}
+
+.cs-text-glow-soft-redteam {
+  text-shadow: 0 0 20px rgba(248, 113, 113, 0.5);
+}
+
+.cs-text-glow-orange-30 {
+  text-shadow: 0 0 30px rgba(255, 111, 0, 0.4);
+}
+
+.cs-shadow-glow-red-15 {
+  box-shadow: 0 0 15px rgba(229, 57, 53, 0.3);
+}
+
+.cs-shadow-glow-red-10-strong {
+  box-shadow: 0 0 10px rgba(229, 57, 53, 0.6);
+}
+
+.cs-shadow-glow-red-20 {
+  box-shadow: 0 0 20px rgba(229, 57, 53, 0.4);
+}
+
+.cs-shadow-glow-red-20-soft {
+  box-shadow: 0 0 20px rgba(229, 57, 53, 0.3);
+}
+
+.cs-shadow-glow-red-20-strong {
+  box-shadow: 0 0 20px rgba(229, 57, 53, 0.5);
+}
+
+.cs-shadow-glow-red-30 {
+  box-shadow: 0 0 30px rgba(229, 57, 53, 0.4);
+}
+
+.cs-shadow-glow-red-30-strong {
+  box-shadow: 0 0 30px rgba(229, 57, 53, 0.5);
+}
+
+.cs-shadow-glow-red-30-soft {
+  box-shadow: 0 0 30px rgba(229, 57, 53, 0.2);
+}
+
+.cs-shadow-glow-red-40-soft {
+  box-shadow: 0 0 40px rgba(229, 57, 53, 0.2);
+}
+
+.cs-shadow-glow-red-40 {
+  box-shadow: 0 0 40px rgba(229, 57, 53, 0.4);
+}
+
+.cs-shadow-glow-white-30 {
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+.cs-shadow-nav-scrolled {
+  box-shadow: 0 4px 30px rgba(229, 57, 53, 0.1);
+}
+
+.cs-shadow-glow-orange-8-strong {
+  box-shadow: 0 0 8px rgba(255, 111, 0, 0.6);
+}
+
+.cs-shadow-glow-orange-10 {
+  box-shadow: 0 0 10px rgba(255, 111, 0, 0.5);
+}
+
+.cs-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.cs-text-glow-green-20 {
+  text-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+}
+
+.cs-hero-grid-red {
+  background-image: radial-gradient(circle at 2px 2px, rgba(229, 57, 53, 0.3) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+.cs-cta-dotpattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
 /* Garantir visibilidade de todas as cores */
 * {
   -webkit-font-smoothing: antialiased;

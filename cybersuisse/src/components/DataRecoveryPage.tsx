@@ -102,7 +102,7 @@ const recoveryProcess = [
 
 export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) {
   return (
-    <div className="min-h-screen" style={{background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}}>
+    <div className="min-h-screen cs-bg-redteam-diagonal">
       <SEOContent
         page="data-recovery"
         title="Récupération de données à Bienne/Biel (Suisse) | Disque, SSD, USB, carte SD | CyberSuisse"
@@ -125,7 +125,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
           </Badge>
 
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Récupération de <span className="text-red-500" style={{textShadow: '0 0 30px rgba(229,57,53,0.4)'}}>Données</span>
+            Récupération de <span className="text-white cs-text-glow-red-30">Données</span>
             <br />
             Professionnelle & Sécurisée
           </h1>
@@ -141,13 +141,12 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
           <motion.div
             whileHover={{ scale: 1.05, rotateX: -5 }}
             whileTap={{ scale: 0.95 }}
-            style={{ transformStyle: "preserve-3d" }}
+            className="cs-preserve-3d"
           >
             <Button
               size="lg"
               onClick={() => onNavigate('contact')}
-              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-lg hover:shadow-xl border border-red-500/50"
-              style={{boxShadow: '0 0 30px rgba(229,57,53,0.4)'}}
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-lg hover:shadow-xl border border-red-500/50 cs-shadow-glow-red-30"
             >
               <Clock size={20} className="mr-2" />
               Diagnostic gratuit - Demander une analyse
@@ -211,9 +210,8 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
                   <CardHeader className="bg-gradient-to-r from-red-950/30 to-[#1A1A1A]">
                     <div className="flex items-center space-x-4 mb-4">
                       <motion.div
-                        className="p-4 bg-red-950/50 rounded-xl"
+                        className="p-4 bg-red-950/50 rounded-xl cs-preserve-3d"
                         whileHover={{ scale: 1.1, rotateY: 10 }}
-                        style={{ transformStyle: "preserve-3d" }}
                       >
                         <IconComponent size={32} className="text-red-500" />
                       </motion.div>
@@ -258,7 +256,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
       </section>
 
       {/* Common Examples */}
-      <section className="py-20" style={{background: 'linear-gradient(180deg, #0A0A0A 0%, #1A1A1A 100%)'}}>
+      <section className="py-20 cs-bg-redteam-vertical-dark">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -377,7 +375,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
       </section>
 
       {/* Recovery Process */}
-      <section className="py-20" style={{background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}}>
+      <section className="py-20 cs-bg-redteam-diagonal">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -405,7 +403,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
                   className="text-center"
                 >
                   <div className="relative mb-6">
-                    <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-red-600 to-orange-600 flex items-center justify-center text-white font-bold text-xl shadow-lg" style={{boxShadow: '0 0 30px rgba(229,57,53,0.4)'}}>
+                    <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-red-600 to-orange-600 flex items-center justify-center text-white font-bold text-xl shadow-lg cs-shadow-glow-red-30">
                       {step.step}
                     </div>
                     {index < recoveryProcess.length - 1 && (
@@ -771,7 +769,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               <motion.div
                 whileHover={{ scale: 1.05, rotateX: -5 }}
                 whileTap={{ scale: 0.95 }}
-                style={{ transformStyle: "preserve-3d" }}
+                className="cs-preserve-3d"
               >
                 <Button
                   size="lg"
@@ -786,7 +784,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               <motion.div
                 whileHover={{ scale: 1.05, rotateX: -5 }}
                 whileTap={{ scale: 0.95 }}
-                style={{ transformStyle: "preserve-3d" }}
+                className="cs-preserve-3d"
               >
                 <Button
                   variant="outline"

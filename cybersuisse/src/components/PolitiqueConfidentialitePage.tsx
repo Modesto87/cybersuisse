@@ -10,7 +10,7 @@ interface PolitiqueConfidentialitePageProps {
 
 const PolitiqueConfidentialitePage = ({ onNavigate }: PolitiqueConfidentialitePageProps) => {
   return (
-    <div className="min-h-screen" style={{background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}}>
+    <div className="min-h-screen cs-bg-redteam-diagonal">
       {/* Header */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
@@ -24,7 +24,7 @@ const PolitiqueConfidentialitePage = ({ onNavigate }: PolitiqueConfidentialitePa
               <Logo size="lg" showText={false} />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Politique de <span className="text-red-500" style={{textShadow: '0 0 30px rgba(229,57,53,0.4)'}}>Confidentialité</span>
+              Politique de <span className="text-white cs-text-glow-red-30">Confidentialité</span>
             </h1>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
               Votre vie privée est notre priorité. Découvrez comment nous protégeons vos données personnelles.

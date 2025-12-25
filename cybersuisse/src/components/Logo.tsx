@@ -118,7 +118,7 @@ const Logo = ({ size = 'md', showText = true, className = '' }: LogoProps) => {
           <span className={`font-bold text-white ${textSizes[size]} tracking-wide`}>
             Modesto Cybersécurité
           </span>
-          <span className={`text-red-500 font-medium ${size === 'sm' ? 'text-xs' : size === 'md' ? 'text-xs' : 'text-sm'}`} style={{textShadow: '0 0 10px rgba(229,57,53,0.4)'}}>
+          <span className={`text-red-500 font-medium cs-text-glow-red-10 ${size === 'sm' ? 'text-xs' : size === 'md' ? 'text-xs' : 'text-sm'}`}>
             Red Team • Offensive Security
           </span>
         </motion.div>

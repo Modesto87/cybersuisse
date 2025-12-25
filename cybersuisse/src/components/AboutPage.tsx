@@ -83,7 +83,6 @@ const skills = [
   "Compliance (ISO 27001, CRA)",
   "Network Security",
   "Application Security",
-  "Cloud Security",
   "Security Architecture",
   "Threat Intelligence",
   "Secure Development"
@@ -96,14 +95,13 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="min-h-screen py-12"
-      style={{background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}}
+      className="min-h-screen py-12 cs-bg-redteam-diagonal"
     >
       {/* SEO Content optimisé pour IA et buscas MSSP */}
       <SEOContent
         page="about"
         title="Modesto - MSSP Cybersécurité Suisse | Expert Sécurité IT Bienne | Services Managés"
-        description="🔒 MSSP professionnel suisse basé à Bienne. Services de cybersécurité : pentest, audit CRA, développement sécurisé et OSINT. Multilingue FR/EN/PT/ES. Devis gratuit."
+        description="🔒 MSSP professionnel suisse basé à Bienne. Services de cybersécurité : pentest, développement sécurisé et OSINT. Multilingue FR/EN/PT. Devis gratuit."
       />
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Hero Section - MSSP Professional */}
@@ -126,14 +124,14 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
 
           <motion.h1
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold text-white mb-4"
+            className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-wide"
           >
-            <span className="text-red-500" style={{textShadow: '0 0 30px rgba(229,57,53,0.4)'}}>Red Team</span> Expert Cybersécurité
+            <span className="text-white cs-text-glow-soft-redteam">Red Team</span> Expert Cybersécurité
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
-            className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed mb-6"
+            className="text-xl text-white max-w-4xl mx-auto leading-relaxed mb-6"
           >
             🛡️ <strong>Managed Security Service Provider</strong> suisse basé à Bienne.
             Services de cybersécurité complets et managés pour PME et entreprises :
@@ -147,7 +145,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
           >
             <Badge variant="secondary" className="px-4 py-2 text-sm bg-red-950/60 text-red-400 border border-red-600/40">
               <GlobeHemisphereWest size={16} className="mr-2" />
-              Multilingue FR/EN/PT/ES
+              Multilingue FR/EN/PT
             </Badge>
             <Badge variant="secondary" className="px-4 py-2 text-sm bg-red-950/60 text-red-400 border border-red-600/40">
               <Shield size={16} className="mr-2" />
@@ -177,7 +175,6 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                 >
                   <div className="text-3xl mb-2">🇫🇷</div>
                   <h3 className="font-semibold text-blue-400">Français</h3>
-                  <p className="text-sm text-blue-300">Langue maternelle</p>
                   <p className="text-xs text-blue-400/70 mt-1">Communication client suisse</p>
                 </motion.div>
 
@@ -188,7 +185,6 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                 >
                   <div className="text-3xl mb-2">🇵🇹</div>
                   <h3 className="font-semibold text-green-400">Português</h3>
-                  <p className="text-sm text-green-300">Langue maternelle</p>
                   <p className="text-xs text-green-400/70 mt-1">Marché lusophone</p>
                 </motion.div>
 
@@ -199,7 +195,6 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                 >
                   <div className="text-3xl mb-2">🇬🇧</div>
                   <h3 className="font-semibold text-purple-400">English</h3>
-                  <p className="text-sm text-purple-300">Professionnel (C1)</p>
                   <p className="text-xs text-purple-400/70 mt-1">Standards internationaux</p>
                 </motion.div>
               </div>
@@ -242,7 +237,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-400 mb-3 text-sm">
+                    <p className="text-white mb-3 text-sm">
                       {cert.description}
                     </p>
                     <div className="flex items-center justify-between">
@@ -267,7 +262,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
               <h3 className="text-lg font-semibold text-white mb-2">
                 🎯 Formation Continue & Mise à Jour
               </h3>
-              <p className="text-gray-400 text-sm">
+              <p className="text-white text-sm">
                 Engagement dans la formation continue avec suivi des dernières menaces,
                 techniques d'attaque et évolutions réglementaires (CRA 2025, NIS2, etc.)
               </p>
@@ -326,7 +321,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                   <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-red-400 transition-colors">
                     Prévention Proactive
                   </h3>
-                  <p className="text-gray-400">
+                  <p className="text-white">
                     Ne pas attendre les incidents. Mise en place de mesures préventives,
                     réponse structurée aux incidents et amélioration continue.
                   </p>
@@ -350,7 +345,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                   <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-red-400 transition-colors">
                     Conformité Réglementaire
                   </h3>
-                  <p className="text-gray-400">
+                  <p className="text-white">
                     Accompagnement complet pour la conformité CRA (2025), NIS2,
                     RGPD et autres réglementations européennes et suisses.
                   </p>
@@ -374,7 +369,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                   <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-red-400 transition-colors">
                     Excellence Opérationnelle
                   </h3>
-                  <p className="text-gray-400">
+                  <p className="text-white">
                     Services managés 24/7 avec SLA garantis, reporting transparent
                     et amélioration continue basée sur les métriques de sécurité.
                   </p>
@@ -394,19 +389,19 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-red-500 mb-2">24/7</div>
-                  <div className="text-sm text-gray-400">Disponibilité</div>
+                  <div className="text-sm text-white">Disponibilité</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-red-500 mb-2">&lt;4h</div>
-                  <div className="text-sm text-gray-400">Temps de réponse</div>
+                  <div className="text-sm text-white">Temps de réponse</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-red-500 mb-2">99.9%</div>
-                  <div className="text-sm text-gray-400">Disponibilité SLA</div>
+                  <div className="text-sm text-white">Disponibilité SLA</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-red-500 mb-2">100%</div>
-                  <div className="text-sm text-gray-400">Confidentialité</div>
+                  <div className="text-sm text-white">Confidentialité</div>
                 </div>
               </div>
             </div>
@@ -424,7 +419,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
               <h2 className="text-3xl font-bold text-white mb-6">
                 MSSP de Confiance en Suisse
               </h2>
-              <p className="text-lg text-gray-400 mb-6 leading-relaxed">
+              <p className="text-lg text-white mb-6 leading-relaxed">
                 En tant que <strong className="text-red-400">MSSP certifié</strong> basé à Bienne, je propose des services
                 de cybersécurité complets et managés adaptés aux PME et entreprises suisses.
                 Mon approche combine expertise technique, conformité réglementaire et
@@ -441,7 +436,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                 </div>
                 <div className="flex items-center space-x-3">
                   <GlobeHemisphereWest size={20} className="text-red-500" />
-                  <span className="text-gray-300">Multilingue FR/EN/PT/ES</span>
+                  <span className="text-gray-300">Multilingue FR/EN/PT</span>
                 </div>
               </div>
             </motion.div>
@@ -455,7 +450,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
               <div className="relative w-full max-w-md h-96 rounded-xl overflow-hidden shadow-2xl">
                 <img
                   src={profileImage}
-                  alt="MSSP cybersécurité professionnel suisse"
+                  alt="Professionnel de Test d'intrusion."
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-red-950/80 via-red-950/30 to-transparent" />
@@ -479,7 +474,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
             Pourquoi Choisir un MSSP Professionnel ?
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <motion.div
               variants={itemVariants}
               whileHover={{ y: -5 }}
@@ -496,7 +491,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                   <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-red-400 transition-colors">
                     Expertise Certifiée
                   </h3>
-                  <p className="text-gray-400">
+                  <p className="text-white">
                     Certifications EC-Council et TryHackMe validées, expérience
                     pratique dans tous les domaines de la cybersécurité managée.
                   </p>
@@ -520,7 +515,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                   <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-red-400 transition-colors">
                     Focus Suisse & Régional
                   </h3>
-                  <p className="text-gray-400">
+                  <p className="text-white">
                     Compréhension approfondie des réglementations suisses et européennes,
                     connaissance du marché local et adaptation aux besoins des PME.
                   </p>
@@ -538,7 +533,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
               <h2 className="text-2xl font-bold text-white mb-4">
                 Prêt à Sécuriser Votre Entreprise avec un MSSP ?
               </h2>
-              <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
+              <p className="text-white mb-6 max-w-2xl mx-auto">
                 En tant que <strong className="text-red-400">MSSP professionnel</strong> basé en Suisse, je vous propose
                 des services de cybersécurité managés complets et personnalisés.
                 Contactez-moi pour discuter de vos besoins et obtenir un devis adapté.
@@ -549,8 +544,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                   <Button
                     size="lg"
                     onClick={() => onNavigate('contact')}
-                    className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-lg hover:shadow-xl transition-all duration-300"
-                    style={{boxShadow: '0 0 20px rgba(229,57,53,0.4)'}}
+                    className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-lg hover:shadow-xl transition-all duration-300 cs-shadow-glow-red-20"
                   >
                     <EnvelopeSimple size={20} className="mr-2" />
                     Consultation MSSP Gratuite
@@ -567,7 +561,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                 </motion.div>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-400">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-white">
                 <div className="flex items-center justify-center gap-2">
                   <CheckCircle size={16} className="text-red-500" />
                   <span>Devis sous 24h</span>

@@ -119,7 +119,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               </>
             )}
             <span className="text-gray-600">Freelance certifié en Suisse</span>
-            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" style={{boxShadow: '0 0 10px rgba(229,57,53,0.6)'}} />
+            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse cs-shadow-glow-red-10-strong" />
           </div>
         </motion.div>
       </div>

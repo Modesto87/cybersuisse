@@ -1,12 +1,33 @@
+import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Envelope, Phone, MapPin, Shield, Clock, Warning } from '@phosphor-icons/react'
+import { Envelope, Phone, MapPin, Shield, Clock, Warning, LinkedinLogo } from '@phosphor-icons/react'
 import SEOContent from './SEOContent'
 
 export default function ContactPage() {
+  const [isEmailRevealed, setIsEmailRevealed] = useState(false)
+
+  const email = useMemo(() => {
+    const user = 'modesto'
+    const domain = 'cybersuisse.ch'
+    return `${user}@${domain}`
+  }, [])
+
+  const phoneE164 = '+41782089545'
+  const phoneDisplay = '+41 78 208 95 45'
+  const linkedinUrl = 'https://linkedin.com/in/luismodesto'
+
+  const handleEmailClick = () => {
+    window.location.href = `mailto:${email}`
+  }
+
+  const handlePhoneClick = () => {
+    window.location.href = `tel:${phoneE164}`
+  }
+
   return (
-    <div className="min-h-screen" style={{background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}}>
+    <div className="min-h-screen cs-bg-redteam-diagonal">
       <SEOContent page="contact" />
 
       {/* H1 pour SEO - invisible mais présent */}
@@ -39,9 +60,24 @@ export default function ContactPage() {
                     <Envelope className="w-6 h-6 text-red-500 flex-shrink-0" />
                     <div>
                       <p className="font-semibold text-white">Email</p>
-                      <a href="mailto:modesto@cybersuisse.ch" className="text-red-400 hover:text-red-300 transition-colors font-medium">
-                        modesto@cybersuisse.ch
-                      </a>
+                      {isEmailRevealed ? (
+                        <button
+                          type="button"
+                          onClick={handleEmailClick}
+                          className="text-red-400 hover:text-red-300 transition-colors font-medium"
+                        >
+                          {email}
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => setIsEmailRevealed(true)}
+                          className="text-red-400 hover:text-red-300 transition-colors font-medium"
+                        >
+                          Afficher l’email
+                        </button>
+                      )}
+                      <p className="text-sm text-gray-500">Réponse sous 24–48h</p>
                     </div>
                   </div>
                   
@@ -49,7 +85,7 @@ export default function ContactPage() {
                     <Phone className="w-6 h-6 text-green-500 flex-shrink-0" />
                     <div>
                       <p className="font-semibold text-white">Téléphone</p>
-                      <p className="text-gray-300 font-medium">+41 78 208 95 45</p>
+                      <p className="text-gray-300 font-medium">{phoneDisplay}</p>
                       <p className="text-sm text-gray-500">Lun-Ven 9h-18h</p>
                     </div>
                   </div>
@@ -89,9 +125,8 @@ export default function ContactPage() {
                 {/* Boutons d'action */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Button 
-                    onClick={() => window.location.href = 'mailto:modesto@cybersuisse.ch'}
-                    className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 border border-red-500/50"
-                    style={{boxShadow: '0 0 20px rgba(229,57,53,0.3)'}}
+                    onClick={handleEmailClick}
+                    className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 border border-red-500/50 cs-shadow-glow-red-20-soft"
                     size="lg"
                   >
                     <Envelope className="w-4 h-4 mr-2" />
@@ -99,14 +134,25 @@ export default function ContactPage() {
                   </Button>
                   
                   <Button 
-                    onClick={() => window.location.href = 'tel:+41782089545'}
-                    className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 border border-red-500/50"
-                    style={{boxShadow: '0 0 20px rgba(229,57,53,0.3)'}}
+                    onClick={handlePhoneClick}
+                    className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 border border-red-500/50 cs-shadow-glow-red-20-soft"
                     size="lg"
                   >
                     <Phone className="w-4 h-4 mr-2" />
                     Appeler
                   </Button>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+                  <p className="text-xs text-gray-500">
+                    Conseil sécurité : n’envoyez pas de mots de passe, clés API ou données sensibles par email.
+                  </p>
+                  <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="inline-flex">
+                    <Button variant="outline" size="sm" className="border-red-600/40 text-red-400 hover:bg-red-950/30 hover:text-white">
+                      <LinkedinLogo className="w-4 h-4 mr-2" />
+                      LinkedIn
+                    </Button>
+                  </a>
                 </div>
 
               </CardContent>

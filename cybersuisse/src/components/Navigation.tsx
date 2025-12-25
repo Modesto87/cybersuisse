@@ -44,10 +44,9 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
       <motion.header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled 
-            ? 'bg-[#0A0A0A]/95 backdrop-blur-lg border-b border-red-900/30 shadow-lg' 
+            ? 'bg-[#0A0A0A]/95 backdrop-blur-lg border-b border-red-900/30 shadow-lg cs-shadow-nav-scrolled' 
             : 'bg-[#0A0A0A]/90 backdrop-blur-md border-b border-red-900/20'
         }`}
-        style={{boxShadow: scrolled ? '0 4px 30px rgba(229,57,53,0.1)' : 'none'}}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
@@ -83,10 +82,9 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                         onClick={() => handleNavigation(item.id)}
                         className={`relative px-4 py-3 mx-1 rounded-xl transition-all duration-300 group ${
                           isActive 
-                            ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md hover:from-red-500 hover:to-red-600" 
+                            ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md hover:from-red-500 hover:to-red-600 cs-shadow-glow-red-20" 
                             : "hover:bg-red-950/50 text-gray-300 hover:text-white"
                         }`}
-                        style={isActive ? {boxShadow: '0 0 20px rgba(229,57,53,0.4)'} : {}}
                       >
                         <div className="flex items-center gap-2 relative z-10">
                           <Icon 
@@ -110,11 +108,11 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                         {/* Active indicator */}
                         {isActive && (
                           <motion.div
-                            className="absolute bottom-0 left-1/2 w-1 h-1 bg-orange-400 rounded-full"
+                            className="absolute bottom-0 left-1/2 w-1 h-1 bg-orange-400 rounded-full cs-shadow-glow-orange-8-strong"
                             layoutId="activeIndicator"
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
-                            style={{ x: "-50%", boxShadow: '0 0 8px rgba(255,111,0,0.6)' }}
+                            style={{ x: "-50%" }}
                           />
                         )}
                       </Button>
@@ -216,10 +214,9 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                               onClick={() => handleNavigation(item.id)}
                               className={`w-full justify-start h-14 text-left rounded-xl transition-all duration-300 group relative overflow-hidden ${
                                 isActive 
-                                  ? "bg-gradient-to-r from-red-700 to-red-800 text-white shadow-lg" 
+                                  ? "bg-gradient-to-r from-red-700 to-red-800 text-white shadow-lg cs-shadow-glow-red-20-soft" 
                                   : "hover:bg-red-950/50 hover:translate-x-2 text-gray-300 hover:text-white"
                               }`}
-                              style={isActive ? {boxShadow: '0 0 20px rgba(229,57,53,0.3)'} : {}}
                             >
                               <div className="flex items-center gap-4 relative z-10">
                                 <div className={`p-2 rounded-lg transition-all duration-300 ${
@@ -244,11 +241,10 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                               {/* Active indicator */}
                               {isActive && (
                                 <motion.div
-                                  className="absolute left-0 top-0 bottom-0 w-1 bg-orange-500 rounded-r-full"
+                                  className="absolute left-0 top-0 bottom-0 w-1 bg-orange-500 rounded-r-full cs-shadow-glow-orange-10"
                                   layoutId="mobileActiveIndicator"
                                   initial={{ scaleY: 0 }}
                                   animate={{ scaleY: 1 }}
-                                  style={{boxShadow: '0 0 10px rgba(255,111,0,0.5)'}}
                                 />
                               )}
                               

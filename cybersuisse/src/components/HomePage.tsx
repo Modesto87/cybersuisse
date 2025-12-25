@@ -114,15 +114,11 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       />
       {/* Hero Section Ultra-Impactante - RED TEAM */}
       <section 
-        className="relative overflow-hidden min-h-screen flex items-center text-white"
-        style={{ background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0000 25%, #2D0A0A 50%, #1A0000 75%, #0A0A0A 100%)' }}
+        className="relative overflow-hidden min-h-screen flex items-center text-white cs-bg-redteam-home"
       >
         {/* Abstract Tech Background Pattern - RED */}
         <div className="absolute inset-0 opacity-30 pointer-events-none">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(229,57,53,0.3) 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }}></div>
+          <div className="absolute inset-0 cs-hero-grid-red"></div>
           <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-red-600/20 to-transparent"></div>
           <div className="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-r from-red-600/20 to-transparent"></div>
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl"></div>
@@ -157,9 +153,9 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               {/* Main Headline - RED TEAM */}
               <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight drop-shadow-2xl">
                 <span className="text-white drop-shadow-lg block">RED TEAM</span>
-                <span className="text-red-500 drop-shadow-lg block" style={{textShadow: '0 0 40px rgba(229,57,53,0.5)'}}>OFFENSIVE SECURITY</span>
+                <span className="text-red-500 drop-shadow-lg block cs-text-glow-red-40">OFFENSIVE SECURITY</span>
                 <span className="text-white drop-shadow-md block">PROTÉGEZ VOTRE</span>
-                <span className="text-orange-500 drop-shadow-md block" style={{textShadow: '0 0 30px rgba(255,111,0,0.4)'}}>ENTREPRISE</span>
+                <span className="text-orange-500 drop-shadow-md block cs-text-glow-orange-30">ENTREPRISE</span>
               </h2>
 
               {/* Subheadline - RED TEAM */}
@@ -171,7 +167,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               </p>
 
               {/* Pain Points - RED TEAM */}
-              <div className="bg-red-950/60 border border-red-600/50 rounded-lg p-4 mb-8 backdrop-blur-sm" style={{boxShadow: '0 0 30px rgba(229,57,53,0.2)'}}>
+              <div className="bg-red-950/60 border border-red-600/50 rounded-lg p-4 mb-8 backdrop-blur-sm cs-shadow-glow-red-30-soft">
                 <div className="flex items-center mb-2">
                   <WaveTriangle className="text-red-500" size={20} />
                   <span className="text-white font-semibold ml-2">⚠️ Risques Réels</span>
@@ -191,8 +187,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                   <Button
                     size="lg"
                     onClick={() => onNavigate('contact')}
-                    className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-2xl hover:shadow-red-500/40 transform transition-all duration-300 font-bold text-lg px-8 py-4 border border-red-500/50"
-                    style={{boxShadow: '0 0 30px rgba(229,57,53,0.4)'}}
+                    className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-2xl hover:shadow-red-500/40 transform transition-all duration-300 font-bold text-lg px-8 py-4 border border-red-500/50 cs-shadow-glow-red-30"
                   >
                     <Lightning className="mr-2" size={20} />
                     PROTÉGEZ-MOI MAINTENANT
@@ -233,11 +228,10 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="bg-red-950/60 backdrop-blur-sm border border-red-600/40 rounded-xl p-6 mb-4"
-                  style={{boxShadow: '0 0 40px rgba(229,57,53,0.2)'}}
+                  className="bg-red-950/60 backdrop-blur-sm border border-red-600/40 rounded-xl p-6 mb-4 cs-shadow-glow-red-40-soft"
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-red-700 rounded-full flex items-center justify-center" style={{boxShadow: '0 0 20px rgba(229,57,53,0.5)'}}>
+                    <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-red-700 rounded-full flex items-center justify-center cs-shadow-glow-red-20-strong">
                       <Shield className="text-white" size={20} />
                     </div>
                     <div>
@@ -288,7 +282,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                   className="text-center"
                 >
                   <div className="flex justify-center mb-3">
-                    <div className="w-12 h-12 bg-red-950/80 border border-red-600/40 rounded-full flex items-center justify-center" style={{boxShadow: '0 0 20px rgba(229,57,53,0.3)'}}>
+                    <div className="w-12 h-12 bg-red-950/80 border border-red-600/40 rounded-full flex items-center justify-center cs-shadow-glow-red-20-soft">
                       <IconComponent className="text-red-500" size={24} />
                     </div>
                   </div>
@@ -325,7 +319,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h3 className="text-2xl font-bold text-red-500 mb-6" style={{textShadow: '0 0 20px rgba(229,57,53,0.3)'}}>❌ Problèmes Courants</h3>
+              <h3 className="text-2xl font-bold text-red-500 mb-6 cs-text-glow-red-20">❌ Problèmes Courants</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3 p-4 bg-red-950/50 border border-red-800/40 rounded-lg">
                   <WaveTriangle className="text-red-500 mt-1 flex-shrink-0" size={20} />
@@ -350,7 +344,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <h3 className="text-2xl font-bold text-green-500 mb-6" style={{textShadow: '0 0 20px rgba(34,197,94,0.3)'}}>✅ Mes Solutions</h3>
+              <h3 className="text-2xl font-bold text-green-500 mb-6 cs-text-glow-green-20">✅ Mes Solutions</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3 p-4 bg-green-950/50 border border-green-800/40 rounded-lg">
                   <CheckCircle className="text-green-500 mt-1 flex-shrink-0" size={20} />
@@ -382,7 +376,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Services de <span className="text-red-500" style={{textShadow: '0 0 30px rgba(229,57,53,0.4)'}}>Sécurité Offensive</span>
+              Services de <span className="text-white cs-text-glow-red-30">Sécurité Offensive</span>
             </h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
               De la prévention à la réponse aux incidents, je couvre tous vos besoins en cybersécurité
@@ -400,9 +394,8 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               return (
                 <motion.div key={service.id} variants={itemVariants}>
                   <Card
-                    className={`h-full bg-[#1A1A1A] border-[#333] hover:border-red-600/60 hover:shadow-xl transition-all duration-300 cursor-pointer group overflow-hidden relative ${service.popular ? 'ring-2 ring-red-500/50' : ''}`}
+                    className={`h-full bg-[#1A1A1A] border-[#333] hover:border-red-600/60 hover:shadow-xl transition-all duration-300 cursor-pointer group overflow-hidden relative ${service.popular ? 'ring-2 ring-red-500/50 cs-shadow-glow-red-30-soft' : ''}`}
                     onClick={() => onNavigate(service.id)}
-                    style={{boxShadow: service.popular ? '0 0 30px rgba(229,57,53,0.2)' : 'none'}}
                   >
                     {service.popular && (
                       <div className="absolute top-4 right-4 z-10">
@@ -420,9 +413,8 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                       <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-black/50 to-transparent" />
                       <div className="absolute top-4 left-4">
                         <motion.div
-                          className="p-3 bg-red-600/40 backdrop-blur-sm rounded-lg group-hover:bg-red-500/50 transition-colors duration-300 border border-red-500/30"
+                          className="p-3 bg-red-600/40 backdrop-blur-sm rounded-lg group-hover:bg-red-500/50 transition-colors duration-300 border border-red-500/30 cs-shadow-glow-red-15"
                           whileHover={{ scale: 1.1 }}
-                          style={{boxShadow: '0 0 15px rgba(229,57,53,0.3)'}}
                         >
                           <IconComponent size={32} className="text-white drop-shadow-lg" />
                         </motion.div>
@@ -444,7 +436,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                       <ul className="space-y-2 mb-6">
                         {service.features.map((feature, index) => (
                           <li key={index} className="flex items-center text-sm text-gray-400">
-                            <div className="w-1.5 h-1.5 bg-red-500 rounded-full mr-3 flex-shrink-0" style={{boxShadow: '0 0 6px rgba(229,57,53,0.5)'}} />
+                            <div className="w-1.5 h-1.5 bg-red-500 rounded-full mr-3 flex-shrink-0" />
                             {feature}
                           </li>
                         ))}
@@ -594,12 +586,10 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* Final CTA Section - RED TEAM */}
-      <section className="py-20 text-white relative overflow-hidden" style={{background: 'linear-gradient(135deg, #1A0000 0%, #2D0A0A 25%, #B71C1C 50%, #2D0A0A 75%, #1A0000 100%)'}}>
+      <section className="py-20 text-white relative overflow-hidden cs-bg-redteam-cta">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
+          <div className="absolute inset-0 cs-cta-dotpattern" />
         </div>
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-red-900/20 to-transparent"></div>
 
@@ -611,7 +601,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           >
             <div className="mb-8 flex justify-center">
               <div className="relative">
-                <div className="w-32 h-32 rounded-full border-4 border-red-500/50 overflow-hidden shadow-2xl" style={{boxShadow: '0 0 40px rgba(229,57,53,0.4)'}}>
+                <div className="w-32 h-32 rounded-full border-4 border-red-500/50 overflow-hidden shadow-2xl cs-shadow-glow-red-40">
                   <img 
                     src={expertImage} 
                     alt="Modesto - Expert Cybersécurité" 
@@ -625,7 +615,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             </div>
 
             <h3 className="text-3xl md:text-4xl font-bold mb-6">
-              🚀 Prêt à <span className="text-red-300" style={{textShadow: '0 0 20px rgba(229,57,53,0.5)'}}>Protéger</span> Votre Entreprise ?
+              🚀 Prêt à <span className="text-red-300 cs-text-glow-red-20-strong">Protéger</span> Votre Entreprise ?
             </h3>
             <p className="text-xl text-red-100 mb-8 max-w-2xl mx-auto">
               Ne laissez pas les cyberattaques ruiner votre business.
@@ -651,8 +641,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 <Button
                   size="lg"
                   onClick={() => onNavigate('contact')}
-                  className="bg-white text-red-700 hover:bg-gray-100 shadow-2xl hover:shadow-white/25 transform transition-all duration-300 font-bold text-lg px-8 py-4"
-                  style={{boxShadow: '0 0 30px rgba(255,255,255,0.3)'}}
+                  className="bg-white text-red-700 hover:bg-gray-100 shadow-2xl hover:shadow-white/25 transform transition-all duration-300 font-bold text-lg px-8 py-4 cs-shadow-glow-white-30"
                 >
                   <Envelope size={20} className="mr-2" />
                   OBTENIR MON DEVIS GRATUIT

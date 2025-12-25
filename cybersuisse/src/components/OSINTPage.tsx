@@ -173,8 +173,7 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="min-h-screen py-12"
-      style={{background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}}
+      className="min-h-screen py-12 cs-bg-redteam-diagonal"
     >
       {/* SEO Content optimisé pour IA et buscas OSINT */}
       <SEOContent
@@ -206,7 +205,7 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
             variants={itemVariants}
             className="text-4xl md:text-5xl font-bold text-white mb-4"
           >
-            Investigation <span className="text-red-500" style={{textShadow: '0 0 30px rgba(229,57,53,0.4)'}}>OSINT</span>
+            Investigation <span className="text-white cs-text-glow-red-30">OSINT</span>
           </motion.h1>
 
           <motion.p

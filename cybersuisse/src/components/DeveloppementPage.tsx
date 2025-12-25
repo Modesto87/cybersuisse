@@ -33,7 +33,7 @@ const developmentServices = [
 
 export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps) {
   return (
-    <div className="min-h-screen" style={{background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}}>
+    <div className="min-h-screen cs-bg-redteam-diagonal">
       <SEOContent
         page="developpement"
         title="Création de site web sécurisé à Bienne/Biel (Suisse) | Sans WordPress | CyberSuisse"
@@ -56,7 +56,7 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
           </Badge>
 
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Création de <span className="text-red-500" style={{textShadow: '0 0 30px rgba(229,57,53,0.4)'}}>sites web</span>
+            Création de <span className="text-white cs-text-glow-red-30">sites web</span>
             <br />
             réellement sécurisés
           </h1>
@@ -71,13 +71,12 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
           <motion.div
             whileHover={{ scale: 1.05, rotateX: -5 }}
             whileTap={{ scale: 0.95 }}
-            style={{ transformStyle: "preserve-3d" }}
+            className="cs-preserve-3d"
           >
             <Button
               size="lg"
               onClick={() => onNavigate('contact')}
-              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-lg hover:shadow-xl border border-red-500/50"
-              style={{boxShadow: '0 0 30px rgba(229,57,53,0.4)'}}
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-lg hover:shadow-xl border border-red-500/50 cs-shadow-glow-red-30"
             >
               <Envelope size={20} className="mr-2" />
               Démarrer votre projet sécurisé
@@ -305,9 +304,8 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-3">
                   <motion.div
-                    className="p-3 bg-red-950/50 rounded-lg"
+                    className="p-3 bg-red-950/50 rounded-lg cs-preserve-3d"
                     whileHover={{ scale: 1.1, rotateY: 10 }}
-                    style={{ transformStyle: "preserve-3d" }}
                   >
                     <Shield size={32} className="text-red-500" />
                   </motion.div>
@@ -330,9 +328,8 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-3">
                   <motion.div
-                    className="p-3 bg-blue-950/50 rounded-lg"
+                    className="p-3 bg-blue-950/50 rounded-lg cs-preserve-3d"
                     whileHover={{ scale: 1.1, rotateY: 10 }}
-                    style={{ transformStyle: "preserve-3d" }}
                   >
                     <Lock size={32} className="text-blue-400" />
                   </motion.div>
@@ -355,9 +352,8 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-3">
                   <motion.div
-                    className="p-3 bg-green-950/50 rounded-lg"
+                    className="p-3 bg-green-950/50 rounded-lg cs-preserve-3d"
                     whileHover={{ scale: 1.1, rotateY: 10 }}
-                    style={{ transformStyle: "preserve-3d" }}
                   >
                     <CheckCircle size={32} className="text-green-400" />
                   </motion.div>
@@ -380,9 +376,8 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-3">
                   <motion.div
-                    className="p-3 bg-orange-950/50 rounded-lg"
+                    className="p-3 bg-orange-950/50 rounded-lg cs-preserve-3d"
                     whileHover={{ scale: 1.1, rotateY: 10 }}
-                    style={{ transformStyle: "preserve-3d" }}
                   >
                     <Database size={32} className="text-orange-400" />
                   </motion.div>
@@ -399,7 +394,7 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
       </section>
 
       {/* SEO Rich Content Section */}
-      <section className="py-20" style={{background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}}>
+      <section className="py-20 cs-bg-redteam-diagonal">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -604,7 +599,7 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
       </section>
 
       {/* Technologies & Standards */}
-      <section className="py-20" style={{background: 'linear-gradient(180deg, #0A0A0A 0%, #1A1A1A 100%)'}}>
+      <section className="py-20 cs-bg-redteam-vertical-dark">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -721,7 +716,7 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
       </section>
 
       {/* FAQ Section for SEO */}
-      <section className="py-20" style={{background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}}>
+      <section className="py-20 cs-bg-redteam-diagonal">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -826,7 +821,7 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
       </section>
 
       {/* CTA */}
-      <section className="py-20" style={{background: 'linear-gradient(180deg, #1A1A1A 0%, #0A0A0A 100%)'}}>
+      <section className="py-20 cs-bg-redteam-vertical-dark-reverse">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -845,13 +840,12 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
               <motion.div
                 whileHover={{ scale: 1.05, rotateX: -5 }}
                 whileTap={{ scale: 0.95 }}
-                style={{ transformStyle: "preserve-3d" }}
+                className="cs-preserve-3d"
               >
                 <Button
                   size="lg"
                   onClick={() => onNavigate('contact')}
-                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-lg hover:shadow-xl font-semibold"
-                  style={{boxShadow: '0 0 30px rgba(229,57,53,0.5)'}}
+                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-lg hover:shadow-xl font-semibold cs-shadow-glow-red-30-strong"
                 >
                   <Envelope size={20} className="mr-2" />
                   Demander un devis site sécurisé
