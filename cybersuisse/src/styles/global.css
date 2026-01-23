@@ -476,6 +476,11 @@ nav .bg-accent\/20 .text-accent {
   }
 }
 
+/* FAQ headings should be true black */
+.faq-section h3 {
+  color: #000000 !important;
+}
+
 /* Gold Accents */
 .text-gold {
   color: var(--color-accent-secondary-9) !important;

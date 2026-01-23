@@ -50,9 +50,6 @@ const itemVariants = {
   }
 }
 
-// Red Team dark background style
-const darkBgStyle = {background: 'linear-gradient(135deg, #0A0A0A 0%, #1A0505 50%, #0A0A0A 100%)'}
-
 const osintServices = [
   {
     icon: User,

@@ -491,12 +491,12 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
               <CheckCircle size={24} className="text-accent" />
             </div>
-            <h3 className="text-xl font-bold text-foreground mb-3">Taux de Succès Exceptionnel</h3>
-            <p className="text-muted-foreground mb-4">
+            <h3 className="text-xl font-bold mb-3" style={{ color: '#000000' }}>Taux de Succès Exceptionnel</h3>
+            <p className="text-slate-600 mb-4">
               La récupération dépend du support, de l'usage après la perte, et du niveau de dommages.
               L'objectif est simple : maximiser vos chances, sans vendre du rêve.
             </p>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm text-slate-700">
               <li className="flex items-center">
                 <CheckCircle size={14} className="text-accent mr-2" />
                 Évaluation claire de la faisabilité
@@ -522,13 +522,13 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
               <Eye size={24} className="text-secondary" />
             </div>
-            <h3 className="text-xl font-bold text-foreground mb-3">Confidentialité & Sécurité</h3>
-            <p className="text-muted-foreground mb-4">
+            <h3 className="text-xl font-bold mb-3" style={{ color: '#000000' }}>Confidentialité & Sécurité</h3>
+            <p className="text-slate-600 mb-4">
               Respect strict de la vie privée : vos données restent vos données. Manipulation prudente,
               accès limité, et restitution sur support sain. Pour les demandes d'investigation, une traçabilité
               peut être mise en place selon le contexte.
             </p>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm text-slate-700">
               <li className="flex items-center">
                 <CheckCircle size={14} className="text-secondary mr-2" />
                 Confidentialité stricte
@@ -552,15 +552,15 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
           transition={{ duration: 0.6, delay: 1.3 }}
           className="bg-white rounded-xl p-8 shadow-xl border border-border/50"
         >
-          <h3 className="text-2xl font-bold text-center text-foreground mb-8">
+          <h3 className="text-2xl font-bold text-center mb-8" style={{ color: '#000000' }}>
             Avantages Détaillés du Service
           </h3>
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-6">
               <div className="border-l-4 border-primary pl-4">
-                <h4 className="font-bold text-foreground mb-2">🔧 Équipement Professionnel</h4>
-                <p className="text-muted-foreground text-sm">
+                <h4 className="font-bold text-slate-900 mb-2">🔧 Équipement Professionnel</h4>
+                <p className="text-slate-600 text-sm">
                   Laboratoires spécialisés avec salles blanches classe 100, outils de récupération
                   professionnels (PC-3000, DeepSpar, R-Studio), et chambres propres pour manipulation
                   de supports délicats. Investissement continu dans les dernières technologies.
@@ -568,16 +568,16 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               </div>
 
               <div className="border-l-4 border-accent pl-4">
-                <h4 className="font-bold text-foreground mb-2">⚡ Traitement prioritaire (si urgence)</h4>
-                <p className="text-muted-foreground text-sm">
+                <h4 className="font-bold text-slate-900 mb-2">⚡ Traitement prioritaire (si urgence)</h4>
+                <p className="text-slate-600 text-sm">
                   Possibilité de prioriser un dossier selon votre urgence (professionnelle ou personnelle).
                   Objectif : éviter l'aggravation et démarrer rapidement les étapes de préservation/diagnostic.
                 </p>
               </div>
 
               <div className="border-l-4 border-secondary pl-4">
-                <h4 className="font-bold text-foreground mb-2">💰 Tarification Transparente</h4>
-                <p className="text-muted-foreground text-sm">
+                <h4 className="font-bold text-slate-900 mb-2">💰 Tarification Transparente</h4>
+                <p className="text-slate-600 text-sm">
                   Diagnostic gratuit et devis détaillé sans engagement. Tarification basée
                   sur la complexité technique, pas sur la valeur des données. Pas de frais
                   supplémentaires cachés. En cas d'échec total (aucune donnée récupérable), aucun frais de récupération.
@@ -587,8 +587,8 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
 
             <div className="space-y-6">
               <div className="border-l-4 border-red-500 pl-4">
-                <h4 className="font-bold text-foreground mb-2">🎯 Récupération Spécialisée</h4>
-                <p className="text-muted-foreground text-sm">
+                <h4 className="font-bold text-slate-900 mb-2">🎯 Récupération Spécialisée</h4>
+                <p className="text-slate-600 text-sm">
                   Spécialisation par type de support : HDD mécanique, SSD flash, cartes mémoire,
                   RAID, NAS, et supports exotiques. Expertise dans tous les systèmes de fichiers
                   (NTFS, FAT32, exFAT, ext4, HFS+, APFS, etc.).
@@ -596,16 +596,16 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               </div>
 
               <div className="border-l-4 border-purple-500 pl-4">
-                <h4 className="font-bold text-foreground mb-2">📊 Reporting Complet</h4>
-                <p className="text-muted-foreground text-sm">
+                <h4 className="font-bold text-slate-900 mb-2">📊 Reporting Complet</h4>
+                <p className="text-slate-600 text-sm">
                   Rapport clair : ce qui a été récupéré, ce qui est manquant, et les limites techniques observées.
                   Recommandations de prévention (sauvegardes, chiffrement, bonnes pratiques) selon votre contexte.
                 </p>
               </div>
 
               <div className="border-l-4 border-green-500 pl-4">
-                <h4 className="font-bold text-foreground mb-2">🔄 Support Post-Récupération</h4>
-                <p className="text-muted-foreground text-sm">
+                <h4 className="font-bold text-slate-900 mb-2">🔄 Support Post-Récupération</h4>
+                <p className="text-slate-600 text-sm">
                   Accompagnement après récupération : conseils de sauvegarde, recommandations
                   de prévention, et support technique. Formation optionnelle sur les bonnes
                   pratiques de protection des données.
@@ -624,25 +624,25 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
         >
           <div className="text-center bg-white rounded-lg p-6 shadow-md">
             <div className="text-3xl font-bold text-primary mb-2">Diagnostic</div>
-            <p className="text-sm text-muted-foreground">Analyse + faisabilité transparente</p>
+            <p className="text-sm text-slate-600">Analyse + faisabilité transparente</p>
           </div>
           <div className="text-center bg-white rounded-lg p-6 shadow-md">
             <div className="text-3xl font-bold text-accent mb-2">Urgence</div>
-            <p className="text-sm text-muted-foreground">Traitement prioritaire possible</p>
+            <p className="text-sm text-slate-600">Traitement prioritaire possible</p>
           </div>
           <div className="text-center bg-white rounded-lg p-6 shadow-md">
             <div className="text-3xl font-bold text-secondary mb-2">Outils pro</div>
-            <p className="text-sm text-muted-foreground">Imagerie, analyse, extraction</p>
+            <p className="text-sm text-slate-600">Imagerie, analyse, extraction</p>
           </div>
           <div className="text-center bg-white rounded-lg p-6 shadow-md">
             <div className="text-3xl font-bold text-red-500 mb-2">0 CHF</div>
-            <p className="text-sm text-muted-foreground">Si échec total (0 donnée récupérable)</p>
+            <p className="text-sm text-slate-600">Si échec total (0 donnée récupérable)</p>
           </div>
         </motion.div>
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-gradient-to-br from-gray-50 to-slate-100 py-20">
+      <section className="bg-gradient-to-br from-gray-50 to-slate-100 py-20 faq-section">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -650,10 +650,10 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             transition={{ duration: 0.6, delay: 1.5 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#000000' }}>
               Questions Fréquentes - Récupération de Données
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg text-black text-slate-600 max-w-3xl mx-auto">
               Tout ce que vous devez savoir sur nos services de récupération de données
             </p>
           </motion.div>
@@ -665,8 +665,8 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               transition={{ duration: 0.6, delay: 1.6 }}
               className="bg-white rounded-lg p-6 shadow-md border border-border/50"
             >
-              <h3 className="text-lg font-bold text-foreground mb-3">💰 Combien coûte la récupération de données ?</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-lg font-bold mb-3" style={{ color: '#000000' }}>💰 Combien coûte la récupération de données ?</h3>
+              <p className="text-slate-600">
                 Le coût de récupération dépend de plusieurs facteurs : type de support, complexité du dommage,
                 volume de données, et urgence de l'intervention. Chaque cas est analysé individuellement
                 pour établir un devis précis et adapté. Diagnostic gratuit offert, paiement uniquement
@@ -680,8 +680,8 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               transition={{ duration: 0.6, delay: 1.7 }}
               className="bg-white rounded-lg p-6 shadow-md border border-border/50"
             >
-              <h3 className="text-lg font-bold text-foreground mb-3">⏱️ Combien de temps prend la récupération ?</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-lg font-bold mb-3" style={{ color: '#000000' }}>⏱️ Combien de temps prend la récupération ?</h3>
+              <p className="text-slate-600">
                 Pour les cas simples (suppression accidentelle), une récupération peut parfois être rapide.
                 Les cas complexes (panne matérielle, mémoire dégradée, chiffrement) peuvent nécessiter plusieurs jours.
                 Les urgences peuvent être priorisées selon la charge et la faisabilité.
@@ -694,8 +694,8 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               transition={{ duration: 0.6, delay: 1.8 }}
               className="bg-white rounded-lg p-6 shadow-md border border-border/50"
             >
-              <h3 className="text-lg font-bold text-foreground mb-3">🔍 Quels types de supports traitez-vous ?</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-lg font-bold mb-3" style={{ color: '#000000' }}>🔍 Quels types de supports traitez-vous ?</h3>
+              <p className="text-slate-600">
                 Spécialisation complète : disques durs HDD/SSD, clés USB, cartes SD/microSD,
                 cartes mémoire CompactFlash, XQD, CFexpress. Support pour tous les systèmes
                 d'exploitation (Windows, macOS, Linux) et systèmes de fichiers (NTFS, FAT32,
@@ -709,8 +709,8 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               transition={{ duration: 0.6, delay: 1.9 }}
               className="bg-white rounded-lg p-6 shadow-md border border-border/50"
             >
-              <h3 className="text-lg font-bold text-foreground mb-3">🛡️ Mes données sont-elles en sécurité ?</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-lg font-bold mb-3" style={{ color: '#000000' }}>🛡️ Mes données sont-elles en sécurité ?</h3>
+              <p className="text-slate-600">
                 Vos données sont traitées avec confidentialité stricte : accès limité au strict nécessaire,
                 conservation minimale et restitution sur support sain. Un accord de confidentialité (NDA)
                 peut être fourni sur demande selon le contexte.
@@ -723,8 +723,8 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               transition={{ duration: 0.6, delay: 2.0 }}
               className="bg-white rounded-lg p-6 shadow-md border border-border/50"
             >
-              <h3 className="text-lg font-bold text-foreground mb-3">📱 Puis-je récupérer des photos supprimées de ma carte SD ?</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-lg font-bold mb-3" style={{ color: '#000000' }}>📱 Puis-je récupérer des photos supprimées de ma carte SD ?</h3>
+              <p className="text-slate-600">
                 Souvent oui, selon l'usage du support après la suppression/formatage. Plus vous arrêtez
                 d'utiliser la carte rapidement, plus les chances augmentent. Une prévisualisation peut être
                 possible pour évaluer la faisabilité.
@@ -737,8 +737,8 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               transition={{ duration: 0.6, delay: 2.1 }}
               className="bg-white rounded-lg p-6 shadow-md border border-border/50"
             >
-              <h3 className="text-lg font-bold text-foreground mb-3">💻 Mon disque dur fait du bruit, est-il récupérable ?</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-lg font-bold mb-3" style={{ color: '#000000' }}>💻 Mon disque dur fait du bruit, est-il récupérable ?</h3>
+              <p className="text-slate-600">
                 Les bruits inhabituels (cliquetis, grincements) indiquent souvent des dommages
                 mécaniques graves. Ces cas peuvent parfois être récupérables, mais chaque minute d'utilisation
                 peut aggraver la situation. Ne tentez pas de démonter vous-même le disque : arrêtez l'appareil
@@ -757,10 +757,10 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 2.2 }}
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
               Besoin de récupérer des données ?
             </h3>
-            <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
+            <p className="text-lg text-slate-600 mb-8 max-w-xl mx-auto">
               Le bon réflexe : arrêter d'utiliser le support et demander une analyse.
               Je vous donne un avis clair sur la faisabilité et les options.
             </p>
