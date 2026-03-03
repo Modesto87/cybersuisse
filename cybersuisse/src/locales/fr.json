@@ -1,0 +1,42 @@
+{
+  "language": {
+    "label": "Langue",
+    "fr": "Français",
+    "en": "English",
+    "pt": "Português"
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "pentest": "Pentest",
+    "osint": "OSINT",
+    "developpement": "Développement",
+    "dataRecovery": "Récupération",
+    "contact": "Contact",
+    "openMenu": "Ouvrir le menu de navigation"
+  },
+  "footer": {
+    "description": "Expert freelance en cybersécurité basé en Suisse. Spécialisé dans les tests d'intrusion, les opérations Red Team et le développement sécurisé.",
+    "servicesTitle": "Services",
+    "services": {
+      "pentest": "Tests d'Intrusion",
+      "redTeam": "Red Team Operations",
+      "secureDev": "Développement Sécurisé"
+    },
+    "contactTitle": "Contact",
+    "copyright": "© 2024 Modesto Cybersécurité. Tous droits réservés.",
+    "links": {
+      "cgv": "CGV",
+      "privacy": "Politique de Confidentialité",
+      "legal": "Mentions Légales",
+      "cookies": "Cookies"
+    },
+    "badge": "Freelance certifié en Suisse"
+  },
+  "error": {
+    "title": "Cette application a rencontré une erreur d'exécution",
+    "description": "Un problème inattendu est survenu pendant l'exécution de l'application. Les détails de l'erreur sont affichés ci-dessous. Contactez l'auteur de l'application et signalez ce problème.",
+    "details": "Détails de l'erreur :",
+    "tryAgain": "Réessayer"
+  }
+}

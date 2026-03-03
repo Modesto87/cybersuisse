@@ -16,6 +16,7 @@ import {
 import Logo from './Logo'
 import SEOContent from './SEOContent'
 import profileImage from '@/assets/images/eu1.png'
+import { useTranslation } from 'react-i18next'
 
 interface AboutPageProps {
   onNavigate: (page: 'contact') => void
@@ -90,6 +91,107 @@ const skills = [
 
 
 export default function AboutPage({ onNavigate }: AboutPageProps) {
+  const { i18n } = useTranslation()
+  const language = (i18n.resolvedLanguage || i18n.language || 'fr').split('-')[0]
+  const copy = (language === 'en'
+    ? {
+        seoTitle: 'Modesto - Swiss Cybersecurity MSSP | IT Security Expert Biel | Managed Services',
+        seoDescription: '🔒 Swiss MSSP based in Biel. Cybersecurity services: pentest, secure development, and OSINT. Multilingual FR/EN/PT. Free quote.',
+        heroTitle: 'Red Team Cybersecurity Expert',
+        heroText: '🛡️ Swiss Managed Security Service Provider based in Biel. Comprehensive managed cybersecurity services for SMEs and companies: penetration testing, CRA compliance audits, secure development, and incident response.',
+        badges: ['Multilingual FR/EN/PT', 'Red Team Expert', 'EC-Council & TryHackMe'],
+        expertiseTitle: 'Multilingual & International Expertise',
+        expertiseText: '🌍 Competitive advantage: smooth communication with international clients, technical documentation in multiple languages, and understanding of local regulations (Swiss GDPR, EU CRA, etc.).',
+        certificationsTitle: 'Professional Certifications & Qualifications'
+      }
+    : language === 'pt'
+      ? {
+          seoTitle: 'Modesto - MSSP Cibersegurança Suíça | Especialista IT Biel | Serviços Geridos',
+          seoDescription: '🔒 MSSP suíço baseado em Biel. Serviços: pentest, desenvolvimento seguro e OSINT. Multilíngue FR/EN/PT. Orçamento grátis.',
+          heroTitle: 'Especialista Red Team em Cibersegurança',
+          heroText: '🛡️ Managed Security Service Provider suíço baseado em Biel. Serviços completos e geridos para PME e empresas: testes de intrusão, auditorias de conformidade CRA, desenvolvimento seguro e resposta a incidentes.',
+          badges: ['Multilíngue FR/EN/PT', 'Especialista Red Team', 'EC-Council & TryHackMe'],
+          expertiseTitle: 'Especialização Multilíngue & Internacional',
+          expertiseText: '🌍 Vantagem competitiva: comunicação fluida com clientes internacionais, documentação técnica em várias línguas e compreensão de regulamentos locais (RGPD Suíço, CRA europeu, etc.).',
+          certificationsTitle: 'Certificações & Qualificações Profissionais'
+        }
+      : {
+          seoTitle: 'Modesto - MSSP Cybersécurité Suisse | Expert Sécurité IT Bienne | Services Managés',
+          seoDescription: '🔒 MSSP professionnel suisse basé à Bienne. Services de cybersécurité : pentest, développement sécurisé et OSINT. Multilingue FR/EN/PT. Devis gratuit.',
+          heroTitle: 'Red Team Expert Cybersécurité',
+          heroText: '🛡️ Managed Security Service Provider suisse basé à Bienne. Services de cybersécurité complets et managés pour PME et entreprises : tests d\'intrusion, audits de conformité CRA, développement sécurisé et réponse aux incidents.',
+          badges: ['Multilingue FR/EN/PT', 'Red Team Expert', 'EC-Council & TryHackMe'],
+          expertiseTitle: 'Expertise Multilingue & Internationale',
+          expertiseText: '🌍 Avantage concurrentiel : Communication fluide avec clients internationaux, documentation technique en plusieurs langues, et compréhension des réglementations locales (RGPD Suisse, CRA européen, etc.)',
+          certificationsTitle: 'Certifications & Qualifications Professionnelles'
+        })
+  if (language !== 'fr') {
+    return (
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="min-h-screen py-12 cs-bg-redteam-diagonal"
+      >
+        <SEOContent page="about" title={copy.seoTitle} description={copy.seoDescription} />
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="text-center mb-12">
+            <Logo size="xl" showText={false} />
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 mt-6">{copy.heroTitle}</h1>
+            <p className="text-xl text-white max-w-4xl mx-auto leading-relaxed mb-6">{copy.heroText}</p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Badge variant="secondary" className="px-4 py-2 text-sm bg-red-950/60 text-red-400 border border-red-600/40">
+                <GlobeHemisphereWest size={16} className="mr-2" />
+                {copy.badges[0]}
+              </Badge>
+              <Badge variant="secondary" className="px-4 py-2 text-sm bg-red-950/60 text-red-400 border border-red-600/40">
+                <Shield size={16} className="mr-2" />
+                {copy.badges[1]}
+              </Badge>
+              <Badge variant="secondary" className="px-4 py-2 text-sm bg-red-950/60 text-red-400 border border-red-600/40">
+                <Certificate size={16} className="mr-2" />
+                {copy.badges[2]}
+              </Badge>
+            </div>
+          </div>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold text-white mb-6 text-center">{copy.expertiseTitle}</h2>
+            <Card className="border-2 border-red-900/30 bg-[#1A1A1A]">
+              <CardContent className="p-6 text-gray-300">{copy.expertiseText}</CardContent>
+            </Card>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold text-white mb-6 text-center">{copy.certificationsTitle}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {certifications.map((cert) => (
+                <Card key={cert.name} className="border-2 border-red-900/30 bg-[#1A1A1A]">
+                  <CardHeader>
+                    <CardTitle className="text-white">{cert.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-gray-300">
+                    {cert.issuer} · {cert.year}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          <div className="text-center">
+            <Button
+              size="lg"
+              onClick={() => onNavigate('contact')}
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-lg hover:shadow-xl border border-red-500/50"
+            >
+              <EnvelopeSimple size={20} className="mr-2" />
+              Contact
+            </Button>
+          </div>
+        </div>
+      </motion.div>
+    )
+  }
   return (
     <motion.div
       variants={containerVariants}
@@ -100,8 +202,8 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
       {/* SEO Content optimisé pour IA et buscas MSSP */}
       <SEOContent
         page="about"
-        title="Modesto - MSSP Cybersécurité Suisse | Expert Sécurité IT Bienne | Services Managés"
-        description="🔒 MSSP professionnel suisse basé à Bienne. Services de cybersécurité : pentest, développement sécurisé et OSINT. Multilingue FR/EN/PT. Devis gratuit."
+        title={copy.seoTitle}
+        description={copy.seoDescription}
       />
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Hero Section - MSSP Professional */}
@@ -126,17 +228,14 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
             variants={itemVariants}
             className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-wide"
           >
-            <span className="text-white cs-text-glow-soft-redteam">Red Team</span> Expert Cybersécurité
+            <span className="text-white cs-text-glow-soft-redteam">{copy.heroTitle}</span>
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
             className="text-xl text-white max-w-4xl mx-auto leading-relaxed mb-6"
           >
-            🛡️ <strong>Managed Security Service Provider</strong> suisse basé à Bienne.
-            Services de cybersécurité complets et managés pour PME et entreprises :
-            tests d'intrusion, audits de conformité CRA,
-            développement sécurisé et réponse aux incidents.
+            {copy.heroText}
           </motion.p>
 
           <motion.div
@@ -145,15 +244,15 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
           >
             <Badge variant="secondary" className="px-4 py-2 text-sm bg-red-950/60 text-red-400 border border-red-600/40">
               <GlobeHemisphereWest size={16} className="mr-2" />
-              Multilingue FR/EN/PT
+              {copy.badges[0]}
             </Badge>
             <Badge variant="secondary" className="px-4 py-2 text-sm bg-red-950/60 text-red-400 border border-red-600/40">
               <Shield size={16} className="mr-2" />
-              Red Team Expert
+              {copy.badges[1]}
             </Badge>
             <Badge variant="secondary" className="px-4 py-2 text-sm bg-red-950/60 text-red-400 border border-red-600/40">
               <Certificate size={16} className="mr-2" />
-              EC-Council & TryHackMe
+              {copy.badges[2]}
             </Badge>
 
           </motion.div>
@@ -161,9 +260,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
 
         {/* Multilíngue Section */}
         <motion.section variants={itemVariants} className="mb-16">
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">
-            Expertise Multilingue & Internationale
-          </h2>
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">{copy.expertiseTitle}</h2>
 
           <Card className="border-2 border-red-900/30 bg-[#1A1A1A]">
             <CardContent className="p-8">
@@ -201,9 +298,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
 
               <div className="mt-8 p-4 bg-red-950/30 rounded-lg border border-red-800/40">
                 <p className="text-center text-gray-300">
-                  🌍 <strong className="text-red-400">Avantage concurrentiel :</strong> Communication fluide avec clients internationaux,
-                  documentation technique en plusieurs langues, et compréhension des réglementations
-                  locales (RGPD Suisse, CRA européen, etc.)
+                  {copy.expertiseText}
                 </p>
               </div>
             </CardContent>
@@ -213,7 +308,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
         {/* Certifications Section */}
         <motion.section variants={itemVariants} className="mb-16">
           <h2 className="text-3xl font-bold text-white mb-8 text-center">
-            Certifications & Qualifications Professionnelles
+            {copy.certificationsTitle}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

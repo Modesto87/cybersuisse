@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card'
 import { Switch } from '@/components/ui/switch'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
 import { Gear, X, Shield, ChartBar, Wrench, Eye, Check } from '@phosphor-icons/react'
+import { useTranslation } from 'react-i18next'
 
 // Type definitions are now in src/types/analytics.d.ts
 
@@ -16,6 +17,7 @@ interface CookiePreferences {
 }
 
 export default function CookieConsent() {
+  const { i18n } = useTranslation()
   const [cookieConsent, setCookieConsent] = useLocalStorage<string | null>('cookie-consent', null)
   const [cookiePreferences, setCookiePreferences] = useLocalStorage<CookiePreferences>('cookie-preferences', {
     necessary: true,
@@ -107,36 +109,127 @@ export default function CookieConsent() {
     }))
   }
 
+  const language = (i18n.resolvedLanguage || i18n.language || 'fr').split('-')[0]
+  const copy = (language === 'en'
+    ? {
+        title: 'Cookie Management',
+        description: 'We use cookies to ensure proper site operation, analyze traffic, and improve your experience.',
+        acceptAll: 'Accept All',
+        rejectAll: 'Reject All',
+        customize: 'Customize Preferences',
+        preferencesTitle: 'Cookie Preferences',
+        required: 'Required',
+        cookieLabel: 'cookie',
+        cookiesLabel: 'cookies',
+        categories: {
+          necessary: {
+            title: 'Necessary Cookies',
+            description: 'Essential for secure website operation and cannot be disabled.'
+          },
+          analytics: {
+            title: 'Analytics Cookies',
+            description: 'Help us analyze site usage to improve our services. All data is anonymized.'
+          },
+          functional: {
+            title: 'Functional Cookies',
+            description: 'Improve site features and remember your preferences.'
+          },
+          marketing: {
+            title: 'Marketing Cookies',
+            description: 'Used to personalize ads and measure campaign effectiveness.'
+          }
+        }
+      }
+    : language === 'pt'
+      ? {
+          title: 'Gestão de Cookies',
+          description: 'Usamos cookies para garantir o funcionamento do site, analisar o tráfego e melhorar a sua experiência.',
+          acceptAll: 'Aceitar tudo',
+          rejectAll: 'Rejeitar tudo',
+          customize: 'Personalizar preferências',
+          preferencesTitle: 'Preferências de Cookies',
+          required: 'Obrigatório',
+          cookieLabel: 'cookie',
+          cookiesLabel: 'cookies',
+          categories: {
+            necessary: {
+              title: 'Cookies Necessários',
+              description: 'Essenciais para o funcionamento seguro do site e não podem ser desativados.'
+            },
+            analytics: {
+              title: 'Cookies Analíticos',
+              description: 'Ajudam-nos a analisar o uso do site para melhorar os nossos serviços. Todos os dados são anonimizados.'
+            },
+            functional: {
+              title: 'Cookies Funcionais',
+              description: 'Melhoram as funcionalidades do site e memorizam as suas preferências.'
+            },
+            marketing: {
+              title: 'Cookies de Marketing',
+              description: 'Usados para personalizar anúncios e medir a eficácia das campanhas.'
+            }
+          }
+        }
+      : {
+          title: 'Gestion des Cookies',
+          description: 'Nous utilisons des cookies pour assurer le bon fonctionnement de notre site, analyser notre trafic et améliorer votre expérience utilisateur.',
+          acceptAll: 'Accepter Tout',
+          rejectAll: 'Refuser Tout',
+          customize: 'Personnaliser les Préférences',
+          preferencesTitle: 'Préférences de Cookies',
+          required: 'Requis',
+          cookieLabel: 'cookie',
+          cookiesLabel: 'cookies',
+          categories: {
+            necessary: {
+              title: 'Cookies Nécessaires',
+              description: 'Ces cookies sont essentiels au fonctionnement sécurisé du site web et ne peuvent pas être désactivés.'
+            },
+            analytics: {
+              title: 'Cookies Analytiques',
+              description: 'Nous permettent d\'analyser l\'utilisation du site pour améliorer nos services. Toutes les données sont anonymisées.'
+            },
+            functional: {
+              title: 'Cookies Fonctionnels',
+              description: 'Améliorent les fonctionnalités du site et permettent de mémoriser vos préférences.'
+            },
+            marketing: {
+              title: 'Cookies Marketing',
+              description: 'Utilisés pour personnaliser les publicités et mesurer l\'efficacité des campagnes publicitaires.'
+            }
+          }
+        })
+
   const cookieCategories = [
     {
       key: 'necessary' as keyof CookiePreferences,
       icon: Shield,
-      title: 'Cookies Nécessaires',
-      description: 'Ces cookies sont essentiels au fonctionnement sécurisé du site web et ne peuvent pas être désactivés.',
+      title: copy.categories.necessary.title,
+      description: copy.categories.necessary.description,
       required: true,
       count: 3
     },
     {
       key: 'analytics' as keyof CookiePreferences,
       icon: ChartBar,
-      title: 'Cookies Analytiques',
-      description: 'Nous permettent d\'analyser l\'utilisation du site pour améliorer nos services. Toutes les données sont anonymisées.',
+      title: copy.categories.analytics.title,
+      description: copy.categories.analytics.description,
       required: false,
       count: 2
     },
     {
       key: 'functional' as keyof CookiePreferences,
       icon: Wrench,
-      title: 'Cookies Fonctionnels',
-      description: 'Améliorent les fonctionnalités du site et permettent de mémoriser vos préférences.',
+      title: copy.categories.functional.title,
+      description: copy.categories.functional.description,
       required: false,
       count: 4
     },
     {
       key: 'marketing' as keyof CookiePreferences,
       icon: Eye,
-      title: 'Cookies Marketing',
-      description: 'Utilisés pour personnaliser les publicités et mesurer l\'efficacité des campagnes publicitaires.',
+      title: copy.categories.marketing.title,
+      description: copy.categories.marketing.description,
       required: false,
       count: 5
     }
@@ -172,11 +265,10 @@ export default function CookieConsent() {
                     </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                        Gestion des Cookies
+                        {copy.title}
                       </h3>
                       <p className="text-sm text-gray-600 leading-relaxed">
-                        Nous utilisons des cookies pour assurer le bon fonctionnement de notre site, 
-                        analyser notre trafic et améliorer votre expérience utilisateur.
+                        {copy.description}
                       </p>
                     </div>
                   </div>
@@ -188,14 +280,14 @@ export default function CookieConsent() {
                         className="flex-1 bg-primary hover:bg-primary/90 text-white font-medium h-11"
                       >
                         <Check size={16} className="mr-2" />
-                        Accepter Tout
+                        {copy.acceptAll}
                       </Button>
                       <Button
                         variant="outline"
                         onClick={handleRejectAll}
                         className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 h-11"
                       >
-                        Refuser Tout
+                        {copy.rejectAll}
                       </Button>
                     </div>
                     <Button
@@ -205,7 +297,7 @@ export default function CookieConsent() {
                       className="w-full text-gray-600 hover:text-gray-900 hover:bg-gray-100 h-10"
                     >
                       <Gear size={16} className="mr-2" />
-                      Personnaliser les Préférences
+                      {copy.customize}
                     </Button>
                   </div>
                 </motion.div>
@@ -219,7 +311,7 @@ export default function CookieConsent() {
                 >
                   <div className="flex items-center justify-between mb-5">
                     <h3 className="text-lg font-semibold text-gray-900">
-                      Préférences de Cookies
+                      {copy.preferencesTitle}
                     </h3>
                     <Button
                       variant="ghost"
@@ -252,11 +344,11 @@ export default function CookieConsent() {
                                 </h4>
                                 <div className="flex items-center gap-2">
                                   <span className="text-xs text-gray-500 bg-gray-200 px-2 py-1 rounded font-medium">
-                                    {category.count} {category.count === 1 ? 'cookie' : 'cookies'}
+                                    {category.count} {category.count === 1 ? copy.cookieLabel : copy.cookiesLabel}
                                   </span>
                                   {category.required ? (
                                     <span className="text-xs text-orange-600 bg-orange-100 px-2 py-1 rounded font-medium">
-                                      Requis
+                                      {copy.required}
                                     </span>
                                   ) : (
                                     <Switch

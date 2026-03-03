@@ -1,0 +1,42 @@
+{
+  "language": {
+    "label": "Language",
+    "fr": "Français",
+    "en": "English",
+    "pt": "Português"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "pentest": "Pentest",
+    "osint": "OSINT",
+    "developpement": "Development",
+    "dataRecovery": "Data Recovery",
+    "contact": "Contact",
+    "openMenu": "Open navigation menu"
+  },
+  "footer": {
+    "description": "Freelance cybersecurity expert based in Switzerland. Specialized in penetration testing, Red Team operations, and secure development.",
+    "servicesTitle": "Services",
+    "services": {
+      "pentest": "Penetration Testing",
+      "redTeam": "Red Team Operations",
+      "secureDev": "Secure Development"
+    },
+    "contactTitle": "Contact",
+    "copyright": "© 2024 Modesto Cybersecurity. All rights reserved.",
+    "links": {
+      "cgv": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "legal": "Legal Notice",
+      "cookies": "Cookies"
+    },
+    "badge": "Certified freelance in Switzerland"
+  },
+  "error": {
+    "title": "This application has encountered a runtime error",
+    "description": "Something unexpected happened while running the application. The error details are shown below. Contact the application author and let them know about this issue.",
+    "details": "Error Details:",
+    "tryAgain": "Try Again"
+  }
+}

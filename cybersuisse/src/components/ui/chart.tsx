@@ -1,4 +1,4 @@
-import { ComponentProps, ComponentType, createContext, CSSProperties, ReactNode, useContext, useId, useMemo } from "react"
+import { ComponentProps, ComponentType, createContext, ReactNode, useContext, useId, useMemo } from "react"
 import * as RechartsPrimitive from "recharts"
 
 import { cn } from "@/lib/utils"
@@ -92,6 +92,17 @@ ${colorConfig
   })
   .join("\n")}
 }
+${colorConfig
+  .map(([key, itemConfig]) => {
+    const color =
+      itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
+      itemConfig.color
+    return color
+      ? `${prefix} [data-chart=${id}] [data-series="${key}"] { --series-color: ${color}; }`
+      : null
+  })
+  .filter(Boolean)
+  .join("\n")}
 `
           )
           .join("\n"),
@@ -199,8 +210,9 @@ function ChartTooltipContent({
                   ) : (
                     !hideIndicator && (
                       <div
+                        data-series={key}
                         className={cn(
-                          "shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)",
+                          "shrink-0 rounded-[2px] border-[var(--series-color)] bg-[var(--series-color)]",
                           {
                             "h-2.5 w-2.5": indicator === "dot",
                             "w-1": indicator === "line",
@@ -209,12 +221,6 @@ function ChartTooltipContent({
                             "my-0.5": nestLabel && indicator === "dashed",
                           }
                         )}
-                        style={
-                          {
-                            "--color-bg": indicatorColor,
-                            "--color-border": indicatorColor,
-                          } as CSSProperties
-                        }
                       />
                     )
                   )}
@@ -288,10 +294,8 @@ function ChartLegendContent({
               <itemConfig.icon />
             ) : (
               <div
-                className="h-2 w-2 shrink-0 rounded-[2px]"
-                style={{
-                  backgroundColor: item.color,
-                }}
+                data-series={key}
+                className="h-2 w-2 shrink-0 rounded-[2px] bg-[var(--series-color)]"
               />
             )}
             {itemConfig?.label}

@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge'
 import SEOContent from '@/components/SEOContent'
 import { HardDrive, Usb, Memory, MagnifyingGlass, Shield, Clock, CheckCircle, Database, Cpu, Eye, Envelope, Lock } from '@phosphor-icons/react'
 import dataRecoveryImage from '@/assets/images/pexels-tima-miroshnichenko-5380664.jpg'
+import { useTranslation } from 'react-i18next'
 
 interface DataRecoveryPageProps {
   onNavigate: (page: 'contact') => void
@@ -101,6 +102,94 @@ const recoveryProcess = [
 ]
 
 export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) {
+  const { i18n } = useTranslation()
+  const language = (i18n.resolvedLanguage || i18n.language || 'fr').split('-')[0]
+  const copy = (language === 'en'
+    ? {
+        seoTitle: 'Data Recovery in Biel/Bienne (Switzerland) | HDD, SSD, USB, SD | CyberSuisse',
+        seoDescription: 'Professional data recovery in Biel/Bienne and Switzerland: deleted files, failed HDD/SSD, USB drives, SD cards, PC not booting, or forgotten Windows password. Privacy-respecting service and professional tooling.',
+        heroBadge: 'Data Recovery • Biel/Bienne & Switzerland',
+        heroTitle: 'Professional & Secure Data Recovery',
+        heroText: 'Professional data recovery service in Biel/Bienne and across Switzerland: deleted files, failed HDD/SSD, unreadable USB, SD cards with lost photos, a PC that won’t boot, or a forgotten Windows password. Privacy-respecting work with professional tooling. If recovery is impossible, you do not pay.',
+        cta: 'Free diagnosis - Request an analysis',
+        servicesTitle: 'Specialized Recovery Services',
+        servicesSubtitle: 'Media and scenarios covered with a careful, honest diagnosis.',
+        services: [
+          { title: 'HDD/SSD Recovery', description: 'Recovery from logical failures, deleted files, partitions, or bad sectors.' },
+          { title: 'USB Recovery', description: 'Unreadable USB drives, corruption, accidental deletion or formatting.' },
+          { title: 'SD/microSD Recovery', description: 'Photo/video recovery and corrupted memory cards.' },
+          { title: 'Access & Forgotten Passwords', description: 'File recovery or access restoration on your own authorized device.' }
+        ]
+      }
+    : language === 'pt'
+      ? {
+          seoTitle: 'Recuperação de dados em Biel/Bienne (Suíça) | HDD, SSD, USB, SD | CyberSuisse',
+          seoDescription: 'Recuperação profissional de dados em Biel/Bienne e Suíça: ficheiros apagados, HDD/SSD avariado, USB, cartões SD, PC que não arranca ou palavra‑passe Windows esquecida. Serviço profissional e confidencial.',
+          heroBadge: 'Recuperação de Dados • Biel/Bienne & Suíça',
+          heroTitle: 'Recuperação de dados profissional e segura',
+          heroText: 'Serviço profissional em Biel/Bienne e em toda a Suíça: ficheiros apagados, HDD/SSD avariado, USB ilegível, cartão SD com fotos perdidas, PC que não arranca ou palavra‑passe Windows esquecida. Privacidade respeitada e ferramentas profissionais. Se não for possível recuperar, não paga.',
+          cta: 'Diagnóstico gratuito - Pedir análise',
+          servicesTitle: 'Serviços de recuperação especializados',
+          servicesSubtitle: 'Suportes e cenários cobertos com diagnóstico prudente e honesto.',
+          services: [
+            { title: 'Recuperação HDD/SSD', description: 'Falhas lógicas, ficheiros apagados, partições ou bad sectors.' },
+            { title: 'Recuperação USB', description: 'USB não reconhecido, corrupção, apagamento ou formatação.' },
+            { title: 'Recuperação SD/microSD', description: 'Recuperação de fotos/vídeos e cartões corrompidos.' },
+            { title: 'Acesso e palavra‑passe esquecida', description: 'Recuperar ficheiros ou acesso no seu dispositivo autorizado.' }
+          ]
+        }
+      : {
+          seoTitle: 'Récupération de données à Bienne/Biel (Suisse) | Disque, SSD, USB, carte SD | CyberSuisse',
+          seoDescription: 'Récupération de données à Bienne/Biel et en Suisse : fichiers supprimés, disque/SSD en panne, clé USB, carte SD (photos), PC qui ne démarre plus ou mot de passe Windows oublié. Service professionnel, respect de la vie privée, outils du marché.',
+          heroBadge: 'Récupération de Données • Bienne/Biel & Suisse',
+          heroTitle: 'Récupération de Données Professionnelle & Sécurisée',
+          heroText: "Service professionnel de récupération de données à Bienne/Biel et dans toute la Suisse : fichiers supprimés, disque dur/SSD en panne, clé USB illisible, carte SD avec photos perdues, ordinateur qui ne démarre plus, ou même mot de passe Windows oublié. Travail sérieux, respect de la vie privée et outils professionnels du marché. Important : ce n'est pas toujours possible — mais si aucune donnée n'est récupérable (échec total), vous ne payez rien.",
+          cta: 'Diagnostic gratuit - Demander une analyse',
+          servicesTitle: 'Services de Récupération Spécialisés',
+          servicesSubtitle: 'Supports et scénarios couverts (avec un diagnostic honnête et une approche prudente)',
+          services: []
+        })
+
+  if (language !== 'fr') {
+    return (
+      <div className="min-h-screen cs-bg-redteam-diagonal">
+        <SEOContent page="data-recovery" title={copy.seoTitle} description={copy.seoDescription} />
+        <section className="container mx-auto px-4 py-20">
+          <div className="text-center mb-12">
+            <Badge variant="secondary" className="mb-4 bg-red-950/60 text-red-400 border border-red-600/40">
+              {copy.heroBadge}
+            </Badge>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">{copy.heroTitle}</h1>
+            <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">{copy.heroText}</p>
+            <Button
+              size="lg"
+              onClick={() => onNavigate('contact')}
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-lg hover:shadow-xl border border-red-500/50 cs-shadow-glow-red-30"
+            >
+              <Clock size={20} className="mr-2" />
+              {copy.cta}
+            </Button>
+          </div>
+
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{copy.servicesTitle}</h2>
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">{copy.servicesSubtitle}</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {copy.services.map((service) => (
+              <Card key={service.title} className="h-full bg-[#1A1A1A] border-[#333]">
+                <CardHeader>
+                  <CardTitle className="text-xl text-red-500">{service.title}</CardTitle>
+                  <CardDescription className="text-base text-gray-400">{service.description}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </section>
+      </div>
+    )
+  }
   return (
     <div className="min-h-screen cs-bg-redteam-diagonal">
       <SEOContent
@@ -491,7 +580,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
               <CheckCircle size={24} className="text-accent" />
             </div>
-            <h3 className="text-xl font-bold mb-3" style={{ color: '#000000' }}>Taux de Succès Exceptionnel</h3>
+            <h3 className="text-xl font-bold mb-3 text-black">Taux de Succès Exceptionnel</h3>
             <p className="text-slate-600 mb-4">
               La récupération dépend du support, de l'usage après la perte, et du niveau de dommages.
               L'objectif est simple : maximiser vos chances, sans vendre du rêve.
@@ -522,7 +611,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
               <Eye size={24} className="text-secondary" />
             </div>
-            <h3 className="text-xl font-bold mb-3" style={{ color: '#000000' }}>Confidentialité & Sécurité</h3>
+            <h3 className="text-xl font-bold mb-3 text-black">Confidentialité & Sécurité</h3>
             <p className="text-slate-600 mb-4">
               Respect strict de la vie privée : vos données restent vos données. Manipulation prudente,
               accès limité, et restitution sur support sain. Pour les demandes d'investigation, une traçabilité
@@ -552,7 +641,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
           transition={{ duration: 0.6, delay: 1.3 }}
           className="bg-white rounded-xl p-8 shadow-xl border border-border/50"
         >
-          <h3 className="text-2xl font-bold text-center mb-8" style={{ color: '#000000' }}>
+          <h3 className="text-2xl font-bold text-center mb-8 text-black">
             Avantages Détaillés du Service
           </h3>
 
@@ -650,7 +739,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             transition={{ duration: 0.6, delay: 1.5 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#000000' }}>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
               Questions Fréquentes - Récupération de Données
             </h2>
             <p className="text-lg text-black text-slate-600 max-w-3xl mx-auto">
@@ -665,7 +754,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               transition={{ duration: 0.6, delay: 1.6 }}
               className="bg-white rounded-lg p-6 shadow-md border border-border/50"
             >
-              <h3 className="text-lg font-bold mb-3" style={{ color: '#000000' }}>💰 Combien coûte la récupération de données ?</h3>
+              <h3 className="text-lg font-bold mb-3 text-black">💰 Combien coûte la récupération de données ?</h3>
               <p className="text-slate-600">
                 Le coût de récupération dépend de plusieurs facteurs : type de support, complexité du dommage,
                 volume de données, et urgence de l'intervention. Chaque cas est analysé individuellement
@@ -680,7 +769,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               transition={{ duration: 0.6, delay: 1.7 }}
               className="bg-white rounded-lg p-6 shadow-md border border-border/50"
             >
-              <h3 className="text-lg font-bold mb-3" style={{ color: '#000000' }}>⏱️ Combien de temps prend la récupération ?</h3>
+              <h3 className="text-lg font-bold mb-3 text-black">⏱️ Combien de temps prend la récupération ?</h3>
               <p className="text-slate-600">
                 Pour les cas simples (suppression accidentelle), une récupération peut parfois être rapide.
                 Les cas complexes (panne matérielle, mémoire dégradée, chiffrement) peuvent nécessiter plusieurs jours.
@@ -694,7 +783,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               transition={{ duration: 0.6, delay: 1.8 }}
               className="bg-white rounded-lg p-6 shadow-md border border-border/50"
             >
-              <h3 className="text-lg font-bold mb-3" style={{ color: '#000000' }}>🔍 Quels types de supports traitez-vous ?</h3>
+              <h3 className="text-lg font-bold mb-3 text-black">🔍 Quels types de supports traitez-vous ?</h3>
               <p className="text-slate-600">
                 Spécialisation complète : disques durs HDD/SSD, clés USB, cartes SD/microSD,
                 cartes mémoire CompactFlash, XQD, CFexpress. Support pour tous les systèmes
@@ -709,7 +798,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               transition={{ duration: 0.6, delay: 1.9 }}
               className="bg-white rounded-lg p-6 shadow-md border border-border/50"
             >
-              <h3 className="text-lg font-bold mb-3" style={{ color: '#000000' }}>🛡️ Mes données sont-elles en sécurité ?</h3>
+              <h3 className="text-lg font-bold mb-3 text-black">🛡️ Mes données sont-elles en sécurité ?</h3>
               <p className="text-slate-600">
                 Vos données sont traitées avec confidentialité stricte : accès limité au strict nécessaire,
                 conservation minimale et restitution sur support sain. Un accord de confidentialité (NDA)
@@ -723,7 +812,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               transition={{ duration: 0.6, delay: 2.0 }}
               className="bg-white rounded-lg p-6 shadow-md border border-border/50"
             >
-              <h3 className="text-lg font-bold mb-3" style={{ color: '#000000' }}>📱 Puis-je récupérer des photos supprimées de ma carte SD ?</h3>
+              <h3 className="text-lg font-bold mb-3 text-black">📱 Puis-je récupérer des photos supprimées de ma carte SD ?</h3>
               <p className="text-slate-600">
                 Souvent oui, selon l'usage du support après la suppression/formatage. Plus vous arrêtez
                 d'utiliser la carte rapidement, plus les chances augmentent. Une prévisualisation peut être
@@ -737,7 +826,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               transition={{ duration: 0.6, delay: 2.1 }}
               className="bg-white rounded-lg p-6 shadow-md border border-border/50"
             >
-              <h3 className="text-lg font-bold mb-3" style={{ color: '#000000' }}>💻 Mon disque dur fait du bruit, est-il récupérable ?</h3>
+              <h3 className="text-lg font-bold mb-3 text-black">💻 Mon disque dur fait du bruit, est-il récupérable ?</h3>
               <p className="text-slate-600">
                 Les bruits inhabituels (cliquetis, grincements) indiquent souvent des dommages
                 mécaniques graves. Ces cas peuvent parfois être récupérables, mais chaque minute d'utilisation

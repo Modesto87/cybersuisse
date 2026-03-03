@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { List, X, Shield, Target, MagnifyingGlass, Code, HardDrive, Envelope } from '@phosphor-icons/react'
 import Logo from './Logo'
+import { useTranslation } from 'react-i18next'
 
 type PageType = 'home' | 'about' | 'pentest' | 'osint' | 'developpement' | 'data-recovery' | 'contact' | 'cgv' | 'politique-confidentialite' | 'mentions-legales' | 'cookies'
 
@@ -12,19 +13,22 @@ interface NavigationProps {
   onNavigate: (page: PageType) => void
 }
 
-const navigationItems = [
-  { id: 'home', label: 'Accueil', icon: Shield },
-  { id: 'about', label: 'À Propos', icon: Shield },
-  { id: 'pentest', label: 'Pentest', icon: Target },
-  { id: 'osint', label: 'OSINT', icon: MagnifyingGlass },
-  { id: 'developpement', label: 'Développement', icon: Code },
-  { id: 'data-recovery', label: 'Récupération', icon: HardDrive },
-  { id: 'contact', label: 'Contact', icon: Envelope }
-] as const
-
 export default function Navigation({ currentPage, onNavigate }: NavigationProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { t, i18n } = useTranslation()
+
+  const navigationItems = [
+    { id: 'home', label: t('nav.home'), icon: Shield },
+    { id: 'about', label: t('nav.about'), icon: Shield },
+    { id: 'pentest', label: t('nav.pentest'), icon: Target },
+    { id: 'osint', label: t('nav.osint'), icon: MagnifyingGlass },
+    { id: 'developpement', label: t('nav.developpement'), icon: Code },
+    { id: 'data-recovery', label: t('nav.dataRecovery'), icon: HardDrive },
+    { id: 'contact', label: t('nav.contact'), icon: Envelope }
+  ] as const
+
+  const currentLang = (i18n.resolvedLanguage || i18n.language || 'fr').split('-')[0]
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +56,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <nav className="container mx-auto px-4 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-24 md:h-28">
             {/* Logo */}
             <motion.div 
               className="cursor-pointer"
@@ -122,6 +126,20 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
               </div>
             </div>
 
+            {/* Language Switcher */}
+            <div className="hidden md:flex items-center gap-2">
+              <select
+                aria-label={t('language.label')}
+                value={currentLang}
+                onChange={(event) => i18n.changeLanguage(event.target.value)}
+                className="bg-[#1A1A1A]/80 border border-red-900/40 text-gray-200 text-sm rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-600/60"
+              >
+                <option value="fr">{t('language.fr')}</option>
+                <option value="en">{t('language.en')}</option>
+                <option value="pt">{t('language.pt')}</option>
+              </select>
+            </div>
+
             {/* Mobile Menu Button - RED TEAM */}
             <div className="lg:hidden">
               <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
@@ -134,7 +152,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                       variant="outline" 
                       size="icon" 
                       className="relative bg-[#1A1A1A]/80 border-red-900/40 backdrop-blur-sm shadow-lg hover:bg-red-950/50 hover:border-red-600/50 transition-all duration-300"
-                      aria-label="Ouvrir le menu de navigation"
+                      aria-label={t('nav.openMenu')}
                     >
                       <AnimatePresence mode="wait">
                         {mobileOpen ? (
@@ -190,6 +208,19 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                           <X size={16} />
                         </Button>
                       </motion.div>
+                    </div>
+
+                    <div className="px-6 pt-4">
+                      <select
+                        aria-label={t('language.label')}
+                        value={currentLang}
+                        onChange={(event) => i18n.changeLanguage(event.target.value)}
+                        className="w-full bg-[#1A1A1A]/80 border border-red-900/40 text-gray-200 text-sm rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-600/60"
+                      >
+                        <option value="fr">{t('language.fr')}</option>
+                        <option value="en">{t('language.en')}</option>
+                        <option value="pt">{t('language.pt')}</option>
+                      </select>
                     </div>
                     
                     {/* Navigation Links - RED TEAM */}

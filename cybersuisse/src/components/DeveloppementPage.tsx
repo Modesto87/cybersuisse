@@ -5,33 +5,160 @@ import { Badge } from '@/components/ui/badge'
 import SEOContent from '@/components/SEOContent'
 import { Code, Shield, Lock, Globe, Database, Envelope, CheckCircle, Cpu, Eye } from '@phosphor-icons/react'
 import developmentImage from '@/assets/images/pexels-tima-miroshnichenko-5380664.jpg'
+import { useTranslation } from 'react-i18next'
 
 interface DeveloppementPageProps {
   onNavigate: (page: 'contact') => void
 }
 
-const developmentServices = [
-  {
-    title: 'Site Vitrine Sécurisé',
-    subtitle: 'Présence en ligne professionnelle',
-    description: 'Création d\'un site web rapide, fiable et durci contre les attaques courantes (à la date de livraison).',
-    features: ['Sans WordPress (code sur mesure)', 'Formulaires protégés (anti-abus)', 'HTTPS/TLS + bonnes pratiques CSP', 'Revue & tests de sécurité avant livraison']
-  },
-  {
-    title: 'Site E‑commerce Sécurisé',
-    subtitle: 'Vente en ligne & paiements',
-    description: 'Boutique en ligne avec parcours sécurisé, protection des comptes et réduction des risques de fraude.',
-    features: ['Protection OWASP Top 10 (XSS, injections, etc.)', 'Gestion sûre des sessions & comptes', 'Durcissement configuration & déploiement', 'Plan de remédiation si points à corriger']
-  },
-  {
-    title: 'Refonte & Sécurisation',
-    subtitle: 'Modernisation sans rupture',
-    description: 'Amélioration de la sécurité d\'un site existant : réduction de la surface d\'attaque et durcissement des points faibles.',
-    features: ['Audit technique + priorisation', 'Corrections ciblées + durcissement', 'Revue de code & configuration', 'Conseils d\'exploitation (sauvegardes, accès, mises à jour)']
-  }
-]
-
 export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps) {
+  const { i18n } = useTranslation()
+  const language = (i18n.resolvedLanguage || i18n.language || 'fr').split('-')[0]
+  const copy = (language === 'en'
+    ? {
+        seoTitle: 'Secure Website Development in Biel/Bienne (Switzerland) | No WordPress | CyberSuisse',
+        seoDescription: 'Secure website development in Biel/Bienne and Switzerland: custom code (no WordPress), security review and testing before delivery, hardening against current threats.',
+        heroBadge: 'Secure website development • Security by Design',
+        heroTitle: 'Secure websites built right',
+        heroText: 'Based in Biel/Bienne, I design custom websites (no WordPress) with cybersecurity built-in: code is written, reviewed, and tested before delivery. AI can assist, but validation remains human and responsible.',
+        cta: 'Start your secure project',
+        servicesTitle: 'Secure website offers',
+        servicesSubtitle: 'For SMEs and organizations in Switzerland: clear, fast, and hardened.',
+        services: [
+          {
+            title: 'Secure Showcase Website',
+            subtitle: 'Professional online presence',
+            description: 'Fast, reliable site hardened against common attacks at delivery date.',
+            features: ['No WordPress (custom code)', 'Protected forms (anti-abuse)', 'HTTPS/TLS + CSP best practices', 'Security review & tests before delivery']
+          },
+          {
+            title: 'Secure E‑commerce Website',
+            subtitle: 'Online sales & payments',
+            description: 'Secure shopping flow, account protection, and reduced fraud risk.',
+            features: ['OWASP Top 10 protection (XSS, injections, etc.)', 'Secure sessions & accounts', 'Hardened configuration & deployment', 'Remediation plan if issues found']
+          },
+          {
+            title: 'Redesign & Hardening',
+            subtitle: 'Modernization without disruption',
+            description: 'Improve security of an existing site: reduce attack surface and harden weak points.',
+            features: ['Technical audit + prioritization', 'Targeted fixes + hardening', 'Code & config review', 'Operational guidance (backups, access, updates)']
+          }
+        ]
+      }
+    : language === 'pt'
+      ? {
+          seoTitle: 'Criação de site web seguro em Biel/Bienne (Suíça) | Sem WordPress | CyberSuisse',
+          seoDescription: 'Criação de sites seguros em Biel/Bienne e Suíça: código personalizado (sem WordPress), revisão e testes de segurança antes da entrega, hardening contra ameaças atuais.',
+          heroBadge: 'Criação de sites seguros • Security by Design',
+          heroTitle: 'Sites seguros feitos à medida',
+          heroText: 'Baseado em Biel/Bienne, crio sites personalizados (sem WordPress) com cibersegurança integrada: o código é escrito, revisto e testado antes da entrega. A IA pode ajudar, mas a validação é humana e responsável.',
+          cta: 'Iniciar o seu projeto seguro',
+          servicesTitle: 'Ofertas de criação de site seguro',
+          servicesSubtitle: 'Para PME e organizações na Suíça: site claro, rápido e endurecido.',
+          services: [
+            {
+              title: 'Site Vitrine Seguro',
+              subtitle: 'Presença online profissional',
+              description: 'Site rápido, fiável e endurecido contra ataques comuns.',
+              features: ['Sem WordPress (código personalizado)', 'Formulários protegidos', 'HTTPS/TLS + boas práticas CSP', 'Revisão e testes antes da entrega']
+            },
+            {
+              title: 'Site E‑commerce Seguro',
+              subtitle: 'Vendas online e pagamentos',
+              description: 'Percurso de compra seguro, proteção de contas e redução de fraude.',
+              features: ['Proteção OWASP Top 10', 'Sessões e contas seguras', 'Hardening de configuração e deploy', 'Plano de remediação se necessário']
+            },
+            {
+              title: 'Refonte & Hardening',
+              subtitle: 'Modernização sem ruptura',
+              description: 'Melhoria de segurança de um site existente: redução da superfície de ataque.',
+              features: ['Auditoria técnica + priorização', 'Correções e hardening', 'Revisão de código e configuração', 'Orientação operacional (backups, acessos, updates)']
+            }
+          ]
+        }
+      : {
+          seoTitle: 'Création de site web sécurisé à Bienne/Biel (Suisse) | Sans WordPress | CyberSuisse',
+          seoDescription: 'Création de sites web sécurisés à Bienne/Biel et en Suisse : code sur mesure (sans WordPress), revue & tests de sécurité avant livraison, durcissement contre les menaces courantes à la date de livraison.',
+          heroBadge: 'Création de sites web sécurisés • Security by Design',
+          heroTitle: 'Création de sites web réellement sécurisés',
+          heroText: 'Basé à Bienne/Biel, je conçois des sites web sur mesure (sans WordPress) avec une approche cybersécurité intégrée : le code est écrit, revu et testé par moi avant livraison. L\'IA peut m\'assister, mais la validation reste humaine et responsable.',
+          cta: 'Démarrer votre projet sécurisé',
+          servicesTitle: 'Offres de création de site web sécurisé',
+          servicesSubtitle: 'Pour PME, indépendants et organisations en Suisse : un site clair, rapide, et surtout durci.',
+          services: [
+            {
+              title: 'Site Vitrine Sécurisé',
+              subtitle: 'Présence en ligne professionnelle',
+              description: 'Création d\'un site web rapide, fiable et durci contre les attaques courantes (à la date de livraison).',
+              features: ['Sans WordPress (code sur mesure)', 'Formulaires protégés (anti-abus)', 'HTTPS/TLS + bonnes pratiques CSP', 'Revue & tests de sécurité avant livraison']
+            },
+            {
+              title: 'Site E‑commerce Sécurisé',
+              subtitle: 'Vente en ligne & paiements',
+              description: 'Boutique en ligne avec parcours sécurisé, protection des comptes et réduction des risques de fraude.',
+              features: ['Protection OWASP Top 10 (XSS, injections, etc.)', 'Gestion sûre des sessions & comptes', 'Durcissement configuration & déploiement', 'Plan de remédiation si points à corriger']
+            },
+            {
+              title: 'Refonte & Sécurisation',
+              subtitle: 'Modernisation sans rupture',
+              description: 'Amélioration de la sécurité d\'un site existant : réduction de la surface d\'attaque et durcissement des points faibles.',
+              features: ['Audit technique + priorisation', 'Corrections ciblées + durcissement', 'Revue de code & configuration', 'Conseils d\'exploitation (sauvegardes, accès, mises à jour)']
+            }
+          ]
+        })
+
+  const developmentServices = copy.services
+  if (language !== 'fr') {
+    return (
+      <div className="min-h-screen cs-bg-redteam-diagonal">
+        <SEOContent page="developpement" title={copy.seoTitle} description={copy.seoDescription} />
+        <section className="container mx-auto px-4 py-20">
+          <div className="text-center mb-12">
+            <Badge variant="secondary" className="mb-4 bg-red-950/60 text-red-400 border border-red-600/40">
+              {copy.heroBadge}
+            </Badge>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">{copy.heroTitle}</h1>
+            <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">{copy.heroText}</p>
+            <Button
+              size="lg"
+              onClick={() => onNavigate('contact')}
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-lg hover:shadow-xl border border-red-500/50 cs-shadow-glow-red-30"
+            >
+              <Envelope size={20} className="mr-2" />
+              {copy.cta}
+            </Button>
+          </div>
+
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{copy.servicesTitle}</h2>
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">{copy.servicesSubtitle}</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-8">
+            {developmentServices.map((service) => (
+              <Card key={service.title} className="h-full bg-[#1A1A1A] border-[#333]">
+                <CardHeader>
+                  <CardTitle className="text-xl text-red-500">{service.title}</CardTitle>
+                  <div className="text-sm font-medium text-orange-400 mb-2">{service.subtitle}</div>
+                  <CardDescription className="text-base text-gray-400">{service.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-center text-sm text-gray-300">
+                        <CheckCircle size={16} className="text-red-500 mr-3 flex-shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+      </div>
+    )
+  }
   return (
     <div className="min-h-screen cs-bg-redteam-diagonal">
       <SEOContent

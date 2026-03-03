@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import logoImage from '@/assets/images/logo.png'
 
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl'
@@ -8,10 +9,10 @@ interface LogoProps {
 
 const Logo = ({ size = 'md', showText = true, className = '' }: LogoProps) => {
   const sizeClasses = {
-    sm: 'w-8 h-8',
-    md: 'w-12 h-12',
-    lg: 'w-16 h-16',
-    xl: 'w-24 h-24'
+    sm: 'w-[5rem] h-[5rem]',
+    md: 'w-[7.5rem] h-[7.5rem]',
+    lg: 'w-[10rem] h-[10rem]',
+    xl: 'w-[15rem] h-[15rem]'
   }
 
   const textSizes = {
@@ -28,84 +29,13 @@ const Logo = ({ size = 'md', showText = true, className = '' }: LogoProps) => {
       transition={{ duration: 0.2 }}
     >
       <div className={`${sizeClasses[size]} relative`}>
-        <svg
-          viewBox="0 0 200 200"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full"
-        >
-          <defs>
-            <linearGradient id="shield-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FF5252" />
-              <stop offset="30%" stopColor="#E53935" />
-              <stop offset="60%" stopColor="#B71C1C" />
-              <stop offset="100%" stopColor="#FF6F00" />
-            </linearGradient>
-            <filter id="red-glow">
-              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-              <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-          </defs>
-          
-          {/* Outer shield */}
-          <motion.path
-            d="M100 20 L160 40 L160 100 C160 140 130 170 100 180 C70 170 40 140 40 100 L40 40 Z"
-            stroke="url(#shield-gradient)"
-            strokeWidth="6"
-            fill="none"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
+        <div className="w-full h-full bg-white rounded-lg p-1 flex items-center justify-center">
+          <img
+            src={logoImage}
+            alt="CyberSuisse logo"
+            className="w-full h-full object-contain"
           />
-          
-          {/* Middle shield */}
-          <motion.path
-            d="M100 35 L140 50 L140 95 C140 125 120 145 100 155 C80 145 60 125 60 95 L60 50 Z"
-            stroke="url(#shield-gradient)"
-            strokeWidth="5"
-            fill="none"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 1.5, delay: 0.3, ease: "easeInOut" }}
-          />
-          
-          {/* Inner shield */}
-          <motion.path
-            d="M100 50 L120 60 L120 90 C120 110 110 125 100 130 C90 125 80 110 80 90 L80 60 Z"
-            stroke="url(#shield-gradient)"
-            strokeWidth="4"
-            fill="none"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 1.5, delay: 0.6, ease: "easeInOut" }}
-          />
-          
-          {/* Center elements */}
-          <motion.path
-            d="M85 75 L95 85 L115 65"
-            stroke="url(#shield-gradient)"
-            strokeWidth="4"
-            strokeLinecap="round"
-            fill="none"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 0.8, delay: 1.2, ease: "easeInOut" }}
-          />
-          
-          <motion.path
-            d="M85 95 L95 105 L115 85"
-            stroke="url(#shield-gradient)"
-            strokeWidth="4"
-            strokeLinecap="round"
-            fill="none"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 0.8, delay: 1.4, ease: "easeInOut" }}
-          />
-        </svg>
+        </div>
       </div>
       
       {showText && (

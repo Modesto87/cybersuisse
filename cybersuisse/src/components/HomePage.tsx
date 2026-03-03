@@ -25,69 +25,11 @@ import cyberSecurityImage1 from '@/assets/images/pexels-cottonbro-5474285.jpg'
 import cyberSecurityImage2 from '@/assets/images/pexels-cottonbro-5483064.jpg'
 import cyberSecurityImage3 from '@/assets/images/pexels-pixabay-60504.jpg'
 import expertImage from '@/assets/images/eu2.png'
+import { useTranslation } from 'react-i18next'
 
 interface HomePageProps {
   onNavigate: (page: 'about' | 'pentest' | 'osint' | 'developpement' | 'contact' | 'data-recovery') => void
 }
-
-const services = [
-  {
-    id: 'pentest' as const,
-    icon: Shield,
-    title: 'Tests d\'Intrusion',
-    description: 'Évaluation complète de la sécurité de vos systèmes avec méthodologie éprouvée',
-    features: ['Pentest externe et interne', 'Applications web et mobiles', 'Rapport détaillé avec recommandations'],
-    image: cyberSecurityImage1,
-    popular: true
-  },
-  {
-    id: 'osint' as const,
-    icon: MagnifyingGlass,
-    title: 'Investigations OSINT',
-    description: 'Recherche et analyse d\'informations publiques pour investigations numériques professionnelles',
-    features: ['Recherche avancée', 'Analyse de données', 'Rapports détaillés'],
-    image: cyberSecurityImage3,
-    popular: false
-  },
-  {
-    id: 'developpement' as const,
-    icon: Code,
-    title: 'Développement Sécurisé',
-    description: 'Applications et sites web développés avec les meilleures pratiques de sécurité',
-    features: ['Secure by design', 'Code review sécurité', 'Tests de vulnérabilités intégrés'],
-    image: cyberSecurityImage1,
-    popular: false
-  },
-  {
-    id: 'data-recovery' as const,
-    icon: MagnifyingGlass,
-    title: 'Récupération de Données',
-    description: 'Récupération professionnelle de données perdues sur tous supports',
-    features: ['Disques durs & SSD', 'Cartes SD & USB', 'Serveurs & NAS'],
-    image: cyberSecurityImage2,
-    popular: false
-  }
-]
-
-const stats = [
-  { number: "2+", label: "Années d'expérience", icon: Clock },
-  { number: "10+", label: "Entreprises sécurisées", icon: Users },
-  { number: "99%", label: "Taux de succès", icon: TrendUp },
-  { number: "50+", label: "Vulnérabilités identifiées", icon: Medal }
-]
-
-const testimonials = [
-  {
-    name: "Marie Dubois",
-    text: "Service exceptionnel ! Notre système était vulnérable et maintenant nous dormons tranquilles.",
-    rating: 5
-  },
-  {
-    name: "Pierre Martin",
-    text: "Expert compétent et à l'écoute. Recommande vivement pour les PME.",
-    rating: 5
-  }
-]
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -105,12 +47,331 @@ const itemVariants = {
 }
 
 export default function HomePage({ onNavigate }: HomePageProps) {
+  const { i18n } = useTranslation()
+  const language = (i18n.resolvedLanguage || i18n.language || 'fr').split('-')[0]
+
+  const copy = (language === 'en'
+    ? {
+        seoTitle: 'Swiss Cybersecurity Expert | Protect Your Business | CyberSuisse',
+        seoDescription: '🔒 Reliable cybersecurity expert in Switzerland? Pentest, OSINT investigations, and secure development. Certified freelancer in Biel. Free quote within 24h.',
+        badges: ['Certified Expert', 'Switzerland', '24h Response'],
+        headline: ['RED TEAM', 'OFFENSIVE SECURITY', 'PROTECT YOUR', 'BUSINESS'],
+        subheadline: '🎯 Offensive security expert in Switzerland\nPenetration testing, Red Team operations, and secure development.\nAttack before you are attacked.',
+        riskTitle: '⚠️ Real Risks',
+        riskText: 'Every day, Swiss companies are victims of cyberattacks. Don’t be the next one!',
+        ctaPrimary: 'PROTECT ME NOW',
+        ratingText: '4.9/5',
+        ratingMeta: '(10+ reviews)',
+        certLabel: 'EC-Council Certified',
+        expLabel: '2+ years experience',
+        stats: [
+          { number: '2+', label: 'Years of experience', icon: Clock },
+          { number: '10+', label: 'Companies secured', icon: Users },
+          { number: '99%', label: 'Success rate', icon: TrendUp },
+          { number: '50+', label: 'Vulnerabilities identified', icon: Medal }
+        ],
+        problemTitle: '🚨 Is Your Business Vulnerable?',
+        problemSubtitle: 'Discover common risks and how Swiss companies protect themselves effectively',
+        problemsTitle: '❌ Common Problems',
+        problems: [
+          { title: 'Untested systems', text: '80% of companies have never performed a pentest' },
+          { title: 'Undertrained teams', text: 'Lack of internal cybersecurity skills' }
+        ],
+        solutionsTitle: '✅ My Solutions',
+        solutions: [
+          { title: 'Comprehensive pentesting', text: 'Identify all your vulnerabilities' },
+          { title: 'Training & guidance', text: 'Strengthen your internal skills' }
+        ],
+        servicesTitle: 'Offensive Security Services',
+        servicesSubtitle: 'From prevention to incident response, I cover all your cybersecurity needs',
+        services: [
+          {
+            id: 'pentest' as const,
+            icon: Shield,
+            title: 'Penetration Testing',
+            description: 'Complete security assessment with proven methodology',
+            features: ['External and internal pentest', 'Web and mobile applications', 'Detailed report with recommendations'],
+            image: cyberSecurityImage1,
+            popular: true
+          },
+          {
+            id: 'osint' as const,
+            icon: MagnifyingGlass,
+            title: 'OSINT Investigations',
+            description: 'Research and analysis of public information for professional digital investigations',
+            features: ['Advanced research', 'Data analysis', 'Detailed reports'],
+            image: cyberSecurityImage3,
+            popular: false
+          },
+          {
+            id: 'developpement' as const,
+            icon: Code,
+            title: 'Secure Development',
+            description: 'Applications and websites built with security best practices',
+            features: ['Secure by design', 'Security code review', 'Integrated vulnerability testing'],
+            image: cyberSecurityImage1,
+            popular: false
+          },
+          {
+            id: 'data-recovery' as const,
+            icon: MagnifyingGlass,
+            title: 'Data Recovery',
+            description: 'Professional recovery of lost data on all media',
+            features: ['Hard drives & SSD', 'SD cards & USB', 'Servers & NAS'],
+            image: cyberSecurityImage2,
+            popular: false
+          }
+        ],
+        testimonialsTitle: 'They Trust Me',
+        testimonialsSubtitle: 'Discover testimonials from satisfied clients who secured their business',
+        testimonials: [
+          { name: 'Marie Dubois', text: 'Outstanding service! Our system was vulnerable and now we sleep peacefully.', rating: 5 },
+          { name: 'Pierre Martin', text: 'Skilled expert and attentive. Highly recommended for SMEs.', rating: 5 }
+        ],
+        faqTitle: 'Frequently Asked Questions',
+        faqSubtitle: 'Answers to common cybersecurity questions',
+        faq: [
+          {
+            q: '🤔 How much does a pentest cost?',
+            a: 'Prices vary depending on complexity: from CHF 2,000 for a simple website to CHF 15,000 for a full infrastructure. I always provide a free, tailored quote.'
+          },
+          {
+            q: '⏱️ How long does an audit take?',
+            a: 'A full audit usually takes 2–4 weeks depending on infrastructure size. The final report with recommendations is delivered within 5 business days.'
+          },
+          {
+            q: '🛡️ Am I protected after the audit?',
+            a: 'The audit identifies vulnerabilities. I provide a detailed action plan and can assist with implementing fixes for complete protection.'
+          }
+        ],
+        ctaTitle: '🚀 Ready to Protect Your Business?',
+        ctaText: 'Don’t let cyberattacks ruin your business. Contact me today for a free consultation.',
+        urgencyTitle: 'Limited Offer',
+        urgencyText: '📅 Response guaranteed within 24h • 📞 Free consultation',
+        ctaPrimaryBottom: 'GET MY FREE QUOTE',
+        ctaSecondary: 'Learn more about me',
+        trustSignals: ['Certified expert', 'GDPR compliant', 'Professional insurance', 'Confidentiality guaranteed'],
+        popularBadge: 'Most requested',
+        learnMore: 'Learn more'
+      }
+    : language === 'pt'
+      ? {
+          seoTitle: 'Especialista em Cibersegurança na Suíça | Proteja a Sua Empresa | CyberSuisse',
+          seoDescription: '🔒 Precisa de um especialista em cibersegurança na Suíça? Pentest, OSINT e desenvolvimento seguro. Freelancer certificado em Biel. Orçamento grátis em 24h.',
+          badges: ['Especialista Certificado', 'Suíça', 'Resposta 24h'],
+          headline: ['RED TEAM', 'OFFENSIVE SECURITY', 'PROTEJA A SUA', 'EMPRESA'],
+          subheadline: '🎯 Especialista em segurança ofensiva na Suíça\nTestes de intrusão, operações Red Team e desenvolvimento seguro.\nAtaque antes de ser atacado.',
+          riskTitle: '⚠️ Riscos Reais',
+          riskText: 'Todos os dias, empresas suíças são vítimas de ciberataques. Não seja a próxima!',
+          ctaPrimary: 'PROTEJA-ME AGORA',
+          ratingText: '4.9/5',
+          ratingMeta: '(10+ avaliações)',
+          certLabel: 'Certificado EC-Council',
+          expLabel: '2+ anos de experiência',
+          stats: [
+            { number: '2+', label: 'Anos de experiência', icon: Clock },
+            { number: '10+', label: 'Empresas protegidas', icon: Users },
+            { number: '99%', label: 'Taxa de sucesso', icon: TrendUp },
+            { number: '50+', label: 'Vulnerabilidades identificadas', icon: Medal }
+          ],
+          problemTitle: '🚨 A sua empresa está vulnerável?',
+          problemSubtitle: 'Descubra riscos comuns e como as empresas suíças se protegem eficazmente',
+          problemsTitle: '❌ Problemas Comuns',
+          problems: [
+            { title: 'Sistemas não testados', text: '80% das empresas nunca fizeram pentest' },
+            { title: 'Equipas pouco treinadas', text: 'Falta de competências internas em cibersegurança' }
+          ],
+          solutionsTitle: '✅ As Minhas Soluções',
+          solutions: [
+            { title: 'Testes de intrusão completos', text: 'Identificação de todas as vulnerabilidades' },
+            { title: 'Formação e acompanhamento', text: 'Reforço das competências internas' }
+          ],
+          servicesTitle: 'Serviços de Segurança Ofensiva',
+          servicesSubtitle: 'Da prevenção à resposta a incidentes, cubro todas as suas necessidades',
+          services: [
+            {
+              id: 'pentest' as const,
+              icon: Shield,
+              title: 'Testes de Intrusão',
+              description: 'Avaliação completa de segurança com metodologia comprovada',
+              features: ['Pentest externo e interno', 'Aplicações web e mobile', 'Relatório detalhado com recomendações'],
+              image: cyberSecurityImage1,
+              popular: true
+            },
+            {
+              id: 'osint' as const,
+              icon: MagnifyingGlass,
+              title: 'Investigações OSINT',
+              description: 'Pesquisa e análise de informações públicas para investigações digitais',
+              features: ['Pesquisa avançada', 'Análise de dados', 'Relatórios detalhados'],
+              image: cyberSecurityImage3,
+              popular: false
+            },
+            {
+              id: 'developpement' as const,
+              icon: Code,
+              title: 'Desenvolvimento Seguro',
+              description: 'Aplicações e sites com as melhores práticas de segurança',
+              features: ['Secure by design', 'Revisão de código', 'Testes de vulnerabilidades integrados'],
+              image: cyberSecurityImage1,
+              popular: false
+            },
+            {
+              id: 'data-recovery' as const,
+              icon: MagnifyingGlass,
+              title: 'Recuperação de Dados',
+              description: 'Recuperação profissional de dados perdidos em qualquer suporte',
+              features: ['Discos rígidos & SSD', 'Cartões SD & USB', 'Servidores & NAS'],
+              image: cyberSecurityImage2,
+              popular: false
+            }
+          ],
+          testimonialsTitle: 'Eles confiam em mim',
+          testimonialsSubtitle: 'Veja testemunhos de clientes satisfeitos',
+          testimonials: [
+            { name: 'Marie Dubois', text: 'Serviço excecional! O nosso sistema era vulnerável e agora dormimos tranquilos.', rating: 5 },
+            { name: 'Pierre Martin', text: 'Especialista competente e atento. Recomendo para PME.', rating: 5 }
+          ],
+          faqTitle: 'Perguntas Frequentes',
+          faqSubtitle: 'Respostas às dúvidas comuns sobre cibersegurança',
+          faq: [
+            {
+              q: '🤔 Quanto custa um pentest?',
+              a: 'Os preços variam conforme a complexidade: de 2.000 CHF para um site simples até 15.000 CHF para uma infraestrutura completa. Forneço sempre um orçamento gratuito.'
+            },
+            {
+              q: '⏱️ Quanto tempo demora uma auditoria?',
+              a: 'Uma auditoria completa leva normalmente 2–4 semanas. O relatório final é entregue em até 5 dias úteis.'
+            },
+            {
+              q: '🛡️ Fico protegido após a auditoria?',
+              a: 'A auditoria identifica vulnerabilidades. Entrego um plano de ação detalhado e posso acompanhar a correção.'
+            }
+          ],
+          ctaTitle: '🚀 Pronto para proteger a sua empresa?',
+          ctaText: 'Não deixe os ciberataques arruinarem o seu negócio. Contacte-me hoje para uma consulta gratuita.',
+          urgencyTitle: 'Oferta limitada',
+          urgencyText: '📅 Resposta garantida em 24h • 📞 Consulta gratuita',
+          ctaPrimaryBottom: 'OBTER O MEU ORÇAMENTO',
+          ctaSecondary: 'Saber mais sobre mim',
+          trustSignals: ['Especialista certificado', 'Conforme RGPD', 'Seguro profissional', 'Confidencialidade garantida'],
+          popularBadge: 'Mais procurado',
+          learnMore: 'Saber mais'
+        }
+      : {
+          seoTitle: 'Expert Cybersécurité Suisse | Protégez Votre Entreprise Contre les Cyberattaques | CyberSuisse',
+          seoDescription: "🔒 Besoin d'un expert en cybersécurité fiable en Suisse ? Tests d'intrusion, investigations OSINT et développement sécurisé. Freelance certifié basé à Bienne. Devis gratuit sous 24h.",
+          badges: ['Expert Certifié', 'Suisse', 'Réponse 24h'],
+          headline: ['RED TEAM', 'OFFENSIVE SECURITY', 'PROTÉGEZ VOTRE', 'ENTREPRISE'],
+          subheadline: "🎯 Expert en sécurité offensive en Suisse\nTests d'intrusion, Red Team operations et développement sécurisé.\nAttaquez avant d'être attaqué.",
+          riskTitle: '⚠️ Risques Réels',
+          riskText: 'Chaque jour, des entreprises suisses sont victimes de cyberattaques. Ne soyez pas la prochaine victime !',
+          ctaPrimary: 'PROTÉGEZ-MOI MAINTENANT',
+          ratingText: '4.9/5',
+          ratingMeta: '(+10 avis)',
+          certLabel: 'Certifié EC-Council',
+          expLabel: '2+ ans expérience',
+          stats: [
+            { number: '2+', label: "Années d'expérience", icon: Clock },
+            { number: '10+', label: 'Entreprises sécurisées', icon: Users },
+            { number: '99%', label: 'Taux de succès', icon: TrendUp },
+            { number: '50+', label: 'Vulnérabilités identifiées', icon: Medal }
+          ],
+          problemTitle: '🚨 Votre Entreprise est-elle Vulnérable ?',
+          problemSubtitle: 'Découvrez les risques courants et comment les entreprises suisses se protègent efficacement',
+          problemsTitle: '❌ Problèmes Courants',
+          problems: [
+            { title: 'Systèmes non testés', text: "80% des entreprises n'ont jamais fait de pentest" },
+            { title: 'Équipes sous-formées', text: 'Manque de compétences internes en cybersécurité' }
+          ],
+          solutionsTitle: '✅ Mes Solutions',
+          solutions: [
+            { title: "Tests d'intrusion complets", text: 'Identification de toutes vos vulnérabilités' },
+            { title: 'Formation et accompagnement', text: 'Renforcement de vos compétences internes' }
+          ],
+          servicesTitle: 'Services de Sécurité Offensive',
+          servicesSubtitle: 'De la prévention à la réponse aux incidents, je couvre tous vos besoins en cybersécurité',
+          services: [
+            {
+              id: 'pentest' as const,
+              icon: Shield,
+              title: "Tests d'Intrusion",
+              description: 'Évaluation complète de la sécurité de vos systèmes avec méthodologie éprouvée',
+              features: ['Pentest externe et interne', 'Applications web et mobiles', 'Rapport détaillé avec recommandations'],
+              image: cyberSecurityImage1,
+              popular: true
+            },
+            {
+              id: 'osint' as const,
+              icon: MagnifyingGlass,
+              title: 'Investigations OSINT',
+              description: "Recherche et analyse d'informations publiques pour investigations numériques professionnelles",
+              features: ['Recherche avancée', 'Analyse de données', 'Rapports détaillés'],
+              image: cyberSecurityImage3,
+              popular: false
+            },
+            {
+              id: 'developpement' as const,
+              icon: Code,
+              title: 'Développement Sécurisé',
+              description: 'Applications et sites web développés avec les meilleures pratiques de sécurité',
+              features: ['Secure by design', 'Code review sécurité', 'Tests de vulnérabilités intégrés'],
+              image: cyberSecurityImage1,
+              popular: false
+            },
+            {
+              id: 'data-recovery' as const,
+              icon: MagnifyingGlass,
+              title: 'Récupération de Données',
+              description: 'Récupération professionnelle de données perdues sur tous supports',
+              features: ['Disques durs & SSD', 'Cartes SD & USB', 'Serveurs & NAS'],
+              image: cyberSecurityImage2,
+              popular: false
+            }
+          ],
+          testimonialsTitle: 'Ils me font confiance',
+          testimonialsSubtitle: 'Découvrez les témoignages de clients satisfaits qui ont sécurisé leur entreprise',
+          testimonials: [
+            { name: 'Marie Dubois', text: 'Service exceptionnel ! Notre système était vulnérable et maintenant nous dormons tranquilles.', rating: 5 },
+            { name: 'Pierre Martin', text: "Expert compétent et à l'écoute. Recommande vivement pour les PME.", rating: 5 }
+          ],
+          faqTitle: 'Questions Fréquentes',
+          faqSubtitle: 'Réponses aux questions que vous vous posez sur la cybersécurité',
+          faq: [
+            {
+              q: "🤔 Combien coûte un test d'intrusion ?",
+              a: 'Les prix varient selon la complexité : de 2\'000 CHF pour un site web simple à 15\'000 CHF pour une infrastructure complète. Je propose toujours un devis gratuit et personnalisé.'
+            },
+            {
+              q: '⏱️ Combien de temps prend un audit ?',
+              a: 'Un audit complet prend généralement 2-4 semaines selon la taille de votre infrastructure. Le rapport final avec recommandations est livré sous 5 jours ouvrés.'
+            },
+            {
+              q: "🛡️ Est-ce que je suis protégé après l'audit ?",
+              a: "L'audit identifie les vulnérabilités. Je vous fournis un plan d'action détaillé et peux vous accompagner dans la mise en œuvre des correctifs pour une protection complète."
+            }
+          ],
+          ctaTitle: '🚀 Prêt à Protéger Votre Entreprise ?',
+          ctaText: "Ne laissez pas les cyberattaques ruiner votre business. Contactez-moi dès aujourd'hui pour une consultation gratuite.",
+          urgencyTitle: 'Offre Limitée',
+          urgencyText: '📅 Réponse garantie sous 24h • 📞 Consultation gratuite',
+          ctaPrimaryBottom: 'OBTENIR MON DEVIS GRATUIT',
+          ctaSecondary: 'En savoir plus sur moi',
+          trustSignals: ['Expert certifié', 'RGPD compliant', 'Assurance professionnelle', 'Confidentialité garantie'],
+          popularBadge: 'Plus demandé',
+          learnMore: 'En savoir plus'
+        })
+
+  const services = copy.services
+  const stats = copy.stats
+  const testimonials = copy.testimonials
+  const faqItems = copy.faq
   return (
     <div className="min-h-screen bg-[#0A0A0A]">
       <SEOContent
         page="home"
-        title="Expert Cybersécurité Suisse | Protégez Votre Entreprise Contre les Cyberattaques | CyberSuisse"
-        description="🔒 Besoin d'un expert en cybersécurité fiable en Suisse ? Tests d'intrusion, investigations OSINT et développement sécurisé. Freelance certifié basé à Bienne. Devis gratuit sous 24h."
+        title={copy.seoTitle}
+        description={copy.seoDescription}
       />
       {/* Hero Section Ultra-Impactante - RED TEAM */}
       <section 
@@ -138,43 +399,44 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               <div className="flex flex-wrap gap-3 mb-6">
                 <Badge variant="secondary" className="bg-red-900/50 backdrop-blur-md text-white border border-red-500/50 hero-badge hover:bg-red-800/50 transition-colors">
                   <CheckCircle size={14} className="mr-1 text-red-400" />
-                  Expert Certifié
+                  {copy.badges[0]}
                 </Badge>
                 <Badge variant="secondary" className="bg-red-900/50 backdrop-blur-md text-white border border-red-500/50 hero-badge hover:bg-red-800/50 transition-colors">
                   <MapPin size={14} className="mr-1 text-orange-400" />
-                  Suisse
+                  {copy.badges[1]}
                 </Badge>
                 <Badge variant="secondary" className="bg-red-900/50 backdrop-blur-md text-white border border-red-500/50 hero-badge hover:bg-red-800/50 transition-colors">
                   <Clock size={14} className="mr-1 text-orange-400" />
-                  Réponse 24h
+                  {copy.badges[2]}
                 </Badge>
               </div>
 
               {/* Main Headline - RED TEAM */}
               <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight drop-shadow-2xl">
-                <span className="text-white drop-shadow-lg block">RED TEAM</span>
-                <span className="text-red-500 drop-shadow-lg block cs-text-glow-red-40">OFFENSIVE SECURITY</span>
-                <span className="text-white drop-shadow-md block">PROTÉGEZ VOTRE</span>
-                <span className="text-orange-500 drop-shadow-md block cs-text-glow-orange-30">ENTREPRISE</span>
+                <span className="text-white drop-shadow-lg block">{copy.headline[0]}</span>
+                <span className="text-red-500 drop-shadow-lg block cs-text-glow-red-40">{copy.headline[1]}</span>
+                <span className="text-white drop-shadow-md block">{copy.headline[2]}</span>
+                <span className="text-orange-500 drop-shadow-md block cs-text-glow-orange-30">{copy.headline[3]}</span>
               </h2>
 
               {/* Subheadline - RED TEAM */}
               <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed max-w-2xl hero-subtitle drop-shadow-md">
-                🎯 <strong className="text-white">Expert en sécurité offensive en Suisse</strong>
-                <br />
-                <span className="text-gray-400">Tests d'intrusion, Red Team operations et développement sécurisé.</span><br />
-                <span className="text-red-400 font-semibold">Attaquez avant d'être attaqué.</span>
+                {copy.subheadline.split('\n').map((line, index) => (
+                  <span key={index}>
+                    {line}
+                    <br />
+                  </span>
+                ))}
               </p>
 
               {/* Pain Points - RED TEAM */}
               <div className="bg-red-950/60 border border-red-600/50 rounded-lg p-4 mb-8 backdrop-blur-sm cs-shadow-glow-red-30-soft">
                 <div className="flex items-center mb-2">
                   <WaveTriangle className="text-red-500" size={20} />
-                  <span className="text-white font-semibold ml-2">⚠️ Risques Réels</span>
+                  <span className="text-white font-semibold ml-2">{copy.riskTitle}</span>
                 </div>
                 <p className="text-red-200 text-sm">
-                  Chaque jour, des entreprises suisses sont victimes de cyberattaques.
-                  Ne soyez pas la prochaine victime !
+                  {copy.riskText}
                 </p>
               </div>
 
@@ -190,7 +452,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                     className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-2xl hover:shadow-red-500/40 transform transition-all duration-300 font-bold text-lg px-8 py-4 border border-red-500/50 cs-shadow-glow-red-30"
                   >
                     <Lightning className="mr-2" size={20} />
-                    PROTÉGEZ-MOI MAINTENANT
+                    {copy.ctaPrimary}
                     <ArrowRight size={20} className="ml-2" />
                   </Button>
                 </motion.div>
@@ -202,16 +464,16 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               <div className="flex items-center gap-6 text-sm text-gray-300">
                 <div className="flex items-center gap-1">
                   <Star className="text-orange-400" size={16} />
-                  <span className="font-semibold text-white">4.9/5</span>
-                  <span>(+10 avis)</span>
+                  <span className="font-semibold text-white">{copy.ratingText}</span>
+                  <span>{copy.ratingMeta}</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <Certificate className="text-red-400" size={16} />
-                  <span>Certifié EC-Council</span>
+                  <span>{copy.certLabel}</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <Trophy className="text-orange-400" size={16} />
-                  <span>2+ ans expérience</span>
+                  <span>{copy.expLabel}</span>
                 </div>
               </div>
             </motion.div>
@@ -305,10 +567,10 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              🚨 Votre Entreprise est-elle Vulnérable ?
+              {copy.problemTitle}
             </h2>
             <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-              Découvrez les risques courants et comment les entreprises suisses se protègent efficacement
+              {copy.problemSubtitle}
             </p>
           </motion.div>
 
@@ -319,20 +581,20 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h3 className="text-2xl font-bold text-red-500 mb-6 cs-text-glow-red-20">❌ Problèmes Courants</h3>
+              <h3 className="text-2xl font-bold text-red-500 mb-6 cs-text-glow-red-20">{copy.problemsTitle}</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3 p-4 bg-red-950/50 border border-red-800/40 rounded-lg">
                   <WaveTriangle className="text-red-500 mt-1 flex-shrink-0" size={20} />
                   <div>
-                    <div className="font-semibold text-red-400">Systèmes non testés</div>
-                    <div className="text-red-300/70 text-sm">80% des entreprises n'ont jamais fait de pentest</div>
+                    <div className="font-semibold text-red-400">{copy.problems[0].title}</div>
+                    <div className="text-red-300/70 text-sm">{copy.problems[0].text}</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 p-4 bg-red-950/50 border border-red-800/40 rounded-lg">
                   <WaveTriangle className="text-red-500 mt-1 flex-shrink-0" size={20} />
                   <div>
-                    <div className="font-semibold text-red-400">Équipes sous-formées</div>
-                    <div className="text-red-300/70 text-sm">Manque de compétences internes en cybersécurité</div>
+                    <div className="font-semibold text-red-400">{copy.problems[1].title}</div>
+                    <div className="text-red-300/70 text-sm">{copy.problems[1].text}</div>
                   </div>
                 </div>
               </div>
@@ -344,20 +606,20 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <h3 className="text-2xl font-bold text-green-500 mb-6 cs-text-glow-green-20">✅ Mes Solutions</h3>
+              <h3 className="text-2xl font-bold text-green-500 mb-6 cs-text-glow-green-20">{copy.solutionsTitle}</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3 p-4 bg-green-950/50 border border-green-800/40 rounded-lg">
                   <CheckCircle className="text-green-500 mt-1 flex-shrink-0" size={20} />
                   <div>
-                    <div className="font-semibold text-green-400">Tests d'intrusion complets</div>
-                    <div className="text-green-300/70 text-sm">Identification de toutes vos vulnérabilités</div>
+                    <div className="font-semibold text-green-400">{copy.solutions[0].title}</div>
+                    <div className="text-green-300/70 text-sm">{copy.solutions[0].text}</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 p-4 bg-green-950/50 border border-green-800/40 rounded-lg">
                   <CheckCircle className="text-green-500 mt-1 flex-shrink-0" size={20} />
                   <div>
-                    <div className="font-semibold text-green-400">Formation et accompagnement</div>
-                    <div className="text-green-300/70 text-sm">Renforcement de vos compétences internes</div>
+                    <div className="font-semibold text-green-400">{copy.solutions[1].title}</div>
+                    <div className="text-green-300/70 text-sm">{copy.solutions[1].text}</div>
                   </div>
                 </div>
               </div>
@@ -376,10 +638,10 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Services de <span className="text-white cs-text-glow-red-30">Sécurité Offensive</span>
+              {copy.servicesTitle}
             </h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-              De la prévention à la réponse aux incidents, je couvre tous vos besoins en cybersécurité
+              {copy.servicesSubtitle}
             </p>
           </motion.div>
 
@@ -399,7 +661,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                   >
                     {service.popular && (
                       <div className="absolute top-4 right-4 z-10">
-                        <Badge className="bg-gradient-to-r from-red-600 to-red-700 text-white font-bold shadow-lg border-0">Plus demandé</Badge>
+                        <Badge className="bg-gradient-to-r from-red-600 to-red-700 text-white font-bold shadow-lg border-0">{copy.popularBadge}</Badge>
                       </div>
                     )}
 
@@ -451,7 +713,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                           onClick={() => onNavigate(service.id)}
                           className="w-full justify-between text-gray-300 hover:text-white hover:bg-red-950/50 transition-all duration-300"
                         >
-                          En savoir plus
+                          {copy.learnMore}
                           <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
                         </Button>
                       </motion.div>
@@ -474,10 +736,10 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Ils me font confiance
+              {copy.testimonialsTitle}
             </h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-              Découvrez les témoignages de clients satisfaits qui ont sécurisé leur entreprise
+              {copy.testimonialsSubtitle}
             </p>
           </motion.div>
 
@@ -521,10 +783,10 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Questions Fréquentes
+              {copy.faqTitle}
             </h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-              Réponses aux questions que vous vous posez sur la cybersécurité
+              {copy.faqSubtitle}
             </p>
           </motion.div>
 
@@ -538,13 +800,12 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               <Card className="cursor-pointer hover:shadow-md transition-shadow bg-[#1A1A1A] border-[#333] hover:border-red-600/40">
                 <CardHeader>
                   <CardTitle className="text-left text-lg text-white">
-                    🤔 Combien coûte un test d'intrusion ?
+                    {faqItems[0].q}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-400">
-                    Les prix varient selon la complexité : de 2'000 CHF pour un site web simple à 15'000 CHF pour une infrastructure complète.
-                    Je propose toujours un devis gratuit et personnalisé.
+                    {faqItems[0].a}
                   </p>
                 </CardContent>
               </Card>
@@ -554,13 +815,12 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               <Card className="cursor-pointer hover:shadow-md transition-shadow bg-[#1A1A1A] border-[#333] hover:border-red-600/40">
                 <CardHeader>
                   <CardTitle className="text-left text-lg text-white">
-                    ⏱️ Combien de temps prend un audit ?
+                    {faqItems[1].q}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-400">
-                    Un audit complet prend généralement 2-4 semaines selon la taille de votre infrastructure.
-                    Le rapport final avec recommandations est livré sous 5 jours ouvrés.
+                    {faqItems[1].a}
                   </p>
                 </CardContent>
               </Card>
@@ -570,13 +830,12 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               <Card className="cursor-pointer hover:shadow-md transition-shadow bg-[#1A1A1A] border-[#333] hover:border-red-600/40">
                 <CardHeader>
                   <CardTitle className="text-left text-lg text-white">
-                    🛡️ Est-ce que je suis protégé après l'audit ?
+                    {faqItems[2].q}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-400">
-                    L'audit identifie les vulnérabilités. Je vous fournis un plan d'action détaillé et peux vous accompagner
-                    dans la mise en œuvre des correctifs pour une protection complète.
+                    {faqItems[2].a}
                   </p>
                 </CardContent>
               </Card>
@@ -615,21 +874,20 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             </div>
 
             <h3 className="text-3xl md:text-4xl font-bold mb-6">
-              🚀 Prêt à <span className="text-red-300 cs-text-glow-red-20-strong">Protéger</span> Votre Entreprise ?
+              {copy.ctaTitle}
             </h3>
             <p className="text-xl text-red-100 mb-8 max-w-2xl mx-auto">
-              Ne laissez pas les cyberattaques ruiner votre business.
-              Contactez-moi dès aujourd'hui pour une consultation gratuite.
+              {copy.ctaText}
             </p>
 
             {/* Urgency Elements - RED TEAM */}
             <div className="bg-black/30 border border-red-400/40 rounded-lg p-4 mb-8 max-w-md mx-auto backdrop-blur-sm">
               <div className="flex items-center justify-center mb-2">
                 <Clock className="text-orange-400 mr-2" size={20} />
-                <span className="text-orange-300 font-semibold">Offre Limitée</span>
+                <span className="text-orange-300 font-semibold">{copy.urgencyTitle}</span>
               </div>
               <p className="text-white text-sm">
-                📅 Réponse garantie sous 24h • 📞 Consultation gratuite
+                {copy.urgencyText}
               </p>
             </div>
 
@@ -644,7 +902,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                   className="bg-white text-red-700 hover:bg-gray-100 shadow-2xl hover:shadow-white/25 transform transition-all duration-300 font-bold text-lg px-8 py-4 cs-shadow-glow-white-30"
                 >
                   <Envelope size={20} className="mr-2" />
-                  OBTENIR MON DEVIS GRATUIT
+                  {copy.ctaPrimaryBottom}
                   <ArrowRight size={20} className="ml-2" />
                 </Button>
               </motion.div>
@@ -660,7 +918,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                   className="border-2 border-white/40 text-white hover:bg-white/10 hover:border-white/60 transition-all duration-300 font-semibold px-8 py-4 bg-transparent"
                 >
                   <Medal size={20} className="mr-2" />
-                  En savoir plus sur moi
+                  {copy.ctaSecondary}
                 </Button>
               </motion.div>
             </div>
@@ -669,19 +927,19 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-red-100">
               <div className="flex items-center gap-1">
                 <CheckCircle size={16} className="text-green-400" />
-                <span>Expert certifié</span>
+                <span>{copy.trustSignals[0]}</span>
               </div>
               <div className="flex items-center gap-1">
                 <CheckCircle size={16} className="text-green-400" />
-                <span>RGPD compliant</span>
+                <span>{copy.trustSignals[1]}</span>
               </div>
               <div className="flex items-center gap-1">
                 <CheckCircle size={16} className="text-green-400" />
-                <span>Assurance professionnelle</span>
+                <span>{copy.trustSignals[2]}</span>
               </div>
               <div className="flex items-center gap-1">
                 <CheckCircle size={16} className="text-green-400" />
-                <span>Confidentialité garantie</span>
+                <span>{copy.trustSignals[3]}</span>
               </div>
             </div>
           </motion.div>

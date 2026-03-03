@@ -5,6 +5,8 @@ import { Toaster } from '@/components/ui/sonner'
 import App from './App.tsx'
 import { ErrorFallback } from './ErrorFallback.tsx'
 
+import './i18n'
+
 import "./main.css"
 import "./styles/theme.css"
 import "./styles/buttons.css"

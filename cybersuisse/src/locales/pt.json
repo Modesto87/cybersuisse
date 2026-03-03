@@ -1,0 +1,42 @@
+{
+  "language": {
+    "label": "Idioma",
+    "fr": "Français",
+    "en": "English",
+    "pt": "Português"
+  },
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "pentest": "Pentest",
+    "osint": "OSINT",
+    "developpement": "Desenvolvimento",
+    "dataRecovery": "Recuperação de Dados",
+    "contact": "Contacto",
+    "openMenu": "Abrir menu de navegação"
+  },
+  "footer": {
+    "description": "Especialista freelance em cibersegurança baseado na Suíça. Especializado em testes de intrusão, operações Red Team e desenvolvimento seguro.",
+    "servicesTitle": "Serviços",
+    "services": {
+      "pentest": "Testes de Intrusão",
+      "redTeam": "Operações Red Team",
+      "secureDev": "Desenvolvimento Seguro"
+    },
+    "contactTitle": "Contacto",
+    "copyright": "© 2024 Modesto Cibersegurança. Todos os direitos reservados.",
+    "links": {
+      "cgv": "Termos e Condições",
+      "privacy": "Política de Privacidade",
+      "legal": "Aviso Legal",
+      "cookies": "Cookies"
+    },
+    "badge": "Freelance certificado na Suíça"
+  },
+  "error": {
+    "title": "Esta aplicação encontrou um erro de execução",
+    "description": "Ocorreu um problema inesperado ao executar a aplicação. Os detalhes do erro estão abaixo. Contacte o autor da aplicação e informe este problema.",
+    "details": "Detalhes do erro:",
+    "tryAgain": "Tentar novamente"
+  }
+}

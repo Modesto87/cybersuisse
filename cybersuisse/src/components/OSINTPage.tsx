@@ -23,6 +23,7 @@ import {
 } from '@phosphor-icons/react'
 import Logo from './Logo'
 import SEOContent from './SEOContent'
+import { useTranslation } from 'react-i18next'
 
 interface OSINTPageProps {
   onNavigate: (page: 'contact') => void
@@ -50,121 +51,438 @@ const itemVariants = {
   }
 }
 
-const osintServices = [
-  {
-    icon: User,
-    title: 'Investigation de Personnes',
-    description: 'Investigation digitale discrète via sources ouvertes : cohérence de profil, réputation en ligne, signaux d\'alerte et éléments à clarifier.',
-    features: [
-      'Vérification de cohérence (parcours, présence publique, alias)',
-      'Analyse de réputation et signaux faibles (sources publiques)',
-      'Contexte recrutement : éléments à valider avant embauche (cadre conforme)',
-      'Synthèse claire et actionnable (faits, sources, niveau de confiance)'
-    ],
-    popular: true
-  },
-  {
-    icon: Buildings,
-    title: 'Due Diligence Entreprise',
-    description: 'Avant de signer, d\'ouvrir un accès ou d\'engager un budget : évaluez le risque réputationnel et opérationnel via sources ouvertes.',
-    features: [
-      'Analyse de structure corporate',
-      'Vérification de dirigeants et actionnaires',
-      'Évaluation des risques réputationnels',
-      'Contexte partenaires/fournisseurs (risques & signaux d\'alerte)'
-    ],
-    popular: false
-  },
-  {
-    icon: Network,
-    title: 'Investigation Cyber',
-    description: 'Détection de fuites de données, exposition d\'infrastructure et analyse de surface d\'attaque.',
-    features: [
-      'Détection de données exposées (breaches)',
-      'Cartographie d\'infrastructure',
-      'Analyse de surface d\'attaque',
-      'Monitoring de dark web'
-    ],
-    popular: false
-  },
-  {
-    icon: Fingerprint,
-    title: 'Analyse de Menaces',
-    description: 'Identification et analyse de menaces potentielles via intelligence de sources ouvertes.',
-    features: [
-      'Veille sur menaces ciblées',
-      'Analyse de campagnes de désinformation',
-      'Évaluation de risques géopolitiques',
-      'Alertes personnalisées'
-    ],
-    popular: false
-  }
-]
-
-const osintTools = [
-  { name: 'OSINT Framework', category: 'Framework' },
-  { name: 'Maltego', category: 'Analyse' },
-  { name: 'theHarvester', category: 'Collecte' },
-  { name: 'Recon-ng', category: 'Automatisation' },
-  { name: 'Shodan', category: 'Infrastructure' },
-  { name: 'Censys', category: 'Infrastructure' },
-  { name: 'HaveIBeenPwned', category: 'Sécurité' },
-  { name: 'DeHashed', category: 'Breaches' },
-  { name: 'Intelligence X', category: 'Dark Web' },
-  { name: 'SpiderFoot', category: 'Automatisation' }
-]
-
-const methodologies = [
-  {
-    phase: 'Planification',
-    icon: Target,
-    description: 'Définition des objectifs, périmètre et méthodologie adaptée à votre besoin spécifique.',
-    steps: ['Analyse des exigences', 'Définition du scope', 'Sélection des sources', 'Plan de collecte']
-  },
-  {
-    phase: 'Collecte',
-    icon: Database,
-    description: 'Récupération systématique d\'informations via sources ouvertes et techniques OSINT avancées.',
-    steps: ['Sources publiques', 'Réseaux sociaux', 'Bases de données', 'APIs spécialisées']
-  },
-  {
-    phase: 'Analyse',
-    icon: MagnifyingGlass,
-    description: 'Traitement, corrélation et analyse des données collectées pour extraire des insights pertinents.',
-    steps: ['Corrélation de données', 'Analyse de patterns', 'Validation des informations', 'Évaluation des risques']
-  },
-  {
-    phase: 'Reporting',
-    icon: FileText,
-    description: 'Présentation des résultats dans un rapport structuré avec recommandations d\'actions.',
-    steps: ['Rapport détaillé', 'Visualisations', 'Recommandations', 'Support post-analyse']
-  }
-]
-
-const benefits = [
-  {
-    icon: Eye,
-    title: 'Visibilité Complète',
-    description: 'Découvrez ce qui est visible de votre organisation ou de vos cibles via sources ouvertes.'
-  },
-  {
-    icon: Shield,
-    title: 'Prévention des Risques',
-    description: 'Identifiez les menaces potentielles avant qu\'elles ne deviennent problématiques.'
-  },
-  {
-    icon: Target,
-    title: 'Décisions Éclairées',
-    description: 'Basez vos décisions sur des informations vérifiées et actualisées.'
-  },
-  {
-    icon: Clock,
-    title: 'Temps Réel',
-    description: 'Suivi continu des changements et évolutions en temps réel.'
-  }
-]
-
 export default function OSINTPage({ onNavigate }: OSINTPageProps) {
+  const { i18n } = useTranslation()
+  const language = (i18n.resolvedLanguage || i18n.language || 'fr').split('-')[0]
+  const copy = (language === 'en'
+    ? {
+        seoTitle: 'OSINT & Digital Investigation in Biel/Bienne (Switzerland) | Due Diligence & Discreet Research',
+        seoDescription: '🔍 OSINT in Biel/Bienne: digital investigations (open sources), due diligence, profile checks, online reputation and cyber investigations (breaches, attack surface). Discreet and compliant (Swiss law/GDPR).',
+        heroTitle: 'OSINT & Digital Investigation',
+        heroSubtitle: 'Discreet, legal, and actionable OSINT for individuals and businesses in Switzerland.',
+        servicesTitle: 'OSINT Services',
+        toolsTitle: 'Tools & Platforms',
+        methodologyTitle: 'Methodology',
+        benefitsTitle: 'Key Benefits',
+        ctaTitle: 'Need an OSINT Investigation?',
+        ctaText: 'Describe your needs and scope. I respond within 24–48h.',
+        ctaButton: 'Contact me',
+        services: [
+          {
+            icon: User,
+            title: 'People Investigation',
+            description: 'Discreet digital investigation via open sources: profile consistency, online reputation, red flags, and items to clarify.',
+            features: [
+              'Consistency checks (timeline, public presence, aliases)',
+              'Reputation analysis and weak signals (public sources)',
+              'Recruitment context: items to validate before hiring',
+              'Clear, actionable synthesis (facts, sources, confidence)'
+            ],
+            popular: true
+          },
+          {
+            icon: Buildings,
+            title: 'Company Due Diligence',
+            description: 'Before signing, granting access, or committing budget: assess reputational and operational risk via open sources.',
+            features: [
+              'Corporate structure analysis',
+              'Verification of executives and shareholders',
+              'Reputational risk assessment',
+              'Partners/suppliers context (risks & red flags)'
+            ],
+            popular: false
+          },
+          {
+            icon: Network,
+            title: 'Cyber Investigation',
+            description: 'Detect data leaks, infrastructure exposure, and attack surface analysis.',
+            features: [
+              'Exposed data detection (breaches)',
+              'Infrastructure mapping',
+              'Attack surface analysis',
+              'Dark web monitoring'
+            ],
+            popular: false
+          },
+          {
+            icon: Fingerprint,
+            title: 'Threat Analysis',
+            description: 'Identification and analysis of potential threats via open-source intelligence.',
+            features: [
+              'Monitoring targeted threats',
+              'Disinformation campaign analysis',
+              'Geopolitical risk assessment',
+              'Custom alerts'
+            ],
+            popular: false
+          }
+        ],
+        tools: [
+          { name: 'OSINT Framework', category: 'Framework' },
+          { name: 'Maltego', category: 'Analysis' },
+          { name: 'theHarvester', category: 'Collection' },
+          { name: 'Recon-ng', category: 'Automation' },
+          { name: 'Shodan', category: 'Infrastructure' },
+          { name: 'Censys', category: 'Infrastructure' },
+          { name: 'HaveIBeenPwned', category: 'Security' },
+          { name: 'DeHashed', category: 'Breaches' },
+          { name: 'Intelligence X', category: 'Dark Web' },
+          { name: 'SpiderFoot', category: 'Automation' }
+        ],
+        methodology: [
+          {
+            phase: 'Planning',
+            icon: Target,
+            description: 'Define objectives, scope, and methodology tailored to your needs.',
+            steps: ['Requirements analysis', 'Scope definition', 'Source selection', 'Collection plan']
+          },
+          {
+            phase: 'Collection',
+            icon: Database,
+            description: 'Systematic gathering of information via open sources and advanced OSINT techniques.',
+            steps: ['Public sources', 'Social media', 'Databases', 'Specialized APIs']
+          },
+          {
+            phase: 'Analysis',
+            icon: MagnifyingGlass,
+            description: 'Processing, correlation, and analysis of collected data to extract relevant insights.',
+            steps: ['Data correlation', 'Pattern analysis', 'Information validation', 'Risk assessment']
+          },
+          {
+            phase: 'Reporting',
+            icon: FileText,
+            description: 'Results presented in a structured report with actionable recommendations.',
+            steps: ['Detailed report', 'Visualizations', 'Recommendations', 'Post-analysis support']
+          }
+        ],
+        benefits: [
+          { icon: Eye, title: 'Full Visibility', description: 'Discover what is visible about your organization or targets via open sources.' },
+          { icon: Shield, title: 'Risk Prevention', description: 'Identify potential threats before they become critical.' },
+          { icon: Target, title: 'Informed Decisions', description: 'Base your decisions on verified and up-to-date information.' },
+          { icon: Clock, title: 'Real Time', description: 'Continuous monitoring of changes and evolutions.' }
+        ]
+      }
+    : language === 'pt'
+      ? {
+          seoTitle: 'OSINT & Investigação Digital em Biel/Bienne (Suíça) | Due Diligence & Pesquisa Discreta',
+          seoDescription: '🔍 OSINT em Biel/Bienne: investigação digital (fontes abertas), due diligence, verificação de perfis, reputação online e investigações cyber. Discreto e conforme (lei suíça/RGPD).',
+          heroTitle: 'OSINT & Investigação Digital',
+          heroSubtitle: 'Investigação discreta, legal e acionável para indivíduos e empresas na Suíça.',
+          servicesTitle: 'Serviços OSINT',
+          toolsTitle: 'Ferramentas & Plataformas',
+          methodologyTitle: 'Metodologia',
+          benefitsTitle: 'Benefícios Chave',
+          ctaTitle: 'Precisa de uma investigação OSINT?',
+          ctaText: 'Descreva a sua necessidade e o escopo. Resposta em 24–48h.',
+          ctaButton: 'Contacte-me',
+          services: [
+            {
+              icon: User,
+              title: 'Investigação de Pessoas',
+              description: 'Investigação digital discreta via fontes abertas: coerência de perfil, reputação online, sinais de alerta e elementos a clarificar.',
+              features: [
+                'Verificação de coerência (percurso, presença pública, pseudónimos)',
+                'Análise de reputação e sinais fracos (fontes públicas)',
+                'Contexto de recrutamento: elementos a validar antes da contratação',
+                'Síntese clara e acionável (factos, fontes, nível de confiança)'
+              ],
+              popular: true
+            },
+            {
+              icon: Buildings,
+              title: 'Due Diligence Empresarial',
+              description: 'Antes de assinar, dar acesso ou investir: avalie o risco reputacional e operacional via fontes abertas.',
+              features: [
+                'Análise da estrutura corporativa',
+                'Verificação de executivos e acionistas',
+                'Avaliação de riscos reputacionais',
+                'Contexto de parceiros/fornecedores (riscos & alertas)'
+              ],
+              popular: false
+            },
+            {
+              icon: Network,
+              title: 'Investigação Cyber',
+              description: 'Deteção de fugas de dados, exposição de infraestrutura e análise de superfície de ataque.',
+              features: [
+                'Deteção de dados expostos (breaches)',
+                'Mapeamento de infraestrutura',
+                'Análise de superfície de ataque',
+                'Monitorização de dark web'
+              ],
+              popular: false
+            },
+            {
+              icon: Fingerprint,
+              title: 'Análise de Ameaças',
+              description: 'Identificação e análise de ameaças potenciais via inteligência de fontes abertas.',
+              features: [
+                'Monitorização de ameaças direcionadas',
+                'Análise de campanhas de desinformação',
+                'Avaliação de riscos geopolíticos',
+                'Alertas personalizados'
+              ],
+              popular: false
+            }
+          ],
+          tools: [
+            { name: 'OSINT Framework', category: 'Framework' },
+            { name: 'Maltego', category: 'Análise' },
+            { name: 'theHarvester', category: 'Coleta' },
+            { name: 'Recon-ng', category: 'Automação' },
+            { name: 'Shodan', category: 'Infraestrutura' },
+            { name: 'Censys', category: 'Infraestrutura' },
+            { name: 'HaveIBeenPwned', category: 'Segurança' },
+            { name: 'DeHashed', category: 'Breaches' },
+            { name: 'Intelligence X', category: 'Dark Web' },
+            { name: 'SpiderFoot', category: 'Automação' }
+          ],
+          methodology: [
+            {
+              phase: 'Planeamento',
+              icon: Target,
+              description: 'Definição de objetivos, escopo e metodologia adaptada à sua necessidade.',
+              steps: ['Análise de requisitos', 'Definição de escopo', 'Seleção de fontes', 'Plano de coleta']
+            },
+            {
+              phase: 'Coleta',
+              icon: Database,
+              description: 'Recolha sistemática de informações via fontes abertas e técnicas OSINT avançadas.',
+              steps: ['Fontes públicas', 'Redes sociais', 'Bases de dados', 'APIs especializadas']
+            },
+            {
+              phase: 'Análise',
+              icon: MagnifyingGlass,
+              description: 'Tratamento, correlação e análise dos dados para extrair insights relevantes.',
+              steps: ['Correlação de dados', 'Análise de padrões', 'Validação de informações', 'Avaliação de riscos']
+            },
+            {
+              phase: 'Relatório',
+              icon: FileText,
+              description: 'Resultados apresentados num relatório estruturado com recomendações acionáveis.',
+              steps: ['Relatório detalhado', 'Visualizações', 'Recomendações', 'Suporte pós-análise']
+            }
+          ],
+          benefits: [
+            { icon: Eye, title: 'Visibilidade Completa', description: 'Descubra o que é visível sobre a sua organização ou alvos.' },
+            { icon: Shield, title: 'Prevenção de Riscos', description: 'Identifique ameaças potenciais antes de se tornarem críticas.' },
+            { icon: Target, title: 'Decisões Informadas', description: 'Baseie decisões em informações verificadas e atuais.' },
+            { icon: Clock, title: 'Tempo Real', description: 'Monitorização contínua de alterações e evoluções.' }
+          ]
+        }
+      : {
+          seoTitle: 'OSINT & Investigation Digitale à Bienne/Biel (Suisse) | Due Diligence & Recherche Discrète',
+          seoDescription: "🔍 OSINT à Bienne/Biel et environs : investigation digitale (sources ouvertes), due diligence, vérification de profils/candidats, réputation en ligne et investigations cyber (fuites, surface d'attaque). Discrétion et conformité (droit suisse/RGPD).",
+          heroTitle: 'OSINT & Investigation Digitale',
+          heroSubtitle: 'Investigation discrète, légale et actionnable pour personnes et entreprises en Suisse.',
+          servicesTitle: 'Services OSINT',
+          toolsTitle: 'Outils & Plateformes',
+          methodologyTitle: 'Méthodologie',
+          benefitsTitle: 'Bénéfices Clés',
+          ctaTitle: 'Besoin d’une investigation OSINT ? ',
+          ctaText: 'Décrivez votre besoin et votre périmètre. Réponse sous 24–48h.',
+          ctaButton: 'Me contacter',
+          services: [
+            {
+              icon: User,
+              title: 'Investigation de Personnes',
+              description: "Investigation digitale discrète via sources ouvertes : cohérence de profil, réputation en ligne, signaux d'alerte et éléments à clarifier.",
+              features: [
+                'Vérification de cohérence (parcours, présence publique, alias)',
+                'Analyse de réputation et signaux faibles (sources publiques)',
+                'Contexte recrutement : éléments à valider avant embauche (cadre conforme)',
+                'Synthèse claire et actionnable (faits, sources, niveau de confiance)'
+              ],
+              popular: true
+            },
+            {
+              icon: Buildings,
+              title: 'Due Diligence Entreprise',
+              description: "Avant de signer, d'ouvrir un accès ou d'engager un budget : évaluez le risque réputationnel et opérationnel via sources ouvertes.",
+              features: [
+                'Analyse de structure corporate',
+                'Vérification de dirigeants et actionnaires',
+                'Évaluation des risques réputationnels',
+                'Contexte partenaires/fournisseurs (risques & signaux d\'alerte)'
+              ],
+              popular: false
+            },
+            {
+              icon: Network,
+              title: 'Investigation Cyber',
+              description: "Détection de fuites de données, exposition d'infrastructure et analyse de surface d'attaque.",
+              features: [
+                'Détection de données exposées (breaches)',
+                "Cartographie d'infrastructure",
+                "Analyse de surface d'attaque",
+                'Monitoring de dark web'
+              ],
+              popular: false
+            },
+            {
+              icon: Fingerprint,
+              title: 'Analyse de Menaces',
+              description: 'Identification et analyse de menaces potentielles via intelligence de sources ouvertes.',
+              features: [
+                'Veille sur menaces ciblées',
+                'Analyse de campagnes de désinformation',
+                'Évaluation de risques géopolitiques',
+                'Alertes personnalisées'
+              ],
+              popular: false
+            }
+          ],
+          tools: [
+            { name: 'OSINT Framework', category: 'Framework' },
+            { name: 'Maltego', category: 'Analyse' },
+            { name: 'theHarvester', category: 'Collecte' },
+            { name: 'Recon-ng', category: 'Automatisation' },
+            { name: 'Shodan', category: 'Infrastructure' },
+            { name: 'Censys', category: 'Infrastructure' },
+            { name: 'HaveIBeenPwned', category: 'Sécurité' },
+            { name: 'DeHashed', category: 'Breaches' },
+            { name: 'Intelligence X', category: 'Dark Web' },
+            { name: 'SpiderFoot', category: 'Automatisation' }
+          ],
+          methodology: [
+            {
+              phase: 'Planification',
+              icon: Target,
+              description: 'Définition des objectifs, périmètre et méthodologie adaptée à votre besoin spécifique.',
+              steps: ['Analyse des exigences', 'Définition du scope', 'Sélection des sources', 'Plan de collecte']
+            },
+            {
+              phase: 'Collecte',
+              icon: Database,
+              description: "Récupération systématique d'informations via sources ouvertes et techniques OSINT avancées.",
+              steps: ['Sources publiques', 'Réseaux sociaux', 'Bases de données', 'APIs spécialisées']
+            },
+            {
+              phase: 'Analyse',
+              icon: MagnifyingGlass,
+              description: 'Traitement, corrélation et analyse des données collectées pour extraire des insights pertinents.',
+              steps: ['Corrélation de données', 'Analyse de patterns', 'Validation des informations', 'Évaluation des risques']
+            },
+            {
+              phase: 'Reporting',
+              icon: FileText,
+              description: "Présentation des résultats dans un rapport structuré avec recommandations d'actions.",
+              steps: ['Rapport détaillé', 'Visualisations', 'Recommandations', 'Support post-analyse']
+            }
+          ],
+          benefits: [
+            { icon: Eye, title: 'Visibilité Complète', description: 'Découvrez ce qui est visible de votre organisation ou de vos cibles via sources ouvertes.' },
+            { icon: Shield, title: 'Prévention des Risques', description: 'Identifiez les menaces potentielles avant qu\'elles ne deviennent problématiques.' },
+            { icon: Target, title: 'Décisions Éclairées', description: 'Basez vos décisions sur des informations vérifiées et actualisées.' },
+            { icon: Clock, title: 'Temps Réel', description: 'Suivi continu des changements et évolutions en temps réel.' }
+          ]
+        })
+
+  const osintServices = copy.services
+  const osintTools = copy.tools
+  const methodologies = copy.methodology
+  const benefits = copy.benefits
+  const t = (fr: string, en: string, pt: string) => (language === 'en' ? en : language === 'pt' ? pt : fr)
+
+  if (language !== 'fr') {
+    return (
+      <div className="min-h-screen py-12 cs-bg-redteam-diagonal">
+        <SEOContent page="osint" title={copy.seoTitle} description={copy.seoDescription} />
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-12">
+            <Logo size="xl" showText={false} className="mx-auto mb-4" />
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{copy.heroTitle}</h1>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">{copy.heroSubtitle}</p>
+          </div>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold text-white mb-6 text-center">{copy.servicesTitle}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {osintServices.map((service, index) => {
+                const IconComponent = service.icon
+                return (
+                  <Card key={index} className="bg-[#1A1A1A] border-[#333]">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-3 text-white">
+                        <IconComponent size={24} className="text-red-500" />
+                        {service.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-400 mb-4">{service.description}</p>
+                      <ul className="space-y-2 text-sm text-gray-300">
+                        {service.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <CheckCircle size={14} className="text-red-500 mt-0.5" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                )
+              })}
+            </div>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold text-white mb-6 text-center">{copy.methodologyTitle}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {methodologies.map((phase, index) => (
+                <Card key={index} className="bg-[#1A1A1A] border-[#333]">
+                  <CardContent className="p-6 text-center">
+                    <div className="text-white font-semibold mb-2">{phase.phase}</div>
+                    <p className="text-sm text-gray-400 mb-3">{phase.description}</p>
+                    <ul className="text-xs text-gray-500 space-y-1">
+                      {phase.steps.map((step, idx) => (
+                        <li key={idx}>• {step}</li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold text-white mb-6 text-center">{copy.toolsTitle}</h2>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              {osintTools.map((tool, index) => (
+                <div key={index} className="text-center p-4 rounded-lg bg-[#0A0A0A] border border-[#444]">
+                  <div className="font-semibold text-white text-sm mb-1">{tool.name}</div>
+                  <Badge variant="outline" className="text-xs border-[#555] text-gray-400">
+                    {tool.category}
+                  </Badge>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold text-white mb-6 text-center">{copy.benefitsTitle}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {benefits.map((benefit, index) => (
+                <Card key={index} className="bg-[#1A1A1A] border-[#333]">
+                  <CardContent className="p-6 text-center">
+                    <div className="text-white font-semibold mb-2">{benefit.title}</div>
+                    <p className="text-sm text-gray-400">{benefit.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          <section className="text-center">
+            <h2 className="text-3xl font-bold text-white mb-4">{copy.ctaTitle}</h2>
+            <p className="text-lg text-gray-400 mb-6">{copy.ctaText}</p>
+            <Button onClick={() => onNavigate('contact')} className="bg-gradient-to-r from-red-600 to-red-700 text-white">
+              {copy.ctaButton}
+            </Button>
+          </section>
+        </div>
+      </div>
+    )
+  }
   return (
     <motion.div
       variants={containerVariants}
@@ -175,8 +493,8 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
       {/* SEO Content optimisé pour IA et buscas OSINT */}
       <SEOContent
         page="osint"
-        title="OSINT & Investigation Digitale à Bienne/Biel (Suisse) | Due Diligence & Recherche Discrète"
-        description="🔍 OSINT à Bienne/Biel et environs : investigation digitale (sources ouvertes), due diligence, vérification de profils/candidats, réputation en ligne et investigations cyber (fuites, surface d'attaque). Discrétion et conformité (droit suisse/RGPD)."
+        title={copy.seoTitle}
+        description={copy.seoDescription}
       />
 
       <div className="container mx-auto px-4 max-w-7xl">
@@ -202,16 +520,14 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
             variants={itemVariants}
             className="text-4xl md:text-5xl font-bold text-white mb-4"
           >
-            Investigation <span className="text-white cs-text-glow-red-30">OSINT</span>
+            {copy.heroTitle} <span className="text-white cs-text-glow-red-30">OSINT</span>
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
             className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed mb-6"
           >
-            🔍 <strong>Open Source Intelligence (OSINT)</strong> : une investigation digitale basée sur des sources publiques.
-            À Bienne/Biel (Seeland) et partout en Suisse, j’aide les entreprises et particuliers à prendre des décisions
-            éclairées : recrutement, partenaires, réputation, et risques cyber — avec méthode, professionnalisme et discrétion.
+            {copy.heroSubtitle}
           </motion.p>
 
           <motion.div
@@ -220,23 +536,23 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
           >
             <Badge variant="secondary" className="px-4 py-2 text-sm bg-red-950/60 text-red-400 border border-red-600/40">
               <Binoculars size={16} className="mr-2" />
-              Investigation Avancée
+              {t('Investigation Avancée', 'Advanced Investigation', 'Investigação Avançada')}
             </Badge>
             <Badge variant="secondary" className="px-4 py-2 text-sm bg-red-950/60 text-red-400 border border-red-600/40">
               <Database size={16} className="mr-2" />
-              Sources Multiples
+              {t('Sources Multiples', 'Multiple Sources', 'Fontes Múltiplas')}
             </Badge>
             <Badge variant="secondary" className="px-4 py-2 text-sm bg-red-950/60 text-red-400 border border-red-600/40">
               <Shield size={16} className="mr-2" />
-              RGPD Compliant
+              {t('RGPD Compliant', 'GDPR Compliant', 'Conforme RGPD')}
             </Badge>
             <Badge variant="secondary" className="px-4 py-2 text-sm bg-red-950/60 text-red-400 border border-red-600/40">
               <Eye size={16} className="mr-2" />
-              Discrétion & Confidentialité
+              {t('Discrétion & Confidentialité', 'Discretion & Confidentiality', 'Discrição & Confidencialidade')}
             </Badge>
             <Badge variant="secondary" className="px-4 py-2 text-sm bg-red-950/60 text-red-400 border border-red-600/40">
               <Clock size={16} className="mr-2" />
-              Rapports 48h
+              {t('Rapports 48h', 'Reports in 48h', 'Relatórios em 48h')}
             </Badge>
           </motion.div>
         </motion.div>
@@ -305,29 +621,35 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
                 <div className="flex items-start gap-3">
                   <Globe className="text-red-500 mt-1 flex-shrink-0" size={20} />
                   <div>
-                    <div className="font-semibold text-white">Sources Publiques</div>
-                    <div className="text-gray-400 text-sm">Sites web, réseaux sociaux, bases de données publiques</div>
+                    <div className="font-semibold text-white">{t('Sources Publiques', 'Public Sources', 'Fontes Públicas')}</div>
+                    <div className="text-gray-400 text-sm">
+                      {t('Sites web, réseaux sociaux, bases de données publiques', 'Websites, social networks, public databases', 'Websites, redes sociais, bases de dados públicas')}
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Users className="text-red-500 mt-1 flex-shrink-0" size={20} />
                   <div>
-                    <div className="font-semibold text-white">Réseaux Sociaux</div>
+                    <div className="font-semibold text-white">{t('Réseaux Sociaux', 'Social Networks', 'Redes Sociais')}</div>
                     <div className="text-gray-400 text-sm">LinkedIn, Twitter, Facebook, Instagram, TikTok</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Database className="text-red-500 mt-1 flex-shrink-0" size={20} />
                   <div>
-                    <div className="font-semibold text-white">Bases de Données</div>
-                    <div className="text-gray-400 text-sm">Registres commerciaux, WHOIS, brevets, publications</div>
+                    <div className="font-semibold text-white">{t('Bases de Données', 'Databases', 'Bases de Dados')}</div>
+                    <div className="text-gray-400 text-sm">
+                      {t('Registres commerciaux, WHOIS, brevets, publications', 'Business registers, WHOIS, patents, publications', 'Registos comerciais, WHOIS, patentes, publicações')}
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Network className="text-red-500 mt-1 flex-shrink-0" size={20} />
                   <div>
-                    <div className="font-semibold text-white">Infrastructure</div>
-                    <div className="text-gray-400 text-sm">Analyse de surface d'attaque, fuites de données</div>
+                    <div className="font-semibold text-white">{t('Infrastructure', 'Infrastructure', 'Infraestrutura')}</div>
+                    <div className="text-gray-400 text-sm">
+                      {t("Analyse de surface d'attaque, fuites de données", 'Attack surface analysis, data leaks', 'Análise de superfície de ataque, fugas de dados')}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -344,16 +666,18 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
                   <div className="text-center">
                     <Binoculars size={80} className="text-primary mx-auto mb-4" />
                     <h3 className="text-2xl font-bold text-foreground mb-2">OSINT</h3>
-                    <p className="text-muted-foreground">Intelligence des Sources Ouvertes</p>
+                    <p className="text-muted-foreground">
+                      {t('Intelligence des Sources Ouvertes', 'Open-Source Intelligence', 'Inteligência de Fontes Abertas')}
+                    </p>
                   </div>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/20 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
                   <h4 className="text-white font-semibold text-xl mb-2 drop-shadow-lg">
-                    Investigation Éthique
+                    {t('Investigation Éthique', 'Ethical Investigation', 'Investigação Ética')}
                   </h4>
                   <p className="text-white/90 text-sm drop-shadow-lg">
-                    Méthodes légales • Sources publiques • RGPD compliant
+                    {t('Méthodes légales • Sources publiques • RGPD compliant', 'Legal methods • Public sources • GDPR compliant', 'Métodos legais • Fontes públicas • Conforme RGPD')}
                   </p>
                 </div>
               </div>
@@ -363,9 +687,7 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
 
         {/* Services OSINT */}
         <motion.section variants={itemVariants} className="mb-16">
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">
-            Services d'Investigation OSINT
-          </h2>
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">{copy.servicesTitle}</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {osintServices.map((service, index) => {
@@ -380,7 +702,7 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
                   <Card className={`h-full transition-all duration-300 hover:shadow-2xl bg-[#1A1A1A] border-[#333] hover:border-red-600/40 overflow-hidden relative ${service.popular ? 'ring-2 ring-red-500/50' : ''}`}>
                     {service.popular && (
                       <div className="absolute top-4 right-4 z-10">
-                        <Badge className="bg-red-600 text-white">Plus demandé</Badge>
+                        <Badge className="bg-red-600 text-white">{t('Plus demandé', 'Most requested', 'Mais procurado')}</Badge>
                       </div>
                     )}
 
@@ -418,7 +740,7 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
                           onClick={() => onNavigate('contact')}
                           className="w-full justify-between border-[#444] text-gray-300 hover:bg-red-950/50 hover:text-red-400 hover:border-red-600/50 transition-all duration-300"
                         >
-                          Demander un devis
+                          {t('Demander un devis', 'Request a quote', 'Pedir orçamento')}
                           <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
                         </Button>
                       </motion.div>
@@ -435,7 +757,6 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
           <h2 className="text-3xl font-bold text-white mb-8 text-center">
             Méthodologie OSINT Professionnelle
           </h2>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {methodologies.map((phase, index) => {
               const IconComponent = phase.icon
@@ -471,9 +792,8 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
                         ))}
                       </ul>
                     </CardContent>
-                  </Card>
-                </motion.div>
-              )
+                          {copy.benefitsTitle}
+                
             })}
           </div>
         </motion.section>
@@ -506,9 +826,12 @@ export default function OSINTPage({ onNavigate }: OSINTPageProps) {
 
               <div className="mt-8 p-4 bg-red-950/30 rounded-lg border border-red-800/40">
                 <p className="text-center text-gray-300 text-sm">
-                  🔧 <strong className="text-red-400">Outils spécialisés :</strong> Utilisation d'outils professionnels et frameworks
-                  open source pour maximiser l'efficacité des investigations tout en respectant
-                  les contraintes légales et éthiques.
+                  🔧 <strong className="text-red-400">{t('Outils spécialisés :', 'Specialized tools:', 'Ferramentas especializadas:')}</strong>{' '}
+                  {t(
+                    "Utilisation d'outils professionnels et frameworks open source pour maximiser l'efficacité des investigations tout en respectant les contraintes légales et éthiques.",
+                    'Use of professional tools and open-source frameworks to maximize investigation efficiency while respecting legal and ethical constraints.',
+                    'Uso de ferramentas profissionais e frameworks open source para maximizar a eficácia das investigações, respeitando as restrições legais e éticas.'
+                  )}
                 </p>
               </div>
             </CardContent>

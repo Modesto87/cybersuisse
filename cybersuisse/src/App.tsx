@@ -1,9 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom'
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy, useEffect } from 'react'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import CookieConsent from './components/CookieConsent'
+import { useTranslation } from 'react-i18next'
 
 // Lazy loading components
 const HomePage = lazy(() => import('./components/HomePage'))
@@ -38,6 +39,13 @@ const pageVariants = {
 function AppContent() {
   const navigate = useNavigate()
   const location = useLocation()
+  const { i18n } = useTranslation()
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = i18n.language || 'fr'
+    }
+  }, [i18n.language])
 
   // Add wrapper function to handle string to PageType conversion
   const handleNavigate = (page: string) => {
