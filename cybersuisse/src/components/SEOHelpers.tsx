@@ -117,9 +117,9 @@ export const pageMetadata = {
     keywords: 'cybersécurité Bienne, pentest Biel, expert sécurité Bienne, audit CRA Suisse, consultant cybersécurité'
   },
   about: {
-    title: 'À propos - Modesto Expert Cybersécurité Bienne | Certifications & Expérience',
-    description: 'Découvrez le profil de Modesto, expert cybersécurité à Bienne. Certifications, expérience et expertise en sécurité informatique pour entreprises suisses.',
-    keywords: 'Modesto cybersécurité, expert sécurité Bienne profil, certifications cybersécurité Suisse'
+    title: 'À propos – Expert en cybersécurité pour PME à Biel/Bienne, Suisse',
+    description: 'CyberSuisse est un expert en cybersécurité dédié aux PME de Biel/Bienne et Suisse romande, avec sécurité continue et rapports de sécurité mensuels clairs.',
+    keywords: 'expertise en cybersécurité pour PME, sécurité continue, rapports de sécurité mensuels, cybersécurité Biel Bienne'
   },
   pentest: {
     title: "Pentest Bienne/Biel (Suisse) | Tests d'intrusion Web, Infrastructure & Wi‑Fi",

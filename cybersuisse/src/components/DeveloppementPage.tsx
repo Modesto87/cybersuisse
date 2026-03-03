@@ -1,9 +1,10 @@
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import SEOContent from '@/components/SEOContent'
-import { Code, Shield, Lock, Globe, Database, Envelope, CheckCircle, Cpu, Eye } from '@phosphor-icons/react'
+import { CheckCircle, Shield, Globe, ChartLineUp, Envelope, ArrowRight, Wrench } from '@phosphor-icons/react'
 import developmentImage from '@/assets/images/pexels-tima-miroshnichenko-5380664.jpg'
 import { useTranslation } from 'react-i18next'
 
@@ -14,140 +15,359 @@ interface DeveloppementPageProps {
 export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps) {
   const { i18n } = useTranslation()
   const language = (i18n.resolvedLanguage || i18n.language || 'fr').split('-')[0]
-  const copy = (language === 'en'
+
+  const copy = language === 'en'
     ? {
-        seoTitle: 'Secure Website Development in Biel/Bienne (Switzerland) | No WordPress | CyberSuisse',
-        seoDescription: 'Secure website development in Biel/Bienne and Switzerland: custom code (no WordPress), security review and testing before delivery, hardening against current threats.',
-        heroBadge: 'Secure website development • Security by Design',
-        heroTitle: 'Secure websites built right',
-        heroText: 'Based in Biel/Bienne, I design custom websites (no WordPress) with cybersecurity built-in: code is written, reviewed, and tested before delivery. AI can assist, but validation remains human and responsible.',
-        cta: 'Start your secure project',
-        servicesTitle: 'Secure website offers',
-        servicesSubtitle: 'For SMEs and organizations in Switzerland: clear, fast, and hardened.',
-        services: [
+        seoTitle: 'Secure Web Development for SMEs in Biel/Bienne | CyberSuisse',
+        seoDescription:
+          'Professional website creation with built-in cybersecurity from day one. Secure architecture, HTTPS/SSL, vulnerability mitigation, SEO and performance for SMEs.',
+        imageAlt: 'Secure web development and responsive design for businesses in Biel/Bienne',
+        badge: 'Secure Web Conception • SME-focused',
+        title: 'Secure Web Development for SMEs',
+        subtitle: 'Build a professional website with security integrated from the design phase.',
+        intro:
+          'A website is not only about aesthetics — it must resist common attacks, protect customer data in compliance with the new Swiss FADP (nLPD), and support safe online growth for your business. We help companies in Biel/Bienne and across Switzerland build reliable digital foundations.',
+        whyTitle: 'Why create a secure website for your SME?',
+        whyItems: [
+          'An insecure website can expose customer data, brand reputation and business continuity.',
+          'SMEs are regularly targeted through predictable vulnerabilities (XSS, injection, weak access controls).',
+          'Security at development time costs less than emergency fixes after incidents.'
+        ],
+        doTitle: 'Our secure web creation and development services',
+        doItems: [
+          'Secure-by-design architecture from the start',
+          'Basic vulnerability review and mitigation',
+          'Correct HTTPS/SSL configuration',
+          'Protection against common attacks (SQL injection, XSS, CSRF)',
+          'SEO and performance fundamentals for SME growth',
+          'Update and maintenance recommendations, with optional security tooling'
+        ],
+        offerTitle: 'À la carte service options',
+        offerSubtitle: 'Indicative pricing based on scope and technical complexity.',
+        options: [
           {
-            title: 'Secure Showcase Website',
-            subtitle: 'Professional online presence',
-            description: 'Fast, reliable site hardened against common attacks at delivery date.',
-            features: ['No WordPress (custom code)', 'Protected forms (anti-abuse)', 'HTTPS/TLS + CSP best practices', 'Security review & tests before delivery']
+            name: 'Option 1 — Secure Showcase Website',
+            price: 'CHF 500 – 1,250',
+            target: 'For SMEs needing a secure and professional digital presence.',
+            features: [
+              'Up to 5 pages',
+              'Responsive design (mobile/tablet/desktop)',
+              'Security best practices in development',
+              'HTTPS/SSL setup',
+              'Basic SEO (titles, URLs, meta tags)',
+              'Secure contact form',
+              'Hosting & maintenance optional'
+            ]
           },
           {
-            title: 'Secure E‑commerce Website',
-            subtitle: 'Online sales & payments',
-            description: 'Secure shopping flow, account protection, and reduced fraud risk.',
-            features: ['OWASP Top 10 protection (XSS, injections, etc.)', 'Secure sessions & accounts', 'Hardened configuration & deployment', 'Remediation plan if issues found']
+            name: 'Option 2 — SME Professional Website + Security & SEO',
+            price: 'CHF 1,250 – 3,000',
+            target: 'For SMEs that want a complete, optimized site with stronger security.',
+            features: [
+              'Consulting and requirements definition',
+              'Up to ~10 pages',
+              'Custom design + light branding',
+              'Enhanced security (XSS/injection mitigation, secure configuration)',
+              'Local SME SEO optimization (keywords, Google Business, sitemap)',
+              'CMS training for content updates',
+              'Secure hosting option with maintenance'
+            ]
           },
           {
-            title: 'Redesign & Hardening',
-            subtitle: 'Modernization without disruption',
-            description: 'Improve security of an existing site: reduce attack surface and harden weak points.',
-            features: ['Technical audit + prioritization', 'Targeted fixes + hardening', 'Code & config review', 'Operational guidance (backups, access, updates)']
+            name: 'Option 3 — Secure & High-Performance Web Solution',
+            price: 'CHF 3,000 – 6,000+',
+            target: 'For ambitious SMEs or projects with advanced requirements.',
+            features: [
+              'Pre-project audit and web strategy',
+              'Full custom design',
+              'Professional CMS + security extensions',
+              'Advanced features (blog, multilingual, custom modules)',
+              'Deep security hardening and permission review',
+              'Advanced SEO + analytics setup',
+              'Optional monthly maintenance/support'
+            ]
           }
-        ]
+        ],
+        integrationTitle: 'Integration with CyberSuisse Protect™',
+        integrationText:
+          'This service complements monthly security plans: a secure website foundation is reinforced by continuous risk monitoring and recurring actionable reports.',
+        integrationPoints: [
+          'Essentiel: baseline visibility and basic controls',
+          'Active: strategic follow-up with prioritized adjustments',
+          'Premium: advanced risk alignment and deeper protection support'
+        ],
+        ctaTitle: 'Ready to build a secure website for your SME?',
+        ctaText: 'Start with a free diagnostic to define scope, priorities, and the right secure development option.',
+        ctaPrimary: 'Schedule free security diagnostic',
+        ctaSecondary: 'Discover subscription plans'
       }
     : language === 'pt'
       ? {
-          seoTitle: 'Criação de site web seguro em Biel/Bienne (Suíça) | Sem WordPress | CyberSuisse',
-          seoDescription: 'Criação de sites seguros em Biel/Bienne e Suíça: código personalizado (sem WordPress), revisão e testes de segurança antes da entrega, hardening contra ameaças atuais.',
-          heroBadge: 'Criação de sites seguros • Security by Design',
-          heroTitle: 'Sites seguros feitos à medida',
-          heroText: 'Baseado em Biel/Bienne, crio sites personalizados (sem WordPress) com cibersegurança integrada: o código é escrito, revisto e testado antes da entrega. A IA pode ajudar, mas a validação é humana e responsável.',
-          cta: 'Iniciar o seu projeto seguro',
-          servicesTitle: 'Ofertas de criação de site seguro',
-          servicesSubtitle: 'Para PME e organizações na Suíça: site claro, rápido e endurecido.',
-          services: [
+          seoTitle: 'Desenvolvimento Web Seguro para PME em Biel/Bienne | CyberSuisse',
+          seoDescription:
+            'Criação de websites profissionais com cibersegurança integrada desde o início. Arquitetura segura, HTTPS/SSL, mitigação de vulnerabilidades, SEO e performance para PME.',
+          imageAlt: 'Desenvolvimento web seguro e design responsivo para empresas em Biel/Bienne',
+          badge: 'Conceção Web Segura • Foco PME',
+          title: 'Desenvolvimento Web Seguro para PME',
+          subtitle: 'Crie um website profissional com segurança integrada desde a fase de conceção.',
+          intro:
+            'Um website não é apenas estética — deve resistir a ataques, proteger dados de clientes de acordo com a nova lei suíça de proteção de dados (nLPD) e permitir crescimento online com segurança. Apoiamos empresas em Biel/Bienne e em toda a Suíça na criação de bases digitais sólidas.',
+          whyTitle: 'Porquê criar um website seguro para a sua PME?',
+          whyItems: [
+            'Um site inseguro pode expor dados, reputação e continuidade do negócio.',
+            'PME são alvo frequente de vulnerabilidades previsíveis (XSS, injeções, acessos fracos).',
+            'Aplicar segurança no desenvolvimento é mais eficiente do que corrigir após incidentes.'
+          ],
+          doTitle: 'Os nossos serviços de criação e desenvolvimento web',
+          doItems: [
+            'Arquitetura secure by design desde o início',
+            'Revisão e mitigação de vulnerabilidades básicas',
+            'Configuração correta de HTTPS/SSL',
+            'Proteção contra ataques comuns (injeção SQL, XSS, CSRF)',
+            'SEO e performance essenciais para PME',
+            'Recomendações de atualização/manutenção e ferramentas opcionais de segurança'
+          ],
+          offerTitle: 'Prestation à la carte',
+          offerSubtitle: 'Preço indicativo conforme escopo e complexidade técnica.',
+          options: [
             {
-              title: 'Site Vitrine Seguro',
-              subtitle: 'Presença online profissional',
-              description: 'Site rápido, fiável e endurecido contra ataques comuns.',
-              features: ['Sem WordPress (código personalizado)', 'Formulários protegidos', 'HTTPS/TLS + boas práticas CSP', 'Revisão e testes antes da entrega']
+              name: 'Option 1 — Site Vitrine Sécurisé',
+              price: 'CHF 500 – 1 250',
+              target: 'Ideal para PME que precisam de presença digital profissional e segura.',
+              features: [
+                'Site vitrine até 5 páginas',
+                'Design responsive (mobile/tablet/desktop)',
+                'Boas práticas de segurança de base',
+                'Configuração HTTPS/SSL',
+                'SEO de base (títulos, URLs, meta tags)',
+                'Formulário de contacto seguro',
+                'Alojamento e manutenção opcionais'
+              ]
             },
             {
-              title: 'Site E‑commerce Seguro',
-              subtitle: 'Vendas online e pagamentos',
-              description: 'Percurso de compra seguro, proteção de contas e redução de fraude.',
-              features: ['Proteção OWASP Top 10', 'Sessões e contas seguras', 'Hardening de configuração e deploy', 'Plano de remediação se necessário']
+              name: 'Option 2 — Site PME Professionnel + Sécurité & SEO',
+              price: 'CHF 1 250 – 3 000',
+              target: 'Para PME que querem um site completo e otimizado com segurança integrada.',
+              features: [
+                'Conselho e definição de necessidades',
+                'Site até ~10 páginas',
+                'Design personalizado + branding leve',
+                'Segurança reforçada (XSS/injeções/configurações seguras)',
+                'SEO local para PME (keywords, Google Business, sitemap)',
+                'Formação CMS para gestão de conteúdo',
+                'Opção de alojamento seguro com manutenção'
+              ]
             },
             {
-              title: 'Refonte & Hardening',
-              subtitle: 'Modernização sem ruptura',
-              description: 'Melhoria de segurança de um site existente: redução da superfície de ataque.',
-              features: ['Auditoria técnica + priorização', 'Correções e hardening', 'Revisão de código e configuração', 'Orientação operacional (backups, acessos, updates)']
+              name: 'Option 3 — Solution Web Sécurisée & Performante',
+              price: 'CHF 3 000 – 6 000+',
+              target: 'Para PME ambiciosas ou necessidades web específicas.',
+              features: [
+                'Auditoria prévia e estratégia web',
+                'Design totalmente personalizado',
+                'CMS profissional + extensões de segurança',
+                'Funcionalidades avançadas (blog, multi-idioma, módulos)',
+                'Segurança aprofundada e revisão de permissões',
+                'SEO otimizado + analytics configurado',
+                'Opção de manutenção mensal / suporte'
+              ]
             }
-          ]
+          ],
+          integrationTitle: 'Intégration avec CyberSuisse Protect™',
+          integrationText:
+            'Este serviço complementa os planos mensais: a base web segura é reforçada por monitorização contínua e relatórios periódicos acionáveis.',
+          integrationPoints: [
+            'Essentiel: visibilidade base e controlos iniciais',
+            'Active: acompanhamento estratégico com ajustes priorizados',
+            'Premium: alinhamento de risco avançado e proteção reforçada'
+          ],
+          ctaTitle: 'Pronto para criar um site seguro para a sua PME?',
+          ctaText: 'Comece com um diagnóstico gratuito para definir escopo, prioridades e a opção certa.',
+          ctaPrimary: 'Agendar diagnóstico de segurança gratuito',
+          ctaSecondary: 'Descobrir planos de assinatura'
         }
       : {
-          seoTitle: 'Création de site web sécurisé à Bienne/Biel (Suisse) | Sans WordPress | CyberSuisse',
-          seoDescription: 'Création de sites web sécurisés à Bienne/Biel et en Suisse : code sur mesure (sans WordPress), revue & tests de sécurité avant livraison, durcissement contre les menaces courantes à la date de livraison.',
-          heroBadge: 'Création de sites web sécurisés • Security by Design',
-          heroTitle: 'Création de sites web réellement sécurisés',
-          heroText: 'Basé à Bienne/Biel, je conçois des sites web sur mesure (sans WordPress) avec une approche cybersécurité intégrée : le code est écrit, revu et testé par moi avant livraison. L\'IA peut m\'assister, mais la validation reste humaine et responsable.',
-          cta: 'Démarrer votre projet sécurisé',
-          servicesTitle: 'Offres de création de site web sécurisé',
-          servicesSubtitle: 'Pour PME, indépendants et organisations en Suisse : un site clair, rapide, et surtout durci.',
-          services: [
+          seoTitle: 'Développement Web Sécurisé pour PME à Biel/Bienne | CyberSuisse',
+          seoDescription:
+            'Conception web sécurisée pour PME: sites professionnels, performants et protégés dès la conception avec bonnes pratiques cybersécurité, SEO et maintenance recommandée.',
+          imageAlt: 'Développement web sécurisé et design responsive pour entreprises à Bienne/Biel',
+          badge: 'Conception Web Sécurisée • PME',
+          title: 'Développement Web Sécurisé pour PME',
+          subtitle: 'Créer un site web professionnel avec sécurité intégrée dès la conception.',
+          intro:
+            'Un site web n’est pas seulement esthétique — il doit être conçu pour résister aux attaques, protéger les données de vos clients selon la nouvelle loi suisse sur la protection des données (nLPD) et faciliter une croissance sûre de votre activité en ligne. Nous accompagnons les PME de Bienne/Biel et de toute la Suisse dans la création de fondations digitales fiables.',
+          whyTitle: 'Pourquoi créer un site web sécurisé pour votre PME ?',
+          whyItems: [
+            'Un site vulnérable peut impacter la réputation, la continuité d’activité et la confiance client.',
+            'Les PME sont ciblées par des attaques opportunistes sur des failles connues (XSS, injections, accès faibles).',
+            'Intégrer la sécurité pendant le développement réduit les coûts de correction après incident.'
+          ],
+          doTitle: 'Nos services de création et développement web sécurisés',
+          doItems: [
+            'Architecture secure by design dès le départ',
+            'Revue et mitigation des vulnérabilités de base',
+            'Configuration HTTPS/SSL correcte',
+            'Protection contre les attaques courantes (injection SQL, XSS, CSRF)',
+            'SEO et performance adaptés aux objectifs PME',
+            'Recommandations de mises à jour/maintenance et outils de sécurité optionnels'
+          ],
+          offerTitle: 'Prestation à la carte',
+          offerSubtitle: 'Prix indicatifs selon périmètre, complexité et besoins métier.',
+          options: [
             {
-              title: 'Site Vitrine Sécurisé',
-              subtitle: 'Présence en ligne professionnelle',
-              description: 'Création d\'un site web rapide, fiable et durci contre les attaques courantes (à la date de livraison).',
-              features: ['Sans WordPress (code sur mesure)', 'Formulaires protégés (anti-abus)', 'HTTPS/TLS + bonnes pratiques CSP', 'Revue & tests de sécurité avant livraison']
+              name: '🟢 Option 1 — Site Vitrine Sécurisé',
+              price: 'CHF 500 – 1 250',
+              target: 'Idéal pour PME qui ont besoin d’une présence digitale professionnelle et sécurisée.',
+              features: [
+                'Site vitrine jusqu’à 5 pages',
+                'Design responsive (mobile, tablette, desktop)',
+                'Développement avec bonnes pratiques de sécurité de base',
+                'Configuration HTTPS/SSL',
+                'SEO de base (titres, URLs, balises meta)',
+                'Formulaire de contact sécurisé',
+                'Hébergement & maintenance optionnels'
+              ]
             },
             {
-              title: 'Site E‑commerce Sécurisé',
-              subtitle: 'Vente en ligne & paiements',
-              description: 'Boutique en ligne avec parcours sécurisé, protection des comptes et réduction des risques de fraude.',
-              features: ['Protection OWASP Top 10 (XSS, injections, etc.)', 'Gestion sûre des sessions & comptes', 'Durcissement configuration & déploiement', 'Plan de remédiation si points à corriger']
+              name: '🔵 Option 2 — Site PME Professionnel + Sécurité & SEO',
+              price: 'CHF 1 250 – 3 000',
+              target: 'Pour PME qui veulent un site plus complet, optimisé et sécurisé.',
+              features: [
+                'Conseils et définition de besoins',
+                'Site jusqu’à ~10 pages',
+                'Design personnalisé + branding léger',
+                'Sécurité renforcée (XSS, injections, configurations sécurisées)',
+                'SEO PME local (mots-clés, Google Business, sitemap)',
+                'Formation CMS pour mise à jour de contenu',
+                'Option hébergement sécurisé avec maintenance'
+              ]
             },
             {
-              title: 'Refonte & Sécurisation',
-              subtitle: 'Modernisation sans rupture',
-              description: 'Amélioration de la sécurité d\'un site existant : réduction de la surface d\'attaque et durcissement des points faibles.',
-              features: ['Audit technique + priorisation', 'Corrections ciblées + durcissement', 'Revue de code & configuration', 'Conseils d\'exploitation (sauvegardes, accès, mises à jour)']
+              name: '🔴 Option 3 — Solution Web Sécurisée & Performante',
+              price: 'CHF 3 000 – 6 000+',
+              target: 'Pour PME ambitieuses ou sites avec besoins spécifiques.',
+              features: [
+                'Audit préalable et stratégie web',
+                'Design sur mesure complet',
+                'CMS professionnel + extensions de sécurité',
+                'Fonctionnalités avancées (blog, multi-langue, modules personnalisés)',
+                'Sécurité approfondie (mitigation, revue permissions, protections appliquées)',
+                'SEO optimisé + analytics configurés',
+                'Option maintenance mensuelle / support technique'
+              ]
             }
-          ]
-        })
+          ],
+          integrationTitle: 'Intégration avec CyberSuisse Protect™',
+          integrationText:
+            'Le développement web sécurisé complète directement nos abonnements mensuels: la base technique du site est renforcée ensuite par une surveillance continue et des rapports de sécurité actionnables.',
+          integrationPoints: [
+            'Plan Essentiel: contrôles de base et visibilité initiale des risques',
+            'Plan Active: suivi stratégique avec priorités de correction',
+            'Plan Premium: analyse avancée et accompagnement renforcé'
+          ],
+          ctaTitle: 'Prêt à lancer un site web sécurisé pour votre PME ?',
+          ctaText: 'Planifiez un diagnostic gratuit pour cadrer le périmètre, le budget et l’option la plus adaptée.',
+          ctaPrimary: 'Planifier un diagnostic de sécurité gratuit',
+          ctaSecondary: 'Découvrir nos plans d’abonnement'
+        }
 
-  const developmentServices = copy.services
-  if (language !== 'fr') {
-    return (
-      <div className="min-h-screen cs-bg-redteam-diagonal">
-        <SEOContent page="developpement" title={copy.seoTitle} description={copy.seoDescription} />
-        <section className="container mx-auto px-4 py-20">
-          <div className="text-center mb-12">
-            <Badge variant="secondary" className="mb-4 bg-red-950/60 text-red-400 border border-red-600/40">
-              {copy.heroBadge}
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">{copy.heroTitle}</h1>
-            <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">{copy.heroText}</p>
-            <Button
-              size="lg"
-              onClick={() => onNavigate('contact')}
-              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-lg hover:shadow-xl border border-red-500/50 cs-shadow-glow-red-30"
-            >
-              <Envelope size={20} className="mr-2" />
-              {copy.cta}
-            </Button>
+  useEffect(() => {
+    document.title = copy.seoTitle
+
+    let description = document.querySelector('meta[name="description"]')
+    if (!description) {
+      description = document.createElement('meta')
+      description.setAttribute('name', 'description')
+      document.head.appendChild(description)
+    }
+    description.setAttribute('content', copy.seoDescription)
+  }, [copy.seoDescription, copy.seoTitle])
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen py-12 cs-bg-redteam-diagonal text-white"
+    >
+      <SEOContent page="developpement" title={copy.seoTitle} description={copy.seoDescription} />
+
+      <div className="container mx-auto px-4 max-w-6xl">
+        <section className="text-center mb-14" aria-labelledby="dev-title">
+          <Badge className="mb-4 bg-red-950/60 text-red-300 border border-red-600/40">{copy.badge}</Badge>
+          <h1 id="dev-title" className="text-4xl md:text-5xl font-bold mb-6">{copy.title}</h1>
+          <p className="text-xl text-white max-w-4xl mx-auto leading-relaxed mb-4">{copy.subtitle}</p>
+          <p className="text-white max-w-4xl mx-auto leading-relaxed">{copy.intro}</p>
+        </section>
+
+        <section className="mb-14">
+          <div className="relative w-full max-w-5xl mx-auto h-80 rounded-xl overflow-hidden shadow-2xl">
+            <img
+              src={developmentImage}
+              alt={copy.imageAlt}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-red-900/70 to-transparent" />
           </div>
+        </section>
 
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{copy.servicesTitle}</h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">{copy.servicesSubtitle}</p>
+        <section className="mb-14" aria-labelledby="why-title">
+          <h2 id="why-title" className="text-3xl font-bold mb-6 flex items-center gap-2">
+            <Shield size={28} className="text-red-400" />
+            {copy.whyTitle}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {copy.whyItems.map((item) => (
+              <Card key={item} className="bg-[#1A1A1A] border-[#333] h-full">
+                <CardContent className="p-6 flex items-start gap-3">
+                  <CheckCircle size={18} className="text-red-400 mt-1 flex-shrink-0" weight="fill" />
+                  <p className="text-white">{item}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
+        </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-1 gap-8">
-            {developmentServices.map((service) => (
-              <Card key={service.title} className="h-full bg-[#1A1A1A] border-[#333]">
+        <section className="mb-14" aria-labelledby="what-title">
+          <h2 id="what-title" className="text-3xl font-bold mb-6 flex items-center gap-2">
+            <Wrench size={28} className="text-red-400" />
+            {copy.doTitle}
+          </h2>
+          <Card className="bg-[#1A1A1A] border-[#333]">
+            <CardContent className="p-6">
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {copy.doItems.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <CheckCircle size={18} className="text-red-400 mt-1 flex-shrink-0" weight="fill" />
+                    <span className="text-white">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+        </section>
+
+        <section className="mb-14" aria-labelledby="offers-title">
+          <h2 id="offers-title" className="text-3xl font-bold mb-3 flex items-center gap-2">
+            <ChartLineUp size={28} className="text-red-400" />
+            {copy.offerTitle}
+          </h2>
+          <p className="text-white mb-6">{copy.offerSubtitle}</p>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {copy.options.map((option) => (
+              <Card key={option.name} className="bg-[#1A1A1A] border-[#333] h-full">
                 <CardHeader>
-                  <CardTitle className="text-xl text-red-500">{service.title}</CardTitle>
-                  <div className="text-sm font-medium text-orange-400 mb-2">{service.subtitle}</div>
-                  <CardDescription className="text-base text-gray-400">{service.description}</CardDescription>
+                  <h3 className="text-white text-xl font-semibold leading-none tracking-tight">{option.name}</h3>
+                  <p className="text-red-300 font-semibold">{option.price}</p>
+                  <p className="text-white text-sm">{option.target}</p>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center text-sm text-gray-300">
-                        <CheckCircle size={16} className="text-red-500 mr-3 flex-shrink-0" />
-                        {feature}
+                    {option.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2 text-white text-sm">
+                        <CheckCircle size={16} className="text-red-400 mt-0.5 flex-shrink-0" weight="fill" />
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -156,833 +376,48 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
             ))}
           </div>
         </section>
-      </div>
-    )
-  }
-  return (
-    <div className="min-h-screen cs-bg-redteam-diagonal">
-      <SEOContent
-        page="developpement"
-        title="Création de site web sécurisé à Bienne/Biel (Suisse) | Sans WordPress | CyberSuisse"
-        description="Création de sites web sécurisés à Bienne/Biel et en Suisse : code sur mesure (sans WordPress), revue & tests de sécurité avant livraison, durcissement contre les menaces courantes à la date de livraison."
-      />
 
-      {/* SEO H1 invisible */}
-      <h1 className="sr-only">Création de site web sécurisé à Bienne/Biel (Suisse) | Sans WordPress | CyberSuisse</h1>
-
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <Badge variant="secondary" className="mb-4 bg-red-950/60 text-red-400 border border-red-600/40">
-            Création de sites web sécurisés • Security by Design
-          </Badge>
-
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Création de <span className="text-white cs-text-glow-red-30">sites web</span>
-            <br />
-            réellement sécurisés
-          </h1>
-
-          <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Basé à Bienne/Biel, je conçois des sites web sur mesure (sans WordPress) avec une approche
-            cybersécurité intégrée : le code est écrit, revu et testé par moi avant livraison.
-            L'IA peut m'assister (accélération, idées, boilerplate), mais la validation reste humaine et responsable.
-            Objectif : livrer un site durci contre les menaces courantes connues à la date de livraison.
-          </p>
-
-          <motion.div
-            whileHover={{ scale: 1.05, rotateX: -5 }}
-            whileTap={{ scale: 0.95 }}
-            className="cs-preserve-3d"
-          >
-            <Button
-              size="lg"
-              onClick={() => onNavigate('contact')}
-              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-lg hover:shadow-xl border border-red-500/50 cs-shadow-glow-red-30"
-            >
-              <Envelope size={20} className="mr-2" />
-              Démarrer votre projet sécurisé
-            </Button>
-          </motion.div>
-        </motion.div>
-
-        {/* Hero Image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center mb-20"
-        >
-          <div className="relative w-full max-w-4xl h-80 rounded-xl overflow-hidden shadow-2xl">
-            <img
-              src={developmentImage}
-              alt="Création de site web sécurisé à Bienne/Biel"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-green-900/60 via-indigo-900/30 to-purple-900/20" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <h3 className="text-white text-2xl font-bold mb-2 drop-shadow-lg">
-                Site web sécurisé & maîtrisé
-              </h3>
-              <p className="text-white/90 text-lg drop-shadow-lg">
-                Code sur mesure, revue et tests avant livraison
-              </p>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Development Services */}
-      <section className="container mx-auto px-4 py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Offres de création de site web sécurisé
-          </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Pour PME, indépendants et organisations en Suisse : un site clair, rapide, et surtout durci.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-1 gap-8 mb-20">
-          {developmentServices.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-            >
-              <Card className="h-full hover:shadow-xl transition-all duration-300 bg-[#1A1A1A] border-[#333] hover:border-red-600/40">
-                <CardHeader>
-                  <CardTitle className="text-xl text-red-500">{service.title}</CardTitle>
-                  <div className="text-sm font-medium text-orange-400 mb-2">{service.subtitle}</div>
-                  <CardDescription className="text-base text-gray-400">{service.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-sm text-gray-300">
-                        <CheckCircle size={16} className="text-red-500 mr-3 flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Detailed Service Descriptions */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="space-y-12"
-        >
-          {/* Website Section */}
-          <div className="bg-gradient-to-r from-green-950/50 to-emerald-950/50 rounded-xl p-8 border border-green-800/40">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-2xl font-bold text-green-400 mb-4">🌐 Site vitrine sécurisé (sur mesure)</h3>
-                <p className="text-gray-300 mb-6 leading-relaxed">
-                  Idéal pour présenter votre activité, inspirer confiance et convertir. Le site est construit
-                  avec une surface d'attaque minimale : formulaires protégés, configurations durcies et bonnes pratiques
-                  de sécurité appliquées dès l'architecture.
-                </p>
-                <div className="space-y-3">
-                  <div className="flex items-center text-sm text-gray-300">
-                    <CheckCircle size={16} className="text-green-400 mr-3" />
-                    <span>Sans WordPress (code sur mesure, maîtrisé)</span>
-                  </div>
-                  <div className="flex items-center text-sm text-gray-300">
-                    <CheckCircle size={16} className="text-green-400 mr-3" />
-                    <span>Protection des formulaires & anti-abus</span>
-                  </div>
-                  <div className="flex items-center text-sm text-gray-300">
-                    <CheckCircle size={16} className="text-green-400 mr-3" />
-                    <span>Durcissement (headers, CSP, configuration)</span>
-                  </div>
-                  <div className="flex items-center text-sm text-gray-300">
-                    <CheckCircle size={16} className="text-green-400 mr-3" />
-                    <span>Revue & tests de sécurité avant livraison</span>
-                  </div>
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="w-24 h-24 bg-green-950/50 border border-green-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Globe size={32} className="text-green-400" />
-                </div>
-                <p className="text-sm text-green-300 font-medium">Site clair, rapide, durci</p>
-              </div>
-            </div>
-          </div>
-
-          {/* E-commerce Section */}
-          <div className="bg-gradient-to-r from-blue-950/50 to-indigo-950/50 rounded-xl p-8 border border-blue-800/40">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-2xl font-bold text-blue-400 mb-4">🛒 Site e‑commerce sécurisé</h3>
-                <p className="text-gray-300 mb-6 leading-relaxed">
-                  Un e‑commerce est une cible : comptes clients, formulaires, paiements, paniers, promo-codes.
-                  L'approche security-by-design vise à réduire les risques de fraude, de prise de compte
-                  et de compromission, tout en gardant une expérience fluide.
-                </p>
-                <div className="space-y-3">
-                  <div className="flex items-center text-sm text-gray-300">
-                    <CheckCircle size={16} className="text-blue-400 mr-3" />
-                    <span>Protection OWASP Top 10 (XSS, injections, etc.)</span>
-                  </div>
-                  <div className="flex items-center text-sm text-gray-300">
-                    <CheckCircle size={16} className="text-blue-400 mr-3" />
-                    <span>Gestion sûre des sessions & des comptes</span>
-                  </div>
-                  <div className="flex items-center text-sm text-gray-300">
-                    <CheckCircle size={16} className="text-blue-400 mr-3" />
-                    <span>Durcissement déploiement & configuration</span>
-                  </div>
-                  <div className="flex items-center text-sm text-gray-300">
-                    <CheckCircle size={16} className="text-blue-400 mr-3" />
-                    <span>Revue & tests de sécurité avant livraison</span>
-                  </div>
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="w-24 h-24 bg-blue-950/50 border border-blue-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Lock size={32} className="text-blue-400" />
-                </div>
-                <p className="text-sm text-blue-300 font-medium">Comptes & parcours durcis</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Hardening Section */}
-          <div className="bg-gradient-to-r from-purple-950/50 to-violet-950/50 rounded-xl p-8 border border-purple-800/40">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-2xl font-bold text-purple-400 mb-4">🛡️ Refonte & durcissement de site</h3>
-                <p className="text-gray-300 mb-6 leading-relaxed">
-                  Votre site existe déjà mais vous doutez de sa robustesse ? On identifie les points faibles
-                  (formulaires, accès admin, configuration, dépendances, exposition) puis on corrige et on durcit.
-                  Vous gagnez en confiance, en stabilité et en maîtrise.
-                </p>
-                <div className="space-y-3">
-                  <div className="flex items-center text-sm text-gray-300">
-                    <CheckCircle size={16} className="text-purple-400 mr-3" />
-                    <span>Audit technique + priorisation des risques</span>
-                  </div>
-                  <div className="flex items-center text-sm text-gray-300">
-                    <CheckCircle size={16} className="text-purple-400 mr-3" />
-                    <span>Corrections ciblées + durcissement</span>
-                  </div>
-                  <div className="flex items-center text-sm text-gray-300">
-                    <CheckCircle size={16} className="text-purple-400 mr-3" />
-                    <span>Revue de code & configuration</span>
-                  </div>
-                  <div className="flex items-center text-sm text-gray-300">
-                    <CheckCircle size={16} className="text-purple-400 mr-3" />
-                    <span>Conseils d'exploitation & accès</span>
-                  </div>
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="w-24 h-24 bg-purple-950/50 border border-purple-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Eye size={32} className="text-purple-400" />
-                </div>
-                <p className="text-sm text-purple-300 font-medium">Réduction surface d'attaque</p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Security Principles */}
-      <section className="container mx-auto px-4 py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Principes de Sécurité Intégrés
-          </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Une méthode simple : construire un site web robuste, vérifier, puis livrer durci.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-          >
-            <Card className="h-full hover:shadow-xl transition-all duration-300 bg-[#1A1A1A] border-[#333] hover:border-red-600/40">
-              <CardHeader>
-                <div className="flex items-center space-x-3 mb-3">
-                  <motion.div
-                    className="p-3 bg-red-950/50 rounded-lg cs-preserve-3d"
-                    whileHover={{ scale: 1.1, rotateY: 10 }}
-                  >
-                    <Shield size={32} className="text-red-500" />
-                  </motion.div>
-                  <CardTitle className="text-xl text-white">Security by Design</CardTitle>
-                </div>
-                <CardDescription className="text-base leading-relaxed text-gray-400">
-                  Sécurité intégrée dès la conception, pas ajoutée après coup. Chaque choix (pages, formulaires,
-                  accès, hébergement) est évalué sous l'angle risque.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
-          >
-            <Card className="h-full hover:shadow-xl transition-all duration-300 bg-[#1A1A1A] border-[#333] hover:border-blue-600/40">
-              <CardHeader>
-                <div className="flex items-center space-x-3 mb-3">
-                  <motion.div
-                    className="p-3 bg-blue-950/50 rounded-lg cs-preserve-3d"
-                    whileHover={{ scale: 1.1, rotateY: 10 }}
-                  >
-                    <Lock size={32} className="text-blue-400" />
-                  </motion.div>
-                  <CardTitle className="text-xl text-white">Chiffrement End-to-End</CardTitle>
-                </div>
-                <CardDescription className="text-base leading-relaxed text-gray-400">
-                  HTTPS/TLS, bonnes pratiques de configuration et protection des données sensibles.
-                  Objectif : éviter les fuites, les interceptions et les erreurs de configuration.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.1 }}
-          >
-            <Card className="h-full hover:shadow-xl transition-all duration-300 bg-[#1A1A1A] border-[#333] hover:border-green-600/40">
-              <CardHeader>
-                <div className="flex items-center space-x-3 mb-3">
-                  <motion.div
-                    className="p-3 bg-green-950/50 rounded-lg cs-preserve-3d"
-                    whileHover={{ scale: 1.1, rotateY: 10 }}
-                  >
-                    <CheckCircle size={32} className="text-green-400" />
-                  </motion.div>
-                  <CardTitle className="text-xl text-white">Tests Automatisés</CardTitle>
-                </div>
-                <CardDescription className="text-base leading-relaxed text-gray-400">
-                  Revue de code + tests de sécurité avant livraison (scan dépendances, contrôles de base, vérifications
-                  ciblées). L'important : trouver les failles avant vos visiteurs.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.2 }}
-          >
-            <Card className="h-full hover:shadow-xl transition-all duration-300 bg-[#1A1A1A] border-[#333] hover:border-orange-600/40">
-              <CardHeader>
-                <div className="flex items-center space-x-3 mb-3">
-                  <motion.div
-                    className="p-3 bg-orange-950/50 rounded-lg cs-preserve-3d"
-                    whileHover={{ scale: 1.1, rotateY: 10 }}
-                  >
-                    <Database size={32} className="text-orange-400" />
-                  </motion.div>
-                  <CardTitle className="text-xl text-white">Gestion des Secrets</CardTitle>
-                </div>
-                <CardDescription className="text-base leading-relaxed text-gray-400">
-                  Gestion propre des accès, secrets et paramètres (admin, emails, clés). Réduction des risques liés
-                  aux identifiants exposés et aux mauvaises configurations.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* SEO Rich Content Section */}
-      <section className="py-20 cs-bg-redteam-diagonal">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.3 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Pourquoi un site web réellement sécurisé ?
-            </h2>
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-              Parce qu'un site "vite fait" peut coûter très cher : données, réputation, clients et interruptions.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {/* Expertise Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.4 }}
-              className="bg-[#1A1A1A] rounded-xl p-6 shadow-lg border border-[#333] hover:border-red-600/40 transition-all"
-            >
-              <div className="w-12 h-12 bg-red-950/50 rounded-lg flex items-center justify-center mb-4">
-                <Code size={24} className="text-red-500" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-3">Expertise Double Compétence</h3>
-              <p className="text-gray-400 mb-4">
-                Création de site web + cybersécurité. Le code est écrit sur mesure (sans WordPress)
-                et revu sous l'angle sécurité avant mise en ligne.
-              </p>
-              <ul className="space-y-2 text-sm">
-                <li className="flex items-center text-gray-300">
-                  <CheckCircle size={14} className="text-red-500 mr-2" />
-                  Développement + Cybersécurité
-                </li>
-                <li className="flex items-center text-gray-300">
-                  <CheckCircle size={14} className="text-red-500 mr-2" />
-                  Code review sécurité intégré
-                </li>
-                <li className="flex items-center text-gray-300">
-                  <CheckCircle size={14} className="text-red-500 mr-2" />
-                  Tests de sécurité automatisés
-                </li>
+        <section className="mb-10" aria-labelledby="integration-title">
+          <Card className="bg-red-950/20 border-red-600/40">
+            <CardContent className="p-6 md:p-8">
+              <h2 id="integration-title" className="text-3xl font-bold mb-4 flex items-center gap-2">
+                <Globe size={28} className="text-red-400" />
+                {copy.integrationTitle}
+              </h2>
+              <p className="text-white leading-relaxed mb-5">{copy.integrationText}</p>
+              <ul className="space-y-2">
+                {copy.integrationPoints.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <CheckCircle size={18} className="text-red-400 mt-1 flex-shrink-0" weight="fill" />
+                    <span className="text-white">{item}</span>
+                  </li>
+                ))}
               </ul>
-            </motion.div>
+            </CardContent>
+          </Card>
+        </section>
 
-            {/* Zero-Vuln Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.5 }}
-              className="bg-[#1A1A1A] rounded-xl p-6 shadow-lg border border-[#333] hover:border-orange-600/40 transition-all"
-            >
-              <div className="w-12 h-12 bg-orange-950/50 rounded-lg flex items-center justify-center mb-4">
-                <Shield size={24} className="text-orange-500" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-3">Prévention des Vulnérabilités</h3>
-              <p className="text-gray-400 mb-4">
-                Réduisez fortement les vulnérabilités courantes grâce à l'approche Security by Design.
-                OWASP Top 10, injections, XSS, CSRF : l'objectif est de fermer les portes les plus utilisées.
-              </p>
-              <ul className="space-y-2 text-sm">
-                <li className="flex items-center text-gray-300">
-                  <CheckCircle size={14} className="text-orange-500 mr-2" />
-                  -90% de vulnérabilités évitées
-                </li>
-                <li className="flex items-center text-gray-300">
-                  <CheckCircle size={14} className="text-orange-500 mr-2" />
-                  OWASP Top 10 couvert
-                </li>
-                <li className="flex items-center text-gray-300">
-                  <CheckCircle size={14} className="text-orange-500 mr-2" />
-                  Conformité réglementaire
-                </li>
-              </ul>
-            </motion.div>
-
-            {/* Performance Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.6 }}
-              className="bg-[#1A1A1A] rounded-xl p-6 shadow-lg border border-[#333] hover:border-blue-600/40 transition-all"
-            >
-              <div className="w-12 h-12 bg-blue-950/50 rounded-lg flex items-center justify-center mb-4">
-                <Cpu size={24} className="text-blue-500" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-3">Performance & Sécurité</h3>
-              <p className="text-gray-400 mb-4">
-                Sécurité sans sacrifier la performance. Un site rapide inspire confiance, convertit mieux
-                et réduit aussi certains vecteurs d'attaque (surface et complexité maîtrisées).
-              </p>
-              <ul className="space-y-2 text-sm">
-                <li className="flex items-center text-gray-300">
-                  <CheckCircle size={14} className="text-blue-500 mr-2" />
-                  Performance optimale
-                </li>
-                <li className="flex items-center text-gray-300">
-                  <CheckCircle size={14} className="text-blue-500 mr-2" />
-                  Architecture scalable
-                </li>
-                <li className="flex items-center text-gray-300">
-                  <CheckCircle size={14} className="text-blue-500 mr-2" />
-                  Maintenance facilitée
-                </li>
-              </ul>
-            </motion.div>
-          </div>
-
-          {/* Detailed Benefits */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.7 }}
-            className="bg-[#1A1A1A] rounded-xl p-8 shadow-xl border border-[#333]"
-          >
-            <h3 className="text-2xl font-bold text-center text-white mb-8">
-                Ce que vous obtenez concrètement
-            </h3>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="space-y-6">
-                <div className="border-l-4 border-red-600 pl-4">
-                  <h4 className="font-bold text-white mb-2">🛡️ Prévention des Cyberattaques</h4>
-                  <p className="text-gray-400 text-sm">
-                    Réduction de l'exposition aux attaques les plus fréquentes (formulaires, injections, XSS,
-                    comptes). Objectif : éviter les mauvaises surprises après la mise en ligne.
-                  </p>
-                </div>
-
-                <div className="border-l-4 border-orange-500 pl-4">
-                  <h4 className="font-bold text-white mb-2">⚖️ Conformité Réglementaire</h4>
-                  <p className="text-gray-400 text-sm">
-                    Bonnes pratiques orientées RGPD (minimisation, sécurité des données, accès),
-                    avec documentation utile et traçable.
-                  </p>
-                </div>
-
-                <div className="border-l-4 border-green-500 pl-4">
-                  <h4 className="font-bold text-white mb-2">💰 ROI Exceptionnel</h4>
-                  <p className="text-gray-400 text-sm">
-                    Moins de correctifs en urgence et de temps perdu. Un site bien construit est plus stable,
-                    plus simple à faire évoluer et plus économique sur la durée.
-                  </p>
-                </div>
-              </div>
-
-              <div className="space-y-6">
-                <div className="border-l-4 border-blue-500 pl-4">
-                  <h4 className="font-bold text-white mb-2">🔒 Accès & administration durcis</h4>
-                  <p className="text-gray-400 text-sm">
-                    Mesures concrètes : séparation des accès, durcissement des pages sensibles,
-                    contrôle des permissions et réduction de l'exposition de l'admin.
-                  </p>
-                </div>
-
-                <div className="border-l-4 border-purple-500 pl-4">
-                  <h4 className="font-bold text-white mb-2">📊 Visibilité & journaux utiles</h4>
-                  <p className="text-gray-400 text-sm">
-                    Journaux utiles pour diagnostiquer et investiguer (sans exposer de données sensibles).
-                    En option : recommandations de monitoring et d'alerting.
-                  </p>
-                </div>
-
-                <div className="border-l-4 border-cyan-500 pl-4">
-                  <h4 className="font-bold text-white mb-2">🚀 Livraison durcie (menaces actuelles)</h4>
-                  <p className="text-gray-400 text-sm">
-                    Objectif : livrer un site protégé contre les menaces courantes connues à la date de livraison.
-                    Les nouvelles vulnérabilités futures nécessitent des mises à jour et une maintenance.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Value Props Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.8 }}
-            className="grid md:grid-cols-4 gap-6 mt-12"
-          >
-            <div className="text-center bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333]">
-              <div className="text-3xl font-bold text-red-500 mb-2">No WP</div>
-              <p className="text-sm text-gray-400">Sans WordPress</p>
-            </div>
-            <div className="text-center bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333]">
-              <div className="text-3xl font-bold text-orange-500 mb-2">Review</div>
-              <p className="text-sm text-gray-400">Code revu & testé</p>
-            </div>
-            <div className="text-center bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333]">
-              <div className="text-3xl font-bold text-blue-500 mb-2">CSP</div>
-              <p className="text-sm text-gray-400">Headers & durcissement</p>
-            </div>
-            <div className="text-center bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333]">
-              <div className="text-3xl font-bold text-green-500 mb-2">Livraison</div>
-              <p className="text-sm text-gray-400">Menaces courantes</p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Technologies & Standards */}
-      <section className="py-20 cs-bg-redteam-vertical-dark">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.9 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Technologies & Standards de Sécurité
-            </h2>
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-              Stack technologique moderne avec sécurité intégrée et conformité aux standards internationaux
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 2.0 }}
-              className="text-center p-6 bg-gradient-to-br from-green-950/50 to-green-900/30 rounded-xl border border-green-800/40"
-            >
-              <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Code size={24} className="text-white" />
-              </div>
-              <h3 className="font-bold text-green-400 mb-2">OWASP</h3>
-              <p className="text-sm text-green-300/80">Top 10 & Cheat Sheet</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 2.1 }}
-              className="text-center p-6 bg-gradient-to-br from-blue-950/50 to-blue-900/30 rounded-xl border border-blue-800/40"
-            >
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield size={24} className="text-white" />
-              </div>
-              <h3 className="font-bold text-blue-400 mb-2">ISO 27001</h3>
-              <p className="text-sm text-blue-300/80">Management de la sécurité</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 2.2 }}
-              className="text-center p-6 bg-gradient-to-br from-purple-950/50 to-purple-900/30 rounded-xl border border-purple-800/40"
-            >
-              <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Lock size={24} className="text-white" />
-              </div>
-              <h3 className="font-bold text-purple-400 mb-2">RGPD</h3>
-              <p className="text-sm text-purple-300/80">Bonnes pratiques données</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 2.3 }}
-              className="text-center p-6 bg-gradient-to-br from-orange-950/50 to-orange-900/30 rounded-xl border border-orange-800/40"
-            >
-              <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle size={24} className="text-white" />
-              </div>
-              <h3 className="font-bold text-orange-400 mb-2">Préparation CRA</h3>
-              <p className="text-sm text-orange-300/80">Cyber Resilience Act</p>
-            </motion.div>
-          </div>
-
-          {/* Standards List */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 2.4 }}
-            className="bg-[#1A1A1A] rounded-xl p-8 border border-[#333]"
-          >
-            <h3 className="text-2xl font-bold text-center text-white mb-8">
-              Sécurité Intégrée par Technologie
-            </h3>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <div>
-                <h4 className="font-bold text-red-400 mb-3">🔐 Accès & administration</h4>
-                <ul className="space-y-2 text-sm text-gray-400">
-                  <li>• Séparation des accès (admin / public)</li>
-                  <li>• Durcissement des pages sensibles</li>
-                  <li>• MFA si espace client / admin</li>
-                  <li>• Gestion des rôles si nécessaire</li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-bold text-blue-400 mb-3">🛡️ Protection des Données</h4>
-                <ul className="space-y-2 text-sm text-gray-400">
-                  <li>• HTTPS/TLS en transit</li>
-                  <li>• Stockage minimal des données</li>
-                  <li>• Hashing sécurisé des mots de passe si comptes</li>
-                  <li>• Protection des formulaires & uploads</li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-bold text-green-400 mb-3">🔍 Monitoring & Logging</h4>
-                <ul className="space-y-2 text-sm text-gray-400">
-                  <li>• Logs utiles et non sensibles</li>
-                  <li>• Aide à l'investigation en cas d'incident</li>
-                  <li>• Recommandations d'alerting</li>
-                  <li>• Traçabilité sur actions critiques</li>
-                </ul>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* FAQ Section for SEO */}
-      <section className="py-20 cs-bg-redteam-diagonal">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 2.5 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Questions Fréquentes - Site web sécurisé
-            </h2>
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-              Réponses claires sur la création de site web sécurisé (Bienne/Biel et Suisse)
-            </p>
-          </motion.div>
-
-          <div className="max-w-4xl mx-auto space-y-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 2.6 }}
-              className="bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333] hover:border-red-600/40 transition-all"
-            >
-              <h3 className="text-lg font-bold text-white mb-3">💰 Combien coûte un site web sécurisé ?</h3>
-              <p className="text-gray-400">
-                Le prix dépend du périmètre (vitrine, e‑commerce, espace client), du contenu, des intégrations
-                et des exigences de sécurité (comptes, paiement, données). Je propose un cadrage rapide pour
-                établir un devis clair et un plan de livraison.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 2.7 }}
-              className="bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333] hover:border-red-600/40 transition-all"
-            >
-              <h3 className="text-lg font-bold text-white mb-3">⏱️ Combien de temps prend le développement ?</h3>
-              <p className="text-gray-400">
-                Selon la complexité : un site vitrine peut être livré en quelques semaines, un e‑commerce
-                ou un site sur mesure prend davantage de temps. La sécurité est intégrée dès le départ
-                pour éviter les retours en arrière et livrer proprement (tests et revue avant mise en ligne).
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 2.8 }}
-              className="bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333] hover:border-red-600/40 transition-all"
-            >
-              <h3 className="text-lg font-bold text-white mb-3">🔒 Quelle différence avec un développement "normal" ?</h3>
-              <p className="text-gray-400">
-                Beaucoup de sites sont livrés sans réflexion sécurité (formulaires, accès admin, configuration,
-                dépendances). Security by Design intègre la sécurité dès l'architecture : chaque choix
-                technique est évalué pour réduire les risques et éviter les failles les plus courantes.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 2.9 }}
-              className="bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333] hover:border-red-600/40 transition-all"
-            >
-              <h3 className="text-lg font-bold text-white mb-3">🧱 Travaillez-vous avec WordPress ?</h3>
-              <p className="text-gray-400">
-                Non. Je ne propose pas de sites WordPress : je privilégie un code sur mesure, maîtrisé et
-                plus simple à durcir. Cela réduit la dépendance à des plugins et limite la surface d'attaque.
-                Si vous avez déjà un site WordPress, je peux vous orienter sur une stratégie de refonte ou
-                de sécurisation selon votre contexte.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 3.0 }}
-              className="bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333] hover:border-red-600/40 transition-all"
-            >
-              <h3 className="text-lg font-bold text-white mb-3">🔄 Comment gérez-vous les mises à jour de sécurité ?</h3>
-              <p className="text-gray-400">
-                À la livraison : configuration durcie et dépendances à jour contre les menaces courantes connues.
-                Ensuite, comme tout logiciel, un site nécessite des mises à jour et un suivi. Je peux proposer
-                un accompagnement (maintenance / correctifs) ou vous fournir un plan d'exploitation.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 3.1 }}
-              className="bg-[#1A1A1A] rounded-lg p-6 shadow-md border border-[#333] hover:border-red-600/40 transition-all"
-            >
-              <h3 className="text-lg font-bold text-white mb-3">📋 Fournissez-vous de la documentation de sécurité ?</h3>
-              <p className="text-gray-400">
-                Oui : guide de déploiement et d'exploitation (accès, sauvegardes, configuration),
-                points de sécurité appliqués, et recommandations. L'objectif est que vous gardiez la maîtrise.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 cs-bg-redteam-vertical-dark-reverse">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 3.2 }}
-          >
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Créons votre site web sécurisé
-            </h3>
-            <p className="text-lg text-gray-400 mb-8 max-w-xl mx-auto">
-              De l'idée à la mise en ligne : un site sur mesure, sans WordPress, avec revue & tests de sécurité.
-              Basé à Bienne/Biel, prestations pour toute la Suisse.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.div
-                whileHover={{ scale: 1.05, rotateX: -5 }}
-                whileTap={{ scale: 0.95 }}
-                className="cs-preserve-3d"
-              >
-                <Button
-                  size="lg"
-                  onClick={() => onNavigate('contact')}
-                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-lg hover:shadow-xl font-semibold cs-shadow-glow-red-30-strong"
-                >
-                  <Envelope size={20} className="mr-2" />
-                  Demander un devis site sécurisé
+        <section className="pb-8" aria-labelledby="cta-title">
+          <Card className="bg-[#1A1A1A] border-[#333]">
+            <CardContent className="p-8 text-center">
+              <h2 id="cta-title" className="text-3xl font-bold mb-3">{copy.ctaTitle}</h2>
+              <p className="text-white mb-6 max-w-3xl mx-auto">{copy.ctaText}</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="btn-primary-3d" onClick={() => onNavigate('contact')}>
+                  <Envelope size={18} className="mr-2" />
+                  {copy.ctaPrimary}
                 </Button>
-              </motion.div>
-
-            </div>
-          </motion.div>
-        </div>
-      </section>
-    </div>
+                <Button size="lg" variant="outline" className="btn-secondary-3d" asChild>
+                  <a href="/abonnements/pro">
+                    {copy.ctaSecondary}
+                    <ArrowRight size={18} className="ml-2" />
+                  </a>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+      </div>
+    </motion.div>
   )
 }
