@@ -1,9 +1,14 @@
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import SEOContent from '@/components/SEOContent'
-import { HardDrive, Usb, Memory, MagnifyingGlass, Shield, Clock, CheckCircle, Database, Cpu, Eye, Envelope, Lock } from '@phosphor-icons/react'
+import { 
+  CheckCircle, Shield, HardDrive, Usb, DeviceMobile, 
+  Database, Clock, Wrench, Handshake, Envelope 
+} from '@phosphor-icons/react'
 import dataRecoveryImage from '@/assets/images/pexels-tima-miroshnichenko-5380664.jpg'
 import { useTranslation } from 'react-i18next'
 
@@ -11,884 +16,357 @@ interface DataRecoveryPageProps {
   onNavigate: (page: 'contact') => void
 }
 
-const recoveryServices = [
-  {
-    title: 'Récupération Disques Durs HDD/SSD',
-    subtitle: 'Récupération Professionnelle',
-    icon: HardDrive,
-    description: 'Spécialistes en récupération de données sur tous types de disques durs et SSD',
-    services: [
-      'Pannes logiques - Système de fichiers corrompu, erreurs de partition',
-      'Fichiers supprimés - Suppression accidentelle ou malveillante',
-      'Partitions perdues - Tables de partition endommagées',
-      'Formatage accidentel - Formatage rapide ou complet',
-      'Secteurs défectueux - Bad sectors, zones défaillantes'
-    ],
-    features: ['Analyse gratuite', 'Devis détaillé', 'Confidentialité stricte', 'Chances optimisées (selon cas)']
-  },
-  {
-    title: 'Récupération Clés USB',
-    subtitle: 'Flash Drives & Périphériques',
-    icon: Usb,
-    description: 'Récupération de données sur clés USB et périphériques de stockage externes',
-    services: [
-      'Clés non reconnues - Problèmes de reconnaissance USB',
-      'Erreurs de lecture - Corruption de données, virus',
-      'Données effacées par erreur - Suppression accidentelle',
-      'Formatage USB - Formatage involontaire',
-      'Pannes électroniques - Circuiterie défaillante'
-    ],
-    features: ['Diagnostic rapide', 'Récupération prioritaire', 'Support multi-formats', 'Restitution sur support sain']
-  },
-  {
-    title: 'Récupération Cartes SD/microSD',
-    subtitle: 'Mémoire Flash & Appareils Photo',
-    icon: Memory,
-    description: 'Experts en récupération de photos, vidéos et données sur cartes mémoire',
-    services: [
-      'Photos/vidéos supprimées - Suppression accidentelle',
-      'Carte corrompue - Corruption système de fichiers',
-      'Carte formatée - Formatage complet ou partiel',
-      'Carte illisible - Erreurs de lecture physique',
-      'Problèmes appareils photo - Corruption interne'
-    ],
-    features: ['Spécialisation multimédia', 'Prévisualisation (si possible)', 'Récupération sélective', 'Traitement urgent possible']
-  },
-  {
-    title: 'Accès & Mot de passe oublié',
-    subtitle: 'Windows / PC / Compte local',
-    icon: Lock,
-    description: "Quand l'accès au PC est bloqué (mot de passe oublié), l'objectif est de récupérer vos fichiers ou de rétablir un accès — uniquement sur un appareil qui vous appartient ou avec autorisation.",
-    services: [
-      'Mot de passe Windows oublié (cas légitimes / propriété)',
-      'Récupération de fichiers sans connexion (selon chiffrement)',
-      'Compte verrouillé / profil corrompu',
-      'Ordinateur qui ne démarre plus',
-      'Conseils pour éviter la perte définitive (BitLocker, clés, sauvegardes)'
-    ],
-    features: ['Cadre légal & autorisation', 'Respect de la vie privée', 'Diagnostic rapide', 'Pas de fausses promesses']
-  }
-]
-
-const recoveryProcess = [
-  {
-    step: '01',
-    title: 'Diagnostic Gratuit',
-    description: 'Analyse complète du support défaillant sans engagement',
-    icon: MagnifyingGlass,
-    details: ['Évaluation gratuite', 'Devis détaillé', 'Confidentialité assurée']
-  },
-  {
-    step: '02',
-    title: 'Analyse Technique',
-    description: 'Investigation approfondie des dommages et possibilités de récupération',
-    icon: Database,
-    details: ['Imagerie forensique', 'Analyse des dommages', 'Évaluation des risques']
-  },
-  {
-    step: '03',
-    title: 'Récupération des Données',
-    description: 'Extraction et reconstruction des données selon les meilleures pratiques',
-    icon: Cpu,
-    details: ['Techniques spécialisées', 'Récupération sélective', 'Vérification intégrité']
-  },
-  {
-    step: '04',
-    title: 'Restitution & Vérification',
-    description: 'Livraison des données récupérées avec rapport complet',
-    icon: CheckCircle,
-    details: ['Vérification finale', 'Rapport détaillé', 'Support post-récupération']
-  }
-]
-
 export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) {
   const { i18n } = useTranslation()
   const language = (i18n.resolvedLanguage || i18n.language || 'fr').split('-')[0]
-  const copy = (language === 'en'
+
+  const copy = language === 'en'
     ? {
-        seoTitle: 'Data Recovery in Biel/Bienne (Switzerland) | HDD, SSD, USB, SD | CyberSuisse',
-        seoDescription: 'Professional data recovery in Biel/Bienne and Switzerland: deleted files, failed HDD/SSD, USB drives, SD cards, PC not booting, or forgotten Windows password. Privacy-respecting service and professional tooling.',
-        heroBadge: 'Data Recovery • Biel/Bienne & Switzerland',
-        heroTitle: 'Professional & Secure Data Recovery',
-        heroText: 'Professional data recovery service in Biel/Bienne and across Switzerland: deleted files, failed HDD/SSD, unreadable USB, SD cards with lost photos, a PC that won’t boot, or a forgotten Windows password. Privacy-respecting work with professional tooling. If recovery is impossible, you do not pay.',
-        cta: 'Free diagnosis - Request an analysis',
-        servicesTitle: 'Specialized Recovery Services',
-        servicesSubtitle: 'Media and scenarios covered with a careful, honest diagnosis.',
-        services: [
-          { title: 'HDD/SSD Recovery', description: 'Recovery from logical failures, deleted files, partitions, or bad sectors.' },
-          { title: 'USB Recovery', description: 'Unreadable USB drives, corruption, accidental deletion or formatting.' },
-          { title: 'SD/microSD Recovery', description: 'Photo/video recovery and corrupted memory cards.' },
-          { title: 'Access & Forgotten Passwords', description: 'File recovery or access restoration on your own authorized device.' }
-        ]
+        seoTitle: 'Data Recovery in Switzerland (Biel/Bienne) | HDD, SSD, USB | CyberSuisse',
+        seoDescription: 'Professional data recovery service for SMEs and individuals. Hard drives (HDD/SSD), USB flash drives, SD cards, and smartphones locally in Switzerland.',
+        imageAlt: 'Professional lab data recovery services in Switzerland',
+        badge: 'Data Emergency • Switzerland',
+        title: 'Professional Data Recovery in Switzerland',
+        subtitle: 'Lost crucial business files or precious personal photos? A clicking hard drive, an unreadable USB stick, or a damaged smartphone doesn\'t necessarily mean your data is gone forever. We recover your information using state-of-the-art techniques.',
+        ctaPrimary: 'Request free diagnostic',
+        ctaSecondary: 'Contact for quote',
+        
+        benefitsTitle: 'Why trust our team with your data?',
+        benefitsIntro: 'This service is dedicated to physical or logical device failures, independent of cyberattacks. Whether from a physical drop or accidental formatting, our top priority is the secure extraction of your information.',
+        benefits: [
+          { title: 'Absolute Confidentiality', text: 'Data handling in strict compliance with the new Swiss Data Protection Act (FADP). Only you will have access to your recovered files.', icon: LockIcon },
+          { title: 'Advanced Technology', text: 'Intervention on logical failures (corrupted partitions) and physical damages (damaged circuits, read heads).', icon: WrenchIcon },
+          { title: 'Transparent Quotes', text: 'A clear feasibility diagnostic before any major billing takes place.', icon: HandshakeIcon }
+        ],
+
+        devicesTitle: 'Supported Media and Devices',
+        devices: [
+          { name: 'Hard Drives (HDD) & SSD', desc: 'Mechanical failures, abnormal noises, or unrecognized SSDs. We provide hard drive recovery for Geneva, Zurich, and all of Switzerland.', icon: HardDriveIcon },
+          { name: 'Flash Media (USB & SD Cards)', desc: 'Broken connectors, "disk needs to be formatted" errors. Ideal for recovering SD card photos in Biel/Bienne and surroundings.', icon: UsbIcon },
+          { name: 'Smartphones & Tablets', desc: 'Black screens, water damage (oxidation), or boot loop issues (iOS and Android).', icon: MobileIcon },
+          { name: 'RAID & NAS Systems', desc: 'Reconstruction of damaged RAID arrays and enterprise servers for SMEs.', icon: DatabaseIcon }
+        ],
+
+        processTitle: 'A simple and secure recovery process',
+        processSteps: [
+          { step: '1', title: 'Intake (Drop-off or Ship)', text: 'Bring your failing media to our office in Biel/Bienne or send it via secure package from anywhere in Switzerland.' },
+          { step: '2', title: 'Diagnostic', text: 'Our technicians assess the extent of the damage (logical, electronic, or mechanical) to determine the chances of success.' },
+          { step: '3', title: 'Quote and Extraction', text: 'You receive a detailed offer. With your approval, we proceed with temporary repairs and bit-by-bit cloning of your data.' },
+          { step: '4', title: 'Return', text: 'Your recovered files are delivered to you on a new, secure storage device, ready to use.' }
+        ],
+
+        pricingTitle: 'How much does data recovery cost?',
+        pricingIntro: 'The exact cost depends on the media type, the complexity of the failure (hardware requiring a cleanroom vs. basic logical failure), and urgency. Here are indicative price ranges for the Swiss market:',
+        pricingOptions: [
+          { tag: 'Logical Failures', target: 'USB Sticks, Memory Cards', price: '~CHF 100 – 400', includes: ['Accidentally deleted files', 'Corrupted partitions', 'Non-destructive viruses'] },
+          { tag: 'Standard Damage', target: 'Hard Drives (HDD) & SSDs', price: '~CHF 400 – 1,500', includes: ['PCB electronic board damage', 'Corrupted firmware', 'Light bad sectors'] },
+          { tag: 'Complex Interventions', target: 'Cleanrooms, Smartphones, RAID', price: 'CHF 1,500 – 3,400+', includes: ['Crashed read heads', 'Desoldered memory chips', 'Advanced smartphone deoxidation'] }
+        ],
+
+        faqTitle: 'Frequently Asked Questions (FAQ)',
+        faqs: [
+          { q: 'What should I do immediately after data loss?', a: 'Turn off the device immediately. Do not attempt to restart it or use free internet software, as this threatens to permanently overwrite the data or worsen physical damage.' },
+          { q: 'What is the average time to recover my files?', a: 'A diagnostic usually takes 24 to 48 hours. Full recovery depends on severity, ranging from a few days for standard service, up to 24-72h in emergency mode (with a surcharge).' },
+          { q: 'Do I pay if no data is recoverable?', a: 'At CyberSuisse, transparency comes first. If damage makes extraction impossible right from the diagnostic, billing is strictly limited to the basic diagnostic fee.' }
+        ],
+
+        finalTitle: 'Don\'t let your data disappear permanently.',
+        finalSubtitle: 'Act fast. Get an expert opinion today before your device\'s situation worsens.',
+        ctaFormBtn: 'Send my diagnostic request'
       }
     : language === 'pt'
       ? {
-          seoTitle: 'Recuperação de dados em Biel/Bienne (Suíça) | HDD, SSD, USB, SD | CyberSuisse',
-          seoDescription: 'Recuperação profissional de dados em Biel/Bienne e Suíça: ficheiros apagados, HDD/SSD avariado, USB, cartões SD, PC que não arranca ou palavra‑passe Windows esquecida. Serviço profissional e confidencial.',
-          heroBadge: 'Recuperação de Dados • Biel/Bienne & Suíça',
-          heroTitle: 'Recuperação de dados profissional e segura',
-          heroText: 'Serviço profissional em Biel/Bienne e em toda a Suíça: ficheiros apagados, HDD/SSD avariado, USB ilegível, cartão SD com fotos perdidas, PC que não arranca ou palavra‑passe Windows esquecida. Privacidade respeitada e ferramentas profissionais. Se não for possível recuperar, não paga.',
-          cta: 'Diagnóstico gratuito - Pedir análise',
-          servicesTitle: 'Serviços de recuperação especializados',
-          servicesSubtitle: 'Suportes e cenários cobertos com diagnóstico prudente e honesto.',
-          services: [
-            { title: 'Recuperação HDD/SSD', description: 'Falhas lógicas, ficheiros apagados, partições ou bad sectors.' },
-            { title: 'Recuperação USB', description: 'USB não reconhecido, corrupção, apagamento ou formatação.' },
-            { title: 'Recuperação SD/microSD', description: 'Recuperação de fotos/vídeos e cartões corrompidos.' },
-            { title: 'Acesso e palavra‑passe esquecida', description: 'Recuperar ficheiros ou acesso no seu dispositivo autorizado.' }
-          ]
+          seoTitle: 'Recuperação de Dados na Suíça (Biel/Bienne) | HDD, SSD, USB | CyberSuisse',
+          seoDescription: 'Serviço profissional de recuperação de dados para PME e particulares. Discos rígidos (HDD/SSD), Pen drives USB, cartões SD e smartphones em toda a Suíça.',
+          imageAlt: 'Serviços profissionais de recuperação de dados em laboratório na Suíça',
+          badge: 'Emergência de Dados • Suíça',
+          title: 'Recuperação de Dados Profissional na Suíça',
+          subtitle: 'Perdeu ficheiros cruciais da sua empresa ou fotos pessoais preciosas? Um disco que faz barulho, uma pen USB ilegível ou um smartphone danificado não significa necessariamente o fim dos seus dados. Recuperamos a sua informação com técnicas avançadas.',
+          ctaPrimary: 'Pedir diagnóstico gratuito',
+          ctaSecondary: 'Contactar para orçamento',
+          
+          benefitsTitle: 'Porquê confiar os seus dados à nossa equipa?',
+          benefitsIntro: 'Este serviço é dedicado a falhas físicas ou lógicas de dispositivos, independentemente de ciberataques. Seja uma queda de material ou formatação acidental, a nossa prioridade é a extração segura da sua informação.',
+          benefits: [
+            { title: 'Confidencialidade Absoluta', text: 'Tratamento de dados em estrita conformidade com a nova Lei suíça de proteção de dados (nLPD). Só você terá acesso aos ficheiros recuperados.', icon: LockIcon },
+            { title: 'Tecnologia de Ponta', text: 'Intervenção em falhas lógicas (partições corrompidas) e materiais (circuitos danificados, cabeças de leitura).', icon: WrenchIcon },
+            { title: 'Orçamento Transparente', text: 'Um diagnóstico claro de viabilidade antes de qualquer faturação maior.', icon: HandshakeIcon }
+          ],
+
+          devicesTitle: 'Meios e aparelhos suportados',
+          devices: [
+            { name: 'Discos Rígidos (HDD) & SSD', desc: 'Falhas mecânicas, ruídos anormais ou SSDs não reconhecidos. Asseguramos a recuperação de discos para Genebra, Zurique e toda a Suíça.', icon: HardDriveIcon },
+            { name: 'Material Flash (USB & Cartões SD)', desc: 'Conectores partidos, erro "o disco precisa de ser formatado". Ideal para recuperar fotos em cartões SD em Biel/Bienne e arredores.', icon: UsbIcon },
+            { name: 'Smartphones & Tablets', desc: 'Ecrãs negros, telemóveis caídos na água (oxidação) ou bloqueados no arranque (iOS e Android).', icon: MobileIcon },
+            { name: 'Sistemas RAID & NAS', desc: 'Para PME, reconstrução de matrizes RAID danificadas e servidores de empresas.', icon: DatabaseIcon }
+          ],
+
+          processTitle: 'Um processo de recuperação simples e seguro',
+          processSteps: [
+            { step: '1', title: 'Receção (Entrega ou Envio)', text: 'Entregue o seu suporte nos nossos escritórios em Biel/Bienne ou envie por correio seguro de qualquer ponto da Suíça.' },
+            { step: '2', title: 'Diagnóstico', text: 'Os nossos técnicos avaliam a extensão dos danos (lógica, eletrónica ou mecânica) para determinar as hipóteses de sucesso.' },
+            { step: '3', title: 'Orçamento e Extração', text: 'Recebe uma oferta detalhada. Com o seu acordo, procedemos à reparação temporária e à cópia bit a bit dos seus dados.' },
+            { step: '4', title: 'Devolução', text: 'Os seus ficheiros recuperados são entregues num novo suporte de armazenamento seguro, prontos a usar.' }
+          ],
+
+          pricingTitle: 'Quanto custa uma recuperação de dados?',
+          pricingIntro: 'O custo exato depende do tipo de meio, da complexidade da avaria (necessidade de quarto limpo vs. falha lógica básica) e da urgência. Eis as faixas de preços indicativas para o mercado suíço:',
+          pricingOptions: [
+            { tag: 'Falhas Lógicas', target: 'Pen Drives USB, Cartões Memória', price: '~CHF 100 – 400', includes: ['Ficheiros apagados por erro', 'Partições corrompidas', 'Vírus não destrutivos'] },
+            { tag: 'Danos Standard', target: 'Discos Rígidos (HDD) & SSDs', price: '~CHF 400 – 1.500', includes: ['Danos na placa eletrónica (PCB)', 'Firmware corrompido', 'Setores defeituosos leves'] },
+            { tag: 'Intervenções Complexas', target: 'Quartos limpos, Smartphones, RAID', price: 'CHF 1.500 – 3.400+', includes: ['Cabeças de leitura danificadas', 'Chips de memória dessoldados', 'Desoxidação avançada de smartphones'] }
+          ],
+
+          faqTitle: 'Perguntas Frequentes (FAQ)',
+          faqs: [
+            { q: 'O que devo fazer imediatamente após perder dados?', a: 'Desligue o aparelho imediatamente. Não tente reiniciar nem usar software gratuito da internet, o risco de reescrever dados permanentemente ou gravar danos físicos é elevado.' },
+            { q: 'Qual é o prazo médio para recuperar os meus ficheiros?', a: 'Um diagnóstico leva geralmente 24 ou 48 horas. A recuperação completa depende da gravidade da avaria, podendo variar de alguns dias no serviço standard, até 24/72h em urgência (com custo adicional).' },
+            { q: 'Pago se não for possível recuperar dados?', a: 'Na CyberSuisse, a transparência é essencial. Se os danos impossibilitarem qualquer extração desde o diagnóstico, a faturação limita-se à taxa de diagnóstico básica.' }
+          ],
+
+          finalTitle: 'Não deixe os seus dados desaparecerem definitivamente.',
+          finalSubtitle: 'Aja rápido. Obtenha a opinião de um especialista hoje antes que a situação do aparelho piore.',
+          ctaFormBtn: 'Enviar o meu pedido de diagnóstico'
         }
       : {
-          seoTitle: 'Récupération de données à Bienne/Biel (Suisse) | Disque, SSD, USB, carte SD | CyberSuisse',
-          seoDescription: 'Récupération de données à Bienne/Biel et en Suisse : fichiers supprimés, disque/SSD en panne, clé USB, carte SD (photos), PC qui ne démarre plus ou mot de passe Windows oublié. Service professionnel, respect de la vie privée, outils du marché.',
-          heroBadge: 'Récupération de Données • Bienne/Biel & Suisse',
-          heroTitle: 'Récupération de Données Professionnelle & Sécurisée',
-          heroText: "Service professionnel de récupération de données à Bienne/Biel et dans toute la Suisse : fichiers supprimés, disque dur/SSD en panne, clé USB illisible, carte SD avec photos perdues, ordinateur qui ne démarre plus, ou même mot de passe Windows oublié. Travail sérieux, respect de la vie privée et outils professionnels du marché. Important : ce n'est pas toujours possible — mais si aucune donnée n'est récupérable (échec total), vous ne payez rien.",
-          cta: 'Diagnostic gratuit - Demander une analyse',
-          servicesTitle: 'Services de Récupération Spécialisés',
-          servicesSubtitle: 'Supports et scénarios couverts (avec un diagnostic honnête et une approche prudente)',
-          services: []
-        })
+          seoTitle: 'Récupération de Données en Suisse (Biel/Bienne) | Disque Dur, SSD, USB | CyberSuisse',
+          seoDescription: 'Service professionnel de récupération de données pour PME et particuliers. Récupération sur disques durs (HDD/SSD), clés USB, cartes SD et smartphones.',
+          imageAlt: 'Service professionnel de récupération de données en laboratoire en Suisse',
+          badge: 'Urgence Données • Suisse',
+          title: 'Récupération de Données Professionnelle en Suisse',
+          subtitle: 'Vous avez perdu des fichiers cruciaux pour votre entreprise ou des photos précieuses personnelles ? Un disque dur qui claque, une clé USB illisible ou un smartphone endommagé ne signifie pas forcément la fin de vos données. Nous récupérons vos informations avec des techniques de pointe.',
+          ctaPrimary: 'Demandez un diagnostic gratuit',
+          ctaSecondary: 'Contactez-nous pour devis',
+          
+          benefitsTitle: 'Pourquoi confier vos données à notre équipe ?',
+          benefitsIntro: 'Ce service est dédié aux pannes physiques ou logiques d\'appareils, indépendamment des cyberattaques. Qu\'il s\'agisse d\'une chute matérielle ou d\'un formatage accidentel, notre priorité est l\'extraction sécurisée de vos informations.',
+          benefits: [
+            { title: 'Confidentialité Absolue', text: 'Traitement des données en stricte conformité avec la nouvelle Loi suisse sur la protection des données (nLPD). Vous seul aurez accès à vos fichiers récupérés.', icon: LockIcon },
+            { title: 'Technologie de Pointe', text: 'Intervention sur les pannes logiques (partitions corrompues) et matérielles (circuits endommagés, têtes de lecture).', icon: WrenchIcon },
+            { title: 'Devis Transparent', text: 'Un diagnostic clair de la faisabilité avant toute facturation majeure.', icon: HandshakeIcon }
+          ],
 
-  if (language !== 'fr') {
-    return (
-      <div className="min-h-screen cs-bg-redteam-diagonal">
-        <SEOContent page="data-recovery" title={copy.seoTitle} description={copy.seoDescription} />
-        <section className="container mx-auto px-4 py-20">
-          <div className="text-center mb-12">
-            <Badge variant="secondary" className="mb-4 bg-red-950/60 text-red-400 border border-red-600/40">
-              {copy.heroBadge}
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">{copy.heroTitle}</h1>
-            <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">{copy.heroText}</p>
-            <Button
-              size="lg"
-              onClick={() => onNavigate('contact')}
-              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-lg hover:shadow-xl border border-red-500/50 cs-shadow-glow-red-30"
-            >
-              <Clock size={20} className="mr-2" />
-              {copy.cta}
-            </Button>
+          devicesTitle: 'Médias et appareils pris en charge',
+          devices: [
+            { name: 'Disques Durs (HDD) & SSD', desc: 'Pannes mécaniques, bruits anormaux, ou disques SSD non reconnus. Nous assurons la récupération de disque dur pour Genève, Zurich et dans toute la Suisse.', icon: HardDriveIcon },
+            { name: 'Matériel Flash (Clés USB & Cartes SD)', desc: 'Connecteurs cassés, erreur "le disque doit être formaté". Idéal pour récupérer des photos sur carte SD à Biel/Bienne et environs.', icon: UsbIcon },
+            { name: 'Smartphones & Tablettes', desc: 'Écrans noirs, téléphones tombés dans l\'eau (oxydation) ou bloqués en boucle de démarrage (iOS et Android).', icon: MobileIcon },
+            { name: 'Systèmes RAID & NAS', desc: 'Pour les PME, reconstruction de matrices RAID endommagées et serveurs d\'entreprise.', icon: DatabaseIcon }
+          ],
+
+          processTitle: 'Un processus de récupération simple et sécurisé',
+          processSteps: [
+            { step: '1', title: 'Prise en charge (Dépôt ou Envoi)', text: 'Apportez-nous votre support défectueux à notre bureau de Biel/Bienne ou envoyez-le par colis sécurisé depuis toute la Suisse.' },
+            { step: '2', title: 'Diagnostic', text: 'Nos techniciens évaluent l\'étendue des dégâts (panne logique, électronique ou mécanique) pour déterminer vos chances de succès.' },
+            { step: '3', title: 'Devis et Extraction', text: 'Vous recevez une offre détaillée. Avec votre accord, nous procédons à la réparation temporaire et à la copie bit-à-bit de vos données.' },
+            { step: '4', title: 'Restitution', text: 'Vos fichiers récupérés vous sont remis sur un nouveau support de stockage sécurisé, prêts à être utilisés.' }
+          ],
+
+          pricingTitle: 'Combien coûte une récupération de données ?',
+          pricingIntro: 'Le coût exact dépend du type de média, de la complexité de la panne (matérielle nécessitant une salle blanche vs. panne logique de base) et de l\'urgence. Voici des tranches tarifaires indicatives pour le marché suisse :',
+          pricingOptions: [
+            { tag: 'Pannes Logiques', target: 'Clés USB, Cartes Mémoires', price: '~CHF 100 à CHF 400', includes: ['Fichiers effacés par erreur', 'Partition corrompue', 'Virus non-destructif'] },
+            { tag: 'Dommages Standards', target: 'Disques Durs (HDD) & SSD', price: '~CHF 400 à CHF 1 500', includes: ['Dommages de la carte électronique (PCB)', 'Firmware corrompu', 'Secteurs défectueux légers'] },
+            { tag: 'Interventions Complexes', target: 'Salles blanches, Smartphones, RAID', price: 'CHF 1 500 à ~CHF 3 400+', includes: ['Têtes de lecture crashées', 'Puces mémoire dessoudées', 'Désoxydation avancée de smartphones'] }
+          ],
+
+          faqTitle: 'Questions Fréquentes (FAQ)',
+          faqs: [
+            { q: 'Que dois-je faire immédiatement après la perte de données ?', a: 'Éteignez immédiatement l\'appareil. Ne tentez pas de le redémarrer ou d\'utiliser des logiciels gratuits sur internet, cela risquerait d\'écraser définitivement les données ou d\'aggraver les dommages physiques.' },
+            { q: 'Quel est le délai moyen pour récupérer mes fichiers ?', a: 'Un diagnostic prend généralement 24 à 48 heures. La récupération complète dépend de la gravité de la panne, allant de quelques jours en service standard, jusqu\'à 24/72h en mode urgence (avec surcoût).' },
+            { q: 'Payé-je si aucune donnée n\'est récupérable ?', a: 'Chez CyberSuisse, la transparence prime. Si les dommages (comme la destruction physique des plateaux en verre) rendent toute extraction impossible dès le diagnostic, la facture se limite au strict diagnostic de base.' }
+          ],
+
+          finalTitle: 'Ne laissez pas vos données disparaître définitivement.',
+          finalSubtitle: 'Agissez vite. Obtenez l\'avis d\'un expert dès aujourd\'hui avant que la situation de votre appareil ne s\'aggrave.',
+          ctaFormBtn: 'Envoyer ma demande de diagnostic'
+        }
+
+  useEffect(() => {
+    document.title = copy.seoTitle
+
+    let description = document.querySelector('meta[name="description"]')
+    if (!description) {
+      description = document.createElement('meta')
+      description.setAttribute('name', 'description')
+      document.head.appendChild(description)
+    }
+    description.setAttribute('content', copy.seoDescription)
+  }, [copy.seoDescription, copy.seoTitle])
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen py-12 cs-bg-redteam-diagonal text-white"
+    >
+      <SEOContent page="data-recovery" title={copy.seoTitle} description={copy.seoDescription} />
+
+      <div className="container mx-auto px-4 max-w-6xl">
+        {/* HERO SECTION */}
+        <section className="text-center mb-16" aria-labelledby="hero-title">
+          <Badge className="mb-4 bg-red-950/60 text-red-300 border border-red-600/40">{copy.badge}</Badge>
+          <h1 id="hero-title" className="text-4xl md:text-5xl font-bold mb-6">{copy.title}</h1>
+          <p className="text-lg md:text-xl text-zinc-300 max-w-4xl mx-auto leading-relaxed mb-8">{copy.subtitle}</p>
+          
+          <div className="relative w-full max-w-5xl mx-auto h-72 md:h-96 rounded-xl overflow-hidden shadow-2xl mb-10">
+            <img
+              src={dataRecoveryImage}
+              alt={copy.imageAlt}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-red-900/40 to-black/60" />
+            
+            <div className="absolute bottom-6 left-0 right-0 flex flex-col sm:flex-row gap-4 justify-center px-4">
+              <Button size="lg" className="btn-primary-3d" onClick={() => onNavigate('contact')}>
+                <Shield size={18} className="mr-2" />
+                {copy.ctaPrimary}
+              </Button>
+              <Button size="lg" variant="outline" className="btn-secondary-3d bg-black/50 backdrop-blur-md border-white/20 text-white hover:bg-white/10" onClick={() => onNavigate('contact')}>
+                <Envelope size={18} className="mr-2" />
+                {copy.ctaSecondary}
+              </Button>
+            </div>
           </div>
+        </section>
 
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{copy.servicesTitle}</h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">{copy.servicesSubtitle}</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {copy.services.map((service) => (
-              <Card key={service.title} className="h-full bg-[#1A1A1A] border-[#333]">
-                <CardHeader>
-                  <CardTitle className="text-xl text-red-500">{service.title}</CardTitle>
-                  <CardDescription className="text-base text-gray-400">{service.description}</CardDescription>
-                </CardHeader>
+        {/* BENEFITS SECTION */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-6 text-center">{copy.benefitsTitle}</h2>
+          <p className="text-center text-zinc-300 max-w-3xl mx-auto mb-10">{copy.benefitsIntro}</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {copy.benefits.map((benefit, idx) => (
+              <Card key={idx} className="bg-[#1A1A1A] border-[#333]">
+                <CardContent className="p-6">
+                  <benefit.icon className="text-red-400 w-10 h-10 mb-4" />
+                  <h3 className="text-xl font-bold text-white mb-2">{benefit.title}</h3>
+                  <p className="text-zinc-400 text-sm leading-relaxed">{benefit.text}</p>
+                </CardContent>
               </Card>
             ))}
           </div>
         </section>
-      </div>
-    )
-  }
-  return (
-    <div className="min-h-screen cs-bg-redteam-diagonal">
-      <SEOContent
-        page="data-recovery"
-        title="Récupération de données à Bienne/Biel (Suisse) | Disque, SSD, USB, carte SD | CyberSuisse"
-        description="Récupération de données à Bienne/Biel et en Suisse : fichiers supprimés, disque/SSD en panne, clé USB, carte SD (photos), PC qui ne démarre plus ou mot de passe Windows oublié. Service professionnel, respect de la vie privée, outils du marché."
-      />
 
-      {/* SEO H1 invisible */}
-      <h1 className="sr-only">Récupération de données à Bienne/Biel (Suisse) | HDD, SSD, USB, carte SD | CyberSuisse</h1>
-
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <Badge variant="secondary" className="mb-4 bg-red-950/60 text-red-400 border border-red-600/40">
-            Récupération de Données • Bienne/Biel & Suisse
-          </Badge>
-
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Récupération de <span className="text-white cs-text-glow-red-30">Données</span>
-            <br />
-            Professionnelle & Sécurisée
-          </h1>
-
-          <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Service professionnel de récupération de données à Bienne/Biel et dans toute la Suisse :
-            fichiers supprimés, disque dur/SSD en panne, clé USB illisible, carte SD avec photos perdues,
-            ordinateur qui ne démarre plus, ou même mot de passe Windows oublié.
-            Travail sérieux, respect de la vie privée et outils professionnels du marché.
-            Important : ce n'est pas toujours possible — mais si aucune donnée n'est récupérable (échec total), vous ne payez rien.
-          </p>
-
-          <motion.div
-            whileHover={{ scale: 1.05, rotateX: -5 }}
-            whileTap={{ scale: 0.95 }}
-            className="cs-preserve-3d"
-          >
-            <Button
-              size="lg"
-              onClick={() => onNavigate('contact')}
-              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-lg hover:shadow-xl border border-red-500/50 cs-shadow-glow-red-30"
-            >
-              <Clock size={20} className="mr-2" />
-              Diagnostic gratuit - Demander une analyse
-            </Button>
-          </motion.div>
-        </motion.div>
-
-        {/* Hero Image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center mb-20"
-        >
-          <div className="relative w-full max-w-4xl h-80 rounded-xl overflow-hidden shadow-2xl">
-            <img
-              src={dataRecoveryImage}
-              alt="Récupération de données professionnelle"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-red-900/60 via-blue-900/30 to-purple-900/20" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <h3 className="text-white text-2xl font-bold mb-2 drop-shadow-lg">
-                Récupération technique & confidentialité
-              </h3>
-              <p className="text-white/90 text-lg drop-shadow-lg">
-                Pour particuliers, entreprises et besoins d'investigation
-              </p>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Recovery Services */}
-      <section className="container mx-auto px-4 py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Services de Récupération Spécialisés
+        {/* SUPPORTED DEVICES */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-8 flex items-center gap-2">
+            <HardDrive size={32} className="text-red-400" />
+            {copy.devicesTitle}
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Supports et scénarios couverts (avec un diagnostic honnête et une approche prudente)
-          </p>
-        </motion.div>
-
-        <div className="space-y-12 mb-20">
-          {recoveryServices.map((service, index) => {
-            const IconComponent = service.icon
-            return (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-              >
-                <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 bg-[#1A1A1A] border-[#333] hover:border-red-600/40">
-                  <CardHeader className="bg-gradient-to-r from-red-950/30 to-[#1A1A1A]">
-                    <div className="flex items-center space-x-4 mb-4">
-                      <motion.div
-                        className="p-4 bg-red-950/50 rounded-xl cs-preserve-3d"
-                        whileHover={{ scale: 1.1, rotateY: 10 }}
-                      >
-                        <IconComponent size={32} className="text-red-500" />
-                      </motion.div>
-                      <div>
-                        <CardTitle className="text-2xl text-red-500">{service.title}</CardTitle>
-                        <div className="text-sm font-medium text-orange-400 mt-1">{service.subtitle}</div>
-                      </div>
-                    </div>
-                    <CardDescription className="text-base leading-relaxed text-gray-400">
-                      {service.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    <div>
-                      <h4 className="font-semibold text-white mb-3">Problèmes Couvert :</h4>
-                      <ul className="space-y-2">
-                        {service.services.map((item, idx) => (
-                          <li key={idx} className="flex items-start text-sm text-gray-300">
-                            <CheckCircle size={16} className="text-red-500 mr-3 mt-0.5 flex-shrink-0" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <h4 className="font-semibold text-white mb-3">Avantages :</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {service.features.map((feature, idx) => (
-                          <Badge key={idx} variant="secondary" className="text-xs bg-red-950/50 text-red-400 border border-red-600/40">
-                            {feature}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            )
-          })}
-        </div>
-      </section>
-
-      {/* Common Examples */}
-      <section className="py-20 cs-bg-redteam-vertical-dark">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.55 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Exemples fréquents (cas réels)</h2>
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-              Quelques situations typiques que je traite à Bienne/Biel et en Suisse. Le bon réflexe : arrêter d'utiliser le support et demander un diagnostic.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.65 }}
-            >
-              <Card className="h-full bg-[#1A1A1A] border-[#333] hover:border-red-600/40 transition-all">
-                <CardHeader>
-                  <CardTitle className="text-xl text-white">📸 Carte SD : photos supprimées</CardTitle>
-                  <CardDescription className="text-gray-400">
-                    Carte SD/microSD formatée ou photos effacées par erreur (appareil photo, drone, téléphone).
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="text-gray-300 text-sm space-y-2">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle size={16} className="text-red-500 mt-0.5" />
-                    <span>Préservation + récupération sélective si possible</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle size={16} className="text-red-500 mt-0.5" />
-                    <span>Restitution sur un support sain</span>
-                  </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {copy.devices.map((device, idx) => (
+              <Card key={idx} className="bg-gradient-to-b from-[#2A2A2A] to-[#1A1A1A] border-[#444] hover:border-red-500/50 transition-colors">
+                <CardContent className="p-6 text-center">
+                  <device.icon className="mx-auto text-red-400 w-12 h-12 mb-4" />
+                  <h3 className="text-lg font-bold text-white mb-3">{device.name}</h3>
+                  <p className="text-zinc-400 text-sm">{device.desc}</p>
                 </CardContent>
               </Card>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.75 }}
-            >
-              <Card className="h-full bg-[#1A1A1A] border-[#333] hover:border-red-600/40 transition-all">
-                <CardHeader>
-                  <CardTitle className="text-xl text-white">🗑️ Dossier supprimé / corbeille vidée</CardTitle>
-                  <CardDescription className="text-gray-400">
-                    Fichiers effacés sur PC, disque externe ou NAS : l'action rapide augmente les chances.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="text-gray-300 text-sm space-y-2">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle size={16} className="text-red-500 mt-0.5" />
-                    <span>Analyse des traces restantes (selon usage du support)</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle size={16} className="text-red-500 mt-0.5" />
-                    <span>Conseils immédiats pour éviter d'écraser les données</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.85 }}
-            >
-              <Card className="h-full bg-[#1A1A1A] border-[#333] hover:border-red-600/40 transition-all">
-                <CardHeader>
-                  <CardTitle className="text-xl text-white">🔑 Mot de passe Windows oublié</CardTitle>
-                  <CardDescription className="text-gray-400">
-                    Accès bloqué : objectif = récupérer vos fichiers ou restaurer l'accès (uniquement si vous êtes propriétaire / autorisé).
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="text-gray-300 text-sm space-y-2">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle size={16} className="text-red-500 mt-0.5" />
-                    <span>Évaluation du chiffrement (ex: BitLocker) et faisabilité</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle size={16} className="text-red-500 mt-0.5" />
-                    <span>Solutions propres, sans promesses irréalistes</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.95 }}
-            >
-              <Card className="h-full bg-[#1A1A1A] border-[#333] hover:border-red-600/40 transition-all">
-                <CardHeader>
-                  <CardTitle className="text-xl text-white">💥 Disque qui ne démarre plus</CardTitle>
-                  <CardDescription className="text-gray-400">
-                    PC qui ne démarre plus, disque non reconnu, erreurs de lecture : priorité à la préservation.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="text-gray-300 text-sm space-y-2">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle size={16} className="text-red-500 mt-0.5" />
-                    <span>Imagerie et travail sur copie quand c'est possible</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle size={16} className="text-red-500 mt-0.5" />
-                    <span>Rapport clair : ce qui est récupérable / ce qui ne l'est pas</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Recovery Process */}
-      <section className="py-20 cs-bg-redteam-diagonal">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Processus de Récupération Professionnel
-            </h2>
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-              Méthodologie éprouvée en 4 étapes pour maximiser les chances de récupération
-            </p>
-          </motion.div>
+        {/* PROCESS TIMELINE */}
+        <section className="mb-20">
+          <h2 className="text-3xl font-bold mb-10 text-center">{copy.processTitle}</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+            {/* Horizontal line connector for desktop */}
+            <div className="hidden md:block absolute top-[28px] left-[12%] right-[12%] h-[2px] bg-red-900/30 z-0" />
+            
+            {copy.processSteps.map((step, idx) => (
+              <div key={idx} className="relative z-10 flex flex-col items-center text-center">
+                <div className="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center text-2xl font-bold text-white mb-4 shadow-[0_0_15px_rgba(229,57,53,0.4)]">
+                  {step.step}
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
+                <p className="text-zinc-400 text-sm px-2">{step.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {recoveryProcess.map((step, index) => {
-              const IconComponent = step.icon
-              return (
-                <motion.div
-                  key={step.step}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="relative mb-6">
-                    <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-red-600 to-orange-600 flex items-center justify-center text-white font-bold text-xl shadow-lg cs-shadow-glow-red-30">
-                      {step.step}
-                    </div>
-                    {index < recoveryProcess.length - 1 && (
-                      <div className="hidden lg:block absolute top-10 -right-12 w-24 h-0.5 bg-gradient-to-r from-red-600 to-orange-600"></div>
-                    )}
-                  </div>
-
-                  <div className="mb-4">
-                    <IconComponent size={32} className="text-red-500 mx-auto mb-2" />
-                  </div>
-
-                  <h3 className="text-lg font-semibold text-white mb-2">{step.title}</h3>
-                  <p className="text-sm text-gray-400 mb-4">{step.description}</p>
-
-                  <ul className="space-y-1 text-xs text-gray-500">
-                    {step.details.map((detail, idx) => (
-                      <li key={idx} className="flex items-center justify-center">
-                        <CheckCircle size={12} className="text-red-500 mr-2" />
-                        {detail}
-                      </li>
+        {/* PRICING */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-3 flex items-center gap-2">
+            <CheckCircle size={32} className="text-red-400" />
+            {copy.pricingTitle}
+          </h2>
+          <p className="text-zinc-300 mb-8 max-w-4xl">{copy.pricingIntro}</p>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {copy.pricingOptions.map((opt, idx) => (
+              <Card key={idx} className="bg-[#1A1A1A] border-[#333] flex flex-col">
+                <CardHeader className="pb-4">
+                  <div className="text-xs font-semibold uppercase tracking-wider text-red-400 mb-1">{opt.tag}</div>
+                  <h3 className="text-xl font-bold text-white">{opt.target}</h3>
+                  <div className="mt-4 text-2xl font-bold text-white">{opt.price}</div>
+                </CardHeader>
+                <CardContent className="flex-1">
+                  <div className="space-y-3">
+                    <p className="text-sm text-zinc-500 font-medium mb-3">Exemples inclus :</p>
+                    {opt.includes.map((inc, i) => (
+                      <div key={i} className="flex items-start gap-2">
+                        <CheckCircle size={16} className="text-red-400 mt-1 flex-shrink-0" />
+                        <span className="text-zinc-300 text-sm">{inc}</span>
+                      </div>
                     ))}
-                  </ul>
-                </motion.div>
-              )
-            })}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Why Choose Us */}
-      <section className="container mx-auto px-4 py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Pourquoi passer par un professionnel ?
-          </h2>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-            Parce qu'une mauvaise manipulation peut dégrader un support et réduire les chances de récupération.
-          </p>
-        </motion.div>
+        {/* FAQ SECTION */}
+        <section className="mb-16 max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">{copy.faqTitle}</h2>
+          <Card className="bg-[#1A1A1A] border-[#333]">
+            <CardContent className="p-6">
+              <Accordion type="single" collapsible className="w-full">
+                {copy.faqs.map((faq, idx) => (
+                  <AccordionItem key={idx} value={`item-${idx}`} className="border-[#333]">
+                    <AccordionTrigger className="text-left text-white font-semibold hover:text-red-400 hover:no-underline">
+                      {faq.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-zinc-400 leading-relaxed">
+                      {faq.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </CardContent>
+          </Card>
+        </section>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {/* Expertise Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
-            className="bg-[#1A1A1A] rounded-xl p-6 shadow-lg border border-[#333] hover:border-red-600/40 transition-all"
-          >
-            <div className="w-12 h-12 bg-red-950/50 rounded-lg flex items-center justify-center mb-4">
-              <Shield size={24} className="text-red-500" />
-            </div>
-            <h3 className="text-xl font-bold text-white mb-3">Expertise Certifiée</h3>
-            <p className="text-gray-400 mb-4">
-              Approche structurée inspirée des méthodes forensiques : diagnostic, préservation, extraction,
-              vérification et restitution. Chaque cas est traité avec prudence et transparence.
-            </p>
-            <ul className="space-y-2 text-sm">
-              <li className="flex items-center text-gray-300">
-                <CheckCircle size={14} className="text-red-500 mr-2" />
-                Méthodologie rigoureuse
-              </li>
-              <li className="flex items-center text-gray-300">
-                <CheckCircle size={14} className="text-red-500 mr-2" />
-                Outils professionnels du marché
-              </li>
-              <li className="flex items-center text-gray-300">
-                <CheckCircle size={14} className="text-red-500 mr-2" />
-                Diagnostic honnête
-              </li>
-            </ul>
-          </motion.div>
+        {/* FINAL CTA */}
+        <section className="mb-8">
+          <Card className="bg-gradient-to-br from-red-950/80 to-black border-red-800/50 shadow-2xl">
+            <CardContent className="p-10 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{copy.finalTitle}</h2>
+              <p className="text-xl text-zinc-300 mb-8 max-w-2xl mx-auto">{copy.finalSubtitle}</p>
+              
+              <Button size="lg" className="btn-primary-3d text-lg px-8 py-6 h-auto" onClick={() => onNavigate('contact')}>
+                <Clock size={24} className="mr-3" />
+                {copy.ctaFormBtn}
+              </Button>
+            </CardContent>
+          </Card>
+        </section>
 
-          {/* Success Rate Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.1 }}
-            className="bg-white rounded-xl p-6 shadow-lg border border-border/50"
-          >
-            <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-              <CheckCircle size={24} className="text-accent" />
-            </div>
-            <h3 className="text-xl font-bold mb-3 text-black">Taux de Succès Exceptionnel</h3>
-            <p className="text-slate-600 mb-4">
-              La récupération dépend du support, de l'usage après la perte, et du niveau de dommages.
-              L'objectif est simple : maximiser vos chances, sans vendre du rêve.
-            </p>
-            <ul className="space-y-2 text-sm text-slate-700">
-              <li className="flex items-center">
-                <CheckCircle size={14} className="text-accent mr-2" />
-                Évaluation claire de la faisabilité
-              </li>
-              <li className="flex items-center">
-                <CheckCircle size={14} className="text-accent mr-2" />
-                Priorisation possible (urgence)
-              </li>
-              <li className="flex items-center">
-                <CheckCircle size={14} className="text-accent mr-2" />
-                Échec total = aucun frais de récupération
-              </li>
-            </ul>
-          </motion.div>
-
-          {/* Security Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.2 }}
-            className="bg-white rounded-xl p-6 shadow-lg border border-border/50"
-          >
-            <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
-              <Eye size={24} className="text-secondary" />
-            </div>
-            <h3 className="text-xl font-bold mb-3 text-black">Confidentialité & Sécurité</h3>
-            <p className="text-slate-600 mb-4">
-              Respect strict de la vie privée : vos données restent vos données. Manipulation prudente,
-              accès limité, et restitution sur support sain. Pour les demandes d'investigation, une traçabilité
-              peut être mise en place selon le contexte.
-            </p>
-            <ul className="space-y-2 text-sm text-slate-700">
-              <li className="flex items-center">
-                <CheckCircle size={14} className="text-secondary mr-2" />
-                Confidentialité stricte
-              </li>
-              <li className="flex items-center">
-                <CheckCircle size={14} className="text-secondary mr-2" />
-                Approche conforme (RGPD / droit suisse)
-              </li>
-              <li className="flex items-center">
-                <CheckCircle size={14} className="text-secondary mr-2" />
-                Restitution contrôlée
-              </li>
-            </ul>
-          </motion.div>
-        </div>
-
-        {/* Detailed Benefits */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.3 }}
-          className="bg-white rounded-xl p-8 shadow-xl border border-border/50"
-        >
-          <h3 className="text-2xl font-bold text-center mb-8 text-black">
-            Avantages Détaillés du Service
-          </h3>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="space-y-6">
-              <div className="border-l-4 border-primary pl-4">
-                <h4 className="font-bold text-slate-900 mb-2">🔧 Équipement Professionnel</h4>
-                <p className="text-slate-600 text-sm">
-                  Laboratoires spécialisés avec salles blanches classe 100, outils de récupération
-                  professionnels (PC-3000, DeepSpar, R-Studio), et chambres propres pour manipulation
-                  de supports délicats. Investissement continu dans les dernières technologies.
-                </p>
-              </div>
-
-              <div className="border-l-4 border-accent pl-4">
-                <h4 className="font-bold text-slate-900 mb-2">⚡ Traitement prioritaire (si urgence)</h4>
-                <p className="text-slate-600 text-sm">
-                  Possibilité de prioriser un dossier selon votre urgence (professionnelle ou personnelle).
-                  Objectif : éviter l'aggravation et démarrer rapidement les étapes de préservation/diagnostic.
-                </p>
-              </div>
-
-              <div className="border-l-4 border-secondary pl-4">
-                <h4 className="font-bold text-slate-900 mb-2">💰 Tarification Transparente</h4>
-                <p className="text-slate-600 text-sm">
-                  Diagnostic gratuit et devis détaillé sans engagement. Tarification basée
-                  sur la complexité technique, pas sur la valeur des données. Pas de frais
-                  supplémentaires cachés. En cas d'échec total (aucune donnée récupérable), aucun frais de récupération.
-                </p>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <div className="border-l-4 border-red-500 pl-4">
-                <h4 className="font-bold text-slate-900 mb-2">🎯 Récupération Spécialisée</h4>
-                <p className="text-slate-600 text-sm">
-                  Spécialisation par type de support : HDD mécanique, SSD flash, cartes mémoire,
-                  RAID, NAS, et supports exotiques. Expertise dans tous les systèmes de fichiers
-                  (NTFS, FAT32, exFAT, ext4, HFS+, APFS, etc.).
-                </p>
-              </div>
-
-              <div className="border-l-4 border-purple-500 pl-4">
-                <h4 className="font-bold text-slate-900 mb-2">📊 Reporting Complet</h4>
-                <p className="text-slate-600 text-sm">
-                  Rapport clair : ce qui a été récupéré, ce qui est manquant, et les limites techniques observées.
-                  Recommandations de prévention (sauvegardes, chiffrement, bonnes pratiques) selon votre contexte.
-                </p>
-              </div>
-
-              <div className="border-l-4 border-green-500 pl-4">
-                <h4 className="font-bold text-slate-900 mb-2">🔄 Support Post-Récupération</h4>
-                <p className="text-slate-600 text-sm">
-                  Accompagnement après récupération : conseils de sauvegarde, recommandations
-                  de prévention, et support technique. Formation optionnelle sur les bonnes
-                  pratiques de protection des données.
-                </p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Statistics Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.4 }}
-          className="grid md:grid-cols-4 gap-6 mt-12"
-        >
-          <div className="text-center bg-white rounded-lg p-6 shadow-md">
-            <div className="text-3xl font-bold text-primary mb-2">Diagnostic</div>
-            <p className="text-sm text-slate-600">Analyse + faisabilité transparente</p>
-          </div>
-          <div className="text-center bg-white rounded-lg p-6 shadow-md">
-            <div className="text-3xl font-bold text-accent mb-2">Urgence</div>
-            <p className="text-sm text-slate-600">Traitement prioritaire possible</p>
-          </div>
-          <div className="text-center bg-white rounded-lg p-6 shadow-md">
-            <div className="text-3xl font-bold text-secondary mb-2">Outils pro</div>
-            <p className="text-sm text-slate-600">Imagerie, analyse, extraction</p>
-          </div>
-          <div className="text-center bg-white rounded-lg p-6 shadow-md">
-            <div className="text-3xl font-bold text-red-500 mb-2">0 CHF</div>
-            <p className="text-sm text-slate-600">Si échec total (0 donnée récupérable)</p>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="bg-gradient-to-br from-gray-50 to-slate-100 py-20 faq-section">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.5 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
-              Questions Fréquentes - Récupération de Données
-            </h2>
-            <p className="text-lg text-black text-slate-600 max-w-3xl mx-auto">
-              Tout ce que vous devez savoir sur nos services de récupération de données
-            </p>
-          </motion.div>
-
-          <div className="max-w-4xl mx-auto space-y-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.6 }}
-              className="bg-white rounded-lg p-6 shadow-md border border-border/50"
-            >
-              <h3 className="text-lg font-bold mb-3 text-black">💰 Combien coûte la récupération de données ?</h3>
-              <p className="text-slate-600">
-                Le coût de récupération dépend de plusieurs facteurs : type de support, complexité du dommage,
-                volume de données, et urgence de l'intervention. Chaque cas est analysé individuellement
-                pour établir un devis précis et adapté. Diagnostic gratuit offert, paiement uniquement
-                en cas de données récupérables. En cas d'échec total (aucune donnée récupérable), aucun frais de récupération.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.7 }}
-              className="bg-white rounded-lg p-6 shadow-md border border-border/50"
-            >
-              <h3 className="text-lg font-bold mb-3 text-black">⏱️ Combien de temps prend la récupération ?</h3>
-              <p className="text-slate-600">
-                Pour les cas simples (suppression accidentelle), une récupération peut parfois être rapide.
-                Les cas complexes (panne matérielle, mémoire dégradée, chiffrement) peuvent nécessiter plusieurs jours.
-                Les urgences peuvent être priorisées selon la charge et la faisabilité.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.8 }}
-              className="bg-white rounded-lg p-6 shadow-md border border-border/50"
-            >
-              <h3 className="text-lg font-bold mb-3 text-black">🔍 Quels types de supports traitez-vous ?</h3>
-              <p className="text-slate-600">
-                Spécialisation complète : disques durs HDD/SSD, clés USB, cartes SD/microSD,
-                cartes mémoire CompactFlash, XQD, CFexpress. Support pour tous les systèmes
-                d'exploitation (Windows, macOS, Linux) et systèmes de fichiers (NTFS, FAT32,
-                exFAT, ext4, HFS+, APFS, etc.).
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.9 }}
-              className="bg-white rounded-lg p-6 shadow-md border border-border/50"
-            >
-              <h3 className="text-lg font-bold mb-3 text-black">🛡️ Mes données sont-elles en sécurité ?</h3>
-              <p className="text-slate-600">
-                Vos données sont traitées avec confidentialité stricte : accès limité au strict nécessaire,
-                conservation minimale et restitution sur support sain. Un accord de confidentialité (NDA)
-                peut être fourni sur demande selon le contexte.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 2.0 }}
-              className="bg-white rounded-lg p-6 shadow-md border border-border/50"
-            >
-              <h3 className="text-lg font-bold mb-3 text-black">📱 Puis-je récupérer des photos supprimées de ma carte SD ?</h3>
-              <p className="text-slate-600">
-                Souvent oui, selon l'usage du support après la suppression/formatage. Plus vous arrêtez
-                d'utiliser la carte rapidement, plus les chances augmentent. Une prévisualisation peut être
-                possible pour évaluer la faisabilité.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 2.1 }}
-              className="bg-white rounded-lg p-6 shadow-md border border-border/50"
-            >
-              <h3 className="text-lg font-bold mb-3 text-black">💻 Mon disque dur fait du bruit, est-il récupérable ?</h3>
-              <p className="text-slate-600">
-                Les bruits inhabituels (cliquetis, grincements) indiquent souvent des dommages
-                mécaniques graves. Ces cas peuvent parfois être récupérables, mais chaque minute d'utilisation
-                peut aggraver la situation. Ne tentez pas de démonter vous-même le disque : arrêtez l'appareil
-                et demandez un diagnostic.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-primary/5 py-20">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 2.2 }}
-          >
-            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
-              Besoin de récupérer des données ?
-            </h3>
-            <p className="text-lg text-slate-600 mb-8 max-w-xl mx-auto">
-              Le bon réflexe : arrêter d'utiliser le support et demander une analyse.
-              Je vous donne un avis clair sur la faisabilité et les options.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.div
-                whileHover={{ scale: 1.05, rotateX: -5 }}
-                whileTap={{ scale: 0.95 }}
-                className="cs-preserve-3d"
-              >
-                <Button
-                  size="lg"
-                  onClick={() => onNavigate('contact')}
-                  className="bg-red-600 hover:bg-red-700 text-white shadow-lg hover:shadow-xl font-semibold"
-                >
-                  <Clock size={20} className="mr-2" />
-                  Diagnostic gratuit - Demander une analyse
-                </Button>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ scale: 1.05, rotateX: -5 }}
-                whileTap={{ scale: 0.95 }}
-                className="cs-preserve-3d"
-              >
-                <Button
-                  variant="outline"
-                  size="lg"
-                  onClick={() => onNavigate('contact')}
-                  className="border-red-300 text-red-600 hover:bg-red-50 shadow-lg hover:shadow-xl font-semibold"
-                >
-                  <Envelope size={20} className="mr-2" />
-                  Devis Personnalisé
-                </Button>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-    </div>
+      </div>
+    </motion.div>
   )
 }
+
+function LockIcon(props: any) { return <Shield {...props} /> }
+function WrenchIcon(props: any) { return <Wrench {...props} /> }
+function HandshakeIcon(props: any) { return <Handshake {...props} /> }
+function HardDriveIcon(props: any) { return <HardDrive {...props} /> }
+function UsbIcon(props: any) { return <Usb {...props} /> }
+function MobileIcon(props: any) { return <DeviceMobile {...props} /> }
+function DatabaseIcon(props: any) { return <Database {...props} /> }

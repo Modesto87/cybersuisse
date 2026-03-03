@@ -13,6 +13,9 @@ const PentestPage = lazy(() => import('./components/PentestPage'))
 const OSINTPage = lazy(() => import('./components/OSINTPage'))
 const DeveloppementPage = lazy(() => import('./components/DeveloppementPage'))
 const DataRecoveryPage = lazy(() => import('./components/DataRecoveryPage'))
+const ProtectionPmeEssentielPage = lazy(() => import('./components/ProtectionPmeEssentielPage'))
+const ProtectionPmeActivePage = lazy(() => import('./components/ProtectionPmeActivePage'))
+const ProtectionPmePremiumPage = lazy(() => import('./components/ProtectionPmePremiumPage'))
 const ContactPage = lazy(() => import('./components/ContactPage'))
 const CGVPage = lazy(() => import('./components/CGVPage'))
 const PolitiqueConfidentialitePage = lazy(() => import('./components/PolitiqueConfidentialitePage'))
@@ -26,7 +29,7 @@ const PageLoader = () => (
   </div>
 )
 
-type PageType = 'home' | 'about' | 'pentest' | 'osint' | 'developpement' | 'data-recovery' | 'contact' | 'cgv' | 'politique-confidentialite' | 'mentions-legales' | 'cookies'
+type PageType = 'home' | 'about' | 'pentest' | 'osint' | 'developpement' | 'data-recovery' | 'protection-pme-essentiel' | 'protection-pme-active' | 'protection-pme-premium' | 'contact' | 'cgv' | 'politique-confidentialite' | 'mentions-legales' | 'cookies'
 
 export type NavigationFunction = (page: PageType) => void;
 
@@ -58,6 +61,9 @@ function AppContent() {
       'osint': '/osint',
       'developpement': '/developpement',
       'data-recovery': '/data-recovery',
+      'protection-pme-essentiel': '/abonnements/essentiel',
+      'protection-pme-active': '/abonnements/pro',
+      'protection-pme-premium': '/abonnements/premium',
       'contact': '/contact',
       'cgv': '/cgv',
       'politique-confidentialite': '/politique-confidentialite',
@@ -77,6 +83,9 @@ function AppContent() {
       '/osint': 'osint',
       '/developpement': 'developpement',
       '/data-recovery': 'data-recovery',
+      '/abonnements/essentiel': 'protection-pme-essentiel',
+      '/abonnements/pro': 'protection-pme-active',
+      '/abonnements/premium': 'protection-pme-premium',
       '/contact': 'contact',
       '/cgv': 'cgv',
       '/politique-confidentialite': 'politique-confidentialite',
@@ -110,6 +119,9 @@ function AppContent() {
               <Route path="/osint" element={<OSINTPage onNavigate={handleNavigate} />} />
               <Route path="/developpement" element={<DeveloppementPage onNavigate={handleNavigate} />} />
               <Route path="/data-recovery" element={<DataRecoveryPage onNavigate={handleNavigate} />} />
+              <Route path="/abonnements/essentiel" element={<ProtectionPmeEssentielPage onNavigate={handleNavigate} />} />
+              <Route path="/abonnements/pro" element={<ProtectionPmeActivePage onNavigate={handleNavigate} />} />
+              <Route path="/abonnements/premium" element={<ProtectionPmePremiumPage onNavigate={handleNavigate} />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/cgv" element={<CGVPage onNavigate={handleNavigate} />} />
               <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage onNavigate={handleNavigate} />} />
