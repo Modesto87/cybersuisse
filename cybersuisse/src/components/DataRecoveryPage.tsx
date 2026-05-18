@@ -199,14 +199,14 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen py-12 cs-bg-redteam-diagonal text-white"
+      className="min-h-screen py-12 bg-bg text-fg"
     >
       <SEOContent page="data-recovery" title={copy.seoTitle} description={copy.seoDescription} />
 
       <div className="container mx-auto px-4 max-w-6xl">
         {/* HERO SECTION */}
         <section className="text-center mb-16" aria-labelledby="hero-title">
-          <Badge className="mb-4 bg-red-950/60 text-red-300 border border-red-600/40">{copy.badge}</Badge>
+          <Badge className="mb-4 bg-brand-amber/10 text-brand-amber border border-brand-amber/40">{copy.badge}</Badge>
           <h1 id="hero-title" className="text-4xl md:text-5xl font-bold mb-6">{copy.title}</h1>
           <p className="text-lg md:text-xl text-zinc-300 max-w-4xl mx-auto leading-relaxed mb-8">{copy.subtitle}</p>
           
@@ -217,14 +217,14 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               className="w-full h-full object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-red-900/40 to-black/60" />
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-amber to-black/60" />
             
             <div className="absolute bottom-6 left-0 right-0 flex flex-col sm:flex-row gap-4 justify-center px-4">
-              <Button size="lg" className="btn-primary-3d" onClick={() => onNavigate('contact')}>
+              <Button size="lg" className="btn-primary" onClick={() => onNavigate('contact')}>
                 <Shield size={18} className="mr-2" />
                 {copy.ctaPrimary}
               </Button>
-              <Button size="lg" variant="outline" className="btn-secondary-3d bg-black/50 backdrop-blur-md border-white/20 text-white hover:bg-white/10" onClick={() => onNavigate('contact')}>
+              <Button size="lg" variant="outline" className="btn-secondary bg-black/70 border-white/20 text-fg hover:bg-white/10" onClick={() => onNavigate('contact')}>
                 <Envelope size={18} className="mr-2" />
                 {copy.ctaSecondary}
               </Button>
@@ -241,8 +241,8 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             {copy.benefits.map((benefit, idx) => (
               <Card key={idx} className="bg-[#1A1A1A] border-[#333]">
                 <CardContent className="p-6">
-                  <benefit.icon className="text-red-400 w-10 h-10 mb-4" />
-                  <h3 className="text-xl font-bold text-white mb-2">{benefit.title}</h3>
+                  <benefit.icon className="text-brand-amber w-10 h-10 mb-4" />
+                  <h3 className="text-xl font-bold text-fg mb-2">{benefit.title}</h3>
                   <p className="text-zinc-400 text-sm leading-relaxed">{benefit.text}</p>
                 </CardContent>
               </Card>
@@ -253,16 +253,16 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
         {/* SUPPORTED DEVICES */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8 flex items-center gap-2">
-            <HardDrive size={32} className="text-red-400" />
+            <HardDrive size={32} className="text-brand-amber" />
             {copy.devicesTitle}
           </h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {copy.devices.map((device, idx) => (
-              <Card key={idx} className="bg-gradient-to-b from-[#2A2A2A] to-[#1A1A1A] border-[#444] hover:border-red-500/50 transition-colors">
+              <Card key={idx} className="bg-gradient-to-b from-[#2A2A2A] to-[#1A1A1A] border-[#444] hover:border-brand-amber/50 transition-colors">
                 <CardContent className="p-6 text-center">
-                  <device.icon className="mx-auto text-red-400 w-12 h-12 mb-4" />
-                  <h3 className="text-lg font-bold text-white mb-3">{device.name}</h3>
+                  <device.icon className="mx-auto text-brand-amber w-12 h-12 mb-4" />
+                  <h3 className="text-lg font-bold text-fg mb-3">{device.name}</h3>
                   <p className="text-zinc-400 text-sm">{device.desc}</p>
                 </CardContent>
               </Card>
@@ -276,14 +276,14 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
             {/* Horizontal line connector for desktop */}
-            <div className="hidden md:block absolute top-[28px] left-[12%] right-[12%] h-[2px] bg-red-900/30 z-0" />
+            <div className="hidden md:block absolute top-[28px] left-[12%] right-[12%] h-[2px] bg-brand-amber/10 z-0" />
             
             {copy.processSteps.map((step, idx) => (
               <div key={idx} className="relative z-10 flex flex-col items-center text-center">
-                <div className="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center text-2xl font-bold text-white mb-4 shadow-[0_0_15px_rgba(229,57,53,0.4)]">
+                <div className="w-14 h-14 rounded-full bg-brand-amber flex items-center justify-center text-2xl font-bold text-fg mb-4 shadow-[0_0_15px_rgba(229,57,53,0.4)]">
                   {step.step}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
+                <h3 className="text-xl font-bold text-fg mb-3">{step.title}</h3>
                 <p className="text-zinc-400 text-sm px-2">{step.text}</p>
               </div>
             ))}
@@ -293,7 +293,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
         {/* PRICING */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-3 flex items-center gap-2">
-            <CheckCircle size={32} className="text-red-400" />
+            <CheckCircle size={32} className="text-brand-amber" />
             {copy.pricingTitle}
           </h2>
           <p className="text-zinc-300 mb-8 max-w-4xl">{copy.pricingIntro}</p>
@@ -302,16 +302,16 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
             {copy.pricingOptions.map((opt, idx) => (
               <Card key={idx} className="bg-[#1A1A1A] border-[#333] flex flex-col">
                 <CardHeader className="pb-4">
-                  <div className="text-xs font-semibold uppercase tracking-wider text-red-400 mb-1">{opt.tag}</div>
-                  <h3 className="text-xl font-bold text-white">{opt.target}</h3>
-                  <div className="mt-4 text-2xl font-bold text-white">{opt.price}</div>
+                  <div className="text-xs font-semibold uppercase tracking-wider text-brand-amber mb-1">{opt.tag}</div>
+                  <h3 className="text-xl font-bold text-fg">{opt.target}</h3>
+                  <div className="mt-4 text-2xl font-bold text-fg">{opt.price}</div>
                 </CardHeader>
                 <CardContent className="flex-1">
                   <div className="space-y-3">
                     <p className="text-sm text-zinc-500 font-medium mb-3">Exemples inclus :</p>
                     {opt.includes.map((inc, i) => (
                       <div key={i} className="flex items-start gap-2">
-                        <CheckCircle size={16} className="text-red-400 mt-1 flex-shrink-0" />
+                        <CheckCircle size={16} className="text-brand-amber mt-1 flex-shrink-0" />
                         <span className="text-zinc-300 text-sm">{inc}</span>
                       </div>
                     ))}
@@ -330,7 +330,7 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
               <Accordion type="single" collapsible className="w-full">
                 {copy.faqs.map((faq, idx) => (
                   <AccordionItem key={idx} value={`item-${idx}`} className="border-[#333]">
-                    <AccordionTrigger className="text-left text-white font-semibold hover:text-red-400 hover:no-underline">
+                    <AccordionTrigger className="text-left text-fg font-semibold hover:text-brand-amber hover:no-underline">
                       {faq.q}
                     </AccordionTrigger>
                     <AccordionContent className="text-zinc-400 leading-relaxed">
@@ -345,12 +345,12 @@ export default function DataRecoveryPage({ onNavigate }: DataRecoveryPageProps) 
 
         {/* FINAL CTA */}
         <section className="mb-8">
-          <Card className="bg-gradient-to-br from-red-950/80 to-black border-red-800/50 shadow-2xl">
+          <Card className="bg-gradient-to-br from-brand-amber to-black border-brand-amber/40 shadow-2xl">
             <CardContent className="p-10 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{copy.finalTitle}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-fg mb-4">{copy.finalTitle}</h2>
               <p className="text-xl text-zinc-300 mb-8 max-w-2xl mx-auto">{copy.finalSubtitle}</p>
               
-              <Button size="lg" className="btn-primary-3d text-lg px-8 py-6 h-auto" onClick={() => onNavigate('contact')}>
+              <Button size="lg" className="btn-primary text-lg px-8 py-6 h-auto" onClick={() => onNavigate('contact')}>
                 <Clock size={24} className="mr-3" />
                 {copy.ctaFormBtn}
               </Button>

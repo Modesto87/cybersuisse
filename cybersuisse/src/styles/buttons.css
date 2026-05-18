@@ -1,236 +1,362 @@
-/* CYBERSUISSE - CUSTOM BUTTON STYLES */
-/* ================================== */
+/* ==========================================================================
+   CYBERSUISSE — BUTTON & CARD UTILITIES (Phase 1: flat, brand-aligned)
+   --------------------------------------------------------------------------
+   Palette: Deep Navy (#0F172A) + Royal Blue (#1E3A8A) + Amber CTA (#D97706)
+   No 3D. No glassmorphism. No heavy shadows. No backdrop-blur.
+   Hover = -5% lightness on background only.
 
-/* Botão principal com efeito 3D - RED TEAM */
+   Legacy class names (`btn-primary-3d`, `btn-secondary-3d`, `card-enhanced`)
+   are preserved as DEPRECATED aliases so existing JSX keeps working until
+   Phase 2 migrates components.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   PRIMARY BUTTON — flat amber CTA
+   -------------------------------------------------------------------------- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--color-brand-amber, #D97706);
+  color: #ffffff;
+  border: 1px solid var(--color-brand-amber, #D97706);
+  border-radius: 6px;
+  padding: 0.625rem 1.25rem;
+  font-family: var(--font-sans-serif, "Inter", system-ui, sans-serif);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: none;
+  transform: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background-color: var(--color-brand-amber-hover, #B45309);
+  border-color: var(--color-brand-amber-hover, #B45309);
+  color: #ffffff;
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-focus-ring, #D97706);
+  outline-offset: 2px;
+}
+
+.btn-primary:active {
+  background-color: var(--color-brand-amber-hover, #B45309);
+}
+
+.btn-primary:disabled,
+.btn-primary[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --------------------------------------------------------------------------
+   SECONDARY BUTTON — outlined, navy on light / white on dark
+   -------------------------------------------------------------------------- */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--color-brand-navy, #0F172A);
+  border: 1px solid var(--color-brand-navy, #0F172A);
+  border-radius: 6px;
+  padding: 0.625rem 1.25rem;
+  font-family: var(--font-sans-serif, "Inter", system-ui, sans-serif);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: none;
+  transform: none;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  background-color: rgba(15, 23, 42, 0.1);
+  color: var(--color-brand-navy, #0F172A);
+  border-color: var(--color-brand-navy, #0F172A);
+}
+
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--color-focus-ring, #D97706);
+  outline-offset: 2px;
+}
+
+/* On dark navy backgrounds, the secondary button flips to white border + white text. */
+.bg-bg .btn-secondary,
+.bg-brand-navy .btn-secondary,
+[data-appearance="dark"] .btn-secondary,
+.dark .btn-secondary {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.bg-bg .btn-secondary:hover,
+.bg-brand-navy .btn-secondary:hover,
+[data-appearance="dark"] .btn-secondary:hover,
+.dark .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.btn-secondary:disabled,
+.btn-secondary[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   DEPRECATED ALIASES — kept until Phase 2 migrates components.
+   Map legacy 3D/glow class names to flat equivalents. Do NOT use in new code.
+   ========================================================================== */
+
+/* DEPRECATED: use `.btn-primary` instead. */
 .btn-primary-3d {
-  background: linear-gradient(135deg, #FF5252 0%, #E53935 50%, #B71C1C 100%);
-  border: none;
-  color: #FFFFFF;
-  box-shadow: 
-    0 4px 12px rgba(229, 57, 53, 0.4),
-    0 2px 4px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  transform: translateY(0);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--color-brand-amber, #D97706);
+  border: 1px solid var(--color-brand-amber, #D97706);
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 0.625rem 1.25rem;
+  font-weight: 600;
+  box-shadow: none;
+  transform: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   position: relative;
   overflow: hidden;
 }
 
 .btn-primary-3d::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
+  content: none; /* kill legacy shimmer */
 }
 
 .btn-primary-3d:hover {
-  background: linear-gradient(135deg, #E53935 0%, #C62828 50%, #B71C1C 100%);
-  box-shadow: 
-    0 6px 24px rgba(229, 57, 53, 0.5),
-    0 4px 8px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    0 0 30px rgba(229, 57, 53, 0.3);
-  transform: translateY(-2px);
+  background: var(--color-brand-amber-hover, #B45309);
+  border-color: var(--color-brand-amber-hover, #B45309);
+  box-shadow: none;
+  transform: none;
 }
 
 .btn-primary-3d:hover::before {
-  left: 100%;
+  left: auto;
 }
 
 .btn-primary-3d:active {
-  transform: translateY(0);
-  box-shadow: 
-    0 2px 8px rgba(229, 57, 53, 0.4),
-    0 1px 2px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: var(--color-brand-amber-hover, #B45309);
+  box-shadow: none;
+  transform: none;
 }
 
-/* Botão secundário com efeito 3D - RED TEAM */
+/* DEPRECATED: use `.btn-secondary` instead. */
 .btn-secondary-3d {
-  background: linear-gradient(135deg, #2D2D2D 0%, #1A1A1A 50%, #0A0A0A 100%);
-  border: 2px solid #E53935;
-  color: #FFFFFF;
-  box-shadow: 
-    0 3px 8px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transform: translateY(0);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--color-brand-navy, #0F172A);
+  color: var(--color-brand-navy, #0F172A);
+  border-radius: 6px;
+  padding: 0.625rem 1.25rem;
   font-weight: 600;
+  box-shadow: none;
+  transform: none;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 .btn-secondary-3d:hover {
-  background: linear-gradient(135deg, #3D3D3D 0%, #2D2D2D 50%, #1A1A1A 100%);
-  border-color: #FF5252;
-  color: #FFFFFF;
-  box-shadow: 
-    0 5px 16px rgba(229, 57, 53, 0.3),
-    0 0 20px rgba(229, 57, 53, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  transform: translateY(-1px);
+  background: rgba(15, 23, 42, 0.1);
+  border-color: var(--color-brand-navy, #0F172A);
+  color: var(--color-brand-navy, #0F172A);
+  box-shadow: none;
+  transform: none;
 }
 
 .btn-secondary-3d:active {
-  transform: translateY(0);
-  box-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: none;
+  transform: none;
 }
 
-/* Botão de sucesso com efeito 3D */
+/* DEPRECATED: neutralised green button. */
 .btn-success-3d {
-  background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
-  border: none;
-  color: white;
-  box-shadow: 
-    0 4px 12px rgba(16, 185, 129, 0.3),
-    0 2px 4px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  transform: translateY(0);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #047857;
+  border: 1px solid #047857;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 0.625rem 1.25rem;
+  font-weight: 600;
+  box-shadow: none;
+  transform: none;
+  transition: background-color 0.15s ease;
 }
 
 .btn-success-3d:hover {
-  background: linear-gradient(135deg, #059669 0%, #047857 50%, #065f46 100%);
-  box-shadow: 
-    0 6px 16px rgba(16, 185, 129, 0.4),
-    0 4px 8px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
+  background: #065f46;
+  box-shadow: none;
+  transform: none;
 }
 
-/* Botão de alerta com efeito 3D */
+/* DEPRECATED: maps to flat amber primary. */
 .btn-warning-3d {
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
-  border: none;
-  color: white;
-  box-shadow: 
-    0 4px 12px rgba(245, 158, 11, 0.3),
-    0 2px 4px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  transform: translateY(0);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--color-brand-amber, #D97706);
+  border: 1px solid var(--color-brand-amber, #D97706);
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 0.625rem 1.25rem;
+  font-weight: 600;
+  box-shadow: none;
+  transform: none;
+  transition: background-color 0.15s ease;
 }
 
 .btn-warning-3d:hover {
-  background: linear-gradient(135deg, #d97706 0%, #b45309 50%, #92400e 100%);
-  box-shadow: 
-    0 6px 16px rgba(245, 158, 11, 0.4),
-    0 4px 8px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
+  background: var(--color-brand-amber-hover, #B45309);
+  box-shadow: none;
+  transform: none;
 }
 
-/* Input com melhor contraste - RED TEAM */
+/* --------------------------------------------------------------------------
+   INPUTS — flat, on-dark
+   -------------------------------------------------------------------------- */
 .input-enhanced {
-  border: 2px solid #333333;
-  background: #1A1A1A;
-  color: #FFFFFF;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  background: var(--color-bg-inset, #111C36);
+  color: var(--color-fg, #F8FAFC);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  box-shadow: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
 .input-enhanced:focus {
-  border-color: #E53935;
-  box-shadow: 
-    0 0 0 3px rgba(229, 57, 53, 0.2),
-    0 1px 3px rgba(0, 0, 0, 0.3);
-  background: #2D2D2D;
+  outline: none;
+  border-color: var(--color-brand-amber, #D97706);
+  background: var(--color-bg-overlay, #1B2A4A);
+  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.25);
 }
 
-/* Select com melhor contraste */
 .select-enhanced {
-  border: 2px solid #e2e8f0;
+  border: 1px solid rgba(15, 23, 42, 0.2);
   background: #ffffff;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
+  transition: border-color 0.15s ease;
 }
 
 .select-enhanced:focus {
-  border-color: #3b82f6;
-  box-shadow: 
-    0 0 0 3px rgba(59, 130, 246, 0.1),
-    0 1px 3px rgba(0, 0, 0, 0.1);
+  outline: none;
+  border-color: var(--color-brand-royal, #1E3A8A);
+  box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.2);
 }
 
-/* Cards com melhor contraste - RED TEAM */
+/* --------------------------------------------------------------------------
+   CARDS — solid, 1px border, NO blur, NO heavy shadow
+   -------------------------------------------------------------------------- */
 .card-enhanced {
-  background: #1A1A1A;
-  border: 1px solid #333333;
-  box-shadow: 
-    0 4px 12px rgba(0, 0, 0, 0.3),
-    0 1px 3px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+  background: var(--color-bg-inset, #111C36);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
 .card-enhanced:hover {
-  border-color: #E53935;
-  box-shadow: 
-    0 8px 24px rgba(229, 57, 53, 0.2),
-    0 4px 8px rgba(0, 0, 0, 0.3),
-    0 0 20px rgba(229, 57, 53, 0.1);
-  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--color-bg-overlay, #1B2A4A);
+  box-shadow: none;
+  transform: none;
 }
 
-/* Gradientes melhorados para seções */
+/* --------------------------------------------------------------------------
+   SECTION GRADIENTS — flattened to brand solids.
+   -------------------------------------------------------------------------- */
 .gradient-section {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--color-bg, #0F172A);
 }
 
 .gradient-cta {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: var(--color-brand-royal, #1E3A8A);
 }
 
-/* Texto com melhor contraste */
+/* --------------------------------------------------------------------------
+   TEXT HELPERS — drop legacy text-shadows.
+   -------------------------------------------------------------------------- */
 .text-enhanced {
-  color: #1f2937;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  color: var(--color-fg, #F8FAFC);
+  text-shadow: none;
 }
 
 .text-light-enhanced {
-  color: #6b7280;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  color: var(--color-fg-secondary, #CBD5E1);
+  text-shadow: none;
 }
 
-/* Animação de loading melhorada */
+/* --------------------------------------------------------------------------
+   LOADING SPINNER — flat
+   -------------------------------------------------------------------------- */
 .loading-spinner {
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  border-top: 3px solid #ffffff;
   width: 16px;
   height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-top-color: var(--color-brand-amber, #D97706);
+  border-radius: 50%;
   animation: spin 1s linear infinite;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* Alertas com melhor visual */
+/* --------------------------------------------------------------------------
+   ALERTS — flat, no gradient
+   -------------------------------------------------------------------------- */
 .alert-enhanced {
-  border-width: 2px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 6px;
+  box-shadow: none;
 }
 
 .alert-success-enhanced {
-  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-  border-color: #10b981;
-  color: #064e3b;
+  background: #ECFDF5;
+  border-color: #10B981;
+  color: #064E3B;
 }
 
 .alert-error-enhanced {
-  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
-  border-color: #ef4444;
-  color: #7f1d1d;
+  background: #FEF2F2;
+  border-color: #EF4444;
+  color: #7F1D1D;
 }
 
-/* Botão com ícone melhorado */
+/* --------------------------------------------------------------------------
+   BUTTON WITH ICON
+   -------------------------------------------------------------------------- */
 .btn-icon-enhanced {
   display: inline-flex;
   align-items: center;
@@ -238,5 +364,5 @@
 }
 
 .btn-icon-enhanced svg {
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  filter: none;
 }

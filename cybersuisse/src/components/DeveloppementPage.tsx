@@ -288,16 +288,16 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen py-12 cs-bg-redteam-diagonal text-white"
+      className="min-h-screen py-12 bg-bg text-fg"
     >
       <SEOContent page="developpement" title={copy.seoTitle} description={copy.seoDescription} />
 
       <div className="container mx-auto px-4 max-w-6xl">
         <section className="text-center mb-14" aria-labelledby="dev-title">
-          <Badge className="mb-4 bg-red-950/60 text-red-300 border border-red-600/40">{copy.badge}</Badge>
+          <Badge className="mb-4 bg-brand-amber/10 text-brand-amber border border-brand-amber/40">{copy.badge}</Badge>
           <h1 id="dev-title" className="text-4xl md:text-5xl font-bold mb-6">{copy.title}</h1>
-          <p className="text-xl text-white max-w-4xl mx-auto leading-relaxed mb-4">{copy.subtitle}</p>
-          <p className="text-white max-w-4xl mx-auto leading-relaxed">{copy.intro}</p>
+          <p className="text-xl text-fg max-w-4xl mx-auto leading-relaxed mb-4">{copy.subtitle}</p>
+          <p className="text-fg max-w-4xl mx-auto leading-relaxed">{copy.intro}</p>
         </section>
 
         <section className="mb-14">
@@ -308,21 +308,21 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
               className="w-full h-full object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-red-900/70 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-amber to-transparent" />
           </div>
         </section>
 
         <section className="mb-14" aria-labelledby="why-title">
           <h2 id="why-title" className="text-3xl font-bold mb-6 flex items-center gap-2">
-            <Shield size={28} className="text-red-400" />
+            <Shield size={28} className="text-brand-amber" />
             {copy.whyTitle}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {copy.whyItems.map((item) => (
               <Card key={item} className="bg-[#1A1A1A] border-[#333] h-full">
                 <CardContent className="p-6 flex items-start gap-3">
-                  <CheckCircle size={18} className="text-red-400 mt-1 flex-shrink-0" weight="fill" />
-                  <p className="text-white">{item}</p>
+                  <CheckCircle size={18} className="text-brand-amber mt-1 flex-shrink-0" weight="fill" />
+                  <p className="text-fg">{item}</p>
                 </CardContent>
               </Card>
             ))}
@@ -331,7 +331,7 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
 
         <section className="mb-14" aria-labelledby="what-title">
           <h2 id="what-title" className="text-3xl font-bold mb-6 flex items-center gap-2">
-            <Wrench size={28} className="text-red-400" />
+            <Wrench size={28} className="text-brand-amber" />
             {copy.doTitle}
           </h2>
           <Card className="bg-[#1A1A1A] border-[#333]">
@@ -339,8 +339,8 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {copy.doItems.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <CheckCircle size={18} className="text-red-400 mt-1 flex-shrink-0" weight="fill" />
-                    <span className="text-white">{item}</span>
+                    <CheckCircle size={18} className="text-brand-amber mt-1 flex-shrink-0" weight="fill" />
+                    <span className="text-fg">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -350,23 +350,23 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
 
         <section className="mb-14" aria-labelledby="offers-title">
           <h2 id="offers-title" className="text-3xl font-bold mb-3 flex items-center gap-2">
-            <ChartLineUp size={28} className="text-red-400" />
+            <ChartLineUp size={28} className="text-brand-amber" />
             {copy.offerTitle}
           </h2>
-          <p className="text-white mb-6">{copy.offerSubtitle}</p>
+          <p className="text-fg mb-6">{copy.offerSubtitle}</p>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {copy.options.map((option) => (
               <Card key={option.name} className="bg-[#1A1A1A] border-[#333] h-full">
                 <CardHeader>
-                  <h3 className="text-white text-xl font-semibold leading-none tracking-tight">{option.name}</h3>
-                  <p className="text-red-300 font-semibold">{option.price}</p>
-                  <p className="text-white text-sm">{option.target}</p>
+                  <h3 className="text-fg text-xl font-semibold leading-none tracking-tight">{option.name}</h3>
+                  <p className="text-brand-amber font-semibold">{option.price}</p>
+                  <p className="text-fg text-sm">{option.target}</p>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
                     {option.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2 text-white text-sm">
-                        <CheckCircle size={16} className="text-red-400 mt-0.5 flex-shrink-0" weight="fill" />
+                      <li key={feature} className="flex items-start gap-2 text-fg text-sm">
+                        <CheckCircle size={16} className="text-brand-amber mt-0.5 flex-shrink-0" weight="fill" />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -378,18 +378,18 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
         </section>
 
         <section className="mb-10" aria-labelledby="integration-title">
-          <Card className="bg-red-950/20 border-red-600/40">
+          <Card className="bg-brand-amber/10 border-brand-amber/40">
             <CardContent className="p-6 md:p-8">
               <h2 id="integration-title" className="text-3xl font-bold mb-4 flex items-center gap-2">
-                <Globe size={28} className="text-red-400" />
+                <Globe size={28} className="text-brand-amber" />
                 {copy.integrationTitle}
               </h2>
-              <p className="text-white leading-relaxed mb-5">{copy.integrationText}</p>
+              <p className="text-fg leading-relaxed mb-5">{copy.integrationText}</p>
               <ul className="space-y-2">
                 {copy.integrationPoints.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <CheckCircle size={18} className="text-red-400 mt-1 flex-shrink-0" weight="fill" />
-                    <span className="text-white">{item}</span>
+                    <CheckCircle size={18} className="text-brand-amber mt-1 flex-shrink-0" weight="fill" />
+                    <span className="text-fg">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -401,13 +401,13 @@ export default function DeveloppementPage({ onNavigate }: DeveloppementPageProps
           <Card className="bg-[#1A1A1A] border-[#333]">
             <CardContent className="p-8 text-center">
               <h2 id="cta-title" className="text-3xl font-bold mb-3">{copy.ctaTitle}</h2>
-              <p className="text-white mb-6 max-w-3xl mx-auto">{copy.ctaText}</p>
+              <p className="text-fg mb-6 max-w-3xl mx-auto">{copy.ctaText}</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="btn-primary-3d" onClick={() => onNavigate('contact')}>
+                <Button size="lg" className="btn-primary" onClick={() => onNavigate('contact')}>
                   <Envelope size={18} className="mr-2" />
                   {copy.ctaPrimary}
                 </Button>
-                <Button size="lg" variant="outline" className="btn-secondary-3d" asChild>
+                <Button size="lg" variant="outline" className="btn-secondary" asChild>
                   <a href="/abonnements/pro">
                     {copy.ctaSecondary}
                     <ArrowRight size={18} className="ml-2" />

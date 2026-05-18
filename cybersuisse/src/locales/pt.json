@@ -5,6 +5,48 @@
     "en": "English",
     "pt": "Português"
   },
+  "hero": {
+    "eyebrow": "Cibersegurança para PMEs suíças",
+    "title": "A segurança da sua PME,",
+    "titleAccent": "gerida como um banco suíço.",
+    "subtitle": "Protect™ — uma supervisão de cibersegurança mensal, clara e certificada, pensada para as PMEs da Suíça francófona e germanófona. Um único interlocutor, um relatório por mês, zero jargão.",
+    "bullets": [
+      "Auditoria inicial + plano de ação em 14 dias",
+      "Relatório mensal assinado, legível pela sua direção",
+      "Resposta a incidentes garantida em 24h úteis"
+    ],
+    "ctaPrimary": "Descobrir o Protect™",
+    "ctaSecondary": "Reservar uma auditoria gratuita",
+    "microTrust": "Sediados em Biel/Bienne · Atuação em toda a Suíça",
+    "stats": [
+      { "value": "2024", "label": "Fundada na Suíça" },
+      { "value": "Biel / Bienne", "label": "Cobertura nacional" },
+      { "value": "< 24h", "label": "Tempo de resposta" }
+    ],
+    "trust": {
+      "certsLabel": "Certificações",
+      "sectorsLabel": "Setores",
+      "sectors": "Relojoaria · Fiduciárias · Retalho · Indústria"
+    },
+    "mockup": {
+      "eyebrow": "Relatório mensal Protect™",
+      "title": "Maio 2026 — Síntese executiva",
+      "subtitle": "Cliente: PME-XXXX · Nível Active",
+      "metrics": {
+        "threats": "Ameaças bloqueadas",
+        "score": "Pontuação de postura",
+        "incidents": "Incidentes"
+      },
+      "chartLabel": "Atividade de 30 dias",
+      "chartTag": "Tentativas bloqueadas",
+      "actionsLabel": "Ações prioritárias",
+      "action1": "MFA — 2 contas admin pendentes",
+      "action2": "Backups — teste de restauro Q2",
+      "action3": "Patch Windows — implementado",
+      "footerLeft": "Assinado · Modesto / CyberSuisse",
+      "footerRight": "Confidencial"
+    }
+  },
   "nav": {
     "home": "Início",
     "about": "Sobre",
@@ -12,6 +54,7 @@
     "osint": "OSINT",
     "developpement": "Desenvolvimento",
     "dataRecovery": "Recuperação de Dados",
+    "abonnements": "Planos",
     "contact": "Contacto",
     "openMenu": "Abrir menu de navegação"
   },
@@ -38,5 +81,92 @@
     "description": "Ocorreu um problema inesperado ao executar a aplicação. Os detalhes do erro estão abaixo. Contacte o autor da aplicação e informe este problema.",
     "details": "Detalhes do erro:",
     "tryAgain": "Tentar novamente"
+  },
+  "contact": {
+    "formStatus": {
+      "idle": "",
+      "sending": "A enviar…",
+      "success": "Mensagem recebida. Resposta em menos de 24h.",
+      "error": "Ocorreu um erro. Tente novamente ou escreva para modesto@cybersuisse.ch.",
+      "validation": "Preencha todos os campos obrigatórios."
+    }
+  },
+  "plans": {
+    "page": {
+      "seoTitle": "Planos CyberSuisse Protect™ — Três níveis de proteção cibernética para PME",
+      "seoDescription": "Compare os três planos de subscrição CyberSuisse Protect™: Essentiel, Active e Premium. Cibersegurança contínua para PME suíças — monitorização, relatórios mensais e acompanhamento estratégico.",
+      "heroEyebrow": "Planos CyberSuisse Protect™",
+      "heroTitle": "Três níveis de Protect™",
+      "heroSubtitle": "Cibersegurança mensal adaptada à sua PME — do diagnóstico claro ao acompanhamento estratégico.",
+      "compareTitle": "Comparar planos",
+      "mostChosen": "O mais escolhido",
+      "perMonth": "/ mês",
+      "chooseCta": "Escolher este plano",
+      "featureLabel": "Característica",
+      "included": "Incluído",
+      "notIncluded": "Não incluído",
+      "finalCtaTitle": "Falar com o Modesto",
+      "finalCtaText": "Uma conversa de 15 minutos para entender as suas necessidades e escolher o plano certo.",
+      "finalCtaButton": "Reservar um diagnóstico gratuito"
+    },
+    "essentiel": {
+      "name": "Protect™ Essentiel",
+      "price": "149",
+      "tagline": "O essencial: monitorização, relatório mensal, prioridades claras.",
+      "target": "PME sem equipa interna de IT a começar",
+      "features": [
+        "Scans mensais de vulnerabilidades",
+        "Verificação de exposição pública",
+        "Relatório mensal em linguagem simples",
+        "Prioridades de ação a 30 dias",
+        "Revisão trimestral por email ou chamada"
+      ]
+    },
+    "active": {
+      "name": "Protect™ Active",
+      "price": "449",
+      "tagline": "Visão estratégica mensal e acompanhamento ativo.",
+      "target": "PME em crescimento a estruturar a sua cibersegurança",
+      "features": [
+        "Tudo o que está incluído em Essentiel",
+        "Relatório estratégico com tendências",
+        "Plano de ação 30/60/90 dias",
+        "Sessão técnica mensal (30–60 min)",
+        "Revisão das políticas básicas de segurança"
+      ]
+    },
+    "premium": {
+      "name": "Protect™ Premium",
+      "price": "799",
+      "tagline": "Aconselhamento especialista, simulações e roadmap.",
+      "target": "PME exigentes com requisitos de conformidade",
+      "features": [
+        "Tudo o que está incluído em Active",
+        "Pentest ligeiro anual (ou revisões direcionadas)",
+        "Simulações de phishing documentadas",
+        "Sessões estratégicas bimestrais",
+        "Conformidade básica adaptada ao setor"
+      ]
+    },
+    "comparison": {
+      "rows": [
+        { "label": "Scans de vulnerabilidades", "essentiel": true, "active": true, "premium": true },
+        { "label": "Relatório mensal", "essentiel": "Simples", "active": "Estratégico", "premium": "Aprofundado" },
+        { "label": "Plano de ação 30/60/90 dias", "essentiel": false, "active": true, "premium": true },
+        { "label": "Sessão mensal com especialista", "essentiel": false, "active": "30–60 min", "premium": "Prioritária" },
+        { "label": "Simulações de phishing", "essentiel": false, "active": false, "premium": true },
+        { "label": "Pentest ligeiro anual", "essentiel": false, "active": false, "premium": true },
+        { "label": "Revisão de políticas", "essentiel": false, "active": "Básica", "premium": "Aprofundada" },
+        { "label": "Conformidade setorial básica", "essentiel": false, "active": false, "premium": true },
+        { "label": "Compromisso", "essentiel": "Nenhum", "active": "Nenhum", "premium": "Nenhum" }
+      ]
+    },
+    "faq": [
+      { "q": "Posso mudar de plano a qualquer momento?", "a": "Sim — pode subir ou descer de nível mês a mês, sem custos." },
+      { "q": "Existe um compromisso de longa duração?", "a": "Não. Todos os planos são mensais e pode cancelar a qualquer momento." },
+      { "q": "O pentest anual ligeiro do Premium substitui um pentest completo?", "a": "Não. É um pentest ligeiro para revisões direcionadas. Para um pentest completo, consulte a oferta dedicada." },
+      { "q": "O que contém exatamente o relatório mensal?", "a": "Um resumo executivo dos riscos detetados, o seu impacto no negócio e as prioridades de ação para os próximos 30 dias." },
+      { "q": "Estes planos incluem resposta a incidentes 24/7?", "a": "Não. Para necessidades de SOC ou resposta de emergência, um serviço complementar pode ser discutido." }
+    ]
   }
 }

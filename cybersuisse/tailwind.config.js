@@ -86,6 +86,7 @@ const defaultTheme = {
       fg: {
         DEFAULT: "var(--color-fg)",
         secondary: "var(--color-fg-secondary)",
+        "on-dark": "var(--color-fg-on-dark)",
       },
       bg: {
         DEFAULT: "var(--color-bg)",
@@ -93,6 +94,32 @@ const defaultTheme = {
         overlay: "var(--color-bg-overlay)",
       },
       "focus-ring": "var(--color-focus-ring)",
+
+      // CyberSuisse Phase 1 brand tokens — navy + amber.
+      "brand-navy": "var(--color-brand-navy)",
+      "brand-royal": "var(--color-brand-royal)",
+      "brand-amber": {
+        DEFAULT: "var(--color-brand-amber)",
+        hover: "var(--color-brand-amber-hover)",
+      },
+
+      // Offensive red accent — opt-in only via `accent-red-*`.
+      // Use ONLY in PentestPage.tsx and OSINTPage.tsx.
+      "accent-red": {
+        DEFAULT: "var(--color-accent-red)",
+        1: "var(--red-1)",
+        2: "var(--red-2)",
+        3: "var(--red-3)",
+        4: "var(--red-4)",
+        5: "var(--red-5)",
+        6: "var(--red-6)",
+        7: "var(--red-7)",
+        8: "var(--red-8)",
+        9: "var(--red-9)",
+        10: "var(--red-10)",
+        11: "var(--red-11)",
+        12: "var(--red-12)",
+      },
     },
     borderRadius: {
       sm: "var(--radius-sm)",
@@ -117,8 +144,30 @@ const defaultTheme = {
       "accordion-up": "accordion-up 0.2s ease-out",
     },
     fontFamily: {
-      sans: ["var(--font-sans-serif)"],
-      heading: ["var(--font-heading)"],
+      sans: [
+        "var(--font-sans-serif)",
+        "Inter",
+        "ui-sans-serif",
+        "system-ui",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif",
+      ],
+      heading: [
+        "var(--font-heading)",
+        "Montserrat",
+        "ui-sans-serif",
+        "system-ui",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "sans-serif",
+      ],
       serif: ["var(--font-serif)"],
       mono: ["var(--font-monospace)"],
     },

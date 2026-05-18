@@ -5,6 +5,48 @@
     "en": "English",
     "pt": "Português"
   },
+  "hero": {
+    "eyebrow": "Cybersecurity for Swiss SMEs",
+    "title": "Your SME's security,",
+    "titleAccent": "managed like a Swiss bank.",
+    "subtitle": "Protect™ — clear, certified monthly cybersecurity oversight, built for SMEs in French- and German-speaking Switzerland. One point of contact, one report each month, zero jargon.",
+    "bullets": [
+      "Initial audit + action plan within 14 days",
+      "Signed monthly report your leadership can read",
+      "Incident response guaranteed within 24 business hours"
+    ],
+    "ctaPrimary": "Discover Protect™",
+    "ctaSecondary": "Book a free audit",
+    "microTrust": "Based in Biel/Bienne · Operating across Switzerland",
+    "stats": [
+      { "value": "2024", "label": "Founded in Switzerland" },
+      { "value": "Biel / Bienne", "label": "Nationwide coverage" },
+      { "value": "< 24h", "label": "Response time" }
+    ],
+    "trust": {
+      "certsLabel": "Certifications",
+      "sectorsLabel": "Sectors",
+      "sectors": "Watchmaking · Trust offices · Retail · Industry"
+    },
+    "mockup": {
+      "eyebrow": "Protect™ monthly report",
+      "title": "May 2026 — Executive summary",
+      "subtitle": "Client: SME-XXXX · Active tier",
+      "metrics": {
+        "threats": "Threats blocked",
+        "score": "Posture score",
+        "incidents": "Incidents"
+      },
+      "chartLabel": "30-day activity",
+      "chartTag": "Blocked attempts",
+      "actionsLabel": "Priority actions",
+      "action1": "MFA — 2 admin accounts remaining",
+      "action2": "Backups — Q2 restore test",
+      "action3": "Windows patch — deployed",
+      "footerLeft": "Signed · Modesto / CyberSuisse",
+      "footerRight": "Confidential"
+    }
+  },
   "nav": {
     "home": "Home",
     "about": "About",
@@ -12,6 +54,7 @@
     "osint": "OSINT",
     "developpement": "Development",
     "dataRecovery": "Data Recovery",
+    "abonnements": "Plans",
     "contact": "Contact",
     "openMenu": "Open navigation menu"
   },
@@ -38,5 +81,92 @@
     "description": "Something unexpected happened while running the application. The error details are shown below. Contact the application author and let them know about this issue.",
     "details": "Error Details:",
     "tryAgain": "Try Again"
+  },
+  "contact": {
+    "formStatus": {
+      "idle": "",
+      "sending": "Sending…",
+      "success": "Message received. Reply within 24h.",
+      "error": "Something went wrong. Please try again or email modesto@cybersuisse.ch.",
+      "validation": "Please fill in all required fields."
+    }
+  },
+  "plans": {
+    "page": {
+      "seoTitle": "CyberSuisse Protect™ Plans — Three levels of cyber protection for SMEs",
+      "seoDescription": "Compare the three CyberSuisse Protect™ subscription plans: Essentiel, Active and Premium. Continuous cybersecurity for Swiss SMEs — monitoring, monthly reports and strategic guidance.",
+      "heroEyebrow": "CyberSuisse Protect™ plans",
+      "heroTitle": "Three levels of Protect™",
+      "heroSubtitle": "Monthly cybersecurity tailored to your SME — from clear diagnostics to strategic guidance.",
+      "compareTitle": "Compare plans",
+      "mostChosen": "Most chosen",
+      "perMonth": "/ month",
+      "chooseCta": "Choose this plan",
+      "featureLabel": "Feature",
+      "included": "Included",
+      "notIncluded": "Not included",
+      "finalCtaTitle": "Talk to Modesto",
+      "finalCtaText": "A 15-minute conversation to understand your needs and pick the right plan.",
+      "finalCtaButton": "Book a free diagnostic"
+    },
+    "essentiel": {
+      "name": "Protect™ Essentiel",
+      "price": "149",
+      "tagline": "The basics: monitoring, monthly report, clear priorities.",
+      "target": "SMEs with no internal IT team getting started",
+      "features": [
+        "Monthly vulnerability scans",
+        "Public exposure checks",
+        "Monthly report in plain language",
+        "30-day action priorities",
+        "Quarterly review by email or call"
+      ]
+    },
+    "active": {
+      "name": "Protect™ Active",
+      "price": "449",
+      "tagline": "Monthly strategic vision and active guidance.",
+      "target": "Growing SMEs structuring their cyber posture",
+      "features": [
+        "Everything in Essentiel",
+        "Strategic report with risk trends",
+        "30/60/90-day action plan",
+        "Monthly technical session (30–60 min)",
+        "Basic security policy review"
+      ]
+    },
+    "premium": {
+      "name": "Protect™ Premium",
+      "price": "799",
+      "tagline": "Expert advice, simulations and security roadmap.",
+      "target": "Demanding SMEs with compliance requirements",
+      "features": [
+        "Everything in Active",
+        "Light annual pentest (or targeted reviews)",
+        "Documented phishing simulations",
+        "Bi-monthly strategic sessions",
+        "Sector-adjusted basic compliance"
+      ]
+    },
+    "comparison": {
+      "rows": [
+        { "label": "Vulnerability scans", "essentiel": true, "active": true, "premium": true },
+        { "label": "Monthly report", "essentiel": "Simple", "active": "Strategic", "premium": "In-depth" },
+        { "label": "30/60/90-day action plan", "essentiel": false, "active": true, "premium": true },
+        { "label": "Monthly session with expert", "essentiel": false, "active": "30–60 min", "premium": "Priority" },
+        { "label": "Phishing simulations", "essentiel": false, "active": false, "premium": true },
+        { "label": "Light annual pentest", "essentiel": false, "active": false, "premium": true },
+        { "label": "Security policy review", "essentiel": false, "active": "Basic", "premium": "In-depth" },
+        { "label": "Sector compliance basics", "essentiel": false, "active": false, "premium": true },
+        { "label": "Commitment", "essentiel": "None", "active": "None", "premium": "None" }
+      ]
+    },
+    "faq": [
+      { "q": "Can I change plans at any time?", "a": "Yes — you can move up or down a tier month over month, with no fees." },
+      { "q": "Is there a long-term commitment?", "a": "No. All plans are monthly and can be cancelled at any time." },
+      { "q": "Does the annual light pentest in Premium replace a full pentest?", "a": "No. It is a light pentest for targeted reviews. For a full pentest, see our dedicated offer." },
+      { "q": "What exactly is in the monthly report?", "a": "An executive summary of detected risks, their business impact, and action priorities for the next 30 days." },
+      { "q": "Do these plans include 24/7 incident response?", "a": "No. For SOC or emergency response needs, an add-on service can be discussed." }
+    ]
   }
 }

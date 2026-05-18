@@ -14,6 +14,7 @@ import {
 } from '@phosphor-icons/react'
 import SEOContent from './SEOContent'
 import profileImage from '@/assets/images/eu1.png'
+import profileImageWebp from '@/assets/images/eu1.webp'
 import { useTranslation } from 'react-i18next'
 
 interface AboutPageProps {
@@ -139,7 +140,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen py-12 cs-bg-redteam-diagonal text-white"
+      className="min-h-screen py-12 bg-bg text-fg"
     >
       <SEOContent page="about" title={copy.seoTitle} description={copy.seoDescription} />
 
@@ -149,22 +150,25 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
             <div>
               <h1 id="about-title" className="text-4xl md:text-5xl font-bold mb-6">{copy.h1}</h1>
               <div className="flex flex-wrap gap-3 mb-6">
-                <Badge className="bg-red-950/60 text-red-300 border border-red-600/40">PME Biel/Bienne</Badge>
-                <Badge className="bg-red-950/60 text-red-300 border border-red-600/40">Sécurité continue</Badge>
-                <Badge className="bg-red-950/60 text-red-300 border border-red-600/40">Rapports mensuels</Badge>
+                <Badge className="bg-brand-amber/10 text-brand-amber border border-brand-amber/40">PME Biel/Bienne</Badge>
+                <Badge className="bg-brand-amber/10 text-brand-amber border border-brand-amber/40">Sécurité continue</Badge>
+                <Badge className="bg-brand-amber/10 text-brand-amber border border-brand-amber/40">Rapports mensuels</Badge>
               </div>
-              <p className="text-white text-lg leading-relaxed">{copy.mission}</p>
+              <p className="text-fg text-lg leading-relaxed">{copy.mission}</p>
             </div>
             <Card className="border-[#333] bg-[#1A1A1A] overflow-hidden">
-              <img
-                src={profileImage}
-                alt="Consultant CyberSuisse en cybersécurité pour PME à Biel/Bienne"
-                className="w-full h-72 object-cover"
-                loading="lazy"
-                decoding="async"
-              />
+              <picture>
+                <source srcSet={profileImageWebp} type="image/webp" />
+                <img
+                  src={profileImage}
+                  alt="Consultant CyberSuisse en cybersécurité pour PME à Biel/Bienne"
+                  className="w-full h-72 object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
               <CardContent className="p-5">
-                <p className="text-white text-sm leading-relaxed">{copy.audience}</p>
+                <p className="text-fg text-sm leading-relaxed">{copy.audience}</p>
               </CardContent>
             </Card>
           </div>
@@ -175,28 +179,28 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card className="border-[#333] bg-[#1A1A1A]">
               <CardHeader>
-                <CardTitle className="text-white flex items-center gap-2">
-                  <Shield size={20} className="text-red-400" />
+                <CardTitle className="text-fg flex items-center gap-2">
+                  <Shield size={20} className="text-brand-amber" />
                   Problème que nous résolvons
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-white">{copy.problem}</p>
+                <p className="text-fg">{copy.problem}</p>
               </CardContent>
             </Card>
 
             <Card className="border-[#333] bg-[#1A1A1A]">
               <CardHeader>
-                <CardTitle className="text-white flex items-center gap-2">
-                  <Users size={20} className="text-red-400" />
+                <CardTitle className="text-fg flex items-center gap-2">
+                  <Users size={20} className="text-brand-amber" />
                   {copy.valuesTitle}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-white">
+                <ul className="space-y-2 text-fg">
                   {copy.values.map((value) => (
                     <li key={value} className="flex items-center gap-2">
-                      <CheckCircle size={16} className="text-red-400" />
+                      <CheckCircle size={16} className="text-brand-amber" />
                       <span>{value}</span>
                     </li>
                   ))}
@@ -210,12 +214,12 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
           <h2 id="story-title" className="text-3xl font-bold mb-4">{copy.storyTitle}</h2>
           <Card className="border-[#333] bg-[#1A1A1A]">
             <CardContent className="p-6">
-              <p className="text-white leading-relaxed mb-4">{copy.story}</p>
-              <h3 className="text-xl font-semibold mb-3 text-white">{copy.modelTitle}</h3>
-              <ul className="space-y-2 text-white">
+              <p className="text-fg leading-relaxed mb-4">{copy.story}</p>
+              <h3 className="text-xl font-semibold mb-3 text-fg">{copy.modelTitle}</h3>
+              <ul className="space-y-2 text-fg">
                 {copy.modelPoints.map((point) => (
                   <li key={point} className="flex items-start gap-2">
-                    <TrendUp size={16} className="text-red-400 mt-1" />
+                    <TrendUp size={16} className="text-brand-amber mt-1" />
                     <span>{point}</span>
                   </li>
                 ))}
@@ -231,10 +235,10 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
               <Card key={cert.name} className="border-[#333] bg-[#1A1A1A]">
                 <CardContent className="p-5 flex items-center justify-between gap-4">
                   <div>
-                    <h3 className="text-white font-semibold">{cert.name}</h3>
-                    <p className="text-white text-sm">{cert.issuer}</p>
+                    <h3 className="text-fg font-semibold">{cert.name}</h3>
+                    <p className="text-fg text-sm">{cert.issuer}</p>
                   </div>
-                  <Badge className="bg-red-950/60 text-red-300 border border-red-600/40">{cert.year}</Badge>
+                  <Badge className="bg-brand-amber/10 text-brand-amber border border-brand-amber/40">{cert.year}</Badge>
                 </CardContent>
               </Card>
             ))}
@@ -242,16 +246,16 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
 
           <Card className="border-[#333] bg-[#1A1A1A]">
             <CardHeader>
-              <CardTitle className="text-white flex items-center gap-2">
-                <Certificate size={20} className="text-red-400" />
+              <CardTitle className="text-fg flex items-center gap-2">
+                <Certificate size={20} className="text-brand-amber" />
                 Signaux de confiance
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-white">
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-fg">
                 {trustSignals.map((signal) => (
                   <li key={signal} className="flex items-start gap-2">
-                    <CheckCircle size={16} className="text-red-400 mt-1" />
+                    <CheckCircle size={16} className="text-brand-amber mt-1" />
                     <span>{signal}</span>
                   </li>
                 ))}
@@ -261,16 +265,16 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
         </section>
 
         <section className="mb-8" aria-labelledby="cta-title">
-          <Card className="border-red-600/40 bg-red-950/20">
+          <Card className="border-brand-amber/40 bg-brand-amber/10">
             <CardContent className="p-8 text-center">
               <h2 id="cta-title" className="text-3xl font-bold mb-3">{copy.ctaTitle}</h2>
-              <p className="text-white mb-6 max-w-3xl mx-auto">{copy.ctaText}</p>
+              <p className="text-fg mb-6 max-w-3xl mx-auto">{copy.ctaText}</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button size="lg" className="btn-primary-3d" onClick={() => onNavigate('contact')}>
+                <Button size="lg" className="btn-primary" onClick={() => onNavigate('contact')}>
                   <EnvelopeSimple size={18} className="mr-2" />
                   Planifier un diagnostic de sécurité gratuit
                 </Button>
-                <Button size="lg" variant="outline" className="btn-secondary-3d" asChild>
+                <Button size="lg" variant="outline" className="btn-secondary" asChild>
                   <a href="/abonnements/pro">Découvrir nos plans d’abonnement</a>
                 </Button>
               </div>
@@ -279,7 +283,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                   href="https://www.linkedin.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-white/90 hover:text-white text-sm inline-flex items-center gap-2"
+                  className="text-fg/90 hover:text-fg text-sm inline-flex items-center gap-2"
                 >
                   <LinkedinLogo size={18} />
                   LinkedIn

@@ -156,14 +156,14 @@ export default function MentionsLegalesPage({ onNavigate }: MentionsLegalesPageP
           contactButton: 'Nous Contacter'
         })
   return (
-    <div className="min-h-screen cs-bg-redteam-diagonal">
+    <div className="min-h-screen bg-bg">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#0A0A0A] to-red-950/30 text-white py-20">
+      <div className="bg-gradient-to-r from-[#0A0A0A] to-brand-amber-hover text-fg py-20">
         <div className="max-w-6xl mx-auto px-6">
           <Button 
             variant="ghost" 
             onClick={() => onNavigate('home')}
-            className="mb-6 text-gray-300 hover:bg-red-950/50 transition-all duration-300"
+            className="mb-6 text-gray-300 hover:bg-brand-amber/20 transition-all duration-300"
           >
             <ArrowLeft className="mr-2" />
             {copy.back}
@@ -191,10 +191,10 @@ export default function MentionsLegalesPage({ onNavigate }: MentionsLegalesPageP
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <Card className="bg-[#1A1A1A] border-[#333] shadow-lg hover:shadow-xl hover:border-red-600/40 transition-all duration-300">
+            <Card className="bg-[#1A1A1A] border-[#333] shadow-lg hover:shadow-xl hover:border-brand-amber/50 transition-all duration-300">
               <CardHeader>
-                <CardTitle className="flex items-center text-white">
-                  <User className="mr-3 text-red-500" size={24} />
+                <CardTitle className="flex items-center text-fg">
+                  <User className="mr-3 text-brand-amber" size={24} />
                   {copy.editorTitle}
                 </CardTitle>
               </CardHeader>
@@ -208,15 +208,15 @@ export default function MentionsLegalesPage({ onNavigate }: MentionsLegalesPageP
                   </div>
                   <div>
                     <p className="flex items-center">
-                      <Envelope className="mr-2 text-red-500" size={16} />
+                      <Envelope className="mr-2 text-brand-amber" size={16} />
                       <strong>{copy.editorEmailLabel}</strong> modesto@cybersuisse.ch
                     </p>
                     <p className="flex items-center">
-                      <Phone className="mr-2 text-red-500" size={16} />
+                      <Phone className="mr-2 text-brand-amber" size={16} />
                       <strong>{copy.editorPhoneLabel}</strong> +41 78 208 95 45
                     </p>
                     <p className="flex items-center">
-                      <Globe className="mr-2 text-red-500" size={16} />
+                      <Globe className="mr-2 text-brand-amber" size={16} />
                       <strong>{copy.editorWebLabel}</strong> cybersuisse.ch
                     </p>
                   </div>
@@ -231,10 +231,10 @@ export default function MentionsLegalesPage({ onNavigate }: MentionsLegalesPageP
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Card className="bg-[#1A1A1A] border-[#333] shadow-lg hover:shadow-xl hover:border-red-600/40 transition-all duration-300">
+            <Card className="bg-[#1A1A1A] border-[#333] shadow-lg hover:shadow-xl hover:border-brand-amber/50 transition-all duration-300">
               <CardHeader>
-                <CardTitle className="flex items-center text-white">
-                  <Building className="mr-3 text-red-500" size={24} />
+                <CardTitle className="flex items-center text-fg">
+                  <Building className="mr-3 text-brand-amber" size={24} />
                   {copy.hostingTitle}
                 </CardTitle>
               </CardHeader>
@@ -253,9 +253,9 @@ export default function MentionsLegalesPage({ onNavigate }: MentionsLegalesPageP
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <Card className="bg-[#1A1A1A] border-[#333] shadow-lg hover:shadow-xl hover:border-red-600/40 transition-all duration-300">
+            <Card className="bg-[#1A1A1A] border-[#333] shadow-lg hover:shadow-xl hover:border-brand-amber/50 transition-all duration-300">
               <CardHeader>
-                <CardTitle className="flex items-center text-white">
+                <CardTitle className="flex items-center text-fg">
                   <Shield className="mr-3 text-blue-400" size={24} />
                   {copy.ipTitle}
                 </CardTitle>
@@ -276,20 +276,20 @@ export default function MentionsLegalesPage({ onNavigate }: MentionsLegalesPageP
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <Card className="bg-[#1A1A1A] border-[#333] shadow-lg hover:shadow-xl hover:border-red-600/40 transition-all duration-300">
+            <Card className="bg-[#1A1A1A] border-[#333] shadow-lg hover:shadow-xl hover:border-brand-amber/50 transition-all duration-300">
               <CardHeader>
-                <CardTitle className="text-white">
+                <CardTitle className="text-fg">
                   {copy.termsTitle}
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-gray-300 space-y-4">
                 <p>{copy.termsText}</p>
                 <div>
-                  <h4 className="font-semibold mb-2 text-red-400">{copy.accessTitle}</h4>
+                  <h4 className="font-semibold mb-2 text-brand-amber">{copy.accessTitle}</h4>
                   <p>{copy.accessText}</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-2 text-red-400">{copy.infoTitle}</h4>
+                  <h4 className="font-semibold mb-2 text-brand-amber">{copy.infoTitle}</h4>
                   <p>{copy.infoText}</p>
                 </div>
               </CardContent>
@@ -302,9 +302,9 @@ export default function MentionsLegalesPage({ onNavigate }: MentionsLegalesPageP
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            <Card className="bg-[#1A1A1A] border-[#333] shadow-lg hover:shadow-xl hover:border-red-600/40 transition-all duration-300">
+            <Card className="bg-[#1A1A1A] border-[#333] shadow-lg hover:shadow-xl hover:border-brand-amber/50 transition-all duration-300">
               <CardHeader>
-                <CardTitle className="text-white">
+                <CardTitle className="text-fg">
                   {copy.liabilityTitle}
                 </CardTitle>
               </CardHeader>
@@ -312,7 +312,7 @@ export default function MentionsLegalesPage({ onNavigate }: MentionsLegalesPageP
                 <p>{copy.liabilityText1}</p>
                 <p>{copy.liabilityText2}</p>
                 <div>
-                  <h4 className="font-semibold mb-2 text-red-400">{copy.availabilityTitle}</h4>
+                  <h4 className="font-semibold mb-2 text-brand-amber">{copy.availabilityTitle}</h4>
                   <p>{copy.availabilityText}</p>
                 </div>
               </CardContent>
@@ -325,21 +325,21 @@ export default function MentionsLegalesPage({ onNavigate }: MentionsLegalesPageP
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <Card className="bg-[#1A1A1A] border-[#333] shadow-lg hover:shadow-xl hover:border-red-600/40 transition-all duration-300">
+            <Card className="bg-[#1A1A1A] border-[#333] shadow-lg hover:shadow-xl hover:border-brand-amber/50 transition-all duration-300">
               <CardHeader>
-                <CardTitle className="text-white">
+                <CardTitle className="text-fg">
                   {copy.lawTitle}
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-gray-300 space-y-4">
                 <p>
-                  <strong className="text-red-400">{copy.lawText1.split(':')[0]}:</strong> {copy.lawText1.split(':').slice(1).join(':').trim()}
+                  <strong className="text-brand-amber">{copy.lawText1.split(':')[0]}:</strong> {copy.lawText1.split(':').slice(1).join(':').trim()}
                 </p>
                 <p>
-                  <strong className="text-red-400">{copy.lawText2.split(':')[0]}:</strong> {copy.lawText2.split(':').slice(1).join(':').trim()}
+                  <strong className="text-brand-amber">{copy.lawText2.split(':')[0]}:</strong> {copy.lawText2.split(':').slice(1).join(':').trim()}
                 </p>
                 <p>
-                  <strong className="text-red-400">{copy.lawText3.split(':')[0]}:</strong> {copy.lawText3.split(':').slice(1).join(':').trim()}
+                  <strong className="text-brand-amber">{copy.lawText3.split(':')[0]}:</strong> {copy.lawText3.split(':').slice(1).join(':').trim()}
                 </p>
               </CardContent>
             </Card>
@@ -351,17 +351,17 @@ export default function MentionsLegalesPage({ onNavigate }: MentionsLegalesPageP
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
-            <Card className="bg-[#1A1A1A] border-[#333] shadow-lg hover:shadow-xl hover:border-red-600/40 transition-all duration-300">
+            <Card className="bg-[#1A1A1A] border-[#333] shadow-lg hover:shadow-xl hover:border-brand-amber/50 transition-all duration-300">
               <CardHeader>
-                <CardTitle className="text-white">
+                <CardTitle className="text-fg">
                   {copy.contactTitle}
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-gray-300 space-y-4">
                 <p>{copy.contactText}</p>
                 <div className="bg-[#0A0A0A] p-4 rounded-lg border border-[#333]">
-                  <p><strong className="text-red-400">{copy.contactEmailLabel}</strong> modesto@cybersuisse.ch</p>
-                  <p><strong className="text-red-400">{copy.contactPhoneLabel}</strong> +41 78 208 95 45</p>
+                  <p><strong className="text-brand-amber">{copy.contactEmailLabel}</strong> modesto@cybersuisse.ch</p>
+                  <p><strong className="text-brand-amber">{copy.contactPhoneLabel}</strong> +41 78 208 95 45</p>
                 </div>
                 <p className="text-sm text-gray-500">
                   <strong>{copy.updated}</strong>
@@ -382,7 +382,7 @@ export default function MentionsLegalesPage({ onNavigate }: MentionsLegalesPageP
           >
             <Button 
               onClick={() => onNavigate('contact')}
-              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 cs-shadow-glow-red-20"
+              className="bg-gradient-to-r from-brand-amber to-brand-amber-hover hover:from-brand-amber-hover hover:to-brand-amber-hover text-fg px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 "
             >
               <Envelope className="mr-2" />
               {copy.contactButton}

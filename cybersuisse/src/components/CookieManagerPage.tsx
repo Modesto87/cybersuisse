@@ -298,7 +298,7 @@ const CookieManager = ({ onNavigate }: CookieManagerProps) => {
       description: copy.categories.marketing.description,
       details: copy.categories.marketing.details,
       required: false,
-      color: 'from-orange-400 to-red-500',
+      color: 'from-orange-400 to-brand-amber-hover',
       emoji: copy.categories.marketing.emoji
     }
   ]
@@ -318,14 +318,14 @@ const CookieManager = ({ onNavigate }: CookieManagerProps) => {
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 className="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg"
               >
-                <Cookie className="w-8 h-8 text-white" />
+                <Cookie className="w-8 h-8 text-fg" />
               </motion.div>
               <motion.div
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
                 className="absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center"
               >
-                <Gear className="w-3 h-3 text-white" />
+                <Gear className="w-3 h-3 text-fg" />
               </motion.div>
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
@@ -336,7 +336,7 @@ const CookieManager = ({ onNavigate }: CookieManagerProps) => {
             </p>
           </div>
 
-          <Card className="mb-8 p-6 bg-card/50 backdrop-blur-sm border-border/50">
+          <Card className="mb-8 p-6 bg-card border-border/50">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                 <Shield className="w-5 h-5 text-primary" />
@@ -364,11 +364,11 @@ const CookieManager = ({ onNavigate }: CookieManagerProps) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/70 transition-all duration-300 group hover:shadow-lg hover:scale-[1.02]">
+                <Card className="p-6 bg-card border-border/50 hover:bg-card/70 transition-all duration-300 group hover:shadow-lg hover:scale-[1.02]">
                   <div className="flex items-start gap-4">
                     <motion.div 
                       whileHover={{ scale: 1.1, rotate: 5 }}
-                      className={`flex-shrink-0 w-12 h-12 bg-gradient-to-br ${type.color} rounded-xl flex items-center justify-center text-white text-xl shadow-lg`}
+                      className={`flex-shrink-0 w-12 h-12 bg-gradient-to-br ${type.color} rounded-xl flex items-center justify-center text-fg text-xl shadow-lg`}
                     >
                       {type.emoji}
                     </motion.div>
@@ -418,7 +418,7 @@ const CookieManager = ({ onNavigate }: CookieManagerProps) => {
             ))}
           </div>
 
-          <Card className="mt-8 p-6 bg-card/50 backdrop-blur-sm border-border/50">
+          <Card className="mt-8 p-6 bg-card border-border/50">
             <h3 className="font-semibold mb-3">{copy.moreInfoTitle}</h3>
             <div className="text-sm text-muted-foreground space-y-2">
               {copy.moreInfo.map((item) => (

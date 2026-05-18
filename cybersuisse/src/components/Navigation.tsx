@@ -1,12 +1,23 @@
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { List, X, Shield, Target, MagnifyingGlass, Code, HardDrive, Envelope } from '@phosphor-icons/react'
+import { List, X, Shield, Target, MagnifyingGlass, Code, HardDrive, Envelope, Star } from '@phosphor-icons/react'
 import Logo from './Logo'
 import { useTranslation } from 'react-i18next'
 
-type PageType = 'home' | 'about' | 'pentest' | 'osint' | 'developpement' | 'data-recovery' | 'contact' | 'cgv' | 'politique-confidentialite' | 'mentions-legales' | 'cookies'
+type PageType =
+  | 'home'
+  | 'about'
+  | 'pentest'
+  | 'osint'
+  | 'developpement'
+  | 'data-recovery'
+  | 'abonnements'
+  | 'contact'
+  | 'cgv'
+  | 'politique-confidentialite'
+  | 'mentions-legales'
+  | 'cookies'
 
 interface NavigationProps {
   currentPage: string
@@ -15,7 +26,6 @@ interface NavigationProps {
 
 export default function Navigation({ currentPage, onNavigate }: NavigationProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
   const { t, i18n } = useTranslation()
 
   const navigationItems = [
@@ -25,300 +35,177 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
     { id: 'osint', label: t('nav.osint'), icon: MagnifyingGlass },
     { id: 'developpement', label: t('nav.developpement'), icon: Code },
     { id: 'data-recovery', label: t('nav.dataRecovery'), icon: HardDrive },
-    { id: 'contact', label: t('nav.contact'), icon: Envelope }
+    { id: 'abonnements', label: t('nav.abonnements'), icon: Star },
+    { id: 'contact', label: t('nav.contact'), icon: Envelope },
   ] as const
 
   const currentLang = (i18n.resolvedLanguage || i18n.language || 'fr').split('-')[0]
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const handleNavigation = (page: typeof navigationItems[number]['id']) => {
+  const handleNavigation = (page: PageType) => {
     onNavigate(page)
     setMobileOpen(false)
   }
 
   return (
     <>
-      <motion.header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled 
-            ? 'bg-[#0A0A0A]/95 backdrop-blur-lg border-b border-red-900/30 shadow-lg cs-shadow-nav-scrolled' 
-            : 'bg-[#0A0A0A]/90 backdrop-blur-md border-b border-red-900/20'
-        }`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
+      <header className="fixed top-0 left-0 right-0 z-50 bg-brand-navy border-b border-white/10">
         <nav className="container mx-auto px-4 lg:px-8">
-          <div className="flex items-center justify-between h-24 md:h-28">
+          <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <motion.div 
-              className="cursor-pointer"
+            <button
+              type="button"
               onClick={() => handleNavigation('home')}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              className="flex items-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-amber rounded-md"
+              aria-label={t('nav.home')}
             >
-              <Logo size="md" showText={true} />
-            </motion.div>
+              <Logo size="sm" showText={true} />
+            </button>
 
-            {/* Desktop Navigation - RED TEAM */}
-            <div className="hidden lg:flex items-center">
-              <div className="flex items-center bg-[#1A1A1A]/80 rounded-2xl p-2 backdrop-blur-sm border border-red-900/30 shadow-lg">
-                {navigationItems.map((item, index) => {
-                  const Icon = item.icon
-                  const isActive = currentPage === item.id
-                  
-                  return (
-                    <motion.div
-                      key={item.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <Button
-                        variant="ghost"
-                        onClick={() => handleNavigation(item.id)}
-                        className={`relative px-4 py-3 mx-1 rounded-xl transition-all duration-300 group ${
-                          isActive 
-                            ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md hover:from-red-500 hover:to-red-600 cs-shadow-glow-red-20" 
-                            : "hover:bg-red-950/50 text-gray-300 hover:text-white"
-                        }`}
-                      >
-                        <div className="flex items-center gap-2 relative z-10">
-                          <Icon 
-                            size={18} 
-                            className={`transition-transform duration-300 ${
-                              isActive ? "scale-110 text-white" : "group-hover:scale-105 text-red-400"
-                            }`}
-                          />
-                          <span className="font-medium text-sm">
-                            {item.label}
-                          </span>
-                        </div>
-                        
-                        {/* Hover effect */}
-                        <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-orange-600/20 rounded-xl opacity-0 group-hover:opacity-100"
-                          layoutId={isActive ? "activeTab" : undefined}
-                          transition={{ duration: 0.3 }}
-                        />
-                        
-                        {/* Active indicator */}
-                        {isActive && (
-                          <motion.div
-                            className="absolute bottom-0 left-1/2 w-1 h-1 bg-orange-400 rounded-full cs-shadow-glow-orange-8-strong"
-                            layoutId="activeIndicator"
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            style={{ x: "-50%" }}
-                          />
-                        )}
-                      </Button>
-                    </motion.div>
-                  )
-                })}
-              </div>
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center gap-1">
+              {navigationItems.map((item) => {
+                const Icon = item.icon
+                const isActive = currentPage === item.id
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => handleNavigation(item.id)}
+                    aria-current={isActive ? 'page' : undefined}
+                    className={[
+                      'relative inline-flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-md',
+                      'transition-colors duration-150',
+                      'focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-amber',
+                      isActive
+                        ? 'text-fg'
+                        : 'text-fg-secondary hover:text-fg',
+                    ].join(' ')}
+                  >
+                    <Icon size={16} weight={isActive ? 'fill' : 'regular'} />
+                    <span>{item.label}</span>
+                    {/* 2px amber underline for active route */}
+                    {isActive && (
+                      <span
+                        aria-hidden="true"
+                        className="absolute left-3 right-3 -bottom-0.5 h-0.5 bg-brand-amber rounded-full"
+                      />
+                    )}
+                  </button>
+                )
+              })}
             </div>
 
-            {/* Language Switcher */}
-            <div className="hidden md:flex items-center gap-2">
+            {/* Right side: language switcher + mobile menu */}
+            <div className="flex items-center gap-2">
+              {/* Language switcher (desktop + tablet) */}
               <select
                 aria-label={t('language.label')}
                 value={currentLang}
                 onChange={(event) => i18n.changeLanguage(event.target.value)}
-                className="bg-[#1A1A1A]/80 border border-red-900/40 text-gray-200 text-sm rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-600/60"
+                className="hidden md:block bg-bg-inset border border-white/10 text-fg text-sm rounded-md px-2 py-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-amber"
               >
                 <option value="fr">{t('language.fr')}</option>
                 <option value="en">{t('language.en')}</option>
                 <option value="pt">{t('language.pt')}</option>
               </select>
-            </div>
 
-            {/* Mobile Menu Button - RED TEAM */}
-            <div className="lg:hidden">
-              <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-                <SheetTrigger asChild>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button 
-                      variant="outline" 
-                      size="icon" 
-                      className="relative bg-[#1A1A1A]/80 border-red-900/40 backdrop-blur-sm shadow-lg hover:bg-red-950/50 hover:border-red-600/50 transition-all duration-300"
+              {/* Mobile menu trigger */}
+              <div className="lg:hidden">
+                <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+                  <SheetTrigger asChild>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="bg-bg-inset border-white/10 text-fg hover:bg-bg-overlay"
                       aria-label={t('nav.openMenu')}
                     >
-                      <AnimatePresence mode="wait">
-                        {mobileOpen ? (
-                          <motion.div
-                            key="close"
-                            initial={{ rotate: -90, opacity: 0 }}
-                            animate={{ rotate: 0, opacity: 1 }}
-                            exit={{ rotate: 90, opacity: 0 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <X size={20} className="text-red-400" />
-                          </motion.div>
-                        ) : (
-                          <motion.div
-                            key="menu"
-                            initial={{ rotate: 90, opacity: 0 }}
-                            animate={{ rotate: 0, opacity: 1 }}
-                            exit={{ rotate: -90, opacity: 0 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <List size={20} className="text-red-400" />
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                      {mobileOpen ? <X size={20} /> : <List size={20} />}
                     </Button>
-                  </motion.div>
-                </SheetTrigger>
-                
-                {/* Mobile Sheet - RED TEAM DARK */}
-                <SheetContent 
-                  side="right" 
-                  className="w-80 p-0 bg-[#0A0A0A]/98 backdrop-blur-xl border-l border-red-900/30 shadow-2xl"
-                >
-                  <motion.div 
-                    className="flex flex-col h-full"
-                    initial={{ x: 300 }}
-                    animate={{ x: 0 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  </SheetTrigger>
+
+                  <SheetContent
+                    side="right"
+                    className="w-80 p-0 bg-bg border-l border-white/10"
                   >
-                    {/* Header */}
-                    <div className="flex items-center justify-between p-6 border-b border-red-900/30 bg-gradient-to-r from-red-950/30 to-transparent">
-                      <Logo size="sm" showText={true} />
-                      <motion.div
-                        whileHover={{ rotate: 90 }}
-                        transition={{ duration: 0.2 }}
-                      >
+                    <div className="flex flex-col h-full">
+                      {/* Header */}
+                      <div className="flex items-center justify-between p-6 border-b border-white/10">
+                        <Logo size="sm" showText={true} />
                         <Button
                           variant="ghost"
                           size="icon"
                           onClick={() => setMobileOpen(false)}
-                          className="h-8 w-8 text-red-400 hover:bg-red-950/50"
+                          className="h-8 w-8 text-fg-secondary hover:text-fg hover:bg-bg-overlay"
+                          aria-label={t('nav.closeMenu', { defaultValue: 'Close menu' })}
                         >
                           <X size={16} />
                         </Button>
-                      </motion.div>
-                    </div>
-
-                    <div className="px-6 pt-4">
-                      <select
-                        aria-label={t('language.label')}
-                        value={currentLang}
-                        onChange={(event) => i18n.changeLanguage(event.target.value)}
-                        className="w-full bg-[#1A1A1A]/80 border border-red-900/40 text-gray-200 text-sm rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-600/60"
-                      >
-                        <option value="fr">{t('language.fr')}</option>
-                        <option value="en">{t('language.en')}</option>
-                        <option value="pt">{t('language.pt')}</option>
-                      </select>
-                    </div>
-                    
-                    {/* Navigation Links - RED TEAM */}
-                    <div className="flex flex-col p-6 flex-1 space-y-2">
-                      <p className="text-sm font-semibold text-gray-500 mb-6 uppercase tracking-wider">
-                        Navigation
-                      </p>
-                      
-                      {navigationItems.map((item, index) => {
-                        const Icon = item.icon
-                        const isActive = currentPage === item.id
-                        
-                        return (
-                          <motion.div
-                            key={item.id}
-                            initial={{ opacity: 0, x: 50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.05 + 0.1 }}
-                          >
-                            <Button
-                              variant="ghost"
-                              onClick={() => handleNavigation(item.id)}
-                              className={`w-full justify-start h-14 text-left rounded-xl transition-all duration-300 group relative overflow-hidden ${
-                                isActive 
-                                  ? "bg-gradient-to-r from-red-700 to-red-800 text-white shadow-lg cs-shadow-glow-red-20-soft" 
-                                  : "hover:bg-red-950/50 hover:translate-x-2 text-gray-300 hover:text-white"
-                              }`}
-                            >
-                              <div className="flex items-center gap-4 relative z-10">
-                                <div className={`p-2 rounded-lg transition-all duration-300 ${
-                                  isActive 
-                                    ? "bg-white/20" 
-                                    : "bg-red-950/50 group-hover:bg-red-900/50"
-                                }`}>
-                                  <Icon 
-                                    size={20} 
-                                    className={`transition-all duration-300 ${
-                                      isActive ? "scale-110 text-white" : "group-hover:scale-105 text-red-400"
-                                    }`}
-                                  />
-                                </div>
-                                <div className="flex-1">
-                                  <span className="font-medium text-base">
-                                    {item.label}
-                                  </span>
-                                </div>
-                              </div>
-                              
-                              {/* Active indicator */}
-                              {isActive && (
-                                <motion.div
-                                  className="absolute left-0 top-0 bottom-0 w-1 bg-orange-500 rounded-r-full cs-shadow-glow-orange-10"
-                                  layoutId="mobileActiveIndicator"
-                                  initial={{ scaleY: 0 }}
-                                  animate={{ scaleY: 1 }}
-                                />
-                              )}
-                              
-                              {/* Hover background */}
-                              <motion.div
-                                className="absolute inset-0 bg-gradient-to-r from-red-600/10 to-orange-600/10 opacity-0 group-hover:opacity-100 rounded-xl"
-                                transition={{ duration: 0.3 }}
-                              />
-                            </Button>
-                          </motion.div>
-                        )
-                      })}
-                    </div>
-                    
-                    {/* Footer - RED TEAM */}
-                    <motion.div 
-                      className="p-6 border-t border-red-900/30 bg-gradient-to-r from-red-950/30 to-transparent"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
-                    >
-                      <div className="text-center space-y-2">
-                        <p className="text-sm font-medium text-white">
-                          Modesto Cybersécurité
-                        </p>
-                        <p className="text-xs text-gray-500">
-                          Expert en sécurité offensive
-                        </p>
-                        <p className="text-xs text-gray-600">
-                          © 2024 - Tous droits réservés
-                        </p>
                       </div>
-                    </motion.div>
-                  </motion.div>
-                </SheetContent>
-              </Sheet>
+
+                      {/* Language switcher (mobile) */}
+                      <div className="px-6 pt-4">
+                        <select
+                          aria-label={t('language.label')}
+                          value={currentLang}
+                          onChange={(event) => i18n.changeLanguage(event.target.value)}
+                          className="w-full bg-bg-inset border border-white/10 text-fg text-sm rounded-md px-3 py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-amber"
+                        >
+                          <option value="fr">{t('language.fr')}</option>
+                          <option value="en">{t('language.en')}</option>
+                          <option value="pt">{t('language.pt')}</option>
+                        </select>
+                      </div>
+
+                      {/* Navigation Links */}
+                      <div className="flex flex-col p-6 flex-1 space-y-1">
+                        <p className="text-xs font-semibold text-fg-secondary mb-4 uppercase tracking-wider">
+                          Navigation
+                        </p>
+
+                        {navigationItems.map((item) => {
+                          const Icon = item.icon
+                          const isActive = currentPage === item.id
+                          return (
+                            <button
+                              key={item.id}
+                              type="button"
+                              onClick={() => handleNavigation(item.id)}
+                              aria-current={isActive ? 'page' : undefined}
+                              className={[
+                                'w-full flex items-center gap-3 px-3 py-3 rounded-md text-left text-sm font-medium',
+                                'transition-colors duration-150',
+                                'focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-amber',
+                                isActive
+                                  ? 'bg-bg-overlay text-fg border-l-2 border-brand-amber'
+                                  : 'text-fg-secondary hover:text-fg hover:bg-bg-inset',
+                              ].join(' ')}
+                            >
+                              <Icon size={18} weight={isActive ? 'fill' : 'regular'} />
+                              <span>{item.label}</span>
+                            </button>
+                          )
+                        })}
+                      </div>
+
+                      {/* Footer */}
+                      <div className="p-6 border-t border-white/10">
+                        <div className="text-center space-y-1">
+                          <p className="text-sm font-medium text-fg">Modesto Cybersécurité</p>
+                          <p className="text-xs text-fg-secondary">Expert en sécurité offensive</p>
+                          <p className="text-xs text-fg-secondary">© 2024 — Tous droits réservés</p>
+                        </div>
+                      </div>
+                    </div>
+                  </SheetContent>
+                </Sheet>
+              </div>
             </div>
           </div>
         </nav>
-      </motion.header>
-      
-      {/* Spacer */}
-      <div className="h-20" />
+      </header>
+
+      {/* Spacer matching nav height (h-16 = 64px) */}
+      <div className="h-16" />
     </>
   )
 }

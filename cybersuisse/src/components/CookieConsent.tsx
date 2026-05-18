@@ -249,7 +249,7 @@ export default function CookieConsent() {
           transition={{ type: "spring", stiffness: 400, damping: 35 }}
           className="fixed bottom-6 right-6 z-50 w-full max-w-lg"
         >
-          <Card className="bg-white/98 backdrop-blur-sm border border-gray-200 shadow-2xl shadow-gray-900/20">
+          <Card className="bg-bg-inset border border-white/10 shadow-2xl shadow-gray-900/20">
             <AnimatePresence mode="wait">
               {!showSettings ? (
                 <motion.div
@@ -277,7 +277,7 @@ export default function CookieConsent() {
                     <div className="flex gap-3">
                       <Button
                         onClick={handleAcceptAll}
-                        className="flex-1 bg-primary hover:bg-primary/90 text-white font-medium h-11"
+                        className="flex-1 bg-primary hover:bg-primary/90 text-fg font-medium h-11"
                       >
                         <Check size={16} className="mr-2" />
                         {copy.acceptAll}
@@ -379,7 +379,7 @@ export default function CookieConsent() {
                     </Button>
                     <Button
                       onClick={handleSavePreferences}
-                      className="flex-1 bg-primary hover:bg-primary/90 text-white h-11"
+                      className="flex-1 bg-primary hover:bg-primary/90 text-fg h-11"
                     >
                       <Check size={16} className="mr-2" />
                       Confirmer

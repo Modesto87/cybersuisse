@@ -148,7 +148,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen cs-bg-redteam-diagonal">
+    <div className="min-h-screen bg-bg">
       <SEOContent page="contact" />
 
       {/* H1 pour SEO - invisible mais présent */}
@@ -163,10 +163,10 @@ export default function ContactPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Card className="h-fit bg-[#1A1A1A] border-[#333] hover:border-red-600/40">
+            <Card className="h-fit bg-[#1A1A1A] border-[#333] hover:border-brand-amber/50">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-2xl text-white">
-                  <Envelope className="w-8 h-8 text-red-500" />
+                <CardTitle className="flex items-center gap-3 text-2xl text-fg">
+                  <Envelope className="w-8 h-8 text-brand-amber" />
                   {copy.cardTitle}
                 </CardTitle>
                 <p className="text-gray-400">{copy.cardDescription}</p>
@@ -175,15 +175,15 @@ export default function ContactPage() {
                 
                 {/* Contact Info */}
                 <div className="space-y-4">
-                  <div className="flex items-center gap-4 p-4 bg-red-950/40 rounded-lg border border-red-800/40">
-                    <Envelope className="w-6 h-6 text-red-500 flex-shrink-0" />
+                  <div className="flex items-center gap-4 p-4 bg-brand-amber/10 rounded-lg border border-brand-amber/40">
+                    <Envelope className="w-6 h-6 text-brand-amber flex-shrink-0" />
                     <div>
-                      <p className="font-semibold text-white">{copy.emailLabel}</p>
+                      <p className="font-semibold text-fg">{copy.emailLabel}</p>
                       {isEmailRevealed ? (
                         <button
                           type="button"
                           onClick={handleEmailClick}
-                          className="text-red-400 hover:text-red-300 transition-colors font-medium"
+                          className="text-brand-amber hover:text-brand-amber transition-colors font-medium"
                         >
                           {email}
                         </button>
@@ -191,7 +191,7 @@ export default function ContactPage() {
                         <button
                           type="button"
                           onClick={() => setIsEmailRevealed(true)}
-                          className="text-red-400 hover:text-red-300 transition-colors font-medium"
+                          className="text-brand-amber hover:text-brand-amber transition-colors font-medium"
                         >
                           {copy.emailReveal}
                         </button>
@@ -203,7 +203,7 @@ export default function ContactPage() {
                   <div className="flex items-center gap-4 p-4 bg-green-950/40 rounded-lg border border-green-800/40">
                     <Phone className="w-6 h-6 text-green-500 flex-shrink-0" />
                     <div>
-                      <p className="font-semibold text-white">{copy.phoneLabel}</p>
+                      <p className="font-semibold text-fg">{copy.phoneLabel}</p>
                       <p className="text-gray-300 font-medium">{phoneDisplay}</p>
                       <p className="text-sm text-gray-500">{copy.phoneHours}</p>
                     </div>
@@ -212,7 +212,7 @@ export default function ContactPage() {
                   <div className="flex items-center gap-4 p-4 bg-orange-950/40 rounded-lg border border-orange-800/40">
                     <MapPin className="w-6 h-6 text-orange-500 flex-shrink-0" />
                     <div>
-                      <p className="font-semibold text-white">{copy.locationLabel}</p>
+                      <p className="font-semibold text-fg">{copy.locationLabel}</p>
                       <p className="text-gray-300">{copy.locationValue}</p>
                       <p className="text-sm text-gray-500">{copy.locationCoverage}</p>
                     </div>
@@ -220,7 +220,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Temps de réponse */}
-                <div className="bg-gradient-to-r from-orange-600 to-red-600 p-6 rounded-lg text-white">
+                <div className="bg-gradient-to-r from-orange-600 to-brand-amber-hover p-6 rounded-lg text-fg">
                   <div className="flex items-center gap-3 mb-3">
                     <Clock className="w-6 h-6" />
                     <h3 className="font-bold text-lg">{copy.responseTitle}</h3>
@@ -245,7 +245,7 @@ export default function ContactPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Button 
                     onClick={handleEmailClick}
-                    className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 border border-red-500/50 cs-shadow-glow-red-20-soft"
+                    className="bg-gradient-to-r from-brand-amber to-brand-amber-hover hover:from-brand-amber-hover hover:to-brand-amber-hover text-fg font-semibold py-3 px-4 rounded-lg transition-colors duration-200 border border-brand-amber/40 "
                     size="lg"
                   >
                     <Envelope className="w-4 h-4 mr-2" />
@@ -254,7 +254,7 @@ export default function ContactPage() {
                   
                   <Button 
                     onClick={handlePhoneClick}
-                    className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 border border-red-500/50 cs-shadow-glow-red-20-soft"
+                    className="bg-gradient-to-r from-brand-amber to-brand-amber-hover hover:from-brand-amber-hover hover:to-brand-amber-hover text-fg font-semibold py-3 px-4 rounded-lg transition-colors duration-200 border border-brand-amber/40 "
                     size="lg"
                   >
                     <Phone className="w-4 h-4 mr-2" />
@@ -267,7 +267,7 @@ export default function ContactPage() {
                     {copy.securityTip}
                   </p>
                   <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="inline-flex">
-                    <Button variant="outline" size="sm" className="border-red-600/40 text-red-400 hover:bg-red-950/30 hover:text-white">
+                    <Button variant="outline" size="sm" className="border-brand-amber/40 text-brand-amber hover:bg-brand-amber/20 hover:text-fg">
                       <LinkedinLogo className="w-4 h-4 mr-2" />
                       LinkedIn
                     </Button>
@@ -284,10 +284,10 @@ export default function ContactPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Card className="bg-[#1A1A1A] border-[#333] hover:border-red-600/40">
+            <Card className="bg-[#1A1A1A] border-[#333] hover:border-brand-amber/50">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-2xl text-white">
-                  <Shield className="w-8 h-8 text-red-500" />
+                <CardTitle className="flex items-center gap-3 text-2xl text-fg">
+                  <Shield className="w-8 h-8 text-brand-amber" />
                   {copy.securityTitle}
                 </CardTitle>
                 <p className="text-gray-400">{copy.securitySubtitle}</p>
@@ -295,11 +295,11 @@ export default function ContactPage() {
               <CardContent className="space-y-6">
                 
                 {/* Alerte sécurité */}
-                <div className="bg-red-950/40 border border-red-800/40 p-6 rounded-lg">
+                <div className="bg-brand-amber/10 border border-brand-amber/40 p-6 rounded-lg">
                   <div className="flex items-start gap-3">
-                    <Warning className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
+                    <Warning className="w-6 h-6 text-brand-amber flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-red-400 mb-2">{copy.securityChoiceTitle}</h3>
+                      <h3 className="font-bold text-brand-amber mb-2">{copy.securityChoiceTitle}</h3>
                       <p className="text-gray-300 text-sm leading-relaxed">{copy.securityChoiceText}</p>
                     </div>
                   </div>
@@ -307,7 +307,7 @@ export default function ContactPage() {
 
                 {/* Avantages du contact direct */}
                 <div className="space-y-4">
-                  <h3 className="font-bold text-white text-lg">{copy.directBenefitsTitle}</h3>
+                  <h3 className="font-bold text-fg text-lg">{copy.directBenefitsTitle}</h3>
                   
                   <div className="space-y-3">
                     <div className="flex items-start gap-3 p-3 bg-green-950/40 rounded-lg border border-green-800/30">
@@ -346,11 +346,11 @@ export default function ContactPage() {
 
                 {/* Services disponibles */}
                 <div className="bg-[#1A1A1A] p-6 rounded-lg border border-[#333]">
-                  <h3 className="font-bold text-white mb-3">{copy.servicesTitle}</h3>
+                  <h3 className="font-bold text-fg mb-3">{copy.servicesTitle}</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-300">
                     {copy.services.map((item) => (
                       <div key={item} className="flex items-center gap-2">
-                        <div className="w-1 h-1 bg-red-500 rounded-full"></div>
+                        <div className="w-1 h-1 bg-brand-amber rounded-full"></div>
                         <span>{item}</span>
                       </div>
                     ))}
@@ -370,23 +370,23 @@ export default function ContactPage() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-16"
         >
-          <Card className="border-red-800/40 bg-red-950/30">
+          <Card className="border-brand-amber/40 bg-brand-amber/10">
             <CardContent className="p-6">
               <div className="flex items-center gap-3 mb-4">
-                <Shield className="w-6 h-6 text-red-500" />
-                <h3 className="text-lg font-semibold text-white">Sécurité et Confidentialité</h3>
+                <Shield className="w-6 h-6 text-brand-amber" />
+                <h3 className="text-lg font-semibold text-fg">Sécurité et Confidentialité</h3>
               </div>
               <div className="grid md:grid-cols-3 gap-4 text-sm text-gray-300">
                 <div>
-                  <p className="font-medium text-red-400 mb-1">🔒 Chiffrement</p>
+                  <p className="font-medium text-brand-amber mb-1">🔒 Chiffrement</p>
                   <p>Toutes les communications sont chiffrées via HTTPS/TLS</p>
                 </div>
                 <div>
-                  <p className="font-medium text-red-400 mb-1">🛡️ Confidentialité</p>
+                  <p className="font-medium text-brand-amber mb-1">🛡️ Confidentialité</p>
                   <p>Vos données restent strictement confidentielles</p>
                 </div>
                 <div>
-                  <p className="font-medium text-red-400 mb-1">✅ RGPD</p>
+                  <p className="font-medium text-brand-amber mb-1">✅ RGPD</p>
                   <p>Conformité totale avec le règlement européen</p>
                 </div>
               </div>

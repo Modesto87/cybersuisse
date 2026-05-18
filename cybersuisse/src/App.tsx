@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 import { Suspense, lazy, useEffect } from 'react'
 import Navigation from './components/Navigation'
@@ -13,6 +13,7 @@ const PentestPage = lazy(() => import('./components/PentestPage'))
 const OSINTPage = lazy(() => import('./components/OSINTPage'))
 const DeveloppementPage = lazy(() => import('./components/DeveloppementPage'))
 const DataRecoveryPage = lazy(() => import('./components/DataRecoveryPage'))
+const AbonnementsPage = lazy(() => import('./components/AbonnementsPage'))
 const ProtectionPmeEssentielPage = lazy(() => import('./components/ProtectionPmeEssentielPage'))
 const ProtectionPmeActivePage = lazy(() => import('./components/ProtectionPmeActivePage'))
 const ProtectionPmePremiumPage = lazy(() => import('./components/ProtectionPmePremiumPage'))
@@ -24,12 +25,12 @@ const CookieManagerPage = lazy(() => import('./components/CookieManagerPage'))
 
 // Loading component
 const PageLoader = () => (
-  <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-500"></div>
+  <div className="min-h-screen bg-bg flex items-center justify-center">
+    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brand-amber"></div>
   </div>
 )
 
-type PageType = 'home' | 'about' | 'pentest' | 'osint' | 'developpement' | 'data-recovery' | 'protection-pme-essentiel' | 'protection-pme-active' | 'protection-pme-premium' | 'contact' | 'cgv' | 'politique-confidentialite' | 'mentions-legales' | 'cookies'
+type PageType = 'home' | 'about' | 'pentest' | 'osint' | 'developpement' | 'data-recovery' | 'abonnements' | 'protection-pme-essentiel' | 'protection-pme-active' | 'protection-pme-premium' | 'contact' | 'cgv' | 'politique-confidentialite' | 'mentions-legales' | 'cookies'
 
 export type NavigationFunction = (page: PageType) => void;
 
@@ -43,6 +44,7 @@ function AppContent() {
   const navigate = useNavigate()
   const location = useLocation()
   const { i18n } = useTranslation()
+  const reduce = useReducedMotion()
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
@@ -61,6 +63,7 @@ function AppContent() {
       'osint': '/osint',
       'developpement': '/developpement',
       'data-recovery': '/data-recovery',
+      'abonnements': '/abonnements',
       'protection-pme-essentiel': '/abonnements/essentiel',
       'protection-pme-active': '/abonnements/pro',
       'protection-pme-premium': '/abonnements/premium',
@@ -83,6 +86,7 @@ function AppContent() {
       '/osint': 'osint',
       '/developpement': 'developpement',
       '/data-recovery': 'data-recovery',
+      '/abonnements': 'abonnements',
       '/abonnements/essentiel': 'protection-pme-essentiel',
       '/abonnements/pro': 'protection-pme-active',
       '/abonnements/premium': 'protection-pme-premium',
@@ -98,17 +102,17 @@ function AppContent() {
   const currentPage = getCurrentPage()
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-bg flex flex-col">
       <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
       
       <AnimatePresence mode="wait">
         <motion.main
           key={location.pathname}
-          variants={pageVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          transition={{ duration: 0.3, ease: "easeInOut" }}
+          variants={reduce ? undefined : pageVariants}
+          initial={reduce ? false : "initial"}
+          animate={reduce ? undefined : "animate"}
+          exit={reduce ? undefined : "exit"}
+          transition={reduce ? { duration: 0 } : { duration: 0.3, ease: "easeInOut" }}
           className="flex-1"
         >
           <Suspense fallback={<PageLoader />}>
@@ -119,6 +123,7 @@ function AppContent() {
               <Route path="/osint" element={<OSINTPage onNavigate={handleNavigate} />} />
               <Route path="/developpement" element={<DeveloppementPage onNavigate={handleNavigate} />} />
               <Route path="/data-recovery" element={<DataRecoveryPage onNavigate={handleNavigate} />} />
+              <Route path="/abonnements" element={<AbonnementsPage onNavigate={handleNavigate} />} />
               <Route path="/abonnements/essentiel" element={<ProtectionPmeEssentielPage onNavigate={handleNavigate} />} />
               <Route path="/abonnements/pro" element={<ProtectionPmeActivePage onNavigate={handleNavigate} />} />
               <Route path="/abonnements/premium" element={<ProtectionPmePremiumPage onNavigate={handleNavigate} />} />

@@ -1,1 +1,31 @@
-{}
+{
+  "_comment": "CyberSuisse design tokens — Phase 1 source of truth. Consumed as documentation; tailwind.config.js shallow-merges this object so we keep tailwind-reserved keys out and group everything under `tokens`.",
+  "tokens": {
+    "colors": {
+      "--color-bg": "#0F172A",
+      "--color-bg-inset": "#111C36",
+      "--color-bg-overlay": "#1B2A4A",
+      "--color-fg": "#F8FAFC",
+      "--color-fg-secondary": "#CBD5E1",
+      "--color-fg-on-dark": "#F8FAFC",
+      "--color-brand-navy": "#0F172A",
+      "--color-brand-royal": "#1E3A8A",
+      "--color-brand-amber": "#D97706",
+      "--color-brand-amber-hover": "#B45309",
+      "--color-accent-red": "#E53935"
+    },
+    "fonts": {
+      "--font-heading": "Montserrat",
+      "--font-sans-serif": "Inter"
+    },
+    "radius": {
+      "button": "6px",
+      "card": "8px"
+    },
+    "notes": {
+      "redUsage": "--color-accent-red is permitted ONLY on PentestPage.tsx and OSINTPage.tsx as an offensive accent.",
+      "buttons": "Flat only — no 3D, no glassmorphism, no heavy shadows.",
+      "cards": "Solid background, 1px border, no backdrop-blur."
+    }
+  }
+}

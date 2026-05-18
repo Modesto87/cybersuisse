@@ -228,7 +228,7 @@ const PolitiqueConfidentialitePage = ({ onNavigate }: PolitiqueConfidentialitePa
           back: "Retour à l'accueil"
         })
   return (
-    <div className="min-h-screen cs-bg-redteam-diagonal">
+    <div className="min-h-screen bg-bg">
       {/* Header */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
@@ -241,9 +241,9 @@ const PolitiqueConfidentialitePage = ({ onNavigate }: PolitiqueConfidentialitePa
             <div className="flex items-center justify-center mb-6">
               <Logo size="lg" showText={false} />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-fg mb-4">
               {copy.title.split(' ').slice(0, -1).join(' ')}{' '}
-              <span className="text-white cs-text-glow-red-30">{copy.title.split(' ').slice(-1)}</span>
+              <span className="text-fg ">{copy.title.split(' ').slice(-1)}</span>
             </h1>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">{copy.subtitle}</p>
           </motion.div>
@@ -258,7 +258,7 @@ const PolitiqueConfidentialitePage = ({ onNavigate }: PolitiqueConfidentialitePa
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Card className="shadow-2xl border border-[#333] bg-[#1A1A1A]/80 backdrop-blur-sm">
+            <Card className="shadow-2xl border border-[#333] bg-[#1A1A1A]">
               <CardContent className="p-8 md:p-12">
                 <div className="space-y-8">
                   {/* Date de mise à jour */}
@@ -270,8 +270,8 @@ const PolitiqueConfidentialitePage = ({ onNavigate }: PolitiqueConfidentialitePa
                   {/* Introduction */}
                   <div className="space-y-4">
                     <div className="flex items-center gap-3 mb-4">
-                      <Shield size={24} className="text-red-500" />
-                      <h2 className="text-2xl font-semibold text-white">{copy.introTitle}</h2>
+                      <Shield size={24} className="text-brand-amber" />
+                      <h2 className="text-2xl font-semibold text-fg">{copy.introTitle}</h2>
                     </div>
                     <p className="text-gray-400 leading-relaxed">{copy.introText}</p>
                   </div>
@@ -279,11 +279,11 @@ const PolitiqueConfidentialitePage = ({ onNavigate }: PolitiqueConfidentialitePa
                   {/* Collecte des données */}
                   <div className="space-y-4">
                     <div className="flex items-center gap-3 mb-4">
-                      <Eye size={24} className="text-red-500" />
-                      <h2 className="text-2xl font-semibold text-white">{copy.collectTitle}</h2>
+                      <Eye size={24} className="text-brand-amber" />
+                      <h2 className="text-2xl font-semibold text-fg">{copy.collectTitle}</h2>
                     </div>
                     <div className="space-y-3">
-                      <h3 className="text-lg font-medium text-red-400">{copy.collectLead}</h3>
+                      <h3 className="text-lg font-medium text-brand-amber">{copy.collectLead}</h3>
                       <ul className="list-disc list-inside space-y-2 text-gray-400 ml-4">
                         {copy.collectItems.map((item) => (
                           <li key={item}>{item}</li>
@@ -295,8 +295,8 @@ const PolitiqueConfidentialitePage = ({ onNavigate }: PolitiqueConfidentialitePa
                   {/* Utilisation des données */}
                   <div className="space-y-4">
                     <div className="flex items-center gap-3 mb-4">
-                      <UserCheck size={24} className="text-red-500" />
-                      <h2 className="text-2xl font-semibold text-white">{copy.useTitle}</h2>
+                      <UserCheck size={24} className="text-brand-amber" />
+                      <h2 className="text-2xl font-semibold text-fg">{copy.useTitle}</h2>
                     </div>
                     <div className="space-y-3">
                       <p className="text-gray-400">{copy.useLead}</p>
@@ -311,8 +311,8 @@ const PolitiqueConfidentialitePage = ({ onNavigate }: PolitiqueConfidentialitePa
                   {/* Protection des données */}
                   <div className="space-y-4">
                     <div className="flex items-center gap-3 mb-4">
-                      <Lock size={24} className="text-red-500" />
-                      <h2 className="text-2xl font-semibold text-white">{copy.protectTitle}</h2>
+                      <Lock size={24} className="text-brand-amber" />
+                      <h2 className="text-2xl font-semibold text-fg">{copy.protectTitle}</h2>
                     </div>
                     <div className="space-y-3">
                       <p className="text-gray-400">{copy.protectLead}</p>
@@ -327,8 +327,8 @@ const PolitiqueConfidentialitePage = ({ onNavigate }: PolitiqueConfidentialitePa
                   {/* Partage des données */}
                   <div className="space-y-4">
                     <div className="flex items-center gap-3 mb-4">
-                      <Globe size={24} className="text-red-500" />
-                      <h2 className="text-2xl font-semibold text-white">{copy.shareTitle}</h2>
+                      <Globe size={24} className="text-brand-amber" />
+                      <h2 className="text-2xl font-semibold text-fg">{copy.shareTitle}</h2>
                     </div>
                     <p className="text-gray-400">{copy.shareLead}</p>
                     <ul className="list-disc list-inside space-y-2 text-gray-400 ml-4">
@@ -340,12 +340,12 @@ const PolitiqueConfidentialitePage = ({ onNavigate }: PolitiqueConfidentialitePa
 
                   {/* Droits des utilisateurs */}
                   <div className="space-y-4">
-                    <h2 className="text-2xl font-semibold text-white">{copy.rightsTitle}</h2>
+                    <h2 className="text-2xl font-semibold text-fg">{copy.rightsTitle}</h2>
                     <p className="text-gray-400">{copy.rightsLead}</p>
                     <ul className="list-disc list-inside space-y-2 text-gray-400 ml-4">
                       {copy.rightsItems.map(([label, text]) => (
                         <li key={label}>
-                          <strong className="text-red-400">{label}</strong> {text}
+                          <strong className="text-brand-amber">{label}</strong> {text}
                         </li>
                       ))}
                     </ul>
@@ -353,7 +353,7 @@ const PolitiqueConfidentialitePage = ({ onNavigate }: PolitiqueConfidentialitePa
 
                   {/* Conservation des données */}
                   <div className="space-y-4">
-                    <h2 className="text-2xl font-semibold text-white">{copy.retentionTitle}</h2>
+                    <h2 className="text-2xl font-semibold text-fg">{copy.retentionTitle}</h2>
                     <p className="text-gray-400">{copy.retentionLead}</p>
                     <ul className="list-disc list-inside space-y-2 text-gray-400 ml-4">
                       {copy.retentionItems.map((item) => (
@@ -364,16 +364,16 @@ const PolitiqueConfidentialitePage = ({ onNavigate }: PolitiqueConfidentialitePa
 
                   {/* Cookies */}
                   <div className="space-y-4">
-                    <h2 className="text-2xl font-semibold text-white">{copy.cookiesTitle}</h2>
+                    <h2 className="text-2xl font-semibold text-fg">{copy.cookiesTitle}</h2>
                     <p className="text-gray-400">{copy.cookiesText}</p>
                   </div>
 
                   {/* Contact */}
                   <div className="space-y-4">
-                    <h2 className="text-2xl font-semibold text-white">{copy.contactTitle}</h2>
+                    <h2 className="text-2xl font-semibold text-fg">{copy.contactTitle}</h2>
                     <p className="text-gray-400">{copy.contactText}</p>
                     <div className="bg-[#0A0A0A] p-4 rounded-lg border border-[#333]">
-                      <p className="text-white"><strong className="text-red-400">{copy.contactName}</strong></p>
+                      <p className="text-fg"><strong className="text-brand-amber">{copy.contactName}</strong></p>
                       <p className="text-gray-400">{copy.contactEmail}</p>
                       <p className="text-gray-400">{copy.contactPhone}</p>
                       <p className="text-gray-400">{copy.contactRegion}</p>
@@ -382,7 +382,7 @@ const PolitiqueConfidentialitePage = ({ onNavigate }: PolitiqueConfidentialitePa
 
                   {/* Modifications */}
                   <div className="space-y-4">
-                    <h2 className="text-2xl font-semibold text-white">{copy.changesTitle}</h2>
+                    <h2 className="text-2xl font-semibold text-fg">{copy.changesTitle}</h2>
                     <p className="text-gray-400">{copy.changesText}</p>
                   </div>
 
@@ -391,7 +391,7 @@ const PolitiqueConfidentialitePage = ({ onNavigate }: PolitiqueConfidentialitePa
                     <Button
                       onClick={() => onNavigate('home')}
                       variant="outline"
-                      className="group border-red-600/40 text-red-400 hover:bg-red-950/30 hover:text-white transition-all duration-300"
+                      className="group border-brand-amber/40 text-brand-amber hover:bg-brand-amber/20 hover:text-fg transition-all duration-300"
                     >
                       <ArrowLeft size={20} className="mr-2 group-hover:-translate-x-1 transition-transform duration-300" />
                       {copy.back}
