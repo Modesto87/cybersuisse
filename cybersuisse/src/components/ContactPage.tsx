@@ -1,12 +1,21 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Envelope, Phone, MapPin, Shield, Clock, Warning, LinkedinLogo } from '@phosphor-icons/react'
 import SEOContent from './SEOContent'
+import { applyPageSeo } from '@/components/SEOHelpers'
 
 export default function ContactPage() {
   const [isEmailRevealed, setIsEmailRevealed] = useState(false)
+
+  useEffect(() => {
+    applyPageSeo({
+      title: 'Contact — CyberSuisse | Biel/Bienne',
+      description: 'Contactez CyberSuisse à Biel/Bienne — 078 208 95 45 / modesto@cybersuisse.ch. Réponse sous 24 heures ouvrables.',
+      path: '/contact'
+    })
+  }, [])
 
   const copy = {
     srTitle: 'Contact - Expert Cybersécurité CyberSuisse',

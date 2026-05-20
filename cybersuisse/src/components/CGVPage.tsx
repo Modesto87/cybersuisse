@@ -1,13 +1,23 @@
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { ArrowLeft, Shield, FileText, Clock, CreditCard } from '@phosphor-icons/react'
+import { applyPageSeo } from '@/components/SEOHelpers'
 
 interface CGVPageProps {
   onNavigate: (page: string) => void
 }
 
 export default function CGVPage({ onNavigate }: CGVPageProps) {
+  useEffect(() => {
+    applyPageSeo({
+      title: 'Conditions Générales de Vente — CyberSuisse',
+      description: 'Conditions Générales de Vente applicables aux prestations de cybersécurité de CyberSuisse (Luís Modesto, Biel/Bienne).',
+      path: '/cgv'
+    })
+  }, [])
+
   const copy = {
     back: "Retour à l'accueil",
     title: 'Conditions Générales de Vente',

@@ -11,6 +11,12 @@
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
     
+    # Si une version statique pré-rendue existe pour cette route, la servir
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}/index.html -f
+    RewriteRule ^(.+)$ /$1/index.html [L]
+
     # Rediriger tout le reste vers index.html
     RewriteRule ^index\.html$ - [L]
     RewriteRule . /index.html [L]

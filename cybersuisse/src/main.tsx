@@ -1,4 +1,4 @@
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import { ErrorBoundary } from "react-error-boundary";
 import { Toaster } from '@/components/ui/sonner'
 
@@ -19,9 +19,16 @@ import "./styles/theme.css"
 import "./styles/buttons.css"
 import "./styles/global.css"
 
-createRoot(document.getElementById('root')!).render(
+const rootEl = document.getElementById('root')!
+const tree = (
   <ErrorBoundary FallbackComponent={ErrorFallback}>
     <App />
     <Toaster position="bottom-right" />
-   </ErrorBoundary>
+  </ErrorBoundary>
 )
+
+if (rootEl.hasChildNodes()) {
+  hydrateRoot(rootEl, tree)
+} else {
+  createRoot(rootEl).render(tree)
+}

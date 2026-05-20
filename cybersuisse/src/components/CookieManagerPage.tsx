@@ -3,8 +3,10 @@ import { Card } from '@/components/ui/card'
 import { Switch } from '@/components/ui/switch'
 import { motion } from 'framer-motion'
 import { Cookie, Shield, ChartBar, Wrench, Gear } from '@phosphor-icons/react'
+import { useEffect } from 'react'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
 import { useTranslation } from 'react-i18next'
+import { applyPageSeo, setRobotsMeta, DEFAULT_ROBOTS } from '@/components/SEOHelpers'
 
 // Extend Window interface for Google Analytics and Matomo
 declare global {
@@ -33,6 +35,18 @@ const CookieManager = ({ onNavigate }: CookieManagerProps) => {
     marketing: false,
     functional: false
   })
+
+  useEffect(() => {
+    applyPageSeo({
+      title: 'Gestion des cookies — CyberSuisse',
+      description: 'Gérez vos préférences en matière de cookies sur le site CyberSuisse (analytique, marketing, fonctionnel).',
+      path: '/cookies'
+    })
+    setRobotsMeta('noindex, nofollow')
+    return () => {
+      setRobotsMeta(DEFAULT_ROBOTS)
+    }
+  }, [])
 
   const language = (i18n.resolvedLanguage || i18n.language || 'fr').split('-')[0]
   const copy = (language === 'en'

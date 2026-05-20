@@ -1,20 +1,10 @@
 import { useEffect } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Phone, Envelope, NumberCircleOne, NumberCircleTwo, NumberCircleThree } from '@phosphor-icons/react'
+import { applyPageSeo, setStructuredData } from '@/components/SEOHelpers'
 
 interface PremierRegardPageProps {
   onNavigate: (page: string) => void
-}
-
-const setMeta = (title: string, description: string) => {
-  document.title = title
-  let desc = document.querySelector('meta[name="description"]')
-  if (!desc) {
-    desc = document.createElement('meta')
-    desc.setAttribute('name', 'description')
-    document.head.appendChild(desc)
-  }
-  desc.setAttribute('content', description)
 }
 
 const steps = [
@@ -37,10 +27,53 @@ const steps = [
 
 export default function PremierRegardPage(_props: PremierRegardPageProps) {
   useEffect(() => {
-    setMeta(
-      'Premier Regard offert — CyberSuisse',
-      '45 minutes pour identifier vos 3 risques principaux. Gratuit, sans engagement, sans installation. Pour PMEs de Biel/Bienne.'
-    )
+    applyPageSeo({
+      title: 'Premier Regard offert — CyberSuisse',
+      description: '45 minutes pour identifier vos 3 risques principaux. Gratuit, sans engagement, sans installation. Pour PMEs de Biel/Bienne.',
+      path: '/premier-regard'
+    })
+
+    setStructuredData('premier-regard-faq', {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": "https://cybersuisse.ch/premier-regard#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Le Premier Regard est-il vraiment gratuit ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, totalement. 45 minutes en visioconférence ou sur place dans la région de Biel/Bienne. Aucune obligation d'achat, aucune carte de crédit demandée."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Que se passe-t-il pendant ces 45 minutes ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nous identifions ensemble vos 3 risques cybersécurité les plus pressants pour votre PME. Vous repartez avec une lecture claire et des actions concrètes à mettre en place, même sans suite avec CyberSuisse."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Faut-il installer quelque chose sur nos systèmes ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non. Aucune installation, aucun accès distant, aucun outil intrusif. C'est une conversation structurée basée sur votre contexte métier."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Pour quelles entreprises est-ce adapté ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PMEs suisses (5 à 80 personnes), notamment fiduciaires, cabinets d'avocats, bureaux d'architectes, PMEs industrielles. Aucun pré-requis technique côté entreprise."
+          }
+        }
+      ]
+    })
+
+    return () => setStructuredData('premier-regard-faq', null)
   }, [])
 
   return (

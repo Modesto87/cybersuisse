@@ -3,20 +3,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, CheckCircle, Certificate, GlobeHemisphereWest } from '@phosphor-icons/react'
+import { applyPageSeo, setStructuredData } from '@/components/SEOHelpers'
 
 interface AboutPageProps {
   onNavigate: (page: string) => void
-}
-
-const setMeta = (title: string, description: string) => {
-  document.title = title
-  let desc = document.querySelector('meta[name="description"]')
-  if (!desc) {
-    desc = document.createElement('meta')
-    desc.setAttribute('name', 'description')
-    document.head.appendChild(desc)
-  }
-  desc.setAttribute('content', description)
 }
 
 const notDoing = [
@@ -42,10 +32,45 @@ const languages = [
 
 export default function AboutPage({ onNavigate }: AboutPageProps) {
   useEffect(() => {
-    setMeta(
-      'À propos — Luís Modesto | CyberSuisse',
-      'Consultant indépendant en cybersécurité à Biel/Bienne. Approche humaine, pragmatique et locale pour les PMEs.'
-    )
+    applyPageSeo({
+      title: 'À propos — Luís Modesto | CyberSuisse',
+      description: 'Consultant indépendant en cybersécurité à Biel/Bienne. Approche humaine, pragmatique et locale pour les PMEs.',
+      path: '/a-propos'
+    })
+
+    setStructuredData('about-person', {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://cybersuisse.ch/a-propos#luis-modesto",
+      "name": "Luís Modesto",
+      "jobTitle": "Consultant indépendant en cybersécurité",
+      "description": "Consultant indépendant en cybersécurité basé à Biel/Bienne. Approche humaine, pragmatique et locale pour les PMEs suisses.",
+      "url": "https://cybersuisse.ch/a-propos",
+      "image": "https://cybersuisse.ch/og-image.jpg",
+      "worksFor": { "@id": "https://cybersuisse.ch/#business" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Biel/Bienne",
+        "addressRegion": "BE",
+        "addressCountry": "CH"
+      },
+      "knowsAbout": [
+        "Microsoft 365 security",
+        "OSINT",
+        "Sécurité PME",
+        "RGPD",
+        "LPD suisse",
+        "Sensibilisation phishing",
+        "Diagnostic cybersécurité"
+      ],
+      "hasCredential": [
+        { "@type": "EducationalOccupationalCredential", "name": "Certification EC-Council" },
+        { "@type": "EducationalOccupationalCredential", "name": "Certification TryHackMe" }
+      ],
+      "sameAs": ["https://www.linkedin.com/in/modesto-cybersuisse"]
+    })
+
+    return () => setStructuredData('about-person', null)
   }, [])
 
   return (

@@ -4,20 +4,10 @@ import { ArrowRight, Shield, Handshake, Lightning, MapPin, Users, Buildings, Bri
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { applyPageSeo } from '@/components/SEOHelpers'
 
 interface HomePageProps {
   onNavigate: (page: string) => void
-}
-
-const setMeta = (title: string, description: string) => {
-  document.title = title
-  let desc = document.querySelector('meta[name="description"]')
-  if (!desc) {
-    desc = document.createElement('meta')
-    desc.setAttribute('name', 'description')
-    document.head.appendChild(desc)
-  }
-  desc.setAttribute('content', description)
 }
 
 const pillars = [
@@ -72,10 +62,11 @@ export default function HomePage({ onNavigate }: HomePageProps) {
   const reduceMotion = useReducedMotion()
 
   useEffect(() => {
-    setMeta(
-      'CyberSuisse — Cybersécurité de proximité pour PME | Biel/Bienne',
-      "Consultant indépendant en cybersécurité à Biel/Bienne. Audit Microsoft 365, OSINT, sensibilisation, diagnostic GRC. Interlocuteur unique. Premier Regard offert."
-    )
+    applyPageSeo({
+      title: 'CyberSuisse — Cybersécurité de proximité pour PME | Biel/Bienne',
+      description: "Consultant indépendant en cybersécurité à Biel/Bienne. Audit Microsoft 365, OSINT, sensibilisation, diagnostic GRC. Interlocuteur unique. Premier Regard offert.",
+      path: '/'
+    })
   }, [])
 
   const fade = {

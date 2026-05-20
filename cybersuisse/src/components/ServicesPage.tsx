@@ -3,20 +3,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, CheckCircle, Clock, Info } from '@phosphor-icons/react'
+import { applyPageSeo, setStructuredData } from '@/components/SEOHelpers'
 
 interface ServicesPageProps {
   onNavigate: (page: string) => void
-}
-
-const setMeta = (title: string, description: string) => {
-  document.title = title
-  let desc = document.querySelector('meta[name="description"]')
-  if (!desc) {
-    desc = document.createElement('meta')
-    desc.setAttribute('name', 'description')
-    document.head.appendChild(desc)
-  }
-  desc.setAttribute('content', description)
 }
 
 interface CoreService {
@@ -158,10 +148,61 @@ function ServiceCard({ id, children }: { id: string; children: React.ReactNode }
 
 export default function ServicesPage({ onNavigate }: ServicesPageProps) {
   useEffect(() => {
-    setMeta(
-      'Prestations — CyberSuisse | Biel/Bienne',
-      'M365 Security Check, Empreinte Numérique, Bouclier Humain, Cap Sécurité, création de sites web, récupération de données. Forfaits clairs pour PMEs.'
-    )
+    applyPageSeo({
+      title: 'Prestations — CyberSuisse | Biel/Bienne',
+      description: 'M365 Security Check, Empreinte Numérique, Bouclier Humain, Cap Sécurité, création de sites web, récupération de données. Forfaits clairs pour PMEs.',
+      path: '/services'
+    })
+
+    setStructuredData('services-faq', {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": "https://cybersuisse.ch/services#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Combien coûte un audit Microsoft 365 chez CyberSuisse ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Le M365 Security Check est à prix fixe de CHF 750. Il couvre la configuration globale, MFA, droits, partages externes, surface d'attaque et règles de boîte. Vous repartez avec un rapport pragmatique et une liste d'actions priorisées."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Faut-il signer un contrat long terme ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non. Chaque prestation est forfaitaire et indépendante. Vous payez uniquement ce que vous commandez. Aucun engagement, aucun abonnement caché."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Travaillez-vous uniquement à Biel/Bienne ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La majorité des missions se déroulent dans la région Biel/Bienne, Soleure, Neuchâtel et Jura. Les prestations à distance (M365 Security Check, Empreinte Numérique) sont disponibles dans toute la Suisse."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quelle est la différence entre Bouclier Humain et Cap Sécurité ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bouclier Humain forme vos collaborateurs contre le phishing et l'ingénierie sociale. Cap Sécurité est un diagnostic global de votre posture (technique, organisationnelle, conformité LPD/RGPD) avec un plan de remédiation priorisé."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Êtes-vous certifié ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. Certifications EC-Council et TryHackMe. Pratique continue sur des environnements PME suisses (fiduciaires, cabinets juridiques, bureaux d'architectes, PMEs industrielles)."
+          }
+        }
+      ]
+    })
+
+    return () => setStructuredData('services-faq', null)
   }, [])
 
   return (

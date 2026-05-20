@@ -92,6 +92,17 @@ export default defineConfig(({ command }) => {
         'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
         'Content-Security-Policy': buildCspHeader(false)
       }
+    },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+            'motion': ['framer-motion'],
+            'icons': ['@phosphor-icons/react']
+          }
+        }
+      }
     }
   }
 });

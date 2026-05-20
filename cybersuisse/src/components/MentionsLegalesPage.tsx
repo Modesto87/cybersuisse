@@ -1,14 +1,24 @@
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft, Building, User, Shield, Envelope, Phone, Globe } from '@phosphor-icons/react'
 import Logo from './Logo'
+import { applyPageSeo } from '@/components/SEOHelpers'
 
 interface MentionsLegalesPageProps {
   onNavigate: (page: string) => void
 }
 
 export default function MentionsLegalesPage({ onNavigate }: MentionsLegalesPageProps) {
+  useEffect(() => {
+    applyPageSeo({
+      title: 'Mentions Légales — CyberSuisse',
+      description: 'Mentions légales et informations réglementaires de CyberSuisse (Luís Modesto, consultant indépendant en cybersécurité à Biel/Bienne).',
+      path: '/mentions-legales'
+    })
+  }, [])
+
   const copy = {
     back: "Retour à l'accueil",
     title: 'Mentions Légales',

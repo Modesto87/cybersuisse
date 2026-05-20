@@ -1,14 +1,24 @@
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { ArrowLeft, Shield, Eye, Lock, UserCheck, Globe, Clock } from '@phosphor-icons/react'
 import Logo from './Logo'
+import { applyPageSeo } from '@/components/SEOHelpers'
 
 interface PolitiqueConfidentialitePageProps {
   onNavigate: (page: string) => void
 }
 
 const PolitiqueConfidentialitePage = ({ onNavigate }: PolitiqueConfidentialitePageProps) => {
+  useEffect(() => {
+    applyPageSeo({
+      title: 'Politique de Confidentialité — CyberSuisse',
+      description: 'Politique de confidentialité de CyberSuisse : protection des données personnelles conformément au RGPD et à la LPD.',
+      path: '/politique-confidentialite'
+    })
+  }, [])
+
   const copy = {
     title: 'Politique de Confidentialité',
     subtitle: 'Votre vie privée est notre priorité. Découvrez comment nous protégeons vos données personnelles.',

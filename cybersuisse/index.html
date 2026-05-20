@@ -96,14 +96,12 @@
     
     <!-- Meta descriptions optimisées pour Biel/Bienne -->
     <meta name="description" content="Consultant indépendant en cybersécurité à Biel/Bienne. Audit Microsoft 365, OSINT, sensibilisation, diagnostic GRC. Interlocuteur unique. Premier Regard offert." />
-    <meta name="keywords" content="cybersécurité PME Bienne, audit Microsoft 365 Biel, sensibilisation phishing Bienne, OSINT entreprise, consultant cybersécurité fiduciaire Suisse, récupération données Biel, création site web Bienne" />
     <meta name="author" content="Modesto - CyberSuisse" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     
     <!-- Meta tags de sécurité CRA compliant -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.cybersuisse.ch; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: https://tracker.metricool.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' ws: wss: https://www.google-analytics.com https://www.googletagmanager.com https://analytics.cybersuisse.ch; base-uri 'self'" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
     
@@ -118,13 +116,6 @@
     <meta name="format-detection" content="telephone=yes" />
     <meta name="HandheldFriendly" content="true" />
     <meta name="MobileOptimized" content="320" />
-    <meta name="revisit-after" content="7 days" />
-    <meta name="rating" content="General" />
-    <meta name="distribution" content="Global" />
-    <meta name="language" content="French" />
-    <meta name="coverage" content="Worldwide" />
-    <meta name="target" content="all" />
-    <meta name="audience" content="all" />
     <meta name="copyright" content="© 2024 CyberSuisse - Modesto" />
     
     <!-- Géolocalisation pour Bienne/Biel -->
@@ -284,13 +275,120 @@
           "openingHours": "Mo-Fr 08:00-18:00",
           "priceRange": "CHF",
           "paymentAccepted": "Virement bancaire, Facture"
+        },
+        {
+          "@type": "Service",
+          "@id": "https://cybersuisse.ch/services#m365-security-check",
+          "name": "M365 Security Check",
+          "serviceType": "Audit de sécurité Microsoft 365",
+          "description": "Audit complet de votre environnement Microsoft 365 : configuration, droits, MFA, partages, surface d'attaque. Rapport pragmatique avec actions priorisées.",
+          "provider": { "@id": "https://cybersuisse.ch/#business" },
+          "areaServed": { "@type": "Country", "name": "CH" },
+          "offers": {
+            "@type": "Offer",
+            "price": "750",
+            "priceCurrency": "CHF",
+            "availability": "https://schema.org/InStock",
+            "url": "https://cybersuisse.ch/services"
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://cybersuisse.ch/services#empreinte-numerique",
+          "name": "Empreinte Numérique",
+          "serviceType": "Investigation OSINT",
+          "description": "Investigation OSINT : ce qu'un attaquant peut déjà voir de vous. Adresses e-mail exposées, fuites de mots de passe, documents indexés, sous-domaines oubliés.",
+          "provider": { "@id": "https://cybersuisse.ch/#business" },
+          "areaServed": { "@type": "Country", "name": "CH" },
+          "offers": {
+            "@type": "Offer",
+            "price": "450",
+            "priceCurrency": "CHF",
+            "availability": "https://schema.org/InStock",
+            "url": "https://cybersuisse.ch/services"
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://cybersuisse.ch/services#bouclier-humain",
+          "name": "Bouclier Humain",
+          "serviceType": "Sensibilisation phishing et ingénierie sociale",
+          "description": "Session de sensibilisation de 90 minutes pour vos collaborateurs : phishing, ingénierie sociale, bons réflexes. Support, quiz et attestations inclus.",
+          "provider": { "@id": "https://cybersuisse.ch/#business" },
+          "areaServed": { "@type": "Country", "name": "CH" },
+          "offers": {
+            "@type": "Offer",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "price": "550",
+              "priceCurrency": "CHF",
+              "valueAddedTaxIncluded": false
+            },
+            "description": "À partir de CHF 550",
+            "availability": "https://schema.org/InStock",
+            "url": "https://cybersuisse.ch/services"
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://cybersuisse.ch/services#cap-securite",
+          "name": "Cap Sécurité",
+          "serviceType": "Diagnostic GRC",
+          "description": "Diagnostic global de votre posture cybersécurité : technique, organisationnelle, conformité LPD/RGPD. Niveau de risque et plan de remédiation priorisé.",
+          "provider": { "@id": "https://cybersuisse.ch/#business" },
+          "areaServed": { "@type": "Country", "name": "CH" },
+          "offers": {
+            "@type": "Offer",
+            "price": "900",
+            "priceCurrency": "CHF",
+            "availability": "https://schema.org/InStock",
+            "url": "https://cybersuisse.ch/services"
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://cybersuisse.ch/services#creation-refonte-sites-web",
+          "name": "Création et refonte de sites web",
+          "serviceType": "Création de sites web sécurisés",
+          "description": "Sites WordPress et React sécurisés : architecture, durcissement, conformité RGPD/LPD, performance et SEO de base.",
+          "provider": { "@id": "https://cybersuisse.ch/#business" },
+          "areaServed": { "@type": "Country", "name": "CH" },
+          "offers": {
+            "@type": "Offer",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "CHF"
+            },
+            "description": "Sur devis",
+            "availability": "https://schema.org/InStock",
+            "url": "https://cybersuisse.ch/services"
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://cybersuisse.ch/services#recuperation-donnees",
+          "name": "Récupération de données",
+          "serviceType": "Récupération de données",
+          "description": "Récupération de données sur disques durs, SSD et grappes RAID. Diagnostic et devis avant intervention.",
+          "provider": { "@id": "https://cybersuisse.ch/#business" },
+          "areaServed": { "@type": "Country", "name": "CH" },
+          "offers": {
+            "@type": "Offer",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "CHF"
+            },
+            "description": "Sur devis",
+            "availability": "https://schema.org/InStock",
+            "url": "https://cybersuisse.ch/services"
+          }
         }
       ]
     }
     </script>
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://cybersuisse.ch" />
+    <link rel="canonical" href="https://cybersuisse.ch/" />
     
     <!-- Preconnect et DNS-prefetch pour performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
