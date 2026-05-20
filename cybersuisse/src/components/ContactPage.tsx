@@ -4,130 +4,55 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Envelope, Phone, MapPin, Shield, Clock, Warning, LinkedinLogo } from '@phosphor-icons/react'
 import SEOContent from './SEOContent'
-import { useTranslation } from 'react-i18next'
 
 export default function ContactPage() {
   const [isEmailRevealed, setIsEmailRevealed] = useState(false)
-  const { i18n } = useTranslation()
 
-  const language = (i18n.resolvedLanguage || i18n.language || 'fr').split('-')[0]
-
-  const copy = (language === 'en'
-    ? {
-        srTitle: 'Contact - CyberSuisse Cybersecurity Expert',
-        cardTitle: 'Contact me',
-        cardDescription: 'Cybersecurity expert available to answer your questions and support your projects.',
-        emailLabel: 'Email',
-        emailReveal: 'Show email',
-        emailResponse: 'Response within 24–48h',
-        phoneLabel: 'Phone',
-        phoneHours: 'Mon–Fri 9am–6pm',
-        locationLabel: 'Location',
-        locationValue: 'Switzerland',
-        locationCoverage: 'Service across all of Switzerland',
-        responseTitle: 'Response time',
-        responseNormal: '🟢 Normal',
-        responseNormalValue: '24–48h',
-        responseHigh: '🟡 High',
-        responseHighValue: '4–24h',
-        responseCritical: '🔴 Critical',
-        responseCriticalValue: '1–4h',
-        emailButton: 'Send an Email',
-        phoneButton: 'Call',
-        securityTip: 'Security tip: do not send passwords, API keys, or sensitive data by email.',
-        securityTitle: 'Maximum security',
-        securitySubtitle: 'Why I prefer direct contact instead of web forms.',
-        securityChoiceTitle: 'Security-first choice',
-        securityChoiceText: 'Web forms are a common attack surface for cybercriminals. As a cybersecurity expert, I intentionally do not include a form on my site to eliminate this risk.',
-        directBenefitsTitle: 'Benefits of direct contact:',
-        benefitSecurityTitle: 'Stronger security',
-        benefitSecurityText: 'No risk of SQL injection, XSS, or other form-based attacks',
-        benefitDirectTitle: 'Direct communication',
-        benefitDirectText: 'Immediate exchange from your secure email client',
-        benefitConfTitle: 'Confidentiality',
-        benefitConfText: 'Your data stays within your secured channels',
-        benefitTraceTitle: 'Traceability',
-        benefitTraceText: 'Full history in your mailbox',
-        servicesTitle: 'Available services:',
-        services: ['Pentest / Penetration test', 'CRA Audit', 'Secure development', 'Training & Advisory']
-      }
-    : language === 'pt'
-      ? {
-          srTitle: 'Contacto - Especialista de Cibersegurança CyberSuisse',
-          cardTitle: 'Contacte-me',
-          cardDescription: 'Especialista em cibersegurança disponível para responder às suas questões e apoiar os seus projetos.',
-          emailLabel: 'Email',
-          emailReveal: 'Mostrar email',
-          emailResponse: 'Resposta em 24–48h',
-          phoneLabel: 'Telefone',
-          phoneHours: 'Seg–Sex 9h–18h',
-          locationLabel: 'Localização',
-          locationValue: 'Suíça',
-          locationCoverage: 'Intervenções em toda a Suíça',
-          responseTitle: 'Tempo de resposta',
-          responseNormal: '🟢 Normal',
-          responseNormalValue: '24–48h',
-          responseHigh: '🟡 Alta',
-          responseHighValue: '4–24h',
-          responseCritical: '🔴 Crítica',
-          responseCriticalValue: '1–4h',
-          emailButton: 'Enviar email',
-          phoneButton: 'Ligar',
-          securityTip: 'Dica de segurança: não envie palavras-passe, chaves de API ou dados sensíveis por email.',
-          securityTitle: 'Segurança máxima',
-          securitySubtitle: 'Porque privilegio o contacto direto em vez de formulários web.',
-          securityChoiceTitle: 'Escolha segura',
-          securityChoiceText: 'Os formulários web são uma superfície de ataque privilegiada por cibercriminosos. Como especialista em cibersegurança, optei por não incluir um formulário no site para eliminar esse risco.',
-          directBenefitsTitle: 'Vantagens do contacto direto:',
-          benefitSecurityTitle: 'Segurança reforçada',
-          benefitSecurityText: 'Sem risco de SQL injection, XSS ou outras ataques via formulário',
-          benefitDirectTitle: 'Comunicação direta',
-          benefitDirectText: 'Troca imediata a partir do seu cliente de email seguro',
-          benefitConfTitle: 'Confidencialidade',
-          benefitConfText: 'Os seus dados permanecem nos seus canais seguros',
-          benefitTraceTitle: 'Rastreabilidade',
-          benefitTraceText: 'Histórico completo no seu email',
-          servicesTitle: 'Serviços disponíveis:',
-          services: ['Pentest / Teste de intrusão', 'Auditoria CRA', 'Desenvolvimento seguro', 'Formação & Consultoria']
-        }
-      : {
-          srTitle: 'Contact - Expert Cybersécurité CyberSuisse',
-          cardTitle: 'Contactez-moi',
-          cardDescription: 'Expert en cybersécurité, je suis à votre disposition pour répondre à vos questions et vous accompagner dans vos projets.',
-          emailLabel: 'Email',
-          emailReveal: 'Afficher l’email',
-          emailResponse: 'Réponse sous 24–48h',
-          phoneLabel: 'Téléphone',
-          phoneHours: 'Lun-Ven 9h-18h',
-          locationLabel: 'Localisation',
-          locationValue: 'Suisse',
-          locationCoverage: 'Interventions dans toute la Suisse',
-          responseTitle: 'Temps de réponse',
-          responseNormal: '🟢 Normale',
-          responseNormalValue: '24-48h',
-          responseHigh: '🟡 Élevée',
-          responseHighValue: '4-24h',
-          responseCritical: '🔴 Critique',
-          responseCriticalValue: '1-4h',
-          emailButton: 'Envoyer un Email',
-          phoneButton: 'Appeler',
-          securityTip: 'Conseil sécurité : n’envoyez pas de mots de passe, clés API ou données sensibles par email.',
-          securityTitle: 'Sécurité maximale',
-          securitySubtitle: 'Pourquoi je privilégie le contact direct plutôt que les formulaires web.',
-          securityChoiceTitle: 'Choix sécuritaire',
-          securityChoiceText: "Les formulaires web constituent une zone d'attaque privilégiée par les cybercriminels. En tant qu'expert en cybersécurité, j'ai délibérément choisi de ne pas inclure de formulaire sur mon site pour éliminer cette surface d'attaque.",
-          directBenefitsTitle: 'Avantages du contact direct :',
-          benefitSecurityTitle: 'Sécurité renforcée',
-          benefitSecurityText: "Aucun risque d'injection SQL, XSS ou autres attaques via formulaire",
-          benefitDirectTitle: 'Communication directe',
-          benefitDirectText: 'Échange immédiat depuis votre client email sécurisé',
-          benefitConfTitle: 'Confidentialité',
-          benefitConfText: 'Vos données transitent par vos propres canaux sécurisés',
-          benefitTraceTitle: 'Traçabilité',
-          benefitTraceText: 'Historique complet dans votre messagerie',
-          servicesTitle: 'Services disponibles :',
-          services: ["Pentest / Test d'intrusion", 'Audit CRA', 'Développement sécurisé', 'Formation & Conseil']
-        })
+  const copy = {
+    srTitle: 'Contact - Expert Cybersécurité CyberSuisse',
+    cardTitle: 'Contactez-moi',
+    cardDescription: "Expert en cybersécurité, je suis à votre disposition pour répondre à vos questions et vous accompagner dans vos projets.",
+    emailLabel: 'Email',
+    emailReveal: "Afficher l’email",
+    emailResponse: 'Réponse sous 24–48h',
+    phoneLabel: 'Téléphone',
+    phoneHours: 'Lun-Ven 9h-18h',
+    locationLabel: 'Localisation',
+    locationValue: 'Biel/Bienne, Suisse',
+    locationCoverage: 'Interventions dans toute la Suisse',
+    responseTitle: 'Temps de réponse',
+    responseNormal: '🟢 Normale',
+    responseNormalValue: '24-48h',
+    responseHigh: '🟡 Élevée',
+    responseHighValue: '4-24h',
+    responseCritical: '🔴 Critique',
+    responseCriticalValue: '1-4h',
+    emailButton: 'Envoyer un Email',
+    phoneButton: 'Appeler',
+    securityTip: "Conseil sécurité : n’envoyez pas de mots de passe, clés API ou données sensibles par email.",
+    securityTitle: 'Sécurité maximale',
+    securitySubtitle: 'Pourquoi je privilégie le contact direct plutôt que les formulaires web.',
+    securityChoiceTitle: 'Choix sécuritaire',
+    securityChoiceText: "Les formulaires web constituent une zone d'attaque privilégiée par les cybercriminels. En tant qu'expert en cybersécurité, j'ai délibérément choisi de ne pas inclure de formulaire sur mon site pour éliminer cette surface d'attaque.",
+    directBenefitsTitle: 'Avantages du contact direct :',
+    benefitSecurityTitle: 'Sécurité renforcée',
+    benefitSecurityText: "Aucun risque d'injection SQL, XSS ou autres attaques via formulaire",
+    benefitDirectTitle: 'Communication directe',
+    benefitDirectText: 'Échange immédiat depuis votre client email sécurisé',
+    benefitConfTitle: 'Confidentialité',
+    benefitConfText: 'Vos données transitent par vos propres canaux sécurisés',
+    benefitTraceTitle: 'Traçabilité',
+    benefitTraceText: 'Historique complet dans votre messagerie',
+    servicesTitle: 'Services disponibles :',
+    services: [
+      'M365 Security Check',
+      'Empreinte Numérique',
+      'Bouclier Humain',
+      'Cap Sécurité',
+      'Création de sites web',
+      'Récupération de données'
+    ]
+  }
 
   const email = useMemo(() => {
     const user = 'modesto'
@@ -136,8 +61,8 @@ export default function ContactPage() {
   }, [])
 
   const phoneE164 = '+41782089545'
-  const phoneDisplay = '+41 78 208 95 45'
-  const linkedinUrl = 'https://linkedin.com/in/luismodesto'
+  const phoneDisplay = '078 208 95 45'
+  const linkedinUrl = 'https://www.linkedin.com/in/modesto-cybersuisse'
 
   const handleEmailClick = () => {
     window.location.href = `mailto:${email}`

@@ -25,75 +25,6 @@ export default function SEOContent({ page, title, description }: SEOContentProps
             </address>
           </div>
         )
-      case 'pentest':
-        return (
-          <div className="sr-only">
-            <h1>{title || t('seo.pentest.title')}</h1>
-            <p>
-              {description || t('seo.pentest.description')}
-            </p>
-            <p>
-              {t('seo.pentest.zone')}
-            </p>
-            <p>
-              {t('seo.pentest.deliverables')}
-            </p>
-          </div>
-        )
-      case 'audit-cra':
-        return (
-          <div className="sr-only">
-            <h1>{title || t('seo.auditCra.title')}</h1>
-            <p>{description || t('seo.auditCra.description')}</p>
-            <p>{t('seo.auditCra.extra')}</p>
-          </div>
-        )
-      case 'osint':
-        return (
-          <div className="sr-only">
-            <h1>{title || t('seo.osint.title')}</h1>
-            <p>
-              {description || t('seo.osint.description')}
-            </p>
-            <p>
-              {t('seo.osint.audience')}
-            </p>
-            <p>
-              {t('seo.osint.useCases')}
-            </p>
-            <p>{t('seo.osint.conclusion')}</p>
-          </div>
-        )
-      case 'developpement':
-        return (
-          <div className="sr-only">
-            <h1>{title || t('seo.development.title')}</h1>
-            <p>
-              {description || t('seo.development.description')}
-            </p>
-            <p>
-              {t('seo.development.audience')}
-            </p>
-            <p>
-              {t('seo.development.approach')}
-            </p>
-          </div>
-        )
-      case 'data-recovery':
-        return (
-          <div className="sr-only">
-            <h1>{title || t('seo.dataRecovery.title')}</h1>
-            <p>
-              {description || t('seo.dataRecovery.description')}
-            </p>
-            <p>
-              {t('seo.dataRecovery.commonCases')}
-            </p>
-            <p>
-              {t('seo.dataRecovery.policy')}
-            </p>
-          </div>
-        )
       case 'about':
         return (
           <div className="sr-only">
@@ -120,7 +51,7 @@ export default function SEOContent({ page, title, description }: SEOContentProps
   }
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="absolute inset-0 pointer-events-none"

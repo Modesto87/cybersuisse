@@ -97,6 +97,9 @@ export default function CookieConsent() {
           window._paq.push(['forgetCookieConsentGiven'])
         }
       }
+
+      // Notify static consent-gated loaders in index.html (GA, Metricool, ...).
+      window.dispatchEvent(new CustomEvent('cookieConsent:granted', { detail: consent }))
     }
   }
 

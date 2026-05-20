@@ -5,28 +5,104 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-360CNR4PS7"></script>
+    <!-- Google tag (gtag.js) - consent-gated loader (RGPD/LPD).
+         The real GA script is only injected after the user grants analytics consent
+         via the CookieConsent component (which dispatches `cookieConsent:granted`). -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+      // Default to denied until consent is recorded.
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'functionality_storage': 'denied',
+        'personalization_storage': 'denied'
+      });
 
-      gtag('config', 'G-360CNR4PS7');
+      var __gaLoaded = false;
+      function loadGA() {
+        if (__gaLoaded) return;
+        __gaLoaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-360CNR4PS7';
+        document.head.appendChild(s);
+        gtag('config', 'G-360CNR4PS7', { anonymize_ip: true, cookie_flags: 'secure;samesite=strict' });
+      }
+
+      var __metricoolLoaded = false;
+      function loadMetricoolPixel() {
+        if (__metricoolLoaded) return;
+        __metricoolLoaded = true;
+        var img = document.createElement('img');
+        img.src = 'https://tracker.metricool.com/c3po.jpg?hash=e5f5f1a9f0148722cc5f81be7118a8e2';
+        img.style.display = 'none';
+        img.alt = '';
+        img.setAttribute('aria-hidden', 'true');
+        document.body && document.body.appendChild(img);
+      }
+
+      // Matomo : loader idempotent gated sur consentement (analytics).
+      // Le script matomo.js et la file _paq ne sont initialisés qu'au moment
+      // de l'appel à loadMatomo(), jamais au page-load.
+      var __matomoLoaded = false;
+      function loadMatomo() {
+        if (__matomoLoaded) return;
+        __matomoLoaded = true;
+        var _paq = window._paq = window._paq || [];
+        _paq.push(['requireCookieConsent']);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        _paq.push(['setTrackerUrl', 'https://analytics.cybersuisse.ch/matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://analytics.cybersuisse.ch/matomo.js';
+        document.head.appendChild(s);
+      }
+
+      function readConsent() {
+        try {
+          var prefs = JSON.parse(localStorage.getItem('cookie-preferences') || 'null');
+          return prefs && typeof prefs === 'object' ? prefs : null;
+        } catch (e) { return null; }
+      }
+
+      function applyConsent(prefs) {
+        if (!prefs) return;
+        if (prefs.analytics) { loadGA(); loadMatomo(); }
+        if (prefs.marketing) loadMetricoolPixel();
+      }
+
+      // On load, honour any previously-stored consent.
+      document.addEventListener('DOMContentLoaded', function () {
+        applyConsent(readConsent());
+      });
+
+      // React to consent decisions taken after page load.
+      window.addEventListener('cookieConsent:granted', function (e) {
+        var detail = (e && e.detail) || readConsent();
+        applyConsent(detail);
+      });
+
+      // Cross-tab sync.
+      window.addEventListener('storage', function (e) {
+        if (e.key === 'cookie-preferences') applyConsent(readConsent());
+      });
     </script>
 
-    <title>Expert Cybersécurité Bienne | Pentest & Audit Suisse</title>
+    <title>CyberSuisse — Cybersécurité de proximité pour PME | Biel/Bienne</title>
     
-    <!-- Meta descriptions optimisées pour Bienne/Biel -->
-    <meta name="description" content="Expert cybersécurité à Bienne. Services pentest, investigations OSINT et audit. Certifié EC-Council. Devis gratuit ☎️ 078 208 95 45" />
-    <meta name="keywords" content="cybersécurité Bienne, pentest Biel, pentest Suisse, audit CRA Bienne, expert sécurité informatique Bienne, investigation OSINT Biel, développement sécurisé Suisse, consultant cybersécurité Suisse, sécurité informatique entreprise Bienne, test intrusion Biel, audit sécurité Suisse, freelance cybersécurité Bienne" />
+    <!-- Meta descriptions optimisées pour Biel/Bienne -->
+    <meta name="description" content="Consultant indépendant en cybersécurité à Biel/Bienne. Audit Microsoft 365, OSINT, sensibilisation, diagnostic GRC. Interlocuteur unique. Premier Regard offert." />
+    <meta name="keywords" content="cybersécurité PME Bienne, audit Microsoft 365 Biel, sensibilisation phishing Bienne, OSINT entreprise, consultant cybersécurité fiduciaire Suisse, récupération données Biel, création site web Bienne" />
     <meta name="author" content="Modesto - CyberSuisse" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     
     <!-- Meta tags de sécurité CRA compliant -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.cybersuisse.ch; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: https://tracker.metricool.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' ws: wss: https://www.google-analytics.com https://www.googletagmanager.com https://analytics.cybersuisse.ch; frame-ancestors 'none'; base-uri 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.cybersuisse.ch; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: https://tracker.metricool.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' ws: wss: https://www.google-analytics.com https://www.googletagmanager.com https://analytics.cybersuisse.ch; base-uri 'self'" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-Frame-Options" content="DENY" />
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
@@ -58,8 +134,8 @@
     <meta name="ICBM" content="47.1368, 7.2467" />
     
     <!-- Open Graph pour réseaux sociaux -->
-    <meta property="og:title" content="Expert Cybersécurité Bienne | Pentest & Audit CRA Suisse | CyberSuisse" />
-    <meta property="og:description" content="Spécialiste cybersécurité freelance à Bienne/Biel ⚡ Services pentest, OSINT, audit CRA et développement sécurisé. Certifié EC-Council. Devis gratuit." />
+    <meta property="og:title" content="CyberSuisse — Cybersécurité de proximité pour PME | Biel/Bienne" />
+    <meta property="og:description" content="Consultant indépendant en cybersécurité à Biel/Bienne. Interlocuteur unique, prestations claires. Premier Regard offert." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://cybersuisse.ch" />
     <meta property="og:locale" content="fr_CH" />
@@ -74,8 +150,8 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@CyberSuisse" />
     <meta name="twitter:creator" content="@Modesto_Cyber" />
-    <meta name="twitter:title" content="Expert Cybersécurité Bienne | CyberSuisse" />
-    <meta name="twitter:description" content="Services cybersécurité professionnels à Bienne/Biel - Pentest, audit CRA, OSINT. Certifié EC-Council ⚡" />
+    <meta name="twitter:title" content="CyberSuisse — Cybersécurité de proximité pour PME" />
+    <meta name="twitter:description" content="Consultant indépendant à Biel/Bienne. Audit Microsoft 365, sensibilisation, diagnostic. Premier Regard offert." />
     <meta name="twitter:image" content="https://cybersuisse.ch/twitter-image.jpg" />
     <meta name="twitter:image:alt" content="CyberSuisse - Expert Cybersécurité Bienne" />
     
@@ -88,7 +164,7 @@
           "@type": "ProfessionalService",
           "@id": "https://cybersuisse.ch/#business",
           "name": "CyberSuisse - Expert Cybersécurité",
-          "description": "Services de cybersécurité professionnels : pentest, audit CRA, investigations OSINT et développement sécurisé pour entreprises suisses",
+          "description": "Cybersécurité de proximité pour PME : audit Microsoft 365, sensibilisation, diagnostic de posture, OSINT, création de sites web, récupération de données.",
           "url": "https://cybersuisse.ch",
           "telephone": "+41 78 208 95 45",
           "email": "modesto@cybersuisse.ch",
@@ -138,18 +214,17 @@
             }
           ],
           "serviceType": [
-            "Test de pénétration (Pentest)",
-            "Audit de sécurité informatique",
-            "Investigation OSINT (Open Source Intelligence)",
-            "Audit CRA (Cyber Resilience Act)",
-            "Développement d'applications sécurisées",
-            "Consultation en cybersécurité",
-            "Formation en sécurité informatique"
+            "M365 Security Check",
+            "Empreinte Numérique (OSINT)",
+            "Bouclier Humain (sensibilisation)",
+            "Cap Sécurité (diagnostic GRC)",
+            "Création et refonte de sites web",
+            "Récupération de données"
           ],
           "founder": {
             "@type": "Person",
-            "name": "Modesto",
-            "jobTitle": "Expert en Cybersécurité",
+            "name": "Luís Modesto",
+            "jobTitle": "Consultant indépendant en cybersécurité",
             "worksFor": {
               "@id": "https://cybersuisse.ch/#business"
             }
@@ -173,7 +248,7 @@
           "@id": "https://cybersuisse.ch/#website",
           "url": "https://cybersuisse.ch",
           "name": "CyberSuisse - Expert Cybersécurité Bienne",
-          "description": "Site officiel de Modesto, expert cybersécurité freelance à Bienne. Services pentest, audit CRA, investigations OSINT, développement sécurisé.",
+          "description": "Site officiel de Luís Modesto, consultant indépendant en cybersécurité à Biel/Bienne. Audit Microsoft 365, sensibilisation, diagnostic, OSINT, création de sites, récupération de données.",
           "publisher": {
             "@id": "https://cybersuisse.ch/#business"
           },
@@ -189,7 +264,7 @@
           "@id": "https://cybersuisse.ch/#localbusiness",
           "name": "CyberSuisse",
           "alternateName": "Modesto Cybersécurité",
-          "description": "Expert cybersécurité freelance spécialisé dans les services de pentest, audit de sécurité et développement sécurisé pour entreprises de la région de Bienne",
+          "description": "Consultant indépendant en cybersécurité à Biel/Bienne. Prestations claires, interlocuteur unique. Premier Regard offert.",
           "url": "https://cybersuisse.ch",
           "telephone": "+41 78 208 95 45",
           "email": "modesto@cybersuisse.ch",
@@ -230,45 +305,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     
-    <!-- Matomo Analytics avec contrôle de consentement (alternative respectueuse de la vie privée) -->
-    <script>
-      var _paq = window._paq = window._paq || [];
-      
-      // Configuration sans cookies par défaut
-      _paq.push(['requireCookieConsent']);
-      _paq.push(['trackPageView']);
-      _paq.push(['enableLinkTracking']);
-      
-      (function() {
-        var u="//analytics.cybersuisse.ch/";
-        _paq.push(['setTrackerUrl', u+'matomo.php']);
-        _paq.push(['setSiteId', '1']);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-      })();
-    </script>
-    
-    <!-- Google Analytics avec contrôle de consentement -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      
-      // Configuration initiale avec consentement refusé par défaut
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'functionality_storage': 'denied',
-        'personalization_storage': 'denied'
-      });
-      
-      gtag('config', 'GA_MEASUREMENT_ID', {
-        anonymize_ip: true,
-        cookie_flags: 'secure;samesite=strict'
-      });
-    </script>
-    
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap">
 </head>
@@ -276,9 +312,7 @@
 <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    
-    <!-- Metricool Analytics -->
-    <img src="https://tracker.metricool.com/c3po.jpg?hash=e5f5f1a9f0148722cc5f81be7118a8e2" style="display:none;" alt="" aria-hidden="true" />
+    <!-- Metricool pixel is injected dynamically by the consent-gated loader in <head>. -->
 </body>
 
 </html>

@@ -4,33 +4,33 @@ import { Suspense, lazy, useEffect } from 'react'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import CookieConsent from './components/CookieConsent'
-import { useTranslation } from 'react-i18next'
 
-// Lazy loading components
 const HomePage = lazy(() => import('./components/HomePage'))
+const ServicesPage = lazy(() => import('./components/ServicesPage'))
+const PremierRegardPage = lazy(() => import('./components/PremierRegardPage'))
 const AboutPage = lazy(() => import('./components/AboutPage'))
-const PentestPage = lazy(() => import('./components/PentestPage'))
-const OSINTPage = lazy(() => import('./components/OSINTPage'))
-const DeveloppementPage = lazy(() => import('./components/DeveloppementPage'))
-const DataRecoveryPage = lazy(() => import('./components/DataRecoveryPage'))
-const AbonnementsPage = lazy(() => import('./components/AbonnementsPage'))
-const ProtectionPmeEssentielPage = lazy(() => import('./components/ProtectionPmeEssentielPage'))
-const ProtectionPmeActivePage = lazy(() => import('./components/ProtectionPmeActivePage'))
-const ProtectionPmePremiumPage = lazy(() => import('./components/ProtectionPmePremiumPage'))
 const ContactPage = lazy(() => import('./components/ContactPage'))
 const CGVPage = lazy(() => import('./components/CGVPage'))
 const PolitiqueConfidentialitePage = lazy(() => import('./components/PolitiqueConfidentialitePage'))
 const MentionsLegalesPage = lazy(() => import('./components/MentionsLegalesPage'))
 const CookieManagerPage = lazy(() => import('./components/CookieManagerPage'))
 
-// Loading component
 const PageLoader = () => (
   <div className="min-h-screen bg-bg flex items-center justify-center">
     <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brand-amber"></div>
   </div>
 )
 
-type PageType = 'home' | 'about' | 'pentest' | 'osint' | 'developpement' | 'data-recovery' | 'abonnements' | 'protection-pme-essentiel' | 'protection-pme-active' | 'protection-pme-premium' | 'contact' | 'cgv' | 'politique-confidentialite' | 'mentions-legales' | 'cookies'
+type PageType =
+  | 'home'
+  | 'services'
+  | 'premier-regard'
+  | 'about'
+  | 'contact'
+  | 'cgv'
+  | 'politique-confidentialite'
+  | 'mentions-legales'
+  | 'cookies'
 
 export type NavigationFunction = (page: PageType) => void;
 
@@ -40,71 +40,52 @@ const pageVariants = {
   exit: { opacity: 0, y: -20 }
 }
 
+const routeMap: Record<PageType, string> = {
+  'home': '/',
+  'services': '/services',
+  'premier-regard': '/premier-regard',
+  'about': '/a-propos',
+  'contact': '/contact',
+  'cgv': '/cgv',
+  'politique-confidentialite': '/politique-confidentialite',
+  'mentions-legales': '/mentions-legales',
+  'cookies': '/cookies'
+}
+
+const reverseRouteMap: Record<string, PageType> = {
+  '/': 'home',
+  '/services': 'services',
+  '/premier-regard': 'premier-regard',
+  '/a-propos': 'about',
+  '/contact': 'contact',
+  '/cgv': 'cgv',
+  '/politique-confidentialite': 'politique-confidentialite',
+  '/mentions-legales': 'mentions-legales',
+  '/cookies': 'cookies'
+}
+
 function AppContent() {
   const navigate = useNavigate()
   const location = useLocation()
-  const { i18n } = useTranslation()
   const reduce = useReducedMotion()
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
-      document.documentElement.lang = i18n.language || 'fr'
+      document.documentElement.lang = 'fr'
     }
-  }, [i18n.language])
+  }, [])
 
-  // Add wrapper function to handle string to PageType conversion
   const handleNavigate = (page: string) => {
-    const pageType = page as PageType
-    // Map page types to routes
-    const routeMap: Record<PageType, string> = {
-      'home': '/',
-      'about': '/about',
-      'pentest': '/pentest',
-      'osint': '/osint',
-      'developpement': '/developpement',
-      'data-recovery': '/data-recovery',
-      'abonnements': '/abonnements',
-      'protection-pme-essentiel': '/abonnements/essentiel',
-      'protection-pme-active': '/abonnements/pro',
-      'protection-pme-premium': '/abonnements/premium',
-      'contact': '/contact',
-      'cgv': '/cgv',
-      'politique-confidentialite': '/politique-confidentialite',
-      'mentions-legales': '/mentions-legales',
-      'cookies': '/cookies'
-    }
-    navigate(routeMap[pageType])
+    const target = routeMap[page as PageType]
+    if (target) navigate(target)
   }
 
-  // Get current page from location
-  const getCurrentPage = (): PageType => {
-    const path = location.pathname
-    const routeMap: Record<string, PageType> = {
-      '/': 'home',
-      '/about': 'about',
-      '/pentest': 'pentest',
-      '/osint': 'osint',
-      '/developpement': 'developpement',
-      '/data-recovery': 'data-recovery',
-      '/abonnements': 'abonnements',
-      '/abonnements/essentiel': 'protection-pme-essentiel',
-      '/abonnements/pro': 'protection-pme-active',
-      '/abonnements/premium': 'protection-pme-premium',
-      '/contact': 'contact',
-      '/cgv': 'cgv',
-      '/politique-confidentialite': 'politique-confidentialite',
-      '/mentions-legales': 'mentions-legales',
-      '/cookies': 'cookies'
-    }
-    return routeMap[path] || 'home'
-  }
-
-  const currentPage = getCurrentPage()
+  const currentPage: PageType = reverseRouteMap[location.pathname] || 'home'
 
   return (
     <div className="min-h-screen bg-bg flex flex-col">
       <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
-      
+
       <AnimatePresence mode="wait">
         <motion.main
           key={location.pathname}
@@ -118,15 +99,9 @@ function AppContent() {
           <Suspense fallback={<PageLoader />}>
             <Routes>
               <Route path="/" element={<HomePage onNavigate={handleNavigate} />} />
-              <Route path="/about" element={<AboutPage onNavigate={handleNavigate} />} />
-              <Route path="/pentest" element={<PentestPage onNavigate={handleNavigate} />} />
-              <Route path="/osint" element={<OSINTPage onNavigate={handleNavigate} />} />
-              <Route path="/developpement" element={<DeveloppementPage onNavigate={handleNavigate} />} />
-              <Route path="/data-recovery" element={<DataRecoveryPage onNavigate={handleNavigate} />} />
-              <Route path="/abonnements" element={<AbonnementsPage onNavigate={handleNavigate} />} />
-              <Route path="/abonnements/essentiel" element={<ProtectionPmeEssentielPage onNavigate={handleNavigate} />} />
-              <Route path="/abonnements/pro" element={<ProtectionPmeActivePage onNavigate={handleNavigate} />} />
-              <Route path="/abonnements/premium" element={<ProtectionPmePremiumPage onNavigate={handleNavigate} />} />
+              <Route path="/services" element={<ServicesPage onNavigate={handleNavigate} />} />
+              <Route path="/premier-regard" element={<PremierRegardPage onNavigate={handleNavigate} />} />
+              <Route path="/a-propos" element={<AboutPage onNavigate={handleNavigate} />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/cgv" element={<CGVPage onNavigate={handleNavigate} />} />
               <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage onNavigate={handleNavigate} />} />
@@ -136,7 +111,7 @@ function AppContent() {
           </Suspense>
         </motion.main>
       </AnimatePresence>
-      
+
       <Footer onNavigate={handleNavigate} />
       <CookieConsent />
     </div>

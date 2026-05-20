@@ -396,7 +396,7 @@ const CookieManager = ({ onNavigate }: CookieManagerProps) => {
                           className="mt-2 px-3 py-1 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 border border-yellow-400/30 rounded-full inline-block"
                         >
                           <p className="text-xs text-yellow-600 font-medium">
-                            ⚡ {copy.alwaysActive}
+                            ● {copy.alwaysActive}
                           </p>
                         </motion.div>
                       )}

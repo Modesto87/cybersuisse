@@ -16,10 +16,16 @@
     RewriteRule . /index.html [L]
 </IfModule>
 
-# 2. Headers de sécurité de base (Optionnel - commenter si erreur)
+# 2. En-têtes de sécurité (servis par Apache si mod_headers est actif)
 <IfModule mod_headers.c>
     Header set X-Content-Type-Options "nosniff"
-    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-Frame-Options "DENY"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    Header set Cross-Origin-Opener-Policy "same-origin"
+    Header set Cross-Origin-Resource-Policy "same-origin"
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.cybersuisse.ch; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: https://tracker.metricool.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' ws: wss: https://www.google-analytics.com https://www.googletagmanager.com https://analytics.cybersuisse.ch; frame-ancestors 'none'; base-uri 'self'"
 </IfModule>
 
 # 3. Compression (Optionnel)

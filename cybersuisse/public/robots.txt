@@ -6,12 +6,12 @@ Sitemap: https://cybersuisse.ch/sitemap.xml
 
 # Security
 # RFC 9116 - A File Format to Aid in Security Vulnerability Disclosure
-# https://cybersuisse.com/.well-known/security.txt
+# https://cybersuisse.ch/.well-known/security.txt
 
 # Politique de divulgation responsable
 # Pour signaler des vulnérabilités de sécurité:
-# Email: security@cybersuisse.com
-# Page: https://cybersuisse.com/contact
+# Email: security@cybersuisse.ch
+# Page: https://cybersuisse.ch/contact
 
 # Conformité CRA (Cyber Resilience Act)
 # Ce site respecte les exigences du règlement européen
