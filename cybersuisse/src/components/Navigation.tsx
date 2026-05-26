@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { List, X, House, Briefcase, Eye, User, Envelope } from '@phosphor-icons/react'
+import { List, X, House, Briefcase, Eye, BookOpen, User, Envelope } from '@phosphor-icons/react'
 import Logo from './Logo'
 
 type PageType =
   | 'home'
   | 'services'
   | 'premier-regard'
+  | 'ressources'
   | 'about'
   | 'contact'
   | 'cgv'
@@ -24,6 +25,7 @@ const navigationItems = [
   { id: 'home' as const, label: 'Accueil', icon: House },
   { id: 'services' as const, label: 'Services', icon: Briefcase },
   { id: 'premier-regard' as const, label: 'Premier Regard', icon: Eye },
+  { id: 'ressources' as const, label: 'Ressources', icon: BookOpen },
   { id: 'about' as const, label: 'À propos', icon: User },
   { id: 'contact' as const, label: 'Contact', icon: Envelope },
 ]

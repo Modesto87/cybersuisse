@@ -14,6 +14,11 @@ const CGVPage = lazy(() => import('./components/CGVPage'))
 const PolitiqueConfidentialitePage = lazy(() => import('./components/PolitiqueConfidentialitePage'))
 const MentionsLegalesPage = lazy(() => import('./components/MentionsLegalesPage'))
 const CookieManagerPage = lazy(() => import('./components/CookieManagerPage'))
+const RessourcesIndexPage = lazy(() => import('./components/ressources/RessourcesIndexPage'))
+const ArticleM365Checklist = lazy(() => import('./components/ressources/ArticleM365Checklist'))
+const ArticlePhishing30s = lazy(() => import('./components/ressources/ArticlePhishing30s'))
+const ArticleApresAttaque = lazy(() => import('./components/ressources/ArticleApresAttaque'))
+const ArticleRgpdLpd = lazy(() => import('./components/ressources/ArticleRgpdLpd'))
 
 const PageLoader = () => (
   <div className="min-h-screen bg-bg flex items-center justify-center">
@@ -25,6 +30,7 @@ type PageType =
   | 'home'
   | 'services'
   | 'premier-regard'
+  | 'ressources'
   | 'about'
   | 'contact'
   | 'cgv'
@@ -44,6 +50,7 @@ const routeMap: Record<PageType, string> = {
   'home': '/',
   'services': '/services',
   'premier-regard': '/premier-regard',
+  'ressources': '/ressources',
   'about': '/a-propos',
   'contact': '/contact',
   'cgv': '/cgv',
@@ -56,6 +63,7 @@ const reverseRouteMap: Record<string, PageType> = {
   '/': 'home',
   '/services': 'services',
   '/premier-regard': 'premier-regard',
+  '/ressources': 'ressources',
   '/a-propos': 'about',
   '/contact': 'contact',
   '/cgv': 'cgv',
@@ -80,7 +88,9 @@ function AppContent() {
     if (target) navigate(target)
   }
 
-  const currentPage: PageType = reverseRouteMap[location.pathname] || 'home'
+  const currentPage: PageType = location.pathname.startsWith('/ressources')
+    ? 'ressources'
+    : reverseRouteMap[location.pathname] || 'home'
 
   return (
     <div className="min-h-screen bg-bg flex flex-col">
@@ -101,6 +111,11 @@ function AppContent() {
               <Route path="/" element={<HomePage onNavigate={handleNavigate} />} />
               <Route path="/services" element={<ServicesPage onNavigate={handleNavigate} />} />
               <Route path="/premier-regard" element={<PremierRegardPage onNavigate={handleNavigate} />} />
+              <Route path="/ressources" element={<RessourcesIndexPage onNavigate={handleNavigate} />} />
+              <Route path="/ressources/m365-checklist-securite-pme-suisse" element={<ArticleM365Checklist onNavigate={handleNavigate} />} />
+              <Route path="/ressources/reconnaitre-email-phishing-30-secondes" element={<ArticlePhishing30s onNavigate={handleNavigate} />} />
+              <Route path="/ressources/que-faire-apres-cyberattaque-pme-plan" element={<ArticleApresAttaque onNavigate={handleNavigate} />} />
+              <Route path="/ressources/rgpd-vs-lpd-suisse-pme-2026" element={<ArticleRgpdLpd onNavigate={handleNavigate} />} />
               <Route path="/a-propos" element={<AboutPage onNavigate={handleNavigate} />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/cgv" element={<CGVPage onNavigate={handleNavigate} />} />

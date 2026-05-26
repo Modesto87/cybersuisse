@@ -1,10 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Shield, Handshake, Lightning, MapPin, Users, Buildings, Briefcase, Factory } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { applyPageSeo } from '@/components/SEOHelpers'
+import Hero3DBackground from '@/components/Hero3DBackground'
 
 interface HomePageProps {
   onNavigate: (page: string) => void
@@ -60,6 +61,7 @@ const services = [
 
 export default function HomePage({ onNavigate }: HomePageProps) {
   const reduceMotion = useReducedMotion()
+  const heroSectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     applyPageSeo({
@@ -80,34 +82,106 @@ export default function HomePage({ onNavigate }: HomePageProps) {
 
   return (
     <div className="bg-bg">
-      {/* HERO */}
-      <section className="relative overflow-hidden border-b border-white/10">
-        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+      {/* HERO — 3D OSINT constellation */}
+      <section
+        ref={heroSectionRef}
+        className="relative overflow-hidden border-b border-white/10"
+        style={{ minHeight: 'calc(100svh - 4rem)' }}
+      >
+        {/* 3D layer (or SVG poster fallback) */}
+        <Hero3DBackground sectionRef={heroSectionRef} />
+
+        {/* Veils — navy gradients for legibility */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none z-1"
+          style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.20) 60%, transparent 100%)' }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none z-1"
+          style={{ background: 'linear-gradient(0deg, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.20) 60%, transparent 100%)' }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none z-1"
+          style={{ background: 'radial-gradient(ellipse 75% 95% at 22% 50%, rgba(15,23,42,0.88) 0%, rgba(15,23,42,0.55) 38%, rgba(15,23,42,0) 68%)' }}
+        />
+
+        {/* Grain */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none z-2 mix-blend-overlay"
+          style={{
+            opacity: 0.07,
+            backgroundImage:
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+          }}
+        />
+
+        {/* Content */}
+        <div
+          className="container mx-auto px-4 lg:px-8 relative z-5 py-20 lg:py-28 flex items-center"
+          style={{ minHeight: 'inherit' }}
+        >
           <div className="max-w-3xl">
-            <motion.h1
+            {/* Eyebrow pill */}
+            <motion.div
               custom={0}
               variants={fade}
               initial="hidden"
               animate="show"
-              className="text-4xl lg:text-5xl font-bold text-fg leading-tight"
+              className="inline-flex items-center gap-2 rounded-full bg-brand-amber/10 border border-brand-amber/40 px-4 py-1.5"
+              style={{
+                fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace',
+                fontSize: '10.5px',
+                letterSpacing: '0.10em',
+                color: '#F6B53C',
+                textTransform: 'uppercase',
+              }}
             >
-              La cybersécurité de votre PME mérite une personne de confiance, pas un ticket.
-            </motion.h1>
-            <motion.p
+              <motion.span
+                className="inline-block w-1.5 h-1.5 rounded-full"
+                style={{ background: '#F6B53C', boxShadow: '0 0 8px #F6B53C' }}
+                animate={reduceMotion ? undefined : { opacity: [1, 0.4, 1] }}
+                transition={reduceMotion ? undefined : { duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <span>OSINT · Reconnaissance · Threat intel</span>
+            </motion.div>
+
+            <motion.h1
               custom={1}
               variants={fade}
               initial="hidden"
               animate="show"
-              className="mt-6 text-lg text-fg-secondary leading-relaxed"
+              className="mt-5 font-heading font-extrabold text-fg"
+              style={{
+                fontSize: 'clamp(40px, 5.4vw, 78px)',
+                lineHeight: 0.98,
+                letterSpacing: '-0.035em',
+                maxWidth: '14ch',
+                textWrap: 'balance',
+                textShadow: '0 2px 24px rgba(0,0,0,0.5)',
+              }}
             >
-              CyberSuisse accompagne les études fiduciaires, cabinets d'avocats et bureaux techniques de Biel/Bienne avec des prestations claires, un interlocuteur unique et des recommandations applicables dès demain.
-            </motion.p>
-            <motion.div
+              La cybersécurité de votre PME mérite une personne de confiance, pas un ticket.
+            </motion.h1>
+            <motion.p
               custom={2}
               variants={fade}
               initial="hidden"
               animate="show"
-              className="mt-8 flex flex-col sm:flex-row gap-3"
+              className="mt-6 text-fg-secondary"
+              style={{ fontSize: '17.5px', lineHeight: 1.55, maxWidth: '52ch' }}
+            >
+              CyberSuisse accompagne les études fiduciaires, cabinets d'avocats et bureaux techniques de Biel/Bienne avec des prestations claires, un interlocuteur unique et des recommandations applicables dès demain.
+            </motion.p>
+            <motion.div
+              custom={3}
+              variants={fade}
+              initial="hidden"
+              animate="show"
+              className="mt-10 flex flex-col sm:flex-row gap-4"
             >
               <Button
                 size="lg"

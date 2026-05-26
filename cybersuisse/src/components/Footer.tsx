@@ -9,6 +9,7 @@ const navLinks: Array<{ id: string; label: string }> = [
   { id: 'home', label: 'Accueil' },
   { id: 'services', label: 'Services' },
   { id: 'premier-regard', label: 'Premier Regard' },
+  { id: 'ressources', label: 'Ressources' },
   { id: 'about', label: 'À propos' },
   { id: 'contact', label: 'Contact' },
 ]

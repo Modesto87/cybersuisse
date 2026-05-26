@@ -117,6 +117,41 @@ export const generateSitemap = () => {
       title: 'Premier Regard offert — CyberSuisse'
     },
     {
+      url: `${baseUrl}/ressources`,
+      lastmod: today,
+      changefreq: 'monthly',
+      priority: '0.8',
+      title: 'Ressources — Guides cybersécurité pour PME suisses | CyberSuisse'
+    },
+    {
+      url: `${baseUrl}/ressources/m365-checklist-securite-pme-suisse`,
+      lastmod: today,
+      changefreq: 'monthly',
+      priority: '0.7',
+      title: 'Checklist sécurité Microsoft 365 pour PME suisses (2026) — CyberSuisse'
+    },
+    {
+      url: `${baseUrl}/ressources/reconnaitre-email-phishing-30-secondes`,
+      lastmod: today,
+      changefreq: 'monthly',
+      priority: '0.7',
+      title: 'Reconnaître un email de phishing en 30 secondes — CyberSuisse'
+    },
+    {
+      url: `${baseUrl}/ressources/que-faire-apres-cyberattaque-pme-plan`,
+      lastmod: today,
+      changefreq: 'monthly',
+      priority: '0.7',
+      title: "Que faire après une cyberattaque ? Plan d'action PME suisse — CyberSuisse"
+    },
+    {
+      url: `${baseUrl}/ressources/rgpd-vs-lpd-suisse-pme-2026`,
+      lastmod: today,
+      changefreq: 'monthly',
+      priority: '0.7',
+      title: 'RGPD vs LPD suisse : ce qui change pour votre PME en 2026 — CyberSuisse'
+    },
+    {
       url: `${baseUrl}/a-propos`,
       lastmod: today,
       changefreq: 'monthly',
@@ -129,6 +164,27 @@ export const generateSitemap = () => {
       changefreq: 'monthly',
       priority: '0.7',
       title: 'Contact — CyberSuisse | Biel/Bienne'
+    },
+    {
+      url: `${baseUrl}/cgv`,
+      lastmod: today,
+      changefreq: 'yearly',
+      priority: '0.3',
+      title: 'CGV — CyberSuisse'
+    },
+    {
+      url: `${baseUrl}/politique-confidentialite`,
+      lastmod: today,
+      changefreq: 'yearly',
+      priority: '0.3',
+      title: 'Politique de confidentialité — CyberSuisse'
+    },
+    {
+      url: `${baseUrl}/mentions-legales`,
+      lastmod: today,
+      changefreq: 'yearly',
+      priority: '0.3',
+      title: 'Mentions légales — CyberSuisse'
     }
   ]
 }
